@@ -7,6 +7,10 @@ body {
     padding: 0;
 }
 
+.clearFix {
+    clear: both;
+}
+
 .container {
     width: 600px;
     margin: 10px auto 0 auto;
@@ -48,6 +52,30 @@ body {
     text-decoration: underline;
 }
 
+.content .entry {
+    margin: 5px 0 10px 0;
+    padding: 5px;
+}
+
+.content .entry:nth-child(even) {
+    background: white;
+}
+
+.content .entry p {
+    border-left: darkgrey 2px solid;
+    padding-left: 5px;
+}
+
+.content .entry .creator {
+    float: right;
+    line-height: 30px;
+}
+
+.content .entry .buttons {
+    width: 200px;
+    float: left;
+}
+
 .footer {
     background: whitesmoke;
     box-shadow: 4px 4px 0 yellowgreen, 6px 6px 0 whitesmoke;
@@ -86,18 +114,29 @@ ul.navi li a {
 
 ul.navi li a:hover, ul.navi li a.active {
     color: white;
-    background: yellowgreen
+    background: yellowgreen;
 }
 
-.btn {
+a.btn, button.btn, .btn {
     text-decoration: none;
-    padding: 5px 10px;
     border: none;
     background: none;
+    line-height: 30px;
+    padding: 8px 10px;
 }
 
-.btn:hover {
+a.btn:hover, button.btn:hover, .btn:hover {
     color: white;
     cursor: pointer;
-    background: yellowgreen   
+    background: yellowgreen;  
+    text-decoration: none;
+}
+
+.btn.btn-danger {
+    color: red;
+}
+
+.btn.btn-danger:hover {
+    background: red;
+    color: white;
 }
