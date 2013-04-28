@@ -145,3 +145,27 @@ a.btn:hover, button.btn:hover, .btn:hover {
     background: red;
     color: white;
 }
+
+label {
+    display: inline-block;
+    width: 60px;
+    vertical-align: top;
+    text-align: right;
+    padding: 3px;
+    margin: 0 0 5px 0;
+}
+
+input {
+    border: none;
+    padding: 3px;
+    margin: 0 0 5px 0;
+}
+
+textarea {
+    width: 300px;
+    height: 100px;
+    resize: none;
+    border: none;
+    padding: 3px;
+    margin: 0 0 5px 0;
+}
