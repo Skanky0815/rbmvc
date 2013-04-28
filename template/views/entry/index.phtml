@@ -1,5 +1,41 @@
 <a href="<?php echo $this->url(
         array('action' => 'edit')
     ); ?>">
-    &raquo; Eintragen
+    &raquo; Eintragen    
 </a>
+<div class="entries">
+<?php foreach ($this->entries as $entry): ?>
+    <div class="entry">
+        <h3>
+            <?php echo $entry->getTitle(); ?>
+        </h3>
+        <p>
+            <?php echo $entry->getText(); ?>
+        </p>
+        <div class="entry-footer">
+            <div class="buttons">
+                <a class="btn-danger btn" href="<?php echo $this->url(
+                        array('action' => 'delete'
+                            , 'id' => $entry->getId()
+                        ), true
+                ); ?>">
+                    x
+                </a>
+                <a class="btn" href="<?php echo $this->url(
+                        array('action' => 'edit'
+                            , 'id' => $entry->getId()
+                        ), true
+                ); ?>">
+                    Edit
+                </a>
+            </div>
+            <div class="creator">        
+                <?php echo $entry->getAuthor(); ?>
+                <?php echo $entry->getDate(); ?>
+            </div>
+            <div class="clearFix">
+            </div>
+        </div>
+    </div>
+<?php endforeach; ?>
+</div>
