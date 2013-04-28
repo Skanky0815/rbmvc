@@ -61,6 +61,7 @@ class View {
     
     public function addHelper(AbstractHelper $helper) {
         $helperName = get_class($helper);
+        $helperName = strtolower($helperName);
         $helperNameParts = explode('\\', $helperName);
         $className = end($helperNameParts);
         $index = strtolower($className);
@@ -68,6 +69,7 @@ class View {
     }
     
     public function __call($name, $args) {
+        $name = strtolower($name);
         $helper = $this->helpers[$name];
         
         return call_user_func_array(

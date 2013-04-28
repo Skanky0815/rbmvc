@@ -31,7 +31,7 @@
             </div>
             <div class="creator">        
                 <?php echo $entry->getAuthor(); ?>
-                <?php echo $entry->getDate(); ?>
+                <?php echo $this->dateFormater($entry->getDate()); ?>
             </div>
             <div class="clearFix">
             </div>
