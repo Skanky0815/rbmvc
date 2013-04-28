@@ -1,0 +1,103 @@
+body {
+    background: yellowgreen;
+    font-family: Tahoma;
+    font-size: 12px;
+    color: darkgray;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 600px;
+    margin: 10px auto 0 auto;
+}
+
+.header {
+    background: whitesmoke;
+    margin-bottom: 2px;
+    box-shadow: 4px 4px 0 yellowgreen, 6px 6px 0 whitesmoke;
+}
+
+.content {
+    background: whitesmoke;
+    margin-bottom: 2px;
+    box-shadow: 4px 4px 0 yellowgreen, 6px 6px 0 whitesmoke;
+    padding: 15px;
+}
+
+.content h1, .content h2, .content h3 {
+    margin: 0 0 15px 0;
+    color: lightgray;
+}
+
+.content h1 {
+    font-size: 28px;
+    text-shadow: 0 -1px 1px darkgray, 0 1px 1px white;   
+}
+
+.content h2 {
+    font-size: 24px;
+}
+
+.content a {
+    color: yellowgreen;
+    text-decoration: none;
+}
+
+.content a:hover {
+    text-decoration: underline;
+}
+
+.footer {
+    background: whitesmoke;
+    box-shadow: 4px 4px 0 yellowgreen, 6px 6px 0 whitesmoke;
+    border-bottom-right-radius: 25px;
+}
+
+.footer p {
+    font-size: 11px;
+    margin: 0;
+    padding: 3px 0;
+    text-align: center;
+}
+
+ul.navi {
+    list-style: none;
+    height: 30px;
+    margin: 0;
+    padding: 0 15px;
+}
+
+ul.navi li {
+    margin: 0;
+    padding: 0;
+    display: block;
+    float: left;
+    line-height: 30px;
+    vertical-align: middle;
+}
+
+ul.navi li a {
+    color: darkgrey;
+    height: 30px;
+    text-decoration: none;
+    padding: 8px 10px;
+}
+
+ul.navi li a:hover, ul.navi li a.active {
+    color: white;
+    background: yellowgreen
+}
+
+.btn {
+    text-decoration: none;
+    padding: 5px 10px;
+    border: none;
+    background: none;
+}
+
+.btn:hover {
+    color: white;
+    cursor: pointer;
+    background: yellowgreen   
+}

@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="/template/js/main.js"></script>
+        <link href="/template/css/style.css" rel="stylesheet"/>
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <ul class="navi">
+                    <li>
+                        <a href="<?php echo $this->url(
+                                array('controller' => 'index'
+                                    , 'action' => 'index'
+                                )
+                        ); ?>">
+                            Start
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo $this->url(
+                                array('controller' => 'entry'
+                                    , 'action' => 'index'
+                                )
+                        ); ?>">
+                            G&auml;stebuch
+                        </a>
+                    </li>
+               </ul>
+            </div>
+            <div class="content">
+                <?php echo $this->content; ?>
+            </div>
+            <div class="footer">
+                <p>POWERT BY Basti/Rico</p>
+            </div> 
+        </div>
+    </body>
+</html>

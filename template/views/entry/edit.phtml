@@ -1,0 +1,25 @@
+<h2>
+    G&auml;stebucheintrag 
+    <?php if ($this->entry->getId() == 0): ?>
+        hinterlassen
+    <?php else: ?>
+        bearbeiten
+    <?php endif; ?>
+</h2>
+
+<form method="post">
+    <input type="hidden" name="id" value="<?php echo $this->entry->getId(); ?>" />
+    
+    <label for="author">Autor:</label>
+    <input type="text" name="author" value="<?php echo $this->entry->getAuthor(); ?>"/>
+    <br />
+    <label for="author">Title:</label>
+    <input type="text" name="title" value="<?php echo $this->entry->getTitle(); ?>"/>
+    <br />
+    <label for="text">Text:</label>
+    <textarea name="text"><?php echo $this->entry->getText(); ?></textarea>
+    <br />
+    <button class="btn" type="submit"> 
+        Senden
+    </button>
+</form>
