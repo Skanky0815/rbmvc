@@ -68,7 +68,6 @@ body {
 
 .content .entry .creator {
     float: right;
-    line-height: 30px;
 }
 
 .content .entry .buttons {
@@ -118,11 +117,17 @@ ul.navi li a:hover, ul.navi li a.active {
 }
 
 a.btn, button.btn, .btn {
+    color: yellowgreen;
     text-decoration: none;
     border: none;
     background: none;
-    line-height: 30px;
+    heigth: 30px;
     padding: 8px 10px;
+    margin: 0;
+}
+
+button.btn {
+    padding: 9px 10px 8px 10px;
 }
 
 a.btn:hover, button.btn:hover, .btn:hover {
@@ -139,4 +144,28 @@ a.btn:hover, button.btn:hover, .btn:hover {
 .btn.btn-danger:hover {
     background: red;
     color: white;
+}
+
+label {
+    display: inline-block;
+    width: 60px;
+    vertical-align: top;
+    text-align: right;
+    padding: 3px;
+    margin: 0 0 5px 0;
+}
+
+input {
+    border: none;
+    padding: 3px;
+    margin: 0 0 5px 0;
+}
+
+textarea {
+    width: 300px;
+    height: 100px;
+    resize: none;
+    border: none;
+    padding: 3px;
+    margin: 0 0 5px 0;
 }
