@@ -8,10 +8,10 @@ use core\rbmvc\model\collection\EntryCollection;
 class EntryController extends AbstractController {
     
     public function indexAction() {
-//        $entryCollection = new EntryCollection();
-//        $entryCollection->findAll();
+        $entryCollection = new EntryCollection();
+        $entryCollection->findAll();
         
-//        $this->view->entries = $entryCollection->getModels();
+        $this->view->entries = $entryCollection->getModels();
     }
     
     public function editAction() {

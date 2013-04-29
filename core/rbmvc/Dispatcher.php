@@ -62,6 +62,9 @@ class Dispatcher {
         $url = new Url($this->request, $this->view);
         $this->view->addHelper($url);
         
+        $dateFormater = new view\helper\DateFormater($this->request, $this->view); 
+        $this->view->addHelper($dateFormater);
+        
         $this->view->setParams($this->request->getParams());  
     }
 }
