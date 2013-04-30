@@ -1,3 +1,9 @@
+require(["jquery", "jquery.alpha"], function($) {
+    $(function() {
+        $('body').alpha();
+    });
+});
+
 var Main = (function() {
     var _ = {}, pub = {};
     
