@@ -8,7 +8,7 @@ var Main = (function() {
     var _ = {}, pub = {};
     
     pub.init = function() {
-//        alert(42);
+        alert(42);
     };
     
     return pub;
