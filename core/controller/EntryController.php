@@ -33,11 +33,21 @@ class EntryController extends AbstractController {
         $this->view->disableRender();
         $entryId = $this->request->getParam('id', 0);
         
-        if (!empty($entryId)) {
-            $entry = new Entry();
-            $entry->setId($entryId)->delete();
+        if (empty($entryId)) {
+            return $this->sendJSON(
+                    array('status' => 'error' 
+                        , 'text' => 'keine gültige id'
+                    )
+            );
         }
+        
+        $entry = new Entry();
+        $entry->setId($entryId)->delete();
 
-        echo json_encode(array('id' => $entryId));
+        return $this->sendJSON(
+                array('status' => 'ok'
+                    , 'data' => array('id' => $entryId)
+                )
+        );
     }
 }
