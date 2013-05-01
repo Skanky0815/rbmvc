@@ -11,7 +11,7 @@ abstract class AbstractController {
     protected $view;
     
     public function init() {
-        
+        $this->view->controller = $this->request->getParam('controller');
     }
     
     public function indexAction() {
