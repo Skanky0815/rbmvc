@@ -1,13 +1,18 @@
 define(['jquery'
+        , 'lib/bootstrap.min'
 
 ], function($) {
-    var _ = {};
+    var _ = {
+        isInit: false,
+    };
     var pub = {};
 
     _.isInit = false;
     
     _.$delelteButton = null;
     _.$deleteModal = null;
+    
+    _.url = ''
 
 
     pub.init = function() {
@@ -20,6 +25,7 @@ define(['jquery'
         
         
         _.$delelteButton.on('click', _.deleteAction);
+        _.$deleteModal.on('click', '.btn-danger', _.doAjaxAction);
 
         _.isInit = true;
     };
@@ -28,8 +34,25 @@ define(['jquery'
         e.preventDefault();
         
         var $this = $(this);
-        var url = $this.attr('href');
-        console.log('url= ', url);
+        _.url = $this.attr('href');
+        _.$deleteModal.modal();
+    };
+    
+    _.doAjaxAction = function() {
+        $.ajax({
+           url: _.url,
+           dataType: 'JSON',
+           success: _.respons
+        });
+    };
+    
+    _.respons = function(data) {
+        if (data.status === 'ok') {
+            var url = location.href;
+            location.href = url;
+        } else {
+            _.$deleteModal.find('.modal-body').html(data.data);
+        }
     };
     
     return pub;

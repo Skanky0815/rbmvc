@@ -21,7 +21,7 @@ class View {
         }
         
         $this->loadTemplate($path);
-        if (!$this->doLayout) {
+        if (!$this->doLayout || !empty($path)) {
             return $this->content;
         }
         

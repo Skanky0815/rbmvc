@@ -13,23 +13,21 @@
             <?php echo $entry->getText(); ?>
         </p>
         <div class="entry-footer">
-            <div class="buttons">
+            <div class="btn-group">
                 <a class="btn-danger btn delete" href="<?php echo $this->url(
                         array('action' => 'delete'
                             , 'id' => $entry->getId()
                         ), true
                 ); ?>">
-                    x
+                    <i class="icon-trash icon-white"></i>
                 </a>
-<!--                <a class="btn" href="<?php echo $this->url(
+                <a class="btn" href="<?php echo $this->url(
                         array('action' => 'edit'
                             , 'id' => $entry->getId()
                         ), true
                 ); ?>">
                     Edit
-                </a>-->
-<!--                <a href="scripts/deleteModal.phtml"  class="btn" data-toggle="modal">Edit</a>-->
-                
+                </a>
             </div>
             <div class="creator">        
                 <?php echo $entry->getAuthor(); ?>

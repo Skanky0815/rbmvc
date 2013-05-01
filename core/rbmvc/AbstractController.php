@@ -33,5 +33,10 @@ abstract class AbstractController {
     public function setView(View &$view) {
         $this->view = $view;
     }
+    
+    protected function sendJSON(array $json) {
+        header('Content-type: application/json');
+        echo json_encode($json);
+    }
 }
 
