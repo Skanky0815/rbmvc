@@ -1,7 +1,6 @@
 define(['jquery'
-        , 'app/deleteModal'
-        , 'app/formValidator'
-
+      , 'app/deleteModal'
+      , 'app/formValidator'
 ], function($, deleteModal, formValidator) {
     var _ = {};
 

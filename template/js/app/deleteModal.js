@@ -1,11 +1,8 @@
 define(['jquery'
       , 'lib/bootstrap.min'
-
 ], function($) {
     var _ = {};
     var pub = {};
-
-    _.isInit = false;
     
     _.$delelteButton = null;
     _.$deleteModal = null;
@@ -13,18 +10,12 @@ define(['jquery'
     _.url = '';
 
     pub.init = function() {
-        if (_.isInit) {
-            return;
-        }
-        
         _.$delelteButton = $('.delete');
         _.$deleteModal = $('#deleteModal');
         
         
         _.$delelteButton.on('click', _.deleteAction);
         _.$deleteModal.on('click', '.btn-danger', _.doAjaxAction);
-
-        _.isInit = true;
     };
     
     _.deleteAction = function(e) {

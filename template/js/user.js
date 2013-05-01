@@ -1,11 +1,9 @@
 define(['jquery'
-        , 'app/formValidator'
-
+      , 'app/formValidator'
 ], function($, formValidator) {
     var _ = {};
 
     $(function() {
-        console.log('user');
         formValidator.init();
     });
 });
