@@ -9,6 +9,8 @@ class View {
     
     public $params;
     
+    private $content;
+    
     private $helpers;
     
     private $doRender = true;
@@ -20,9 +22,11 @@ class View {
             return;
         }
         
-        $this->loadTemplate($path);
+        $template = $this->loadTemplate($path);
         if (!$this->doLayout || !empty($path)) {
-            return $this->content;
+            return $template;
+        } else {
+            $this->content = $template;
         }
         
         return $this->loadLayoutTemplate();
@@ -36,17 +40,22 @@ class View {
         $this->doLayout = false;
     }
     
-    private function loadTemplate($path) {
+    private function loadTemplate($includePath) {
         ob_start();
-        if (empty($path)) {
+        if (empty($includePath)) {
             $path = sprintf(self::$TEMPLATE_PATH
                         , $this->params['controller']
                         , $this->params['action']
             );
+        } else {
+            $path = $includePath;
         }
+        
         include $path;
-        $this->content = ob_get_contents();
+        $template = ob_get_contents();
         ob_end_clean();
+        
+        return $template;
     }
     
     private function loadLayoutTemplate() {

@@ -7,35 +7,8 @@
         <link href="/template/css/bootstrap-responsive.min.css" rel="stylesheet"/>
     </head>
     <body>
-        <div class="navbar navbar-inverse navbar-static-top">
-            <div class="navbar-inner">
-                <div class="container">
-                    <ul class="nav">
-                        <li>
-                            <a href="<?php echo $this->url(
-                                    array('controller' => 'index'
-                                        , 'action' => 'index'
-                                    )
-                            ); ?>">
-                                Start
-                            </a>
-                        </li>
-                        <li>
-                            <a href="<?php echo $this->url(
-                                    array('controller' => 'entry'
-                                        , 'action' => 'index'
-                                    )
-                              ); ?>">
-                                G&auml;stebuch
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>  
-        </div>
-        
+        <?php echo $this->render('template/views/scripts/nav.phtml'); ?>
         <br />
-        
         <div class="container">
             <div class="row">
                 <div class="span12">

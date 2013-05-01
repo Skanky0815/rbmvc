@@ -1,0 +1,31 @@
+<div class="navbar navbar-inverse navbar-static-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <ul class="nav">
+                <li>
+                    <a href="<?php echo $this->url(
+                            array('controller' => 'index'
+                                , 'action' => 'index'
+                            )
+                    ); ?>">
+                        Start
+                    </a>
+                </li>
+                <li>
+                    <a href="<?php echo $this->url(
+                            array('controller' => 'entry'
+                                , 'action' => 'index'
+                            )
+                      ); ?>">
+                        G&auml;stebuch
+                    </a>
+                </li>
+            </ul>
+            <form class="navbar-form pull-right">
+               <input type="text" class="span2" placeholder="Benutzername">
+               <input type="text" class="span2" placeholder="Passwort">
+               <button type="submit" class="btn btn-primary">anmelden</button>
+            </form>
+        </div>
+    </div>  
+</div>
