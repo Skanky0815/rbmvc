@@ -2,10 +2,7 @@
 <html lang="de">
     <head>
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-        <script data-main="/template/js/main.js" src="/template/js/require-jquery.js"></script>
-        <script src="/template/js/<?php echo $this->params['controller']; ?>.js"></script>
-        <!--Altes CSS-Dateiverlinkung-->
-<!--        <link href="/template/css/style.css" rel="stylesheet"/>-->
+        <script data-main="/template/js/<?php echo $this->controller; ?>.js" src="/template/js/lib/require-jquery.js"></script>
         <link href="/template/css/bootstrap.css" rel="stylesheet"/>
         <link href="/template/css/bootstrap-responsive.css" rel="stylesheet"/>
         
