@@ -11,19 +11,19 @@
     <div class="control-group">
         <label class="control-label" for="author">Autor:</label>
         <div class="controls">
-            <input type="text" id="author" name="author" value="<?php echo $this->entry->getAuthor(); ?>"/>
+            <input class="required" type="text" id="author" name="author" value="<?php echo $this->entry->getAuthor(); ?>"/>
         </div>
     </div>
     <div class="control-group">
         <label class="control-label" for="title">Titel:</label>
         <div class="controls">
-            <input type="text" id="title" name="title" value="<?php echo $this->entry->getTitle(); ?>"/>
+            <input class="required" type="text" id="title" name="title" value="<?php echo $this->entry->getTitle(); ?>"/>
         </div>
     </div>
     <div class="control-group">
         <label class="control-label" for="text">Text:</label>
         <div class="controls">
-            <textarea name="text" id="text" rows="3"><?php echo $this->entry->getText(); ?></textarea>
+            <textarea class="required" name="text" id="text" rows="3"><?php echo $this->entry->getText(); ?></textarea>
         </div>
     </div>
     <div class="form-actions">
