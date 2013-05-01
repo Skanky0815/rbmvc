@@ -1,10 +1,8 @@
 define(['jquery'
-        , 'lib/bootstrap.min'
+      , 'lib/bootstrap.min'
 
 ], function($) {
-    var _ = {
-        isInit: false,
-    };
+    var _ = {};
     var pub = {};
 
     _.isInit = false;
@@ -12,8 +10,7 @@ define(['jquery'
     _.$delelteButton = null;
     _.$deleteModal = null;
     
-    _.url = ''
-
+    _.url = '';
 
     pub.init = function() {
         if (_.isInit) {

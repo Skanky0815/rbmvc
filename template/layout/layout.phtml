@@ -2,55 +2,49 @@
 <html lang="de">
     <head>
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-        <script type="text/javascript" src="/template/js/lib/bootstrap.min.js"></script>
         <script data-main="/template/js/<?php echo $this->controller; ?>.js" src="/template/js/lib/require-jquery.js"></script>
         <link href="/template/css/bootstrap.min.css" rel="stylesheet"/>
         <link href="/template/css/bootstrap-responsive.min.css" rel="stylesheet"/>
-        
     </head>
     <body>
-        <div class="container">
-            <div class="header">
-                <div class="row">
-                    <div class="span12">
-                        <div class="navbar navbar-inverse">
-                            <div class="navbar-inner">
-                                <ul class="nav">
-                                    <li>
-                                        <a href="<?php echo $this->url(
-                                                array('controller' => 'index'
-                                                    , 'action' => 'index'
-                                                )
-                                        ); ?>">
-                                            Start
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="<?php echo $this->url(
-                                                array('controller' => 'entry'
-                                                    , 'action' => 'index'
-                                                )
-                                          ); ?>">
-                                            G&auml;stebuch
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>  
-                        </div>
-                    </div>
+        <div class="navbar navbar-inverse navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <ul class="nav">
+                        <li>
+                            <a href="<?php echo $this->url(
+                                    array('controller' => 'index'
+                                        , 'action' => 'index'
+                                    )
+                            ); ?>">
+                                Start
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $this->url(
+                                    array('controller' => 'entry'
+                                        , 'action' => 'index'
+                                    )
+                              ); ?>">
+                                G&auml;stebuch
+                            </a>
+                        </li>
+                    </ul>
                 </div>
-            </div>
+            </div>  
+        </div>
+        <br />
+        <div class="container">
             <div class="row">
-                <div class="content span12">
+                <div class="span12">
                    <?php echo $this->content; ?>
                </div>
             </div>
-            <div class="row">
-                <div class="footer span12 text-center">
-                   <p>POWERT BY Basti/Rico</p>
-                </div> 
-            </div>
         </div>
+        <br />
+        <footer class="footer">
+            <p class="text-center">POWERT BY Basti/Rico</p>
+        </footer>
         
         <?php echo $this->render('template/views/scripts/deleteModal.phtml'); ?>
     </body>

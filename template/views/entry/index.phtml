@@ -1,34 +1,45 @@
-<a href="<?php echo $this->url(
-        array('action' => 'edit')
-    ); ?>">
-    &raquo; Eintragen    
-</a>
-<?php foreach ($this->entries as $entry): ?>
-    <h4>
-        <?php echo $entry->getTitle(); ?>
-    </h4>
-    <blockquote>
-        <p>
-            <?php echo $entry->getText(); ?>
-        </p>
-        <small><?php echo $entry->getAuthor(); ?> / <?php echo $this->dateFormater($entry->getDate()); ?></small>
-    </blockquote>
-    <div class="entry-footer">
-        <div class="btn-group">
-            <a class="btn-danger btn delete" href="<?php echo $this->url(
-                    array('action' => 'delete'
-                        , 'id' => $entry->getId()
-                    ), true
+<div class="row">
+    <div class="span12">
+        <a class="btn btn-primary" href="<?php echo $this->url(
+                array('action' => 'edit')
             ); ?>">
-                <i class="icon-trash icon-white"></i>
-            </a>
-            <a class="btn" href="<?php echo $this->url(
-                    array('action' => 'edit'
-                        , 'id' => $entry->getId()
-                    ), true
-            ); ?>">
-                Edit
-            </a>
-        </div>
+            <i class="icon-plus icon-white"></i>
+            Eintragen    
+        </a>
     </div>
-<?php endforeach; ?>
+</div>
+
+<div class="row">
+    <div class="span12">
+    <?php foreach ($this->entries as $entry): ?>
+        <h4>
+            <?php echo $entry->getTitle(); ?>
+        </h4>
+        <blockquote>
+            <p>
+                <?php echo $entry->getText(); ?>
+            </p>
+            <small><?php echo $entry->getAuthor(); ?> / <?php echo $this->dateFormater($entry->getDate()); ?></small>
+        </blockquote>
+        <div class="entry-footer">
+            <div class="btn-group">
+                <a class="btn-danger btn delete" href="<?php echo $this->url(
+                        array('action' => 'delete'
+                            , 'id' => $entry->getId()
+                        ), true
+                ); ?>">
+                    <i class="icon-trash icon-white"></i>
+                </a>
+                <a class="btn" href="<?php echo $this->url(
+                        array('action' => 'edit'
+                            , 'id' => $entry->getId()
+                        ), true
+                ); ?>">
+                    <i class="icon-edit"></i>
+                    Edit
+                </a>
+            </div>
+        </div>
+    <?php endforeach; ?>
+    </div>
+</div>
