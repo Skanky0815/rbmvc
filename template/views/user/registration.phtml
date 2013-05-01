@@ -6,28 +6,27 @@
     <div class="control-group">
         <label class="control-label" for="username">Benutzenname:</label>
         <div class="controls">
-            <input type="text" id="username" name="username" value="<?php // echo $this->entry->getAuthor(); ?>"/>
+            <input class="required" type="text" id="username" name="username" value="<?php // echo $this->entry->getAuthor(); ?>"/>
         </div>
     </div>
     <div class="control-group">
         <label class="control-label" for="email">Email:</label>
         <div class="controls">
-            <input type="text" id="email" name="email" value="<?php // echo $this->entry->getTitle(); ?>"/>
+            <input class="required" type="text" id="email" name="email" value="<?php // echo $this->entry->getTitle(); ?>"/>
         </div>
     </div>
     <div class="control-group">
         <label class="control-label" for="password">Passwort:</label>
         <div class="controls">
-            <input type="text" id="password" name="password" value="<?php // echo $this->entry->getTitle(); ?>"/>
+            <input class="required" type="password" id="password" name="password" value="<?php // echo $this->entry->getTitle(); ?>"/>
         </div>
     </div>
     <div class="control-group">
         <label class="control-label" for="password2">Passwort best&auml;tigen:</label>
         <div class="controls">
-            <input type="text" id="password2" name="password2" value="<?php // echo $this->entry->getTitle(); ?>"/>
+            <input class="required" type="password" id="password2" name="password2" value="<?php // echo $this->entry->getTitle(); ?>"/>
         </div>
     </div>
-    
     
     <div class="form-actions">
         <button class="btn btn-primary" type="submit"> 
