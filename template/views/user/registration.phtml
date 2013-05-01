@@ -1,0 +1,44 @@
+<h2>
+    Registrierung 
+</h2>
+<form class="form-horizontal" method="post">
+    <input type="hidden" name="id" value="<?php // echo $this->entry->getId(); ?>" />
+    <div class="control-group">
+        <label class="control-label" for="username">Benutzenname:</label>
+        <div class="controls">
+            <input type="text" id="username" name="username" value="<?php // echo $this->entry->getAuthor(); ?>"/>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="email">Email:</label>
+        <div class="controls">
+            <input type="text" id="email" name="email" value="<?php // echo $this->entry->getTitle(); ?>"/>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="password">Passwort:</label>
+        <div class="controls">
+            <input type="text" id="password" name="password" value="<?php // echo $this->entry->getTitle(); ?>"/>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="password2">Passwort best&auml;tigen:</label>
+        <div class="controls">
+            <input type="text" id="password2" name="password2" value="<?php // echo $this->entry->getTitle(); ?>"/>
+        </div>
+    </div>
+    
+    
+    <div class="form-actions">
+        <button class="btn btn-primary" type="submit"> 
+            Senden
+        </button>
+        <a class="btn" href="<?php echo $this->url(
+            array('action' => 'index'
+                , 'controller' => 'index'
+                )
+        ); ?>">
+            abbrechen    
+        </a>
+    </div>
+</form>

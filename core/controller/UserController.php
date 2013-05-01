@@ -5,4 +5,8 @@ use core\rbmvc\AbstractController;
 
 class UserController extends AbstractController {
     
+    
+   public function registrationAction() {
+       
+   }
 }
