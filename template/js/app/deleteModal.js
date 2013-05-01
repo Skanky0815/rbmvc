@@ -2,9 +2,7 @@ define(['jquery'
         , 'lib/bootstrap.min'
 
 ], function($) {
-    var _ = {
-        isInit: false,
-    };
+    var _ = {};
     var pub = {};
 
     _.isInit = false;
@@ -13,7 +11,6 @@ define(['jquery'
     _.$deleteModal = null;
     
     _.url = ''
-
 
     pub.init = function() {
         if (_.isInit) {
