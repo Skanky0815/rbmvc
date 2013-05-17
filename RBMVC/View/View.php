@@ -1,22 +1,44 @@
 <?php 
-namespace core\rbmvc;
+namespace RBMVC\View;
 
-use core\rbmvc\view\helper\AbstractHelper;
+use RBMVC\View\Helper\AbstractHelper;
 
 class View {
     
+    /**
+     * @var string 
+     */
     private static $TEMPLATE_PATH = 'template/views/%s/%s.phtml';
     
+    /**
+     * @var array
+     */
     public $params;
     
+    /**
+     * @var string 
+     */
     private $content;
     
+    /**
+     * @var array 
+     */
     private $helpers;
     
+    /**
+     * @var boolean 
+     */
     private $doRender = true;
     
+    /**
+     * @var boolean
+     */
     private $doLayout = true;
     
+    /**
+     * @param string $path
+     * @return string
+     */
     public function render($path = '') {
         if (!$this->doRender) {
             return;
@@ -32,16 +54,24 @@ class View {
         return $this->loadLayoutTemplate();
     }
     
+    /**
+     * @return void
+     */
     public function disableRender() {
         $this->doRender = false;
     }
     
+    /**
+     * @return void
+     */
     public function disableLayout() {
         $this->doLayout = false;
     }
     
+    /**
+     * @return string
+     */
     private function loadTemplate($includePath) {
-        ob_start();
         if (empty($includePath)) {
             $path = sprintf(self::$TEMPLATE_PATH
                         , $this->params['controller']
@@ -50,7 +80,7 @@ class View {
         } else {
             $path = $includePath;
         }
-        
+        ob_start();
         include $path;
         $template = ob_get_contents();
         ob_end_clean();
@@ -58,16 +88,43 @@ class View {
         return $template;
     }
     
+    /**
+     * @return void
+     */
     private function loadLayoutTemplate() {
         $dir = 'template/layout/layout.phtml';
         include_once $dir;
     }
     
-    public function setParams(array $params) {
-        $this->params = $params;
-        return $this;
+    /**
+     * @param string $fileName
+     * @return string
+     */
+    public function partial($fileName) {
+        return $this->render('template/layout/partials/' . $fileName);
     }
     
+    /**
+     * @param array $params
+     * @return void
+     */
+    public function setParams(array $params) {
+        $this->params = $params;
+    }
+    
+    /**
+     * @param string $fileName
+     * @return string
+     */
+    public function addStyle($fileName) {
+        $url = '/css/' . $fileName;
+        return '<link href="' . $url . '" rel="stylesheet"/>';
+    }
+    
+    /**
+     * @param \RBMVC\View\Helper\AbstractHelper $helper
+     * @return void
+     */
     public function addHelper(AbstractHelper $helper) {
         $helperName = get_class($helper);
         $helperName = strtolower($helperName);
@@ -77,6 +134,11 @@ class View {
         $this->helpers[$index] = $helper;
     }
     
+    /**
+     * @param string $name
+     * @param string $args
+     * @return mixed
+     */
     public function __call($name, $args) {
         $name = strtolower($name);
         $helper = $this->helpers[$name];

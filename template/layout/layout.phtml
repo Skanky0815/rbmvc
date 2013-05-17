@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="de">
     <head>
-        <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-        <script data-main="/template/js/<?php echo $this->controller; ?>.js" src="/template/js/lib/require-jquery.js"></script>
-        <link href="/template/css/bootstrap.min.css" rel="stylesheet"/>
-        <link href="/template/css/bootstrap-responsive.min.css" rel="stylesheet"/>
+        <script data-main="/js/<?php echo $this->controller; ?>.js" src="/js/lib/require-jquery.js"></script>
+        <?php echo $this->addStyle('bootstrap.min.css'); ?>
     </head>
     <body>
-        <?php echo $this->render('template/views/scripts/nav.phtml'); ?>
+        <?php echo $this->partial('nav.phtml'); ?>
         <br />
         <div class="container">
             <div class="row">
@@ -23,6 +21,6 @@
             <p class="text-center">POWERT BY Basti/Rico</p>
         </footer>
         
-        <?php echo $this->render('template/views/scripts/deleteModal.phtml'); ?>
+        <?php echo $this->partial('deleteModal.phtml'); ?>
     </body>
 </html>
