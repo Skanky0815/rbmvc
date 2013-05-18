@@ -1,5 +1,5 @@
 <?php
-namespace RBMVC;
+namespace RBMVC\Core;
 
 class Request {
     

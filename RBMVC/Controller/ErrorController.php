@@ -1,17 +1,23 @@
 <?php
 namespace RBMVC\Controller;
 
-class ErrorController extends  AbstractController {
+class ErrorController extends AbstractController {
     
     /**
      * @return void
      */
     public function indexAction() {
-        $errorCode = $this->request->getParam('error_code', 500);
-        $message = $this->getRequest()->getParam('message', 'Internal Server Error');
+        $statusCode = $this->request->getParam('c');
+        if (empty($statusCode)) {
+            $statusCode = 500;
+        } else {
+            $statusCode = (integer) base64_decode($statusCode);
+        }
         
-        $this->view->errorCode = $errorCode;
-        $this->view->message = $message;
-        header('HTTP/1.0 ' . $errorCode . '  ' . $message);
+        
+        $this->view->statusCode = $statusCode;
+        $this->view->title = $statusCode.'_title';
+        $this->view->message = $statusCode . '_message';
+        http_response_code($statusCode);
     }
 }

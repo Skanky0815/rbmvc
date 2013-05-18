@@ -12,6 +12,10 @@ return array(
         'helper' => array(
             new \RBMVC\View\Helper\Url(),
             new \RBMVC\View\Helper\DateFormater(),
+            new \RBMVC\View\Helper\Translate(),
         ),
+    ),
+    'language' => array(
+        'default_language' => 'de',
     ),
 );

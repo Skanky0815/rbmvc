@@ -1,8 +1,9 @@
 <?php
-namespace RBMVC;
+namespace RBMVC\Core;
 
 use RBMVC\View\View;
 use RBMVC\View\Helper\AbstractHelper;
+use RBMVC\Controller\IndexController;
 use RBMVC\Controller\AbstractController;
 
 class Dispatcher {
@@ -50,14 +51,16 @@ class Dispatcher {
         $controllerStr = sprintf('\RBMVC\Controller\%sController', $controllerName);
         
         $controller = null;
+        $isClassError = false;
         try {
             if (class_exists($controllerStr)) {
                 $controller = new $controllerStr();
             }
         } catch(\LogicException $e) {
             error_log(__METHOD__.'::> '.print_r($e->getMessage(), 1));
-            $controller = new \RBMVC\Controller\IndexController();
-            $controller->redirectToErrorPage(404, 'Page not Found');
+            $controller = new IndexController();
+            $isClassError = true;
+            
         }
         
         if ($controller instanceof AbstractController) {
@@ -65,13 +68,13 @@ class Dispatcher {
             $controller->setRequest($this->request);
             $controller->init();
             $actionStr = $this->request->getParam('action') . 'Action';
-            if (!method_exists($controller, $actionStr)) {
-                $controller->redirectToErrorPage(404, 'Page not Found');
+            if (!method_exists($controller, $actionStr) || $isClassError) {
+                $controller->redirectToErrorPage(404);
             } else {
                 $controller->$actionStr();
             }
         } else {
-            $controller->redirectToErrorPage(404, 'Page not Found');
+            $controller->redirectToErrorPage(404);
         }
     }
     
@@ -80,17 +83,18 @@ class Dispatcher {
      * @return void
      */
     public function setupView(array $options) {
+        if (!key_exists('helper', $options) || !is_array($options['helper'])) {
+            return;
+        }
         
-        if (key_exists('helper', $options) && is_array($options['helper'])) {
-            /* @var $helper AbstractHelper */
-            foreach ($options['helper'] as $helper) {
-                if (!$helper instanceof AbstractHelper) {
-                    continue;
-                }
-                $helper->setView($this->view);
-                $helper->setRequest($this->request);
-                $this->view->addHelper($helper);
+        /* @var $helper AbstractHelper */
+        foreach ($options['helper'] as $helper) {
+            if (!$helper instanceof AbstractHelper) {
+                continue;
             }
+            $helper->setView($this->view);
+            $helper->setRequest($this->request);
+            $this->view->addHelper($helper);
         }
     }
     

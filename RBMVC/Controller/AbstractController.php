@@ -2,7 +2,7 @@
 namespace RBMVC\Controller;
 
 use RBMVC\View\View;
-use RBMVC\Request;
+use RBMVC\Core\Request;
 
 abstract class AbstractController {
     
@@ -31,7 +31,7 @@ abstract class AbstractController {
     }
     
     /**
-     * @param \RBMVC\Request $request
+     * @param \RBMVC\Core\Request $request
      * @return void
      */
     public function setRequest(Request $request) {
@@ -61,18 +61,12 @@ abstract class AbstractController {
     }
     
     /**
-     * @param string $errorCode
-     * @param string $message
+     * @param integer $code
      * @return void
      */
-    public function redirectToErrorPage($errorCode, $message) {
-        $params = array(
-            'controller' => 'error',
-            'action' => 'index',
-            'error_code' => $errorCode,
-            'message' => $message,
-        );
-        $this->redirect($params);
+    public function redirectToErrorPage($code) {
+        header('Location: /error?c=' . base64_encode($code));
+        exit;
     }
     
     /**

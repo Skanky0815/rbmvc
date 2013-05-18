@@ -1,10 +1,8 @@
 <div class="row">
     <div class="span12">
-        <a class="btn btn-primary" href="<?php echo $this->url(
-                array('action' => 'edit')
-            ); ?>">
+        <a class="btn btn-primary" href="<?php echo $this->url(array('action' => 'edit')); ?>">
             <i class="icon-plus icon-white"></i>
-            Eintragen    
+            <?php echo $this->translate('add'); ?>  
         </a>
     </div>
 </div>
@@ -36,7 +34,7 @@
                         ), true
                 ); ?>">
                     <i class="icon-edit"></i>
-                    Edit
+                    <?php echo $this->translate('edit'); ?>
                 </a>
             </div>
         </div>

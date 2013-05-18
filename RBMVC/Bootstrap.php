@@ -1,6 +1,9 @@
 <?php
 namespace RBMVC;
 
+use RBMVC\Core\Translator;
+use RBMVC\Core\Dispatcher;
+
 class Bootstrap {
     
     /**
@@ -43,6 +46,7 @@ class Bootstrap {
         $this->config = $config;
         
         $this->setupLogging();
+        $this->setupTranslation();
         $this->setupDB();
         $this->setupView();
         $this->dispatcher->setupController();
@@ -55,6 +59,16 @@ class Bootstrap {
      */
     private function setupLogging() {
         ini_set('error_log', APPLICATION_DIR . '/data/log/php_error.log');
+    }
+    
+    /**
+     * @return void
+     */
+    private function setupTranslation() {
+        if (!key_exists('language', $this->config)) {
+            die('<h1>Error</h1><p>Missing language configuration.</p>');
+        }
+        Translator::getInstance()->init($this->config['language']);
     }
     
     /**
