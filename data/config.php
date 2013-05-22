@@ -15,9 +15,9 @@ return array(
     ),
     'view' => array(
         'helper' => array(
-            new \RBMVC\View\Helper\Url(),
-            new \RBMVC\View\Helper\DateFormater(),
-            new \RBMVC\View\Helper\Translate(),
+            new \RBMVC\Core\View\Helper\Url(),
+            new \RBMVC\Core\View\Helper\DateFormater(),
+            new \RBMVC\Core\View\Helper\Translate(),
         ),
     ),
     'language' => array(

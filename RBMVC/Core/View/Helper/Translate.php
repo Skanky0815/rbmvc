@@ -1,5 +1,5 @@
 <?php
-namespace RBMVC\View\Helper;
+namespace RBMVC\Core\View\Helper;
 
 use RBMVC\Core\Translator;
 

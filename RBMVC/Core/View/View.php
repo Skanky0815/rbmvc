@@ -1,12 +1,12 @@
 <?php 
-namespace RBMVC\View;
+namespace RBMVC\Core\View;
 
-use RBMVC\View\Helper\AbstractHelper;
+use RBMVC\Core\View\Helper\AbstractHelper;
 
 class View {
     
     /**
-     * @var string 
+     * @var string
      */
     private static $TEMPLATE_PATH = 'template/views/%s/%s.phtml';
     
@@ -15,9 +15,6 @@ class View {
      */
     public $params;
     
-    /**
-     * @var string 
-     */
     private $content;
     
     /**
@@ -68,10 +65,11 @@ class View {
         $this->doLayout = false;
     }
     
-    /**
+    /*
      * @return string
      */
     private function loadTemplate($includePath) {
+        ob_start();
         if (empty($includePath)) {
             $path = sprintf(self::$TEMPLATE_PATH
                         , $this->params['controller']
@@ -80,7 +78,7 @@ class View {
         } else {
             $path = $includePath;
         }
-        ob_start();
+        
         include $path;
         $template = ob_get_contents();
         ob_end_clean();
@@ -106,10 +104,11 @@ class View {
     
     /**
      * @param array $params
-     * @return void
+     * @return \RBMVC\Core\View\View
      */
     public function setParams(array $params) {
         $this->params = $params;
+        return $this;
     }
     
     /**
@@ -122,7 +121,7 @@ class View {
     }
     
     /**
-     * @param \RBMVC\View\Helper\AbstractHelper $helper
+     * @param \RBMVC\Core\View\Helper\AbstractHelper $helper
      * @return void
      */
     public function addHelper(AbstractHelper $helper) {
@@ -136,7 +135,7 @@ class View {
     
     /**
      * @param string $name
-     * @param string $args
+     * @param array $args
      * @return mixed
      */
     public function __call($name, $args) {

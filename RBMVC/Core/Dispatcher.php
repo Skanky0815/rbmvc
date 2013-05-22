@@ -1,8 +1,8 @@
 <?php
 namespace RBMVC\Core;
 
-use RBMVC\View\View;
-use RBMVC\View\Helper\AbstractHelper;
+use RBMVC\Core\View\View;
+use RBMVC\Core\View\Helper\AbstractHelper;
 use RBMVC\Controller\IndexController;
 use RBMVC\Controller\AbstractController;
 
