@@ -1,6 +1,7 @@
 <?php
 namespace RBMVC;
 
+use RBMVC\Core\DB\DB;
 use RBMVC\Core\Translator;
 use RBMVC\Core\Dispatcher;
 
@@ -32,13 +33,6 @@ class Bootstrap {
     }
     
     /**
-     * @return void
-     */
-    public function __construct() {
-        $this->dispatcher = Dispatcher::getInstance();
-    }
-    
-    /**
      * @param array $config
      * @return void
      */
@@ -46,6 +40,7 @@ class Bootstrap {
         $this->config = $config;
         
         $this->setupLogging();
+        $this->dispatcher = Dispatcher::getInstance();
         $this->setupTranslation();
         $this->setupDB();
         $this->setupView();
@@ -79,7 +74,7 @@ class Bootstrap {
             die('<h1>Error</h1><p>Missing database configuration.</p>');
         }
         
-        $db = \RBMVC\DB\DB::getInstance();
+        $db = DB::getInstance();
         $db->setup($this->config['database']);
     }
    

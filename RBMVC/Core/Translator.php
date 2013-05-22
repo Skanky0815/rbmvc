@@ -86,7 +86,7 @@ class Translator {
         if (file_exists($path)) {
             $this->texts[$lang] = parse_ini_file($path);
         } else {
-            error_log(__METHOD__.'::> No translation file found.');
+            error_log(__METHOD__.'::> No translation file found for this lang: ' . $lang . '.');
             $this->texts[$lang] = array();
         }
     }

@@ -1,7 +1,7 @@
 <?php
 namespace RBMVC\Controller;
 
-use RBMVC\View\View;
+use RBMVC\Core\View\View;
 use RBMVC\Core\Request;
 
 abstract class AbstractController {
