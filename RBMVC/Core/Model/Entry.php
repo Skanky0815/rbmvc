@@ -95,32 +95,44 @@ class Entry extends AbstractModel {
     }
 
     /**
-     * @return void
+     * @return boolean / Entry
      */
     public function save() {
-        $query = '';
-        if ($this->id == 0) {
-            $query = '
+        $sql = '';
+        $param = array(
+            ':author'   => $this->author,
+            ':title'    => $this->title,
+            ':text'     => $this->text,
+        );
+        
+        if (empty($this->id)) {
+            $sql = '
                 INSERT INTO ' . $this->dbTable . ' 
                     (author, title, text, date) 
                 VALUES 
-                    (\'' . $this->author . '\',
-                     \'' . $this->title . '\',
-                     \'' . $this->text . '\',
-                      NOW())';
+                    (:author, :title, :text, NOW())';
         } else {
-            $query = '
+            $sql = '
                 UPDATE ' . $this->dbTable . '
                 SET
-                    author  = \'' . $this->author . '\',
-                    title   = \'' . $this->title . '\',
-                    text    = \''. $this->text . '\'
+                    author  = :author,
+                    title   = :title,
+                    text    = :text
                 WHERE 
-                    id      = ' . $this->id;
+                    id      = :id';
+            
+            $param[':id'] = $this->id;
         }
-        
-        if (!empty($query)) {
-            $this->db->query($query);
+
+        try {
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute($param);
+            $this->id = $this->db->lastInsertId();
+            $this->init();
+            return $this;
+        } catch (\PDOException $e) {
+            error_log(__METHOD__.'::> '.$e->getMessage());
+            return false;
         }
     }
     
@@ -148,6 +160,4 @@ class Entry extends AbstractModel {
                 , 'text'    => $this->text
            );
     }
- 
-
 }

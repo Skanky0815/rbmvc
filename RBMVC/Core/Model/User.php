@@ -52,9 +52,9 @@ class User extends AbstractModel {
      * @return void
      */
     public function save() {
-        $query = '';
+        $sql = '';
         if ($this->id == 0) {
-            $query = '
+            $sql = '
                 INSERT INTO ' . $this->dbTable . ' 
                     (author, title, text, date) 
                 VALUES 
@@ -63,7 +63,7 @@ class User extends AbstractModel {
                      \'' . $this->text . '\',
                       NOW())';
         } else {
-            $query = '
+            $sql = '
                 UPDATE ' . $this->dbTable . '
                 SET
                     author = \'' . $this->author . '\',
@@ -73,9 +73,6 @@ class User extends AbstractModel {
                     id = ' . $this->id;
         }
         
-        if (!empty($query)) {
-            $this->db->query($query);
-        }
     }
 
     /**

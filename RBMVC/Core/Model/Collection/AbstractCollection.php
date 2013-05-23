@@ -11,7 +11,6 @@ abstract class AbstractCollection {
     protected $db;
     
     /**
-     *
      * @var string 
      */
     protected $dbTable;
@@ -21,6 +20,10 @@ abstract class AbstractCollection {
      */
     protected $models;
     
+    /**
+     * @param string $dbTable
+     * @return void
+     */
     public function __construct($dbTable) {
         $this->db = DB::getInstance();
         $this->dbTable = $dbTable;

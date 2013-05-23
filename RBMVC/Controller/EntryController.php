@@ -29,8 +29,12 @@ class EntryController extends AbstractController {
         
         if ($this->request->isPost()) {
             $entry->fillModelByArray($this->request->getPostParams());
-            $entry->save();
+            $entry = $entry->save();
+            if ($entry instanceof Entry) {
+                $this->redirect(array('id' => $entry->getId()));
+            }
         }
+        
         $this->view->entry = $entry;
     }
     

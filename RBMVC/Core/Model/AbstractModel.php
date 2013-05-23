@@ -54,8 +54,14 @@ abstract class AbstractModel {
      * @return void
      */
     public function delete() {
-        $query = 'DELETE FROM ' . $this->dbTable . ' WHERE id = ' . $this->id; 
-        $this->db->query($query);
+        $sql = 'DELETE FROM ' . $this->dbTable . ' WHERE id = :id'; 
+        
+        try {
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute(array(':id' => $this->id));
+        } catch (\PDOException $e) {
+            error_log(__METHOD__.'::> '.$e->getMessage());
+        }
     }
     
     /**
@@ -65,9 +71,24 @@ abstract class AbstractModel {
         if (!is_int($this->id) || $this->id <= 0) {
             return false;
         }
-        $query = 'SELECT * FROM ' . $this->dbTable . ' WHERE id = ' . $this->id;
-        $result = $this->db->fetch($query);
+        
+        $sql = 'SELECT * FROM ' . $this->dbTable . ' WHERE id = :id';
+
+        try {
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute(array(':id' => $this->id));
+            $result = $stmt->fetch();
+        } catch (\PDOException $e) {
+            error_log(__METHOD__.'::> '.$e->getMessage());
+            return false;
+        }
+        
+        if (empty($result)) {
+            return false;
+        }
+        
         $this->fillModelByArray($result);
+        return true;
     }
     
     /**
