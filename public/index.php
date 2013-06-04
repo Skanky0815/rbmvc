@@ -5,5 +5,7 @@ set_include_path(APPLICATION_DIR);
 spl_autoload_extensions('.php');
 spl_autoload_register();
 
-$bootstrap = RBMVC\Bootstrap::getInstance();
-$bootstrap->initApplication(include '../data/config.php');
+use RBMVC\Bootstrap;
+
+$bootstrap = new Bootstrap();
+echo $bootstrap->run(include APPLICATION_DIR . 'data/config.php');
