@@ -24,13 +24,6 @@ class Entry extends AbstractModel {
     private $text;
     
     /**
-     * @return void
-     */
-    public function __construct() {
-        parent::__construct('entry');
-    }
-
-    /**
      * @return string
      */
     public function getAuthor() {
@@ -98,66 +91,35 @@ class Entry extends AbstractModel {
      * @return boolean / Entry
      */
     public function save() {
-        $sql = '';
-        $param = array(
-            ':author'   => $this->author,
-            ':title'    => $this->title,
-            ':text'     => $this->text,
-        );
-        
+        $query = $this->db->getQuery($this->dbTable);
         if (empty($this->id)) {
             $sql = '
                 INSERT INTO ' . $this->dbTable . ' 
                     (author, title, text, date) 
                 VALUES 
                     (:author, :title, :text, NOW())';
-        } else {
-            $sql = '
-                UPDATE ' . $this->dbTable . '
-                SET
-                    author  = :author,
-                    title   = :title,
-                    text    = :text
-                WHERE 
-                    id      = :id';
             
-            $param[':id'] = $this->id;
+            $param = array(
+                ':author'   => $this->author,
+                ':title'    => $this->title,
+                ':text'     => $this->text,
+            );
+            
+            $query->setSql($sql);
+            $query->setParams($param);
+        } else {
+            $query->update();
+            $query->set($this->toArray());
+            $query->where(array('id' => $this->id));
         }
 
-        try {
-            $stmt = $this->db->prepare($sql);
-            $stmt->execute($param);
+        $this->db->execute($query);
+        
+        if (empty($this->id)) {
             $this->id = $this->db->lastInsertId();
-            $this->init();
-            return $this;
-        } catch (\PDOException $e) {
-            error_log(__METHOD__.'::> '.$e->getMessage());
-            return false;
         }
-    }
-    
-    /**
-     * @param array $modelData
-     * @return void
-     */
-    public function fillModelByArray(array $modelData) {
-        $this->id = (int) isset($modelData['id']) ? $modelData['id'] : 0;
-        $this->author = isset($modelData['author']) ? $modelData['author'] : '';
-        $this->date = isset($modelData['date']) ? $modelData['date'] : '';
-        $this->title = isset($modelData['title']) ? $modelData['title'] : '';
-        $this->text = isset($modelData['text']) ? $modelData['text'] : '';
-    }
-    
-    /**
-     * @return array
-     */
-    public function toArray() {
-        return
-            array('id'      => $this->id
-                , 'author'  => $this->author
-                , 'date'    => $this->date
-                , 'title'   => $this->title
-                , 'text'    => $this->text
-           );
+        
+        $this->init();
+        return $this;
     }
 }

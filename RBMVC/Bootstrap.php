@@ -2,20 +2,18 @@
 namespace RBMVC;
 
 use RBMVC\Core\DB\DB;
+use RBMVC\Core\View\View;
+use RBMVC\Core\View\ViewHelperFactory;
+use RBMVC\Core\Request;
 use RBMVC\Core\Translator;
 use RBMVC\Core\Dispatcher;
 
 class Bootstrap {
     
     /**
-     * @var Bootstrap 
+     * @var Request 
      */
-    private static $instance = null;
-    
-    /**
-     * @var Dispatcher
-     */
-    private $dispatcher;
+    private $request;
     
     /*
      * @var array
@@ -23,37 +21,29 @@ class Bootstrap {
     private $config;
     
     /**
-     * @return Bootstrap
-     */
-    public static function getInstance() {
-        if (is_null(self::$instance)) {
-            self::$instance = new Bootstrap();
-        }
-        return self::$instance;
-    }
-    
-    /**
      * @param array $config
-     * @return void
+     * @return string
      */
-    public function initApplication(array $config) {
+    public function run(array $config) {
         $this->config = $config;
         
         $this->setupLogging();
-        $this->dispatcher = Dispatcher::getInstance();
         $this->setupTranslation();
         $this->setupDB();
-        $this->setupView();
-        $this->dispatcher->setupController();
+        $this->request = new Request();
+        $dispatcher = new Dispatcher();
+        $dispatcher->setRequest($this->request);
+        $dispatcher->setView($this->setupView());
+        $dispatcher->setupController();
         
-        echo $this->dispatcher->getView()->render();
+        return $dispatcher->getView()->render();
     }
     
     /**
      * @return void
      */
     private function setupLogging() {
-        ini_set('error_log', APPLICATION_DIR . '/data/log/php_error.log');
+        ini_set('error_log', APPLICATION_DIR . 'data/log/php_error.log');
     }
     
     /**
@@ -79,13 +69,21 @@ class Bootstrap {
     }
    
     /**
-     * @return void
+     * @return \RBMVC\Core\View\View
      */
     private function setupView() {
-        if (!key_exists('view', $this->config)) {
-            die('<h1>Error</h1><p>Missing view configuration.</p>');
-        }
+//        if (!key_exists('view', $this->config)) {
+//            die('<h1>Error</h1><p>Missing view configuration.</p>');
+//        }
         
-        $this->dispatcher->setupView($this->config['view']);
+        $view = new View();
+        $view->setParams($this->request->getParams());
+        
+        $viewHelperFactory = new ViewHelperFactory();
+        $viewHelperFactory->setView($view);
+        $viewHelperFactory->setRequest($this->request);
+        $view->setViewHelperFactory($viewHelperFactory);
+        
+        return $view;
     }
 }

@@ -1,7 +1,7 @@
 <?php 
 namespace RBMVC\Core\View;
 
-use RBMVC\Core\View\Helper\AbstractHelper;
+use RBMVC\Core\View\ViewHelperFactory;
 
 class View {
     
@@ -15,12 +15,10 @@ class View {
      */
     public $params;
     
-    private $content;
-    
     /**
-     * @var array 
+     * @var string
      */
-    private $helpers;
+    private $content;
     
     /**
      * @var boolean 
@@ -31,6 +29,27 @@ class View {
      * @var boolean
      */
     private $doLayout = true;
+    
+    /**
+     * @var ViewHelperFactory
+     */
+    private $viewHelperFactory;
+    
+    /**
+     * @param \RBMVC\Core\View\ViewHelperFactory $viewHelperFactory
+     * @return View
+     */
+    public function setViewHelperFactory(ViewHelperFactory $viewHelperFactory) {
+        $this->viewHelperFactory = $viewHelperFactory;
+        return $this;
+    }
+    
+    /**
+     * @return ViewHelperFactory
+     */
+    public function getViewHelperFactory() {
+        return $this->viewHelperFactory;
+    }
     
     /**
      * @param string $path
@@ -69,7 +88,6 @@ class View {
      * @return string
      */
     private function loadTemplate($includePath) {
-        ob_start();
         if (empty($includePath)) {
             $path = sprintf(self::$TEMPLATE_PATH
                         , $this->params['controller']
@@ -79,6 +97,7 @@ class View {
             $path = $includePath;
         }
         
+        ob_start();
         include $path;
         $template = ob_get_contents();
         ob_end_clean();
@@ -104,7 +123,7 @@ class View {
     
     /**
      * @param array $params
-     * @return \RBMVC\Core\View\View
+     * @return View
      */
     public function setParams(array $params) {
         $this->params = $params;
@@ -121,26 +140,13 @@ class View {
     }
     
     /**
-     * @param \RBMVC\Core\View\Helper\AbstractHelper $helper
-     * @return void
-     */
-    public function addHelper(AbstractHelper $helper) {
-        $helperName = get_class($helper);
-        $helperName = strtolower($helperName);
-        $helperNameParts = explode('\\', $helperName);
-        $className = end($helperNameParts);
-        $index = strtolower($className);
-        $this->helpers[$index] = $helper;
-    }
-    
-    /**
      * @param string $name
      * @param array $args
      * @return mixed
      */
     public function __call($name, $args) {
         $name = strtolower($name);
-        $helper = $this->helpers[$name];
+        $helper = $this->viewHelperFactory->getHelper($name);
         
         return call_user_func_array(
             array($helper, $name),

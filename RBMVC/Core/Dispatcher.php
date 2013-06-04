@@ -2,7 +2,6 @@
 namespace RBMVC\Core;
 
 use RBMVC\Core\View\View;
-use RBMVC\Core\View\Helper\AbstractHelper;
 use RBMVC\Controller\IndexController;
 use RBMVC\Controller\AbstractController;
 
@@ -17,31 +16,6 @@ class Dispatcher {
      * @var View 
      */
     private $view;
-    
-    /**
-     * @var Dispatcher
-     */
-    private static $instance = null;
-    
-    /**
-     * @return Dispatcher
-     */
-    public static function getInstance() {
-        if (is_null(self::$instance)) {
-            self::$instance = new Dispatcher;
-        }
-        
-        return self::$instance;
-    }
-    
-    /**
-     * @return void
-     */
-    private function __construct() {
-        $this->request = new Request();
-        $this->view = new View();
-        $this->view->setParams($this->request->getParams());
-    }
     
     /**
      * @var void
@@ -71,7 +45,7 @@ class Dispatcher {
             if (!method_exists($controller, $actionStr) || $isClassError) {
                 $controller->redirectToErrorPage(404);
             } else {
-                $controller->$actionStr();
+                $controller->{$actionStr}();
             }
         } else {
             $controller->redirectToErrorPage(404);
@@ -79,29 +53,34 @@ class Dispatcher {
     }
     
     /**
-     * @param array $options
-     * @return void
-     */
-    public function setupView(array $options) {
-        if (!key_exists('helper', $options) || !is_array($options['helper'])) {
-            return;
-        }
-        
-        /* @var $helper AbstractHelper */
-        foreach ($options['helper'] as $helper) {
-            if (!$helper instanceof AbstractHelper) {
-                continue;
-            }
-            $helper->setView($this->view);
-            $helper->setRequest($this->request);
-            $this->view->addHelper($helper);
-        }
-    }
-    
-    /**
-     * @return View
+     * @return \RBMVC\Core\View\View
      */
     public function getView() {
         return $this->view;
+    }
+    
+    /**
+     * @param \RBMVC\Core\View\View $view
+     * @return \RBMVC\Core\Dispatcher
+     */
+    public function setView(View $view) {
+        $this->view = $view;
+        return $this;
+    }
+    
+    /**
+     * @return Request
+     */
+    public function getRequest() {
+        return $this->request;
+    }
+    
+    /**
+     * @param \RBMVC\Core\Request $request
+     * @return \RBMVC\Core\Dispatcher
+     */
+    public function setRequest(Request $request) {
+        $this->request = $request;
+        return $this;
     }
 }

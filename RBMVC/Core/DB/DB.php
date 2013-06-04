@@ -7,7 +7,12 @@ class DB {
      * @var \PDO 
      */
     private $db;
-
+    
+    /**
+     * @var Query
+     */
+    private $query;
+    
     /**
      * @var DB
      */
@@ -37,15 +42,46 @@ class DB {
         
         $dsn = $driver . ':host=' . $host . ';dbname=' . $name;
         $this->db = new \PDO($dsn, $user, $pass, $pdoOptions);
+        
+        $this->query = new Query();
     }
     
     /**
-     * @param string $name
-     * @param array $args
-     * @return mixed
+     * @param \RBMVC\Core\DB\Query $query
+     * @return void
      */
-    public function __call($name, array $args) {
-        $callback = array($this->db, $name);
-        return call_user_func_array($callback, $args);
+    public function setQuery(Query $query) {
+        $this->query = $query;
+    }
+    
+    /**
+     * @param string $dbTable
+     * @return \RBMVC\Core\DB\Query
+     */
+    public function getQuery($dbTable) {
+        $this->query->setDBTable($dbTable);
+        return $this->query;
+    }
+    
+    /**
+     * @param \RBMVC\Core\DB\Query $query
+     * @return boolean|PDOStatement
+     */
+    public function execute(Query $query) {
+        try {
+            $stmt = $this->db->prepare($query->getSQL());
+            $stmt->execute($query->getParams());
+            return $stmt;
+        } catch (\PDOException $e) {
+            error_log(__METHOD__.'::> '.$e->getMessage());
+            return false;
+        }
+    }
+    
+    /**
+     * @return string
+     */
+    public function lastInsertId() {
+        return $this->db->lastInsertId();
     }
 }

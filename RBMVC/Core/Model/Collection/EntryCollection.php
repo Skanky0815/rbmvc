@@ -16,19 +16,12 @@ class EntryCollection extends AbstractCollection {
      * @return void
      */
     public function findAll() {
-        $sql = '
-            SELECT * 
-            FROM ' . $this->dbTable . '
-            ORDER BY id DESC';
+        $query = $this->db->getQuery($this->dbTable);
+        $query->select();
+        $query->orderBy(array('id' => 'DESC'));
         
-        try {
-            $stmt = $this->db->prepare($sql);
-            $stmt->execute();
-            $entriesData = $stmt->fetchAll();
-        } catch (\PDOException $e) {
-            error_log(__METHOD__.'::> '.$e->getMessage());
-            return false;
-        }
+        $stmt = $this->db->execute($query);
+        $entriesData = $stmt->fetchAll();
         
         if (empty($entriesData)) {
             return;
