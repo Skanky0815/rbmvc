@@ -97,10 +97,14 @@ class View {
             $path = $includePath;
         }
         
-        ob_start();
-        include $path;
-        $template = ob_get_contents();
-        ob_end_clean();
+        if (file_exists(APPLICATION_DIR . $path)) {
+            ob_start();
+            include $path;
+            $template = ob_get_contents();
+            ob_end_clean();       
+        } else {
+            $template = 'No template file was found in the path: ' . $path;
+        }
         
         return $template;
     }
@@ -109,8 +113,8 @@ class View {
      * @return void
      */
     private function loadLayoutTemplate() {
-        $dir = 'template/layout/layout.phtml';
-        include_once $dir;
+        $path = 'template/layout/layout.phtml';
+        include_once $path;
     }
     
     /**
