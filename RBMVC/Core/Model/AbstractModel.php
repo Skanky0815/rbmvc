@@ -2,6 +2,7 @@
 namespace RBMVC\Core\Model;
 
 use RBMVC\Core\DB\DB;
+use RBMVC\Core\Utilities\Modifiers\String\CamelCaseToUnderscore;
 
 abstract class AbstractModel {
     
@@ -29,7 +30,8 @@ abstract class AbstractModel {
         
         $reflectionClass = new \ReflectionClass($this);
         $classNameParts = explode('\\', $reflectionClass->getName());
-        $className = strtolower(preg_replace('/([a-z])([A-Z])/', '$1_$2',  end($classNameParts)));
+        $camelCaseToUnderscore = new CamelCaseToUnderscore();
+        $className = $camelCaseToUnderscore->convert(end($classNameParts));
         $this->dbTable = $className;
     }
     
@@ -98,7 +100,8 @@ abstract class AbstractModel {
         foreach ($properties as $property) {
             $methodName = 'get' . ucfirst($property->getName());
             if ($reflectionClass->hasMethod($methodName)) {
-                $key = strtolower(preg_replace('/([a-z])([A-Z])/', '$1_$2', $property->getName()));
+                $camelCaseToUnderscore = new CamelCaseToUnderscore();
+                $key = $camelCaseToUnderscore->convert($property->getName());
                 $array[$key] = $this->{$methodName}();
             }
         }
@@ -115,7 +118,8 @@ abstract class AbstractModel {
         
         /* @var $property \ReflectionProperty */
         foreach ($properties as $property) {
-            $key = strtolower(preg_replace('/([a-z])([A-Z])/', '$1_$2', $property->getName()));
+            $camelCaseToUnderscore = new CamelCaseToUnderscore();
+            $key = $camelCaseToUnderscore->convert($property->getName());
             if (!key_exists($key, $modelData)) {
                 continue;
             }
