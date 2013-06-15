@@ -88,7 +88,7 @@ class Entry extends AbstractModel {
     }
 
     /**
-     * @return boolean / Entry
+     * @return boolean|\RBMVC\Model\Entry
      */
     public function save() {
         $query = $this->db->getQuery($this->dbTable);

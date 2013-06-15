@@ -88,6 +88,9 @@ class Query {
         $this->sql = 'DELETE FROM ' . $this->dbTable . ' ';
     }
     
+    /**
+     * @return void
+     */
     public function update() {
         $this->sql = 'UPDATE ' . $this->dbTable . ' ';
     }
