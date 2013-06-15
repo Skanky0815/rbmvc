@@ -3,6 +3,8 @@ namespace RBMVC\Controller;
 
 use RBMVC\Core\View\View;
 use RBMVC\Core\Request;
+use RBMVC\Core\Utilities\SystemMessage;
+use RBMVC\Core\View\Helper\RenderSystemMessages;
 
 abstract class AbstractController {
     
@@ -87,5 +89,14 @@ abstract class AbstractController {
         exit;
     }
     
+    /**
+     * @param \RBMVC\Core\Utilities\SystemMessage $systemMessage
+     */
+    protected function addSystemMessage(SystemMessage $systemMessage) {
+        $renderSystemMessages = $this->view->getViewHelper('RenderSystemMessages');
+        if ($renderSystemMessages instanceof RenderSystemMessages) {
+            $renderSystemMessages->addSystemMessage($systemMessage);
+        }
+    }
 }
 

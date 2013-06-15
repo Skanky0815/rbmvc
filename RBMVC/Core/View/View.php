@@ -145,6 +145,15 @@ class View {
     
     /**
      * @param string $name
+     * @return \RBMVC\Core\View\Helper\AbstractHelper
+     */
+    public function getViewHelper($name) {
+        $name = strtolower($name);
+        return $this->viewHelperFactory->getHelper($name);
+    }
+    
+    /**
+     * @param string $name
      * @param array $args
      * @return mixed
      */
