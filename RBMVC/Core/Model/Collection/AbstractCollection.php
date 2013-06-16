@@ -29,8 +29,8 @@ abstract class AbstractCollection {
         $this->db = DB::getInstance();
         
         $converter = new GetClassNameWithUnderscore();
-        $this->dbTable = $converter->getClassName($this);
-        
+        $className = $converter->getClassName($this);
+        $this->dbTable = str_replace('_collection', '', $className);
         $this->models = array();
     }
     
