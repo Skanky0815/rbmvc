@@ -2,6 +2,7 @@
 namespace RBMVC\Core\View\Helper;
 
 use RBMVC\Core\Utilities\Form\Form;
+use \RBMVC\Core\Utilities\Modifiers\String\GetClassNameWithUnderscore;
 
 class RenderForm extends AbstractHelper {
     
@@ -12,10 +13,14 @@ class RenderForm extends AbstractHelper {
     public function renderForm(Form $form) {
         $elementTemplates = array();
         foreach ($form->getElements() as $name => $element) {
-            $this->view->element = $element;
-            $elementTemplates[$name] = $this->view->render('template/form/elements/input-element.phtml');
+            $converter = new GetClassNameWithUnderscore();
+            $className = $converter->getClassName($element);
+            $elementTemplates[$name] = $this->view->partial('form/elements/' . $className . '.phtml', array('element' => $element));
         }
-        $this->view->elements = $elementTemplates;
-        return $this->view->render('template/form/form.phtml');
+        return $this->view->partial('form/form.phtml', 
+                    array('form' => $form
+                        , 'elements' => $elementTemplates
+                    )
+                );
     }
 }

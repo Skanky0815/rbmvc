@@ -127,9 +127,9 @@ class View {
             $template = ob_get_contents();
             ob_end_clean();       
         } else {
-            $template = 'No template file was found in the path: ' . $path;
+            $template = 'No template file was found in the path: <i>' . $path . '</i>';
         }
-                $this->clearVars();
+        
         return $template;
     }
     
@@ -149,7 +149,7 @@ class View {
     public function partial($fileName, array $variables = array()) {
         $view = clone $this;
         $view->variables = $variables;
-        return $view->render('template/layout/partials/' . $fileName);
+        return $view->render('template/' . $fileName);
     }
     
     /**

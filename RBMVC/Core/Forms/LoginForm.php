@@ -6,6 +6,9 @@ use RBMVC\Core\Utilities\Form\Elements\InputElement;
 
 class LoginForm extends Form {
     
+    /**
+     * @return void
+     */
     protected function init() {
         $username = new InputElement('username', 'text');
         $username->setIsRequired(true);
@@ -15,7 +18,7 @@ class LoginForm extends Form {
         
         $password = new InputElement('password', 'password');
         $password->setIsRequired(true);
-        $password->setPlaceholder('passwort');
+        $password->setPlaceholder('password');
         $password->setSize(InputElement::SMALL);
         $this->addElement($password);
     }
