@@ -16,7 +16,6 @@ class Navigation extends AbstractHelper {
             } 
         }
         
-        $this->view->navigation = $navigation[$root];
-        return $this->view->partial('nav.phtml');
+        return $this->view->partial('nav.phtml', array('navigation' => $navigation[$root]));
     }
 }
