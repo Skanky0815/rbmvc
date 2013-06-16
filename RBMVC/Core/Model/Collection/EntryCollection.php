@@ -8,13 +8,6 @@ class EntryCollection extends AbstractCollection {
     /**
      * @return void
      */
-    public function __construct() {
-        parent::__construct('entry');
-    }
-    
-    /**
-     * @return void
-     */
     public function findAll() {
         $query = $this->db->getQuery($this->dbTable);
         $query->select();

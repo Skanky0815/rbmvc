@@ -3,6 +3,7 @@ namespace RBMVC\Core\Model;
 
 use RBMVC\Core\DB\DB;
 use RBMVC\Core\Utilities\Modifiers\String\CamelCaseToUnderscore;
+use RBMVC\Core\Utilities\Modifiers\String\GetClassNameWithUnderscore;
 
 abstract class AbstractModel {
     
@@ -28,11 +29,8 @@ abstract class AbstractModel {
     public function __construct() {
         $this->db = DB::getInstance();
         
-        $reflectionClass = new \ReflectionClass($this);
-        $classNameParts = explode('\\', $reflectionClass->getName());
-        $camelCaseToUnderscore = new CamelCaseToUnderscore();
-        $className = $camelCaseToUnderscore->convert(end($classNameParts));
-        $this->dbTable = $className;
+        $converter = new GetClassNameWithUnderscore();
+        $this->dbTable = $converter->getClassName($this);
     }
     
     /**

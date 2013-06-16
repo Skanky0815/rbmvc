@@ -2,6 +2,7 @@
 namespace RBMVC\Core\Model\Collection;
 
 use RBMVC\Core\DB\DB;
+use RBMVC\Core\Utilities\Modifiers\String\GetClassNameWithUnderscore;
 
 abstract class AbstractCollection {
     
@@ -24,9 +25,11 @@ abstract class AbstractCollection {
      * @param string $dbTable
      * @return void
      */
-    public function __construct($dbTable) {
+    public function __construct() {
         $this->db = DB::getInstance();
-        $this->dbTable = $dbTable;
+        
+        $converter = new GetClassNameWithUnderscore();
+        $this->dbTable = $converter->getClassName($this);
         
         $this->models = array();
     }
