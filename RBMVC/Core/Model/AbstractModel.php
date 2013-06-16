@@ -118,7 +118,7 @@ abstract class AbstractModel {
         foreach ($properties as $property) {
             $camelCaseToUnderscore = new CamelCaseToUnderscore();
             $key = $camelCaseToUnderscore->convert($property->getName());
-            if (!key_exists($key, $modelData)) {
+            if (!array_key_exists($key, $modelData)) {
                 continue;
             }
             
