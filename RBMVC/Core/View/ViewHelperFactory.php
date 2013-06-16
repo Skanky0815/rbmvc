@@ -56,7 +56,7 @@ class ViewHelperFactory {
      * @return AbstractHelper
      */
     public function getHelper($name) {
-        if (key_exists($name, $this->helper)) {
+        if (array_key_exists($name, $this->helper)) {
             return $this->helper[$name];
         }
         
