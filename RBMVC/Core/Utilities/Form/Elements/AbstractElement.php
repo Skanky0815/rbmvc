@@ -103,7 +103,7 @@ abstract class AbstractElement {
     }
     
     /**
-     * @param bool $isRequired
+     * @param boolean $isRequired
      * @return \RBMVC\Core\Utilities\Form\Elements\AbstractElement
      */
     public function setIsRequired($isRequired) {
