@@ -1,6 +1,7 @@
 <?php
 namespace RBMVC\Core\Utilities\Form;
 
+use RBMVC\Core\Model\AbstractModel;
 use RBMVC\Core\Utilities\Form\Elements\AbstractElement;
 
 abstract class Form {
@@ -29,7 +30,10 @@ abstract class Form {
      * @param array $object
      * @return void
      */
-    public function __construct(array $object = array()) {
+    public function __construct($object = array()) {
+        if (is_object($object) && $object instanceof AbstractModel) {
+            $object = $object->toArray();
+        }
         $this->object = $object;
         $this->init();
         $this->setElementsValue();
