@@ -22,7 +22,7 @@ class Translate extends AbstractHelper {
      * @param string $lang
      * @return string
      */
-    public function Translate($key, $lang = null) {
+    public function translate($key, $lang = null) {
        return $this->translator->translate($key, $lang); 
     }
 }

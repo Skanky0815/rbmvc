@@ -1,0 +1,30 @@
+<form action="<?php echo $this->form->getAction(); ?>" class="form-horizontal" method="post">
+    <div class="btn-group">
+        <button type="submit" class="btn btn-primary">
+            <?php echo $this->translate('save'); ?>
+        </button>
+        <button type="submit" value="saven_return" class="btn btn-primary">
+            <?php echo $this->translate('save_and_return'); ?>
+        </button>
+        <a href="<?php echo $this->url(array('action' => 'index')); ?>" class="btn">
+            <?php echo $this->translate('abort'); ?>
+        </a>
+    </div>
+
+    <hr>
+
+    <?php foreach ($this->elements as $element): ?>
+        <?php echo $element; ?>
+    <?php endforeach; ?>
+
+    <hr>
+    
+    <div class="btn-group">
+        <button type="submit" class="btn btn-primary">
+            <?php echo $this->translate('save'); ?>
+        </button>
+        <a href="<?php echo $this->url(array('action' => 'index')); ?>" class="btn">
+            <?php echo $this->translate('abort'); ?>
+        </a>
+    </div>
+</form>

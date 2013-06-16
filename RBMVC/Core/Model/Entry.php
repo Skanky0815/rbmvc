@@ -24,13 +24,6 @@ class Entry extends AbstractModel {
     private $text;
     
     /**
-     * @return void
-     */
-    public function __construct() {
-        parent::__construct('entry');
-    }
-
-    /**
      * @return string
      */
     public function getAuthor() {
@@ -95,59 +88,38 @@ class Entry extends AbstractModel {
     }
 
     /**
-     * @return void
+     * @return boolean|\RBMVC\Model\Entry
      */
     public function save() {
-        $query = '';
-        if ($this->id == 0) {
-            $query = '
+        $query = $this->db->getQuery($this->dbTable);
+        if (empty($this->id)) {
+            $sql = '
                 INSERT INTO ' . $this->dbTable . ' 
                     (author, title, text, date) 
                 VALUES 
-                    (\'' . $this->author . '\',
-                     \'' . $this->title . '\',
-                     \'' . $this->text . '\',
-                      NOW())';
+                    (:author, :title, :text, NOW())';
+            
+            $param = array(
+                ':author'   => $this->author,
+                ':title'    => $this->title,
+                ':text'     => $this->text,
+            );
+            
+            $query->setSql($sql);
+            $query->setParams($param);
         } else {
-            $query = '
-                UPDATE ' . $this->dbTable . '
-                SET
-                    author  = \'' . $this->author . '\',
-                    title   = \'' . $this->title . '\',
-                    text    = \''. $this->text . '\'
-                WHERE 
-                    id      = ' . $this->id;
+            $query->update();
+            $query->set($this->toArray());
+            $query->where(array('id' => $this->id));
+        }
+
+        $this->db->execute($query);
+        
+        if (empty($this->id)) {
+            $this->id = $this->db->lastInsertId();
         }
         
-        if (!empty($query)) {
-            $this->db->query($query);
-        }
+        $this->init();
+        return $this;
     }
-    
-    /**
-     * @param array $modelData
-     * @return void
-     */
-    public function fillModelByArray(array $modelData) {
-        $this->id = (int) isset($modelData['id']) ? $modelData['id'] : 0;
-        $this->author = isset($modelData['author']) ? $modelData['author'] : '';
-        $this->date = isset($modelData['date']) ? $modelData['date'] : '';
-        $this->title = isset($modelData['title']) ? $modelData['title'] : '';
-        $this->text = isset($modelData['text']) ? $modelData['text'] : '';
-    }
-    
-    /**
-     * @return array
-     */
-    public function toArray() {
-        return
-            array('id'      => $this->id
-                , 'author'  => $this->author
-                , 'date'    => $this->date
-                , 'title'   => $this->title
-                , 'text'    => $this->text
-           );
-    }
- 
-
 }
