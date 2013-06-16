@@ -1,0 +1,5 @@
+<div class="alert alert-<?php echo $this->systemMessage->getType(); ?>">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <h4><?php echo $this->systemMessage->getTitle(); ?></h4>
+    <?php echo $this->systemMessage->getText(); ?>
+</div>

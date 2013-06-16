@@ -1,5 +1,5 @@
 define(['jquery'
-
+      , 'lib/bootstrap.min'
 ], function() {
     var _ = {};
 

@@ -5,17 +5,16 @@ use RBMVC\Core\Model\Entry;
 
 class EntryCollection extends AbstractCollection {
     
-    public function __construct() {
-        parent::__construct('entry');
-    }
-    
+    /**
+     * @return void
+     */
     public function findAll() {
-        $sql = '
-            SELECT * 
-            FROM ' . $this->dbTable . '
-            ORDER BY id DESC';
+        $query = $this->db->getQuery($this->dbTable);
+        $query->select();
+        $query->orderBy(array('id' => 'DESC'));
         
-        $entriesData = $this->db->fetch($sql);
+        $stmt = $this->db->execute($query);
+        $entriesData = $stmt->fetchAll();
         
         if (empty($entriesData)) {
             return;

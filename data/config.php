@@ -13,13 +13,6 @@ return array(
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
         ),
     ),
-    'view' => array(
-        'helper' => array(
-            new \RBMVC\Core\View\Helper\Url(),
-            new \RBMVC\Core\View\Helper\DateFormater(),
-            new \RBMVC\Core\View\Helper\Translate(),
-        ),
-    ),
     'language' => array(
         'default_language' => 'de',
     ),

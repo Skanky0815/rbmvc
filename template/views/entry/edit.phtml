@@ -3,38 +3,4 @@
     <?php echo $this->translate($this->entry->getId() ? 'entry_edit' : 'entry_create'); ?>
 </h2>
 
-<form class="form-horizontal" method="post">
-    <input type="hidden" name="id" value="<?php echo $this->entry->getId(); ?>" />
-    <div class="control-group">
-        <label class="control-label" for="author">
-            <?php echo $this->translate('author'); ?>:
-        </label>
-        <div class="controls">
-            <input class="required" type="text" id="author" name="author" value="<?php echo $this->entry->getAuthor(); ?>"/>
-        </div>
-    </div>
-    <div class="control-group">
-        <label class="control-label" for="title">
-            <?php echo $this->translate('title'); ?>:
-        </label>
-        <div class="controls">
-            <input class="required" type="text" id="title" name="title" value="<?php echo $this->entry->getTitle(); ?>"/>
-        </div>
-    </div>
-    <div class="control-group">
-        <label class="control-label" for="text">
-            <?php echo $this->translate('text'); ?>:
-        </label>
-        <div class="controls">
-            <textarea class="required" name="text" id="text" rows="3"><?php echo $this->entry->getText(); ?></textarea>
-        </div>
-    </div>
-    <div class="form-actions">
-        <button class="btn btn-primary" type="submit"> 
-            <?php echo $this->translate('save'); ?>
-        </button>
-        <a class="btn" href="<?php echo $this->url(array('action' => 'index')); ?>">
-            <?php echo $this->translate('abort'); ?>    
-        </a>
-    </div>
-</form>
+<?php echo $this->renderForm($this->form); ?>

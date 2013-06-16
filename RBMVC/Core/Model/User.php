@@ -31,30 +31,10 @@ class User extends AbstractModel {
     /**
      * @return void
      */
-    public function __construct() {
-        parent::__construct('user');
-    }
-    
-    /**
-     * @param array $modelData
-     * @return void
-     */
-    public function fillModelByArray(array $modelData) {
-        $this->id = (int) isset($modelData['id']) ? $modelData['id'] : 0;
-        $this->username = isset($modelData['username']) ? $modelData['username'] : '';
-        $this->password = isset($modelData['password']) ? $modelData['password'] : '';
-        $this->email = isset($modelData['email']) ? $modelData['email'] : '';
-        $this->useGroups = isset($modelData['user_groups']) ? $modelData['user_groups'] : '';
-        $this->isActive = (bool) isset($modelData['is_active']) ? $modelData['is_active'] : '';
-    }
-
-    /**
-     * @return void
-     */
     public function save() {
-        $query = '';
+        $sql = '';
         if ($this->id == 0) {
-            $query = '
+            $sql = '
                 INSERT INTO ' . $this->dbTable . ' 
                     (author, title, text, date) 
                 VALUES 
@@ -63,7 +43,7 @@ class User extends AbstractModel {
                      \'' . $this->text . '\',
                       NOW())';
         } else {
-            $query = '
+            $sql = '
                 UPDATE ' . $this->dbTable . '
                 SET
                     author = \'' . $this->author . '\',
@@ -73,21 +53,6 @@ class User extends AbstractModel {
                     id = ' . $this->id;
         }
         
-        if (!empty($query)) {
-            $this->db->query($query);
-        }
     }
 
-    /**
-     * @return array
-     */
-    public function toArray() {
-        return
-            array('id' => $this->id
-                , 'username' => $this->username
-                , 'password' => $this->password
-                , 'user_groups' => $this->useGroups
-                , 'is_active' => $this->isActive
-        );
-    }
 }
