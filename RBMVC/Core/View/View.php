@@ -36,6 +36,11 @@ class View {
     private $viewHelperFactory;
     
     /**
+     * @var array
+     */
+    private $variables = array();
+    
+    /**
      * @param \RBMVC\Core\View\ViewHelperFactory $viewHelperFactory
      * @return View
      */
@@ -84,6 +89,25 @@ class View {
         $this->doLayout = false;
     }
     
+    /**
+     * @param string $name
+     * @return null|mixed
+     */
+    public function __get($name) {
+        if (array_key_exists($name, $this->variables)) {
+            return $this->variables[$name];
+        }
+        return null;
+    }
+    
+    /**
+     * @param string $name
+     * @param mixed $value
+     */
+    public function __set($name, $value) {
+        $this->variables[$name] = $value;
+    }
+    
     /*
      * @return string
      */
@@ -105,7 +129,7 @@ class View {
         } else {
             $template = 'No template file was found in the path: ' . $path;
         }
-        
+                $this->clearVars();
         return $template;
     }
     
@@ -119,10 +143,20 @@ class View {
     
     /**
      * @param string $fileName
-     * @return string
+     * @param array $variables
+     * @return mixed
      */
-    public function partial($fileName) {
-        return $this->render('template/layout/partials/' . $fileName);
+    public function partial($fileName, array $variables = array()) {
+        $view = clone $this;
+        $view->variables = $variables;
+        return $view->render('template/layout/partials/' . $fileName);
+    }
+    
+    /**
+     * @return void
+     */
+    public function clearVars() {
+        $this->variables = array();
     }
     
     /**
