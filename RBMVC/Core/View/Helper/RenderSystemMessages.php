@@ -26,7 +26,9 @@ class RenderSystemMessages extends AbstractHelper {
         $out = '';
         
         foreach ($this->systemMessages as $systemMessage) {
-            $out .= $this->view->partial('layout/partials/systemMessage.phtml', array('systemMessage' => $systemMessage));
+            $out .= $this->view->partial('layout/partials/systemMessage.phtml',
+                        array('systemMessage' => $systemMessage)
+            );
         }
         return $out;
     }
