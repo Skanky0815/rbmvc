@@ -1,5 +1,5 @@
 define(['jquery'
-      , 'app/deleteModal'
+      , '../helper/deleteModal'
 ], function($, deleteModal) {
     var _ = {};
 

@@ -2,7 +2,9 @@
 <html lang="de">
     <head>
         <meta charset="utf-8">
-        <script data-main="/js/<?php echo $this->controller; ?>.js" src="/js/lib/require-jquery.js"></script>
+        
+        <?php echo $this->js; ?>
+        
         <?php echo $this->addStyle('bootstrap.min.css'); ?>
     </head>
     <body>
@@ -10,7 +12,7 @@
             <div class="navbar-inner">
                 <div class="container">
                     <?php echo $this->navigation('main'); ?>
-                    <form class="navbar-form pull-right">
+                    <form action="<?php echo $this->url(array('controller' => 'auth', 'action' => 'login')); ?>" class="navbar-form pull-right" method="post">
                        <input type="text" class="span2" placeholder="Benutzername">
                        <input type="text" class="span2" placeholder="Passwort">
                        <button type="submit" class="btn btn-primary"><?php echo $this->translate('login'); ?></button>

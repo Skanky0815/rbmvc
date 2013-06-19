@@ -41,6 +41,11 @@ class View {
     private $variables = array();
     
     /**
+     * @var string
+     */
+    protected $jsAppPath = '/js/app/';
+    
+    /**
      * @param \RBMVC\Core\View\ViewHelperFactory $viewHelperFactory
      * @return View
      */
@@ -137,6 +142,7 @@ class View {
      * @return void
      */
     private function loadLayoutTemplate() {
+        $this->requireJs();
         $path = 'template/layout/layout.phtml';
         include_once $path;
     }
@@ -199,5 +205,30 @@ class View {
             array($helper, $name),
             $args
         );
+    }
+    
+    /**
+     * Add an action or controller specific js file when file not found then
+     * it use the default js.
+     * @return void
+     */
+    private function requireJs() {
+        $path = $this->jsAppPath;
+        
+        $controllerName = $this->params['controller'];
+        $actionName = $this->params['action'];
+        
+        $jsPath = $path . $controllerName . '/' . $actionName;
+        if (!file_exists(APPLICATION_DIR . '/public' . $jsPath . '.js')) {
+            $jsPath = $path . $controllerName . '/' . 'index';
+        }
+        
+        if (!file_exists(APPLICATION_DIR. '/public' . $jsPath . '.js')) {
+            $jsPath = $this->jsAppPath . 'index'; 
+        }
+        
+        if (file_exists(APPLICATION_DIR . '/public' . $jsPath . '.js')) {
+            $this->js = '<script data-main="' . $jsPath . '" src="/js/lib/require-jquery.js"></script>';
+        }
     }
 }

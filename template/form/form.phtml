@@ -1,4 +1,5 @@
 <form action="<?php echo $this->form->getAction(); ?>" class="form-horizontal" method="post">
+<?php if ($this->form->hasActionBar()): ?>
     <div class="btn-group">
         <button type="submit" class="btn btn-primary">
             <?php echo $this->translate('save'); ?>
@@ -10,13 +11,16 @@
             <?php echo $this->translate('abort'); ?>
         </a>
     </div>
-
+    
     <hr>
+<?php endif; ?>
 
-    <?php foreach ($this->elements as $element): ?>
-        <?php echo $element; ?>
-    <?php endforeach; ?>
+<?php foreach ($this->elements as $element): ?>
+    <?php echo $element; ?>
+<?php endforeach; ?>
 
+    
+<?php if ($this->form->hasActionBar()): ?>
     <hr>
     
     <div class="btn-group">
@@ -27,4 +31,5 @@
             <?php echo $this->translate('abort'); ?>
         </a>
     </div>
+<?php endif; ?>
 </form>
