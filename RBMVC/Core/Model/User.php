@@ -28,6 +28,33 @@ class User extends AbstractModel {
      */
     private $isActive;
     
+    public function getUsername() {
+        return $this->username;
+    }
+
+    public function setUsername($username) {
+        $this->username = $username;
+        return $this;
+    }
+
+    public function getPassword() {
+        return $this->password;
+    }
+
+    public function setPassword($password) {
+        $this->password = $password;
+        return $this;
+    }
+
+    public function getEmail() {
+        return $this->email;
+    }
+
+    public function setEmail($email) {
+        $this->email = $email;
+        return $this;
+    }
+    
     /**
      * @return void
      */
@@ -53,6 +80,28 @@ class User extends AbstractModel {
                     id = ' . $this->id;
         }
         
+    }
+    
+    public function exists() {
+        return true;
+        
+        $query = $this->db->getQuery($this->dbTable);
+        $query->select();
+        $query->where(array('password' => $this->password, 'username' => $this->username));
+        
+        $stmt = $this->db->execute($query);
+        if (is_null($stmt)) {
+            return false;
+        }
+        
+        $result = $stmt->fetch();
+        
+        if (empty($result)) {
+            return false;
+        }
+        
+        $this->fillModelByArray($result);
+        return true;
     }
 
 }

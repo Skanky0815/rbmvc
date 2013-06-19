@@ -27,6 +27,11 @@ abstract class Form {
     private $action = '';
     
     /**
+     * @var boolean
+     */
+    private $hasActionBar = true;
+    
+    /**
      * @param array $object
      * @return void
      */
@@ -63,6 +68,22 @@ abstract class Form {
         foreach ($this->elements as $element) {
             $element->setValue($this->getObjectValue($element->getName()));
         }
+    }
+    
+    /**
+     * @param boolean $hasActionBar
+     * @return \RBMVC\Core\Utilities\Form\Form
+     */
+    public function setHasActionBar($hasActionBar) {
+        $this->hasActionBar = (boolean) $hasActionBar;
+        return $this;
+    }
+    
+    /**
+     * @return boolean
+     */
+    public function hasActionBar() {
+        return $this->hasActionBar;
     }
     
     /**

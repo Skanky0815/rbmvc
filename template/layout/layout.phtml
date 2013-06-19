@@ -13,8 +13,8 @@
                 <div class="container">
                     <?php echo $this->navigation('main'); ?>
                     <form action="<?php echo $this->url(array('controller' => 'auth', 'action' => 'login')); ?>" class="navbar-form pull-right" method="post">
-                       <input type="text" class="span2" placeholder="Benutzername">
-                       <input type="text" class="span2" placeholder="Passwort">
+                       <input type="text" name="username" class="span2" placeholder="Benutzername">
+                       <input type="password" name="password" class="span2" placeholder="Passwort">
                        <button type="submit" class="btn btn-primary"><?php echo $this->translate('login'); ?></button>
                     </form>
                 </div>

@@ -5,6 +5,7 @@ use RBMVC\Core\DB\DB;
 use RBMVC\Core\View\View;
 use RBMVC\Core\View\ViewHelperFactory;
 use RBMVC\Core\Request;
+use RBMVC\Core\Utilities\Session;
 use RBMVC\Core\Translator;
 use RBMVC\Core\Dispatcher;
 
@@ -25,6 +26,8 @@ class Bootstrap {
      * @return string
      */
     public function run(array $config) {
+        Session::start();
+        
         $this->config = $config;
         
         $this->setupLogging();

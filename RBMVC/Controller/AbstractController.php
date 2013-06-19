@@ -3,6 +3,7 @@ namespace RBMVC\Controller;
 
 use RBMVC\Core\View\View;
 use RBMVC\Core\Request;
+use RBMVC\Core\Utilities\Session;
 use RBMVC\Core\Utilities\SystemMessage;
 use RBMVC\Core\View\Helper\RenderSystemMessages;
 
@@ -87,6 +88,17 @@ abstract class AbstractController {
     protected function redirect(array $params) {
         header('Location: ' . $this->view->url($params, true));
         exit;
+    }
+    
+    /**
+     * @param \RBMVC\Core\Utilities\SystemMessage $systemMessage
+     * @return void
+     */
+    protected function addFlashSystemMessage(SystemMessage $systemMessage) {
+        $session = new Session('system_message');
+        $tmp = $session->systemMessages;
+        $tmp[] = serialize($systemMessage);
+        $session->systemMessages = $tmp ;
     }
     
     /**
