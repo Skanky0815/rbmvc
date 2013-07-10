@@ -1,6 +1,7 @@
 <?php
 namespace RBMVC\Controller;
 
+use RBMVC\Core\Controller\AbstractController;
 use RBMVC\Core\Forms\EntryForm;
 use RBMVC\Core\Utilities\SystemMessage;
 

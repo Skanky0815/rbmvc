@@ -1,6 +1,7 @@
 <?php
 namespace RBMVC\Controller;
 
+use RBMVC\Core\Controller\AbstractController;
 use RBMVC\Core\Model\User;
 use RBMVC\Core\Utilities\Session;
 use RBMVC\Core\Utilities\SystemMessage;

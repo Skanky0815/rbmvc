@@ -1,8 +1,9 @@
 <?php
-namespace RBMVC\Controller;
+namespace RBMVC\Core\Controller;
 
 use RBMVC\Core\View\View;
 use RBMVC\Core\Request;
+use RBMVC\Core\Controller\ActionHelperFactory;
 use RBMVC\Core\Utilities\Session;
 use RBMVC\Core\Utilities\SystemMessage;
 use RBMVC\Core\View\Helper\RenderSystemMessages;
@@ -18,6 +19,12 @@ abstract class AbstractController {
      * @var View 
      */
     protected $view;
+    
+    /**
+     *
+     * @var ActionHelperFactory
+     */
+    protected $actionHelperFactory;
     
     /**
      * @return void
@@ -56,13 +63,30 @@ abstract class AbstractController {
     }
     
     /**
-     * @param \RBMVC\View\View $view
+     * @param \RBMVC\Core\View\View $view
      * @return void
      */
     public function setView(View &$view) {
         $this->view = $view;
     }
     
+    /**
+     * @return \RBMVC\Core\Controller\ActionHelperFactory
+     */
+    public function getActionHelperFactory() {
+        return $this->actionHelperFactory;
+    }
+
+    /**
+     * @param \RBMVC\Core\Controller\ActionHelperFactory $actionHelperFactory
+     * @return \RBMVC\Core\Controller\AbstractController
+     */
+    public function setActionHelperFactory(ActionHelperFactory $actionHelperFactory) {
+        $this->actionHelperFactory = $actionHelperFactory;
+        return $this;
+    }
+
+        
     /**
      * @param integer $code
      * @return void
@@ -109,6 +133,15 @@ abstract class AbstractController {
         if ($renderSystemMessages instanceof RenderSystemMessages) {
             $renderSystemMessages->addSystemMessage($systemMessage);
         }
+    }
+
+    /**
+     * @param string $name
+     * @param array $args
+     * @return mixed
+     */
+    public function __call($name, $args) {
+        return $this->actionHelperFactory->callFunction($name, $args);
     }
 }
 

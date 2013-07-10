@@ -198,13 +198,7 @@ class View {
      * @return mixed
      */
     public function __call($name, $args) {
-        $name = strtolower($name);
-        $helper = $this->viewHelperFactory->getHelper($name);
-        
-        return call_user_func_array(
-            array($helper, $name),
-            $args
-        );
+        return $this->viewHelperFactory->callFunction($name, $args);
     }
     
     /**

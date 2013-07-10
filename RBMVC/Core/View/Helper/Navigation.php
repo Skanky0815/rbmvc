@@ -1,7 +1,7 @@
 <?php
 namespace RBMVC\Core\View\Helper;
 
-class Navigation extends AbstractHelper {
+class Navigation extends AbstractViewHelper {
     
     public function navigation($root, $level = 0) {
         $navigation = include APPLICATION_DIR . 'data/config/navigation.php';

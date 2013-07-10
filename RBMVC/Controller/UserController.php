@@ -1,6 +1,8 @@
 <?php
 namespace RBMVC\Controller;
 
+use RBMVC\Core\Controller\AbstractController;
+
 class UserController extends AbstractController {
     
     /**

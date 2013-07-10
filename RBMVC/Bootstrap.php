@@ -36,7 +36,8 @@ class Bootstrap {
         $this->request = new Request();
         $dispatcher = new Dispatcher();
         $dispatcher->setRequest($this->request);
-        $dispatcher->setView($this->setupView());
+        $view = $this->setupView();
+        $dispatcher->setView($view);
         $dispatcher->setupController();
         
         return $dispatcher->getView()->render();

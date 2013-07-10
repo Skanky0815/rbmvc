@@ -3,7 +3,8 @@ namespace RBMVC\Core;
 
 use RBMVC\Core\View\View;
 use RBMVC\Controller\IndexController;
-use RBMVC\Controller\AbstractController;
+use RBMVC\Core\Controller\AbstractController;
+use RBMVC\Core\Controller\ActionHelperFactory;
 
 class Dispatcher {
     
@@ -37,9 +38,14 @@ class Dispatcher {
             
         }
         
+        $actionHelperFactory = new ActionHelperFactory();
+        $actionHelperFactory->setView($this->view);
+        $actionHelperFactory->setRequest($this->request);
+        
         if ($controller instanceof AbstractController) {
             $controller->setView($this->view);
             $controller->setRequest($this->request);
+            $controller->setActionHelperFactory($actionHelperFactory);
             $controller->init();
             $actionStr = $this->request->getParam('action') . 'Action';
             if (!method_exists($controller, $actionStr) || $isClassError) {
@@ -63,7 +69,7 @@ class Dispatcher {
      * @param \RBMVC\Core\View\View $view
      * @return \RBMVC\Core\Dispatcher
      */
-    public function setView(View $view) {
+    public function setView(View &$view) {
         $this->view = $view;
         return $this;
     }

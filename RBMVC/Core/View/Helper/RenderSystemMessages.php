@@ -4,7 +4,7 @@ namespace RBMVC\Core\View\Helper;
 use RBMVC\Core\Utilities\SystemMessage;
 use RBMVC\Core\Utilities\Session;
 
-class RenderSystemMessages extends AbstractHelper {
+class RenderSystemMessages extends AbstractViewHelper {
     
     /**
      * @var array 

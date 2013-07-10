@@ -1,7 +1,7 @@
 <?php
 namespace RBMVC\Core\View\Helper;
 
-class DateFormater extends AbstractHelper {
+class DateFormater extends AbstractViewHelper {
     
     /**
      * @param string $date

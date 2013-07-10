@@ -1,7 +1,7 @@
 <?php
 namespace RBMVC\Core\View\Helper;
 
-class Url extends AbstractHelper {
+class Url extends AbstractViewHelper {
     
     /**
      * @var boolean 

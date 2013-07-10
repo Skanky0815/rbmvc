@@ -136,7 +136,7 @@ abstract class Form {
      */
     public function isValid(array $params) {
         $isValid = true; 
-        /* @var $element RBMVC\Core\Utilities\Form\Elements\AbstractElement */
+        /* @var $element \RBMVC\Core\Utilities\Form\ElementsAbstractElement */
         foreach ($this->elements as $element) {
             $error = $element->isValid($params);
             if (!empty($error)) {
