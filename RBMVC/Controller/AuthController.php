@@ -43,8 +43,8 @@ class AuthController extends AbstractController {
     }
     
     public function logoutAction() {
-        $seesion = new Session('user');
-        $seesion->resetNamespace();
+        $session = new Session('user');
+        $session->resetNamespace();
         
         $this->redirect(array('controller' => 'index', 'action' => 'index'));
     }
