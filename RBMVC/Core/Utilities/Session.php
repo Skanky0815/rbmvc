@@ -33,7 +33,7 @@ class Session {
     }
     
     /**
-     * @param sting $name
+     * @param string $name
      * @return mixed|null
      */
     public function __get($name) {
