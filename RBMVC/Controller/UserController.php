@@ -4,6 +4,15 @@ namespace RBMVC\Controller;
 use RBMVC\Core\Controller\AbstractController;
 
 class UserController extends AbstractController {
+
+    public function indexAction() {
+
+
+    }
+
+    public function editAction() {
+
+    }
     
     /**
      * @return void

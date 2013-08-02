@@ -125,7 +125,7 @@ abstract class AbstractController {
     
     /**
      * @param array $json
-     * @return void
+     * @return string
      */
     protected function sendJSON(array $json) {
         header('Content-type: application/json');

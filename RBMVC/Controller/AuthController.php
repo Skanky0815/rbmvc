@@ -21,7 +21,7 @@ class AuthController extends AbstractController {
         if ($this->request->isPost()) {
             
             if ($form->isValid($this->request->getPostParams())) {
-                if ($user->exists()) {
+                if ($user->exists() && $user->isActive()) {
                     $session = new Session('user');
                     $session->user = $user->toArray();
                     

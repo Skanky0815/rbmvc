@@ -26,7 +26,7 @@ class User extends AbstractModel {
     /**
      * @var boolean 
      */
-    private $isActive;
+    private $isActive = false;
     
     public function getUsername() {
         return $this->username;
@@ -54,7 +54,16 @@ class User extends AbstractModel {
         $this->email = $email;
         return $this;
     }
-    
+
+    public function isActive() {
+        return $this->isActive;
+    }
+
+    public function setIsActive($isActive) {
+        $this->isActive = (bool) $isActive;
+        return $this;
+    }
+
     /**
      * @return void
      */

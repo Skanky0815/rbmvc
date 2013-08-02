@@ -32,7 +32,7 @@ class Entry extends AbstractModel {
     
     /**
      * @param string $author
-     * @return \RBMVC\Model\Entry
+     * @return \RBMVC\Core\Model\Entry
      */
     public function setAuthor($author) {
         $this->author = $author;
@@ -48,7 +48,7 @@ class Entry extends AbstractModel {
     
     /**
      * @param string $date
-     * @return \RBMVC\Model\Entry
+     * @return \RBMVC\Core\Model\Entry
      */
     public function setDate($date) {
         $this->date = $date;
@@ -64,7 +64,7 @@ class Entry extends AbstractModel {
 
     /**
      * @param string $title
-     * @return \RBMVC\Model\Entry
+     * @return \RBMVC\Core\Model\Entry
      */
     public function setTitle($title) {
         $this->title = $title;
@@ -80,7 +80,7 @@ class Entry extends AbstractModel {
     
     /**
      * @param string $text
-     * @return \RBMVC\Model\Entry
+     * @return \RBMVC\Core\Model\Entry
      */
     public function setText($text) {
         $this->text = $text;
@@ -88,7 +88,7 @@ class Entry extends AbstractModel {
     }
 
     /**
-     * @return boolean|\RBMVC\Model\Entry
+     * @return boolean|\RBMVC\Core\Model\Entry
      */
     public function save() {
         $query = $this->db->getQuery($this->dbTable);

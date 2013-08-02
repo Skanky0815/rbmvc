@@ -37,8 +37,7 @@ class Session {
      * @return mixed|null
      */
     public function __get($name) {
-        if (array_key_exists($this->namespace, $_SESSION)
-                && array_key_exists($name, $_SESSION[$this->namespace])) {
+        if (array_key_exists($this->namespace, $_SESSION) && array_key_exists($name, $_SESSION[$this->namespace])) {
             return $_SESSION[$this->namespace][$name];
         }
         

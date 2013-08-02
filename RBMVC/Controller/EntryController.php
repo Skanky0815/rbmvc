@@ -14,7 +14,7 @@ class EntryController extends AbstractController {
         $entryCollection = new EntryCollection();
         $entryCollection->findAll();
         
-        $this->view->entries = $entryCollection->getModels();
+        $this->view->assign('entries', $entryCollection->getModels());
     }
     
     /**
@@ -22,7 +22,7 @@ class EntryController extends AbstractController {
      */
     public function editAction() {
         $entry = $this->saveModel(new Entry(), 'RBMVC\Core\Forms\EntryForm');
-        $this->view->entry = $entry;
+        $this->view->assign('entry', $entry);
     }
     
     /**

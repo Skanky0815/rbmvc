@@ -8,3 +8,7 @@
 [18-Jul-2013 07:37:17 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in /Users/ricoschulz/www/rbmvc/rbmvc/core/db/db.php on line 73
 [18-Jul-2013 07:38:14 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in /Users/ricoschulz/www/rbmvc/rbmvc/core/db/db.php on line 73
 [18-Jul-2013 13:53:18 UTC] RBMVC\Controller\IndexController::testActionuser ::> 
+[02-Aug-2013 20:50:04 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: parameter was not defined in /Users/ricoschulz/www/rbmvc/rbmvc/core/db/db.php on line 73
+[02-Aug-2013 20:54:18 UTC] RBMVC\Core\Model\User::exists::> SELECT * FROM user WHERE 1=1 AND password = :passwordAND username = :username 
+[02-Aug-2013 20:54:18 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: parameter was not defined in /Users/ricoschulz/www/rbmvc/rbmvc/core/db/db.php on line 73
+[02-Aug-2013 20:54:44 UTC] RBMVC\Core\Model\User::exists::> SELECT * FROM user WHERE 1=1  AND password = :password AND username = :username 
