@@ -13,7 +13,7 @@
         <h4><?php echo $entry->getTitle(); ?></h4>
         <blockquote>
             <p><?php echo $entry->getText(); ?></p>
-            <small><?php echo $entry->getAuthor(); ?> / <?php echo $this->dateFormater($entry->getDate()); ?></small>
+            <small><?php echo $entry->getUser()->getUsername(); ?> / <?php echo $this->dateFormater($entry->getDate()); ?></small>
         </blockquote>
         <div class="entry-footer">
             <div class="btn-group">

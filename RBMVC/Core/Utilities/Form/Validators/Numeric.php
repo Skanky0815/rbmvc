@@ -1,11 +1,11 @@
 <?php
 namespace RBMVC\Core\Utilities\Form\Validators;
 
-class Integer extends AbstractValidator {
+class Numeric extends AbstractValidator {
     
     public function __construct() {
         parent::__construct();
-        $this->errorText = 'is_no_integer';
+        $this->errorText = 'is_no_number';
     }
     
     /**
@@ -13,6 +13,7 @@ class Integer extends AbstractValidator {
      * @return boolean
      */
     protected function validate($value) {
-        return is_numeric($value) && is_int($value);
-    }    
+        return is_numeric($value);
+    }
+
 }

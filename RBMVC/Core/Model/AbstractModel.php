@@ -63,7 +63,7 @@ abstract class AbstractModel {
     /**
      * @return boolean
      */
-    public final function init() {
+    public function init() {
         if (!is_int($this->id) || $this->id <= 0) {
             return false;
         }

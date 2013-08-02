@@ -4,10 +4,15 @@ namespace RBMVC\Core\Model;
 class Entry extends AbstractModel {
     
     /**
-     * @var string 
+     * @var int
      */
-    private $author;
-        
+    private $userId;
+
+    /**
+     * @var User
+     */
+    private $user;
+
     /**
      * @var string 
      */
@@ -26,16 +31,16 @@ class Entry extends AbstractModel {
     /**
      * @return string
      */
-    public function getAuthor() {
-        return $this->author;
+    public function getUserId() {
+        return $this->userId;
     }
     
     /**
      * @param string $author
      * @return \RBMVC\Core\Model\Entry
      */
-    public function setAuthor($author) {
-        $this->author = $author;
+    public function setUserId($author) {
+        $this->userId = $author;
         return $this;
     }
     
@@ -88,6 +93,38 @@ class Entry extends AbstractModel {
     }
 
     /**
+     * @return User
+     */
+    public function getUser() {
+        return $this->user;
+    }
+
+    /**
+     * @param User $user
+     *
+     * @return Entry
+     */
+    public function setUser(User $user) {
+        $this->user = $user;
+        return $this;
+    }
+
+
+    public function init() {
+        $isInit = parent::init();
+
+        if ($isInit) {
+            $user = new User();
+            $user->setId($this->userId)->init();
+
+            $this->user = $user;
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
      * @return boolean|\RBMVC\Core\Model\Entry
      */
     public function save() {
@@ -95,12 +132,12 @@ class Entry extends AbstractModel {
         if (empty($this->id)) {
             $sql = '
                 INSERT INTO ' . $this->dbTable . ' 
-                    (author, title, text, date) 
+                    (user_id, title, text, date)
                 VALUES 
-                    (:author, :title, :text, NOW())';
+                    (:user_id, :title, :text, NOW())';
             
             $param = array(
-                ':author'   => $this->author,
+                ':user_id'   => $this->userId,
                 ':title'    => $this->title,
                 ':text'     => $this->text,
             );

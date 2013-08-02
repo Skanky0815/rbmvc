@@ -4,6 +4,7 @@ namespace RBMVC\Controller;
 use RBMVC\Core\Model\Entry;
 use RBMVC\Core\Controller\AbstractController;
 use RBMVC\Core\Model\Collection\EntryCollection;
+use RBMVC\Core\Utilities\Session;
 
 class EntryController extends AbstractController {
     
@@ -21,7 +22,12 @@ class EntryController extends AbstractController {
      * @return void
      */
     public function editAction() {
-        $entry = $this->saveModel(new Entry(), 'RBMVC\Core\Forms\EntryForm');
+        $entry = new Entry();
+        $session = new Session('user');
+        $user = $session->user;
+        $entry->setUserId($user['id']);
+
+        $entry = $this->saveModel($entry, 'RBMVC\Core\Forms\EntryForm');
         $this->view->assign('entry', $entry);
     }
     

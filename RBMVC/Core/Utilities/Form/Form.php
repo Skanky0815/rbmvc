@@ -3,6 +3,7 @@ namespace RBMVC\Core\Utilities\Form;
 
 use RBMVC\Core\Model\AbstractModel;
 use RBMVC\Core\Utilities\Form\Elements\AbstractElement;
+use RBMVC\Core\Utilities\Session;
 
 abstract class Form {
     
@@ -146,5 +147,5 @@ abstract class Form {
         }
         return $isValid;
     }
-    
+
 }

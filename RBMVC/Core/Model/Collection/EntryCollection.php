@@ -10,7 +10,7 @@ class EntryCollection extends AbstractCollection {
      */
     public function findAll() {
         $query = $this->db->getQuery($this->dbTable);
-        $query->select();
+        $query->select(array('id'));
         $query->orderBy(array('id' => 'DESC'));
         
         $stmt = $this->db->execute($query);
@@ -22,7 +22,7 @@ class EntryCollection extends AbstractCollection {
         
         if (array_key_exists('id', $entriesData)) {
             $entry = new Entry();
-            $entry->fillModelByArray($entriesData);
+            $entry->setId($entriesData['id'])->init();
             $this->models[] = $entry;
             return;
         }
@@ -32,7 +32,7 @@ class EntryCollection extends AbstractCollection {
                 continue;
             }
             $entry = new Entry();
-            $entry->fillModelByArray($entryData);
+            $entry->setId($entryData['id'])->init();
             $this->models[] = $entry;
         }
     }
