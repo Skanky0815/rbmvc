@@ -3,10 +3,8 @@ namespace RBMVC\Core\Utilities\Form\Validators;
 
 class Integer extends AbstractValidator {
     
-    /**
-     * @return void
-     */
     public function __construct() {
+        parent::__construct();
         $this->errorText = 'is_no_integer';
     }
     

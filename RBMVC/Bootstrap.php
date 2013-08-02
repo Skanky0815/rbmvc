@@ -16,7 +16,7 @@ class Bootstrap {
      */
     private $request;
     
-    /*
+    /**
      * @var array
      */
     private $config;
@@ -54,7 +54,7 @@ class Bootstrap {
      * @return void
      */
     private function setupTranslation() {
-        if (!key_exists('language', $this->config)) {
+        if (!array_key_exists('language', $this->config)) {
             die('<h1>Error</h1><p>Missing language configuration.</p>');
         }
         Translator::getInstance()->init($this->config['language']);
@@ -64,7 +64,7 @@ class Bootstrap {
      * @return void
      */
     private function setupDB() {
-        if (!key_exists('database', $this->config)) {
+        if (!array_key_exists('database', $this->config)) {
             die('<h1>Error</h1><p>Missing database configuration.</p>');
         }
         
@@ -76,7 +76,7 @@ class Bootstrap {
      * @return \RBMVC\Core\View\View
      */
     private function setupView() {
-//        if (!key_exists('view', $this->config)) {
+//        if (!array_key_exists('view', $this->config)) {
 //            die('<h1>Error</h1><p>Missing view configuration.</p>');
 //        }
         

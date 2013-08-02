@@ -1,9 +1,8 @@
-define(['jquery'
-      , '../lib/bootstrap.min'
+define(['../lib/bootstrap.min'
 ], function() {
     var _ = {};
 
     $(function() {
-        console.log('index');
+        console.log('Index JS');
     });
 });

@@ -7,12 +7,12 @@ use RBMVC\Core\Request;
 abstract class AbstractHelper {
         
     /**
-     * @var Request 
+     * @var \RBMVC\Core\Request
      */
     protected $request;
     
     /**
-     * @var View 
+     * @var \RBMVC\Core\View\View
      */
     protected $view;
 

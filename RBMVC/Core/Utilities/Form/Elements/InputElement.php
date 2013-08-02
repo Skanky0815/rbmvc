@@ -9,8 +9,8 @@ class InputElement extends AbstractElement {
     const SMALL     = 'input-small';
     const MEDIUM    = 'input-medium';
     const LARGE     = 'input-large';
-    const XLARGE    = 'input-xlarge';
-    const XXLARGE   = 'input-xxlarge';
+    const X_LARGE    = 'input-xlarge';
+    const XX_LARGE   = 'input-xxlarge';
     
     /**
      * @var string 
@@ -25,7 +25,7 @@ class InputElement extends AbstractElement {
     /**
      * @var string 
      */
-    private $size = 'input-large';
+    private $size = self::LARGE;
     
     /**
      * @param string $name

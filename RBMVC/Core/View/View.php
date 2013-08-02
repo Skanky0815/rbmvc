@@ -47,7 +47,7 @@ class View {
     
     /**
      * @param \RBMVC\Core\View\ViewHelperFactory $viewHelperFactory
-     * @return View
+     * @return \RBMVC\Core\View\View
      */
     public function setViewHelperFactory(ViewHelperFactory $viewHelperFactory) {
         $this->viewHelperFactory = $viewHelperFactory;
@@ -55,7 +55,7 @@ class View {
     }
     
     /**
-     * @return ViewHelperFactory
+     * @return \RBMVC\Core\View\ViewHelperFactory
      */
     public function getViewHelperFactory() {
         return $this->viewHelperFactory;
@@ -63,7 +63,7 @@ class View {
     
     /**
      * @param string $path
-     * @return string
+     * @return string|void
      */
     public function render($path = '') {
         if (!$this->doRender) {
@@ -108,12 +108,24 @@ class View {
     /**
      * @param string $name
      * @param mixed $value
+     * @return \RBMVC\Core\View\View;
      */
     public function __set($name, $value) {
         $this->variables[$name] = $value;
+        return $this;
     }
-    
-    /*
+
+    /**
+     * @param string $name
+     * @param mixed $value
+     * @return void
+     */
+    public function assign($name, $value) {
+        $this->__set($name, $value);
+    }
+
+    /**
+     * @param string $includePath
      * @return string
      */
     private function loadTemplate($includePath) {
@@ -167,7 +179,7 @@ class View {
     
     /**
      * @param array $params
-     * @return View
+     * @return \RBMVC\Core\View\View
      */
     public function setParams(array $params) {
         $this->params = $params;
@@ -204,6 +216,8 @@ class View {
     /**
      * Add an action or controller specific js file when file not found then
      * it use the default js.
+     *
+     * @TODO outsource into a action setup plugin.
      * @return void
      */
     private function requireJs() {
@@ -222,7 +236,8 @@ class View {
         }
         
         if (file_exists(APPLICATION_DIR . '/public' . $jsPath . '.js')) {
-            $this->js = '<script data-main="' . $jsPath . '" src="/js/lib/require-jquery.js"></script>';
+            $js = '<script data-main="' . $jsPath . '" src="/js/lib/require-jquery.js"></script>';
+            $this->assign('js', $js);
         }
     }
 }

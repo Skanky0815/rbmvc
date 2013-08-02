@@ -11,9 +11,6 @@ class RenderSystemMessages extends AbstractViewHelper {
      */
     private $systemMessages = array();
     
-    /**
-     * @return void
-     */
     public function __construct() {
         $session = new Session('system_message');
         if (is_null($session->systemMessages) 

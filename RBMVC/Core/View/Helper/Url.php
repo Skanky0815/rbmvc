@@ -24,10 +24,7 @@ class Url extends AbstractViewHelper {
      * @return string
      */
     private function renderUrl(array $urlParams) {
-        $url =  '/'
-            . $urlParams['controller']
-            . '/'
-            . $urlParams['action'];
+        $url =  '/' . $urlParams['controller'] . '/' . $urlParams['action'];
         
         unset($urlParams['controller']);
         unset($urlParams['action']);

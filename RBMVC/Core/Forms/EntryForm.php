@@ -22,7 +22,7 @@ class EntryForm extends Form {
         $title = new InputElement('title', 'text');
         $title->setIsRequired(true);
         $title->setLabel('title');
-        $title->setSize(InputElement::XLARGE);
+        $title->setSize(InputElement::X_LARGE);
         $title->addValidator(new Word);
         $this->addElement($title);
         

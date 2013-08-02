@@ -51,8 +51,9 @@ class Session {
     public function getNamespace() {
         return $this->namespace;
     }
-    
+
     /**
+     * @param string $namespace
      * @return void
      */
     public function resetNamespace($namespace = '') {

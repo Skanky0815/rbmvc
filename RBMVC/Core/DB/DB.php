@@ -33,12 +33,12 @@ class DB {
      * @return void
      */
     public function setup(array $options) {
-        $user = key_exists('user', $options) ? $options['user'] : '';
-        $host = key_exists('host', $options) ? $options['host'] : '';
-        $name = key_exists('name', $options) ? $options['name'] : '';
-        $pass = key_exists('user', $options) ? $options['pass'] : '';
-        $driver = key_exists('driver', $options) ? $options['driver'] : '';
-        $pdoOptions = key_exists('options', $options) ? $options['options'] : array();
+        $user = array_key_exists('user', $options) ? $options['user'] : '';
+        $host = array_key_exists('host', $options) ? $options['host'] : '';
+        $name = array_key_exists('name', $options) ? $options['name'] : '';
+        $pass = array_key_exists('user', $options) ? $options['pass'] : '';
+        $driver = array_key_exists('driver', $options) ? $options['driver'] : '';
+        $pdoOptions = array_key_exists('options', $options) ? $options['options'] : array();
         
         $dsn = $driver . ':host=' . $host . ';dbname=' . $name;
         $this->db = new \PDO($dsn, $user, $pass, $pdoOptions);

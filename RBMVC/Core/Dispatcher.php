@@ -9,12 +9,12 @@ use RBMVC\Core\Controller\ActionHelperFactory;
 class Dispatcher {
     
     /**
-     * @var Request 
+     * @var \RBMVC\Core\Request
      */
     private $request;
     
     /**
-     * @var View 
+     * @var \RBMVC\Core\View\View
      */
     private $view;
     
@@ -75,7 +75,7 @@ class Dispatcher {
     }
     
     /**
-     * @return Request
+     * @return \RBMVC\Core\Request
      */
     public function getRequest() {
         return $this->request;
@@ -89,4 +89,5 @@ class Dispatcher {
         $this->request = $request;
         return $this;
     }
+
 }

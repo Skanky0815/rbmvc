@@ -3,10 +3,10 @@ namespace RBMVC\Core\Utilities;
 
 class SystemMessage {
     
-    const SUCCESS = 'success';
-    const ERROR = 'error';
-    const WARNING = 'block';
-    const INFO = 'info';
+    const SUCCESS   = 'success';
+    const ERROR     = 'error';
+    const WARNING   = 'block';
+    const INFO      = 'info';
     
     /**
      * @var string 

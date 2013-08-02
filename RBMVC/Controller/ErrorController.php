@@ -16,9 +16,9 @@ class ErrorController extends AbstractController {
             $statusCode = (integer) base64_decode($statusCode);
         }
         
-        $this->view->statusCode = $statusCode;
-        $this->view->title = $statusCode.'_title';
-        $this->view->message = $statusCode . '_message';
+        $this->view->assign('statusCode', $statusCode);
+        $this->view->assign('title', $statusCode.'_title');
+        $this->view->assign('message', $statusCode . '_message');
         http_response_code($statusCode);
     }
 }

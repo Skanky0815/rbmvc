@@ -1,6 +1,5 @@
-define(['jquery'
-      , '../../lib/bootstrap.min'
-], function($) {
+define(['../../lib/bootstrap.min'
+], function() {
     var _ = {};
     var pub = {};
     
@@ -10,6 +9,8 @@ define(['jquery'
     _.url = '';
 
     pub.init = function() {
+        console.log('Delete-Modal loaded!');
+
         _.$delelteButton = $('.delete');
         _.$deleteModal = $('#deleteModal');
         
@@ -30,11 +31,11 @@ define(['jquery'
         $.ajax({
            url: _.url,
            dataType: 'JSON',
-           success: _.respons
+           success: _.response
         });
     };
     
-    _.respons = function(data) {
+    _.response = function(data) {
         if (data.status === 'ok') {
             var url = location.href;
             location.href = url;

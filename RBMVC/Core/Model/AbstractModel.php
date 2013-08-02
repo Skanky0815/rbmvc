@@ -22,10 +22,6 @@ abstract class AbstractModel {
      */
     protected $dbTable;
     
-    /**
-     * @param string $dbTable
-     * @return void
-     */
     public function __construct() {
         $this->db = DB::getInstance();
         
@@ -42,7 +38,7 @@ abstract class AbstractModel {
 
     /**
      * @param integer $id
-     * @return \RBMVC\Model\AbstractModel
+     * @return \RBMVC\Core\Model\AbstractModel
      */
     public function setId($id) {
         $this->id = (int) $id;

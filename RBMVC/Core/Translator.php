@@ -40,17 +40,18 @@ class Translator {
      * @return void
      */
     public function init(array $options) {
-        if (key_exists('default_language', $options)) {
+        if (array_key_exists('default_language', $options)) {
             $this->lang = $options['default_language'];
         }
     }
-    
+
     /**
      * @param string $lang
-     * @return void 
+     * @return Translator
      */
     public function setLang($lang) {
         $this->lang = $lang;
+        return $this;
     }
     
     /**
@@ -65,8 +66,7 @@ class Translator {
         
         $this->loadTranslationFile($lang);
         
-        if (key_exists($lang, $this->texts) 
-                && key_exists($key, $this->texts[$lang])) {
+        if (array_key_exists($lang, $this->texts) && array_key_exists($key, $this->texts[$lang])) {
             return $this->texts[$lang][$key];
         } 
         
@@ -78,7 +78,7 @@ class Translator {
      * @return void
      */
     private function loadTranslationFile($lang) {
-        if (key_exists($lang, $this->texts)) {
+        if (array_key_exists($lang, $this->texts)) {
             return;
         } 
         

@@ -39,7 +39,7 @@ class AuthController extends AbstractController {
             }
         }
         
-        $this->view->form = $form;
+        $this->view->assign('form', $form);
     }
     
     public function logoutAction() {

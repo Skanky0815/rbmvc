@@ -1,6 +1,7 @@
 <?php
 namespace RBMVC\Core\Controller;
 
+use RBMVC\Core\Model\User;
 use RBMVC\Core\View\View;
 use RBMVC\Core\Request;
 use RBMVC\Core\Controller\ActionHelperFactory;
@@ -19,7 +20,12 @@ abstract class AbstractController {
      * @var View 
      */
     protected $view;
-    
+
+    /**
+     * @var array
+     */
+    protected $user;
+
     /**
      *
      * @var ActionHelperFactory
@@ -30,7 +36,28 @@ abstract class AbstractController {
      * @return void
      */
     public function init() {
-        $this->view->controller = $this->request->getParam('controller');
+        $this->view->assign('controller', $this->request->getParam('controller'));
+        $this->view->assign('action', $this->request->getParam('action'));
+
+        $this->setUser();
+    }
+
+    /**
+     * @TODO outsource this into a auth setup class
+     * @return void
+     */
+    public function setUser() {
+        $session = new Session('user');
+        $userData = $session->user;
+
+        if (!is_array($userData)) {
+            return;
+        }
+
+        $user = new User();
+        $user->fillModelByArray($userData);
+        $this->user = $user;
+        $this->view->assign('user', $this->user);
     }
     
     /**
@@ -49,14 +76,14 @@ abstract class AbstractController {
     }
     
     /**
-     * @return Request
+     * @return \RBMVC\Core\Request
      */
     public function getRequest() {
         return $this->request;
     }
     
     /**
-     * @return View
+     * @return \RBMVC\Core\View\View
      */
     public function getView() {
         return $this->view;
@@ -143,5 +170,6 @@ abstract class AbstractController {
     public function __call($name, $args) {
         return $this->actionHelperFactory->callFunction($name, $args);
     }
+
 }
 

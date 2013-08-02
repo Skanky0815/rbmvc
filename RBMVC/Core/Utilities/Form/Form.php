@@ -30,15 +30,15 @@ abstract class Form {
      * @var boolean
      */
     private $hasActionBar = true;
-    
+
     /**
-     * @param array $object
-     * @return void
+     * @param array|AbstractModel $object
      */
     public function __construct($object = array()) {
         if (is_object($object) && $object instanceof AbstractModel) {
             $object = $object->toArray();
         }
+
         $this->object = $object;
         $this->init();
         $this->setElementsValue();
@@ -136,7 +136,7 @@ abstract class Form {
      */
     public function isValid(array $params) {
         $isValid = true; 
-        /* @var $element \RBMVC\Core\Utilities\Form\ElementsAbstractElement */
+        /* @var \RBMVC\Core\Utilities\Form\Elements\AbstractElement $element */
         foreach ($this->elements as $element) {
             $error = $element->isValid($params);
             if (!empty($error)) {

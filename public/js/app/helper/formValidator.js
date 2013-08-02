@@ -1,5 +1,6 @@
-define(['jquery'
-], function($) {
+define([
+
+], function() {
     var _ = {};
     var pub = {};
     
@@ -7,6 +8,8 @@ define(['jquery'
     _.$form = null;
 
     pub.init = function() {
+        console.log('Form-Validator loaded!');
+
         _.$form = $('form');
         
         _.$form.on('click', '.btn-primary', _.submitAction);
