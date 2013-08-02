@@ -83,12 +83,10 @@ class User extends AbstractModel {
     }
     
     public function exists() {
-        return true;
-        
         $query = $this->db->getQuery($this->dbTable);
         $query->select();
         $query->where(array('password' => $this->password, 'username' => $this->username));
-        
+
         $stmt = $this->db->execute($query);
         if (is_null($stmt)) {
             return false;
