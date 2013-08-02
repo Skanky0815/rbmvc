@@ -102,7 +102,7 @@ class Query {
     public function where(array $where) {
         $sql = 'WHERE 1=1 ';
         foreach ($where as $key => $value) {
-            $sql .= 'AND ' . $key . ' = :' . $key;
+            $sql .= ' AND ' . $key . ' = :' . $key;
             $this->params[':' . $key] = $value;
         }
         $sql .= ' ';
