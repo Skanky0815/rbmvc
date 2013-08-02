@@ -30,7 +30,6 @@ class InputElement extends AbstractElement {
     /**
      * @param string $name
      * @param string $type
-     * @return void
      */
     public function __construct($name, $type) {
         $this->type = $type;
