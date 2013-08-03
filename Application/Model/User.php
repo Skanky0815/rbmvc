@@ -61,6 +61,10 @@ class User extends AbstractModel {
         return $this->isActive;
     }
 
+    public function getIsActive() {
+        return $this->isActive;
+    }
+
     public function setIsActive($isActive) {
         $this->isActive = (bool) $isActive;
         return $this;

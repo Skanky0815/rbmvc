@@ -29,7 +29,7 @@ define(['../helper/deleteModal'
             html: false, //Button which allows you to edit the generated HTML. Default false
             link: true, //Button to insert a link. Default true
             image: true, //Button to insert an image. Default true,
-            colo: true //Button to change color of fonts
+            colo: true //Button to change color of font
         });
     });
 });

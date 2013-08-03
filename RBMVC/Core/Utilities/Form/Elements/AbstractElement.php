@@ -98,6 +98,7 @@ abstract class AbstractElement {
      * @return \RBMVC\Core\Utilities\Form\Elements\AbstractElement
      */
     public function setValue($value) {
+        var_dump( $value ).'<br>';
         $this->value = $value;
         return $this;
     }

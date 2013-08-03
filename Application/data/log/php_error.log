@@ -666,3 +666,61 @@ Stack trace:
 [03-Aug-2013 20:46:06 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class User-groupsController not found!
 [03-Aug-2013 20:46:11 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class GrantController not found!
 [03-Aug-2013 20:48:29 UTC] PHP Fatal error:  Call to a member function getId() on a non-object in /Users/ricoschulz/www/rbmvc/template/views/user/edit.phtml on line 3
+[03-Aug-2013 20:57:50 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class Application\Forms\CheckboxElement not found!
+[03-Aug-2013 20:57:50 UTC] PHP Fatal error:  Uncaught exception 'RBMVC\Core\Utilities\Exception\ClassLoadingException' with message 'Class Application\Forms\CheckboxElement not found!' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/ClassLoader.php:88
+Stack trace:
+#0 /Users/ricoschulz/www/rbmvc/RBMVC/Core/ClassLoader.php(114): RBMVC\Core\ClassLoader->getClassNamespace('Application\For...')
+#1 [internal function]: RBMVC\Core\ClassLoader->load('Application\For...')
+#2 /Users/ricoschulz/www/rbmvc/Application/Forms/UserForm.php(37): spl_autoload_call('Application\For...')
+#3 /Users/ricoschulz/www/rbmvc/rbmvc/core/utilities/form/form.php(44): Application\Forms\UserForm->init()
+#4 /Users/ricoschulz/www/rbmvc/rbmvc/core/controller/helper/savemodel.php(23): RBMVC\Core\Utilities\Form\Form->__construct(Object(Application\Model\User))
+#5 [internal function]: RBMVC\Core\Controller\Helper\SaveModel->saveModel(Object(Application\Model\User), 'Application\For...')
+#6 /Users/ricoschulz/www/rbmvc/RBMVC/Core/Utilities/AbstractHelperFactory.php(86): call_user_func_array(Array,  in /Users/ricoschulz/www/rbmvc/RBMVC/Core/ClassLoader.php on line 88
+[03-Aug-2013 20:59:39 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class Application\Forms\CheckboxElement not found!
+[03-Aug-2013 20:59:39 UTC] PHP Fatal error:  Uncaught exception 'RBMVC\Core\Utilities\Exception\ClassLoadingException' with message 'Class Application\Forms\CheckboxElement not found!' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/ClassLoader.php:88
+Stack trace:
+#0 /Users/ricoschulz/www/rbmvc/RBMVC/Core/ClassLoader.php(114): RBMVC\Core\ClassLoader->getClassNamespace('Application\For...')
+#1 [internal function]: RBMVC\Core\ClassLoader->load('Application\For...')
+#2 /Users/ricoschulz/www/rbmvc/Application/Forms/UserForm.php(37): spl_autoload_call('Application\For...')
+#3 /Users/ricoschulz/www/rbmvc/rbmvc/core/utilities/form/form.php(44): Application\Forms\UserForm->init()
+#4 /Users/ricoschulz/www/rbmvc/rbmvc/core/controller/helper/savemodel.php(23): RBMVC\Core\Utilities\Form\Form->__construct(Object(Application\Model\User))
+#5 [internal function]: RBMVC\Core\Controller\Helper\SaveModel->saveModel(Object(Application\Model\User), 'Application\For...')
+#6 /Users/ricoschulz/www/rbmvc/RBMVC/Core/Utilities/AbstractHelperFactory.php(86): call_user_func_array(Array,  in /Users/ricoschulz/www/rbmvc/RBMVC/Core/ClassLoader.php on line 88
+[03-Aug-2013 21:00:09 UTC] PHP Fatal error:  Call to a member function getId() on a non-object in /Users/ricoschulz/www/rbmvc/template/views/user/edit.phtml on line 3
+[03-Aug-2013 21:16:12 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class FontController not found!
+[03-Aug-2013 21:16:12 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class FontController not found!
+[03-Aug-2013 21:16:12 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class FontController not found!
+[03-Aug-2013 21:24:55 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class FontController not found!
+[03-Aug-2013 21:24:55 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class FontController not found!
+[03-Aug-2013 21:24:55 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class FontController not found!
+[03-Aug-2013 21:25:15 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class FontController not found!
+[03-Aug-2013 21:25:16 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class FontController not found!
+[03-Aug-2013 21:25:16 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class FontController not found!
+[03-Aug-2013 21:25:16 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class FontController not found!
+[03-Aug-2013 21:25:16 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class FontController not found!
+[03-Aug-2013 21:25:16 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class FontController not found!
+[03-Aug-2013 21:25:16 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class FontController not found!
+[03-Aug-2013 21:25:16 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class FontController not found!
+[03-Aug-2013 21:25:16 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class FontController not found!
+[03-Aug-2013 21:25:16 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class FontController not found!
+[03-Aug-2013 21:25:16 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class FontController not found!
+[03-Aug-2013 21:25:17 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class FontController not found!
+[03-Aug-2013 21:25:17 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class FontController not found!
+[03-Aug-2013 21:25:22 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class FontController not found!
+[03-Aug-2013 21:25:22 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class FontController not found!
+[03-Aug-2013 21:25:22 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class FontController not found!
+[03-Aug-2013 21:25:22 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class FontController not found!
+[03-Aug-2013 21:25:27 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class FontController not found!
+[03-Aug-2013 21:25:27 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class FontController not found!
+[03-Aug-2013 21:25:27 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class FontController not found!
+[03-Aug-2013 21:25:29 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class FontController not found!
+[03-Aug-2013 21:25:29 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class FontController not found!
+[03-Aug-2013 21:25:29 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class FontController not found!
+[03-Aug-2013 21:25:45 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class FontController not found!
+[03-Aug-2013 21:25:45 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class FontController not found!
+[03-Aug-2013 21:25:48 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class FontController not found!
+[03-Aug-2013 21:25:48 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class FontController not found!
+[03-Aug-2013 21:25:52 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class FontController not found!
+[03-Aug-2013 21:25:53 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class FontController not found!
+[03-Aug-2013 21:26:03 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class FontController not found!
+[03-Aug-2013 21:26:03 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class FontController not found!

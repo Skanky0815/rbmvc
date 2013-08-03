@@ -3,6 +3,7 @@ namespace Application\Controller;
 
 use Application\Controller\AbstractController;
 use Application\Model\Collection\UserCollection;
+use Application\Model\User;
 
 class UserController extends AbstractController {
 
@@ -14,7 +15,8 @@ class UserController extends AbstractController {
     }
 
     public function editAction() {
-
+        $user = $this->saveModel(new User, 'Application\Forms\UserForm');
+        $this->view->assign('user', $user);
     }
     
     /**

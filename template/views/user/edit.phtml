@@ -1,6 +1,6 @@
 <h2>
     <?php echo $this->translate('user_title'); ?>
-    <?php echo $this->translate($this->entry->getId() ? 'user_edit' : 'user_create'); ?>
+    <?php echo $this->translate($this->user->getId() ? 'user_edit' : 'user_create'); ?>
 </h2>
 
 <?php echo $this->renderForm($this->form); ?>

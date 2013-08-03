@@ -7,7 +7,7 @@ class InputElement extends AbstractElement {
     
     const MINI      = 'col-lg-2';
     const SMALL     = 'col-lg-4';
-    const MEDIUM    = 'col-lg-5';
+    const MEDIUM    = 'col-lg-6';
     const LARGE     = 'col-lg-8';
     const X_LARGE   = 'col-lg-10';
 

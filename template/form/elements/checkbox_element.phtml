@@ -1,0 +1,12 @@
+<div class="form-group">
+    <div class="col-10 col-lg-offset-2">
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" name="<?php echo $this->element->getName(); ?>"
+                    <?php echo ((bool) $this->element->getValue() ? ' checked="checked"' : ''); ?>
+                    value="<?php echo $this->element->getValue(); ?>"/>
+                <?php echo $this->translate($this->element->getLabel()); ?>
+            </label>
+        </div>
+    </div>
+</div>
