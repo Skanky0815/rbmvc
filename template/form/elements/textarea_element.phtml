@@ -1,6 +1,6 @@
-<div class="control-group<?php echo ($this->element->hasError() ? ' error' : ''); ?>">
-    <label class="control-label" for="<?php echo $this->element->getName() ?>"><?php echo $this->translate($this->element->getLabel()) . ($this->element->isRequired() ? '*' : ''); ?></label>
-    <div class="controls">
+<div class="form-group<?php echo ($this->element->hasError() ? ' has-error' : ''); ?>">
+    <label class="col-lg-2 control-label" for="<?php echo $this->element->getName() ?>"><?php echo $this->translate($this->element->getLabel()) . ($this->element->isRequired() ? '*' : ''); ?></label>
+    <div class="col-lg-10">
         <textarea
             style="overflow : scroll; min-height : 300px; width: 100%;"
             class="<?php echo ($this->element->isRequired() ? ' required' : ''); ?>"

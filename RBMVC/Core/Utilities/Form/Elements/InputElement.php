@@ -5,13 +5,12 @@ use RBMVC\Core\Utilities\Form\Elements\AbstractElement;
 
 class InputElement extends AbstractElement {
     
-    const MINI      = 'input-mini';
-    const SMALL     = 'input-small';
-    const MEDIUM    = 'input-medium';
-    const LARGE     = 'input-large';
-    const X_LARGE    = 'input-xlarge';
-    const XX_LARGE   = 'input-xxlarge';
-    
+    const MINI      = 'col-lg-2';
+    const SMALL     = 'col-lg-4';
+    const MEDIUM    = 'col-lg-5';
+    const LARGE     = 'col-lg-8';
+    const X_LARGE   = 'col-lg-10';
+
     /**
      * @var string 
      */

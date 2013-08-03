@@ -28,6 +28,7 @@ class LoginForm extends Form {
         $this->addElement($password);
         
         $submit = new ButtonElement('login');
+        $submit->setType(ButtonElement::BTN_PRIMARY);
         $this->addElement($submit);
         
         $this->setHasActionBar(false);

@@ -12,55 +12,48 @@
     </head>
     <body>
         <div class="navbar navbar-inverse navbar-static-top">
-            <div class="navbar-inner">
-                <div class="container">
-                    <?php echo $this->navigation('main'); ?>
-                    <?php if (!$this->user): ?>
-                        <form action="<?php echo $this->url(array('controller' => 'auth', 'action' => 'login')); ?>" class="navbar-form pull-right" method="post">
-                           <input type="text" name="username" class="span2" placeholder="Benutzername">
-                           <input type="password" name="password" class="span2" placeholder="Passwort">
-                           <button type="submit" class="btn btn-primary"><?php echo $this->translate('login'); ?></button>
-                        </form>
-                    <?php else: ?>
-                        <div class="btn-group pull-right">
-                            <a href="#" class="dropdown-toggle btn btn-primary" data-toggle="dropdown">
-                                <i class="icon-user icon-white"></i>
-                                <?php echo $this->user->getUsername(); ?>
-                                <b class="caret"></b>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#"><?php echo $this->translate('edit_account'); ?></a></li>
-                                <li><a href="#">... todo</a></li>
-                                <li class="divider"></li>
-                                <li>
-                                    <a href="<?php echo $this->url(
-                                        array('action' => 'logout'
-                                            , 'controller' => 'auth'
-                                        )
-                                    ); ?>">
-                                        <?php echo $this->translate('logout'); ?>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    <?php endif; ?>
-                </div>
-            </div>  
+            <div class="container">
+                <?php echo $this->navigation('main'); ?>
+
+                <?php if (!$this->user): ?>
+                    <form action="<?php echo $this->url(array('controller' => 'auth', 'action' => 'login')); ?>" class="navbar-form pull-right" method="post">
+                       <input type="text" name="username" class="form-control" style="width: 200px;" placeholder="Benutzername">
+                       <input type="password" name="password" class="form-control" style="width: 200px;" placeholder="Passwort">
+                       <button type="submit" class="btn btn-primary"><?php echo $this->translate('login'); ?></button>
+                    </form>
+                <?php else: ?>
+                    <div class="btn-group pull-right">
+                        <a href="#" class="dropdown-toggle btn btn-primary navbar-btn" data-toggle="dropdown">
+                            <i class="icon-user"></i> <?php echo $this->user->getUsername(); ?> <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#"><?php echo $this->translate('edit_account'); ?></a></li>
+                            <li><a href="#">... todo</a></li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="<?php echo $this->url(
+                                    array('action' => 'logout'
+                                        , 'controller' => 'auth'
+                                    )
+                                ); ?>">
+                                    <?php echo $this->translate('logout'); ?>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                <?php endif; ?>
+            </div>
         </div>
-        
-        <br />
         
         <div class="container">
             <?php echo $this->renderSystemMessages(); ?>
             
             <div class="row">
-                <div class="span12">
+                <div class="col-12">
                    <?php echo $this->content; ?>
                </div>
             </div>
         </div>
-        
-        <br />
         
         <footer class="footer">
             <p class="text-center">POWERT BY Rico</p>

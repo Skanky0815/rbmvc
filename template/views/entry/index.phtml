@@ -1,7 +1,7 @@
 <div class="row">
     <div class="span12">
         <a class="btn btn-primary" href="<?php echo $this->url(array('action' => 'edit')); ?>">
-            <i class="icon-plus icon-white"></i>
+            <i class="icon-plus"></i>
             <?php echo $this->translate('add'); ?>  
         </a>
     </div>
@@ -17,14 +17,14 @@
         </blockquote>
         <div class="entry-footer">
             <div class="btn-group">
-                <a class="btn-danger btn delete" href="<?php echo $this->url(
+                <a class="btn-danger btn delete" data-toggle="modal" href="<?php echo $this->url(
                         array('action' => 'delete'
                             , 'id' => $entry->getId()
                         ), true
                 ); ?>">
-                    <i class="icon-trash icon-white"></i>
+                    <i class="icon-trash"></i>
                 </a>
-                <a class="btn" href="<?php echo $this->url(
+                <a class="btn btn-default" href="<?php echo $this->url(
                         array('action' => 'edit'
                             , 'id' => $entry->getId()
                         ), true
