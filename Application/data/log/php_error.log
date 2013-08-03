@@ -665,3 +665,4 @@ Stack trace:
 [03-Aug-2013 20:01:35 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class User-groupsController not found!
 [03-Aug-2013 20:46:06 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class User-groupsController not found!
 [03-Aug-2013 20:46:11 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class GrantController not found!
+[03-Aug-2013 20:48:29 UTC] PHP Fatal error:  Call to a member function getId() on a non-object in /Users/ricoschulz/www/rbmvc/template/views/user/edit.phtml on line 3
