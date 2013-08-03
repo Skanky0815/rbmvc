@@ -138,7 +138,7 @@ class View {
             $path = $includePath;
         }
         
-        if (file_exists(APPLICATION_DIR . $path)) {
+        if (file_exists(ROOT_DIR . $path)) {
             ob_start();
             include $path;
             $template = ob_get_contents();
@@ -227,15 +227,15 @@ class View {
         $actionName = $this->params['action'];
         
         $jsPath = $path . $controllerName . '/' . $actionName;
-        if (!file_exists(APPLICATION_DIR . '/public' . $jsPath . '.js')) {
+        if (!file_exists(ROOT_DIR . '/public' . $jsPath . '.js')) {
             $jsPath = $path . $controllerName . '/' . 'index';
         }
         
-        if (!file_exists(APPLICATION_DIR. '/public' . $jsPath . '.js')) {
+        if (!file_exists(ROOT_DIR. '/public' . $jsPath . '.js')) {
             $jsPath = $this->jsAppPath . 'index'; 
         }
         
-        if (file_exists(APPLICATION_DIR . '/public' . $jsPath . '.js')) {
+        if (file_exists(ROOT_DIR . '/public' . $jsPath . '.js')) {
             $js = '<script data-main="' . $jsPath . '" src="/js/lib/require-jquery.js"></script>';
             $this->assign('js', $js);
         }

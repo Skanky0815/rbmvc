@@ -27,7 +27,7 @@ class Bootstrap {
      */
     public function run(array $config) {
         Session::start();
-        
+
         $this->config = $config;
         
         $this->setupLogging();

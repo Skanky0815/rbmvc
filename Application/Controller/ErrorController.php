@@ -1,7 +1,7 @@
 <?php
 namespace RBMVC\Controller;
 
-use RBMVC\Core\Controller\AbstractController;
+use Application\Controller\AbstractController;
 
 class ErrorController extends AbstractController {
     

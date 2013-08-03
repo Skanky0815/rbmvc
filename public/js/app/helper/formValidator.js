@@ -8,7 +8,7 @@ define([
     _.$form = null;
 
     pub.init = function() {
-        console.log('Form-Validator loaded!');
+        console.log('Forms-Validator loaded!');
 
         _.$form = $('form');
         

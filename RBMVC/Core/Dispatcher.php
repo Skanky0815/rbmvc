@@ -23,7 +23,7 @@ class Dispatcher {
      */
     public function setupController() {
         $controllerName = ucfirst($this->request->getParam('controller'));
-        $controllerStr = sprintf('\RBMVC\Controller\%sController', $controllerName);
+        $controllerStr = sprintf('\Application\Controller\%sController', $controllerName);
         
         $controller = null;
         $isClassError = false;

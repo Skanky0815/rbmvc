@@ -1,7 +1,8 @@
 <?php 
-define('APPLICATION_DIR', '../');
+define('ROOT_DIR', '../');
+define('APPLICATION_DIR', ROOT_DIR . 'Application/');
 
-set_include_path(APPLICATION_DIR);
+set_include_path(ROOT_DIR);
 spl_autoload_extensions('.php');
 spl_autoload_register();
 

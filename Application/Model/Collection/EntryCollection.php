@@ -1,7 +1,8 @@
 <?php
-namespace RBMVC\Core\Model\Collection;
+namespace Application\Model\Collection;
 
-use RBMVC\Core\Model\Entry;
+use Application\Model\Entry;
+use RBMVC\Core\Model\Collection\AbstractCollection;
 
 class EntryCollection extends AbstractCollection {
     

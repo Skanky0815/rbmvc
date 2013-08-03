@@ -1,11 +1,11 @@
 <?php
-namespace RBMVC\Controller;
+namespace Application\Controller;
 
-use RBMVC\Core\Controller\AbstractController;
-use RBMVC\Core\Model\User;
+use Application\Controller\AbstractController;
+use Application\Model\User;
 use RBMVC\Core\Utilities\Session;
 use RBMVC\Core\Utilities\SystemMessage;
-use RBMVC\Core\Forms\LoginForm;
+use Application\Forms\LoginForm;
 
 class AuthController extends AbstractController {
     

@@ -101,6 +101,27 @@ abstract class AbstractModel {
         }
         return $array;
     }
+
+    public final function toArrayForSave() {
+        $reflectionClass = new \ReflectionClass($this);
+        $properties = $reflectionClass->getProperties();
+        $array = array();
+        /* @var $property \ReflectionProperty */
+        foreach ($properties as $property) {
+            $isColumn = preg_match("/@column(.*)(\\r\\n|\\r|\\n)/U", $property->getDocComment());
+            if ((bool) !$isColumn) {
+                continue;
+            }
+
+            $methodName = 'get' . ucfirst($property->getName());
+            if ($reflectionClass->hasMethod($methodName)) {
+                $camelCaseToUnderscore = new CamelCaseToUnderscore();
+                $key = $camelCaseToUnderscore->convert($property->getName());
+                $array[$key] = $this->{$methodName}();
+            }
+        }
+        return $array;
+    }
     
     /**
      * @param array $modelData

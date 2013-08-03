@@ -22,11 +22,6 @@ abstract class AbstractController {
     protected $view;
 
     /**
-     * @var array
-     */
-    protected $user;
-
-    /**
      *
      * @var ActionHelperFactory
      */
@@ -39,25 +34,6 @@ abstract class AbstractController {
         $this->view->assign('controller', $this->request->getParam('controller'));
         $this->view->assign('action', $this->request->getParam('action'));
 
-        $this->setUser();
-    }
-
-    /**
-     * @TODO outsource this into a auth setup class
-     * @return void
-     */
-    public function setUser() {
-        $session = new Session('user');
-        $userData = $session->user;
-
-        if (!is_array($userData)) {
-            return;
-        }
-
-        $user = new User();
-        $user->fillModelByArray($userData);
-        $this->user = $user;
-        $this->view->assign('user', $this->user);
     }
     
     /**

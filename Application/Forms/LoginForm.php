@@ -1,5 +1,5 @@
 <?php
-namespace RBMVC\Core\Forms;
+namespace Application\Forms;
 
 use RBMVC\Core\Utilities\Form\Form;
 use RBMVC\Core\Utilities\Form\Validators\Word;

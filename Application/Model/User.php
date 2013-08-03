@@ -1,5 +1,7 @@
 <?php
-namespace RBMVC\Core\Model;
+namespace Application\Model;
+
+use RBMVC\Core\Model\AbstractModel;
 
 class User extends AbstractModel {
         

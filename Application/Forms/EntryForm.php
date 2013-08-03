@@ -1,5 +1,5 @@
 <?php
-namespace RBMVC\Core\Forms;
+namespace Application\Forms;
 
 use RBMVC\Core\Utilities\Form\Elements\HiddenElement;
 use RBMVC\Core\Utilities\Form\Form;

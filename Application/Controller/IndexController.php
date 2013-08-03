@@ -1,18 +1,18 @@
 <?php
-namespace RBMVC\Controller;
+namespace Application\Controller;
 
-use RBMVC\Core\Controller\AbstractController;
-use RBMVC\Core\Forms\EntryForm;
+use Application\Controller\AbstractController;
 use RBMVC\Core\Utilities\SystemMessage;
+use RBMVC\Core\Utilities\Session;
 
 class IndexController extends AbstractController {
     
     public function testAction() {
         $params = $this->request->getPostParams();
         
-        $session = new \RBMVC\Core\Utilities\Session(('user'));
+        $session = new Session(('user'));
         error_log(__METHOD__.'user ::> '.print_r($session->user, 1));
-        
+
         $form = new EntryForm($params);
         if ($this->request->isPost()) {
             $systemMessage = new SystemMessage(SystemMessage::ERROR);
@@ -25,7 +25,7 @@ class IndexController extends AbstractController {
             $this->addSystemMessage($systemMessage);
         }
         
-        $this->view->form = $form;
+        $this->view->assign('form', $form);
     }
     
 }

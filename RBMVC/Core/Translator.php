@@ -27,10 +27,7 @@ class Translator {
         }
         return self::$instance;
     }
-    
-    /**
-     * @return void
-     */
+
     private function __construct() {
         $this->texts = array();
     }

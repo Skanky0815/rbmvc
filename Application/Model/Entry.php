@@ -1,10 +1,13 @@
 <?php
-namespace RBMVC\Core\Model;
+namespace Application\Model;
+
+use RBMVC\Core\Model\AbstractModel;
 
 class Entry extends AbstractModel {
     
     /**
      * @var int
+     * @column user_id
      */
     private $userId;
 
@@ -14,17 +17,20 @@ class Entry extends AbstractModel {
     private $user;
 
     /**
-     * @var string 
+     * @var string
+     * @column date
      */
     private $date;
         
     /**
-     * @var string 
+     * @var string
+     * @column title
      */
     private $title;
         
     /**
-     * @var string 
+     * @var string
+     * @column text
      */
     private $text;
     
@@ -146,7 +152,7 @@ class Entry extends AbstractModel {
             $query->setParams($param);
         } else {
             $query->update();
-            $query->set($this->toArray());
+            $query->set($this->toArrayForSave());
             $query->where(array('id' => $this->id));
         }
 
@@ -159,4 +165,5 @@ class Entry extends AbstractModel {
         $this->init();
         return $this;
     }
+
 }

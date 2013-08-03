@@ -1,9 +1,9 @@
 <?php 
-namespace RBMVC\Controller;
+namespace Application\Controller;
 
-use RBMVC\Core\Model\Entry;
-use RBMVC\Core\Controller\AbstractController;
-use RBMVC\Core\Model\Collection\EntryCollection;
+use Application\Model\Entry;
+use Application\Controller\AbstractController;
+use Application\Model\Collection\EntryCollection;
 use RBMVC\Core\Utilities\Session;
 
 class EntryController extends AbstractController {
@@ -27,7 +27,7 @@ class EntryController extends AbstractController {
         $user = $session->user;
         $entry->setUserId($user['id']);
 
-        $entry = $this->saveModel($entry, 'RBMVC\Core\Forms\EntryForm');
+        $entry = $this->saveModel($entry, 'Application\Forms\EntryForm');
         $this->view->assign('entry', $entry);
     }
     

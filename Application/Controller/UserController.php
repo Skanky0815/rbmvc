@@ -1,12 +1,11 @@
 <?php
-namespace RBMVC\Controller;
+namespace Application\Controller;
 
-use RBMVC\Core\Controller\AbstractController;
+use Application\Controller\AbstractController;
 
 class UserController extends AbstractController {
 
     public function indexAction() {
-
 
     }
 
@@ -22,8 +21,8 @@ class UserController extends AbstractController {
            return;
        }
        
-       $parmas = $this->request->getParams();
-       if ($parmas['password'] != $parmas['password2']) {
+       $params = $this->request->getParams();
+       if ($params['password'] != $params['password2']) {
 
        }
    }
