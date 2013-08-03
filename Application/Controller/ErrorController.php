@@ -1,5 +1,5 @@
 <?php
-namespace RBMVC\Controller;
+namespace Application\Controller;
 
 use Application\Controller\AbstractController;
 

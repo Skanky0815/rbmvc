@@ -1,5 +1,7 @@
 <?php
-namespace RBMVC\Core\View\Helper;
+namespace Application\ViewHelper;
+
+use RBMVC\Core\View\Helper\AbstractViewHelper;
 
 class DateFormater extends AbstractViewHelper {
     

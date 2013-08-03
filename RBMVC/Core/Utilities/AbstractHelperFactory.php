@@ -2,6 +2,7 @@
 namespace RBMVC\Core\Utilities;
 
 use RBMVC\Core\View\View;
+use RBMVC\Core\ClassLoader;
 use RBMVC\Core\Request;
 
 abstract class AbstractHelperFactory {
@@ -20,6 +21,11 @@ abstract class AbstractHelperFactory {
      * @var array
      */
     protected $helper = array();
+
+    /**
+     * @var \RBMVC\Core\ClassLoader
+     */
+    protected $classLoader;
     
     /**
      * @param \RBMVC\Core\View\View $view
@@ -52,7 +58,23 @@ abstract class AbstractHelperFactory {
     public function getRequest() {
         return $this->request;
     }
-    
+
+    /**
+     * @param \RBMVC\Core\ClassLoader $classLoader
+     * @return \RBMVC\Core\Utilities\AbstractHelperFactory
+     */
+    public function setClassLoader(ClassLoader $classLoader) {
+        $this->classLoader = $classLoader;
+        return $this;
+    }
+
+    /**
+     * @return \RBMVC\Core\ClassLoader
+     */
+    public function getClassLoader() {
+        return $this->classLoader;
+    }
+
     /**
      * @param string $name
      * @param array $args
@@ -66,13 +88,13 @@ abstract class AbstractHelperFactory {
     
     /**
      * @param string $name
-     * @return \RBMVC\Core\View\Helper\AbstractHelper
+     * @return \RBMVC\Core\Utilities\AbstractHelper
      */
     protected abstract function loadHelper($name);
         
     /**
      * @param string $name
-     * @return \RBMVC\Core\View\Helper\AbstractHelper
+     * @return \RBMVC\Core\Utilities\AbstractHelper
      */
     public function getHelper($name) {
         if (array_key_exists($name, $this->helper)) {

@@ -1,4 +1,8 @@
-<?php 
+<?php
+
+namespace Application;
+
+use \PDO;
 
 return array(
     'database' => array(
@@ -15,5 +19,9 @@ return array(
     ),
     'language' => array(
         'default_language' => 'de',
+    ),
+    'class_paths' => array(
+        'controller'    => __NAMESPACE__ . '\\Controller\\',
+        'view_helper'   => __NAMESPACE__ . '\\ViewHelper\\',
     ),
 );

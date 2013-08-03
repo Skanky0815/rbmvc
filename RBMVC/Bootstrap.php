@@ -1,6 +1,7 @@
 <?php
 namespace RBMVC;
 
+use RBMVC\Core\ClassLoader;
 use RBMVC\Core\DB\DB;
 use RBMVC\Core\View\View;
 use RBMVC\Core\View\ViewHelperFactory;
@@ -20,7 +21,16 @@ class Bootstrap {
      * @var array
      */
     private $config;
-    
+
+    /**
+     * @var ClassLoader
+     */
+    private $classLoader;
+
+    public function __construct(ClassLoader $classLoader) {
+        $this->classLoader = $classLoader;
+    }
+
     /**
      * @param array $config
      * @return string
@@ -31,11 +41,13 @@ class Bootstrap {
         $this->config = $config;
         
         $this->setupLogging();
+        $this->setupClassLoader();
         $this->setupTranslation();
         $this->setupDB();
         $this->request = new Request();
         $dispatcher = new Dispatcher();
         $dispatcher->setRequest($this->request);
+        $dispatcher->setClassLoader($this->classLoader);
         $view = $this->setupView();
         $dispatcher->setView($view);
         $dispatcher->setupController();
@@ -48,6 +60,19 @@ class Bootstrap {
      */
     private function setupLogging() {
         ini_set('error_log', APPLICATION_DIR . 'data/log/php_error.log');
+    }
+
+    private function setupClassLoader() {
+        if (isset($this->config['class_paths']) && is_array($this->config['class_paths'])) {
+            $this->classLoader->addNamespaces($this->config['class_paths']);
+        }
+
+        $defaults = array(
+            __NAMESPACE__ . '\\Core\\View\\Helper\\',
+            __NAMESPACE__ . '\\Core\\Controller\\Helper\\',
+        );
+
+        $this->classLoader->addNamespaces($defaults);
     }
     
     /**
@@ -84,6 +109,7 @@ class Bootstrap {
         $view->setParams($this->request->getParams());
         
         $viewHelperFactory = new ViewHelperFactory();
+        $viewHelperFactory->setClassLoader($this->classLoader);
         $viewHelperFactory->setView($view);
         $viewHelperFactory->setRequest($this->request);
         $view->setViewHelperFactory($viewHelperFactory);

@@ -223,3 +223,235 @@
 
 [03-Aug-2013 08:42:33 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in /Users/ricoschulz/www/rbmvc/rbmvc/core/db/db.php on line 73
 [03-Aug-2013 08:43:26 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in /Users/ricoschulz/www/rbmvc/rbmvc/core/db/db.php on line 73
+[03-Aug-2013 09:02:51 UTC] PHP Warning:  include(template/views/index/index.phtml): failed to open stream: No such file or directory in /Users/ricoschulz/www/rbmvc/rbmvc/core/view/view.php on line 143
+[03-Aug-2013 09:02:51 UTC] PHP Warning:  include(template/views/index/index.phtml): failed to open stream: No such file or directory in /Users/ricoschulz/www/rbmvc/rbmvc/core/view/view.php on line 143
+[03-Aug-2013 09:02:51 UTC] PHP Warning:  include(): Failed opening 'template/views/index/index.phtml' for inclusion (include_path='.:/Applications/MAMP/bin/php/php5.4.4/lib/php') in /Users/ricoschulz/www/rbmvc/rbmvc/core/view/view.php on line 143
+[03-Aug-2013 09:02:51 UTC] PHP Warning:  include_once(template/layout/layout.phtml): failed to open stream: No such file or directory in /Users/ricoschulz/www/rbmvc/rbmvc/core/view/view.php on line 159
+[03-Aug-2013 09:02:51 UTC] PHP Warning:  include_once(): Failed opening 'template/layout/layout.phtml' for inclusion (include_path='.:/Applications/MAMP/bin/php/php5.4.4/lib/php') in /Users/ricoschulz/www/rbmvc/rbmvc/core/view/view.php on line 159
+[03-Aug-2013 10:13:26 UTC] PHP Warning:  require_once(../RBMVC/Core/View/ucfirst.php): failed to open stream: No such file or directory in /Users/ricoschulz/www/rbmvc/public/index.php on line 48
+[03-Aug-2013 10:13:26 UTC] PHP Fatal error:  require_once(): Failed opening required '../RBMVC/Core/View/ucfirst.php' (include_path='../') in /Users/ricoschulz/www/rbmvc/public/index.php on line 48
+[03-Aug-2013 10:13:54 UTC] PHP Fatal error:  Class 'Navigation' not found in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/ViewHelperFactory.php on line 11
+[03-Aug-2013 10:14:24 UTC] PHP Fatal error:  Class 'Navigation' not found in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/ViewHelperFactory.php on line 11
+[03-Aug-2013 10:16:37 UTC] PHP Fatal error:  Class 'Navigation' not found in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/ViewHelperFactory.php on line 12
+[03-Aug-2013 10:20:32 UTC] PHP Fatal error:  Class 'Navigation' not found in /Users/ricoschulz/www/rbmvc/public/index.php on line 31
+[03-Aug-2013 10:54:36 UTC] ClassLoader::getClassNamespace::> Class not found: ../RBMVC\Core\Controller\Helper\../RBMVC\Core\View\Helper\Application\ViewHelper\Application\Controller\Navigation
+[03-Aug-2013 10:54:36 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'Class ../RBMVC\Core\Controller\Helper\../RBMVC\Core\View\Helper\Application\ViewHelper\Application\Controller\Navigation not found!' in /Users/ricoschulz/www/rbmvc/public/index.php:50
+Stack trace:
+#0 /Users/ricoschulz/www/rbmvc/public/index.php(66): ClassLoader->getClassNamespace('Navigation')
+#1 /Users/ricoschulz/www/rbmvc/public/index.php(30): ClassLoader->load('Navigation')
+#2 /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/ViewHelperFactory.php(11): ClassLoader->getClassInstance('Navigation')
+#3 /Users/ricoschulz/www/rbmvc/RBMVC/Core/Utilities/AbstractHelperFactory.php(103): RBMVC\Core\View\ViewHelperFactory->loadHelper('navigation')
+#4 /Users/ricoschulz/www/rbmvc/RBMVC/Core/Utilities/AbstractHelperFactory.php(84): RBMVC\Core\Utilities\AbstractHelperFactory->getHelper('navigation')
+#5 /Users/ricoschulz/www/rbmvc/rbmvc/core/view/view.php(213): RBMVC\Core\Utilities\AbstractHelperFactory->callFunction('navigation', Array)
+#6 /Users/ricoschulz/www/rbmvc/template/layout in /Users/ricoschulz/www/rbmvc/public/index.php on line 50
+[03-Aug-2013 10:55:27 UTC] ClassLoader::getClassNamespace::> Class not found: ../RBMVC\Core\Controller\Helper\../RBMVC\Core\View\Helper\Application\ViewHelper\Application\Controller\Navigation
+[03-Aug-2013 10:55:27 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'Class ../RBMVC\Core\Controller\Helper\../RBMVC\Core\View\Helper\Application\ViewHelper\Application\Controller\Navigation not found!' in /Users/ricoschulz/www/rbmvc/public/index.php:50
+Stack trace:
+#0 /Users/ricoschulz/www/rbmvc/public/index.php(64): ClassLoader->getClassNamespace('Navigation')
+#1 /Users/ricoschulz/www/rbmvc/public/index.php(30): ClassLoader->load('Navigation')
+#2 /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/ViewHelperFactory.php(11): ClassLoader->getClassInstance('Navigation')
+#3 /Users/ricoschulz/www/rbmvc/RBMVC/Core/Utilities/AbstractHelperFactory.php(103): RBMVC\Core\View\ViewHelperFactory->loadHelper('navigation')
+#4 /Users/ricoschulz/www/rbmvc/RBMVC/Core/Utilities/AbstractHelperFactory.php(84): RBMVC\Core\Utilities\AbstractHelperFactory->getHelper('navigation')
+#5 /Users/ricoschulz/www/rbmvc/rbmvc/core/view/view.php(213): RBMVC\Core\Utilities\AbstractHelperFactory->callFunction('navigation', Array)
+#6 /Users/ricoschulz/www/rbmvc/template/layout in /Users/ricoschulz/www/rbmvc/public/index.php on line 50
+[03-Aug-2013 10:55:35 UTC] ClassLoader::getClassNamespace::> Class not found: ../RBMVC\Core\Controller\Helper\../RBMVC\Core\View\Helper\Application\ViewHelper\Application\Controller\Navigation
+[03-Aug-2013 10:55:35 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'Class ../RBMVC\Core\Controller\Helper\../RBMVC\Core\View\Helper\Application\ViewHelper\Application\Controller\Navigation not found!' in /Users/ricoschulz/www/rbmvc/public/index.php:50
+Stack trace:
+#0 /Users/ricoschulz/www/rbmvc/public/index.php(64): ClassLoader->getClassNamespace('Navigation')
+#1 /Users/ricoschulz/www/rbmvc/public/index.php(30): ClassLoader->load('Navigation')
+#2 /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/ViewHelperFactory.php(11): ClassLoader->getClassInstance('Navigation')
+#3 /Users/ricoschulz/www/rbmvc/RBMVC/Core/Utilities/AbstractHelperFactory.php(103): RBMVC\Core\View\ViewHelperFactory->loadHelper('navigation')
+#4 /Users/ricoschulz/www/rbmvc/RBMVC/Core/Utilities/AbstractHelperFactory.php(84): RBMVC\Core\Utilities\AbstractHelperFactory->getHelper('navigation')
+#5 /Users/ricoschulz/www/rbmvc/rbmvc/core/view/view.php(213): RBMVC\Core\Utilities\AbstractHelperFactory->callFunction('navigation', Array)
+#6 /Users/ricoschulz/www/rbmvc/template/layout in /Users/ricoschulz/www/rbmvc/public/index.php on line 50
+[03-Aug-2013 10:57:46 UTC] ClassLoader::getClassNamespace::> Class not found: RBMVC\Core\Controller\Helper\RBMVC\Core\View\Helper\Application\ViewHelper\Application\Controller\Navigation
+[03-Aug-2013 10:57:46 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'Class RBMVC\Core\Controller\Helper\RBMVC\Core\View\Helper\Application\ViewHelper\Application\Controller\Navigation not found!' in /Users/ricoschulz/www/rbmvc/public/index.php:50
+Stack trace:
+#0 /Users/ricoschulz/www/rbmvc/public/index.php(64): ClassLoader->getClassNamespace('Navigation')
+#1 /Users/ricoschulz/www/rbmvc/public/index.php(30): ClassLoader->load('Navigation')
+#2 /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/ViewHelperFactory.php(11): ClassLoader->getClassInstance('Navigation')
+#3 /Users/ricoschulz/www/rbmvc/RBMVC/Core/Utilities/AbstractHelperFactory.php(103): RBMVC\Core\View\ViewHelperFactory->loadHelper('navigation')
+#4 /Users/ricoschulz/www/rbmvc/RBMVC/Core/Utilities/AbstractHelperFactory.php(84): RBMVC\Core\Utilities\AbstractHelperFactory->getHelper('navigation')
+#5 /Users/ricoschulz/www/rbmvc/rbmvc/core/view/view.php(213): RBMVC\Core\Utilities\AbstractHelperFactory->callFunction('navigation', Array)
+#6 /Users/ricoschulz/www/rbmvc/template/layout/layou in /Users/ricoschulz/www/rbmvc/public/index.php on line 50
+[03-Aug-2013 10:58:03 UTC] ClassLoader::getClassNamespace::> Class not found: RBMVC\Core\Controller\Helper\RBMVC\Core\View\Helper\Application\ViewHelper\Application\Controller\Navigation
+[03-Aug-2013 10:58:03 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'Class RBMVC\Core\Controller\Helper\RBMVC\Core\View\Helper\Application\ViewHelper\Application\Controller\Navigation not found!' in /Users/ricoschulz/www/rbmvc/public/index.php:50
+Stack trace:
+#0 /Users/ricoschulz/www/rbmvc/public/index.php(64): ClassLoader->getClassNamespace('Navigation')
+#1 /Users/ricoschulz/www/rbmvc/public/index.php(30): ClassLoader->load('Navigation')
+#2 /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/ViewHelperFactory.php(11): ClassLoader->getClassInstance('Navigation')
+#3 /Users/ricoschulz/www/rbmvc/RBMVC/Core/Utilities/AbstractHelperFactory.php(103): RBMVC\Core\View\ViewHelperFactory->loadHelper('navigation')
+#4 /Users/ricoschulz/www/rbmvc/RBMVC/Core/Utilities/AbstractHelperFactory.php(84): RBMVC\Core\Utilities\AbstractHelperFactory->getHelper('navigation')
+#5 /Users/ricoschulz/www/rbmvc/rbmvc/core/view/view.php(213): RBMVC\Core\Utilities\AbstractHelperFactory->callFunction('navigation', Array)
+#6 /Users/ricoschulz/www/rbmvc/template/layout/layou in /Users/ricoschulz/www/rbmvc/public/index.php on line 50
+[03-Aug-2013 11:01:46 UTC] PHP Fatal error:  Class name must be a valid object or a string in /Users/ricoschulz/www/rbmvc/public/index.php on line 31
+[03-Aug-2013 11:02:03 UTC] PHP Fatal error:  Class name must be a valid object or a string in /Users/ricoschulz/www/rbmvc/public/index.php on line 31
+[03-Aug-2013 11:02:19 UTC] PHP Fatal error:  Class name must be a valid object or a string in /Users/ricoschulz/www/rbmvc/public/index.php on line 34
+[03-Aug-2013 11:02:20 UTC] PHP Fatal error:  Class name must be a valid object or a string in /Users/ricoschulz/www/rbmvc/public/index.php on line 34
+[03-Aug-2013 11:03:27 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in /Users/ricoschulz/www/rbmvc/RBMVC/Core/DB/DB.php on line 75
+[03-Aug-2013 11:13:58 UTC] PHP Fatal error:  Call to a member function getClassInstance() on a non-object in /Users/ricoschulz/www/rbmvc/RBMVC/Core/Dispatcher.php on line 34
+[03-Aug-2013 11:14:48 UTC] PHP Fatal error:  Class 'Application\Controller\ErrorController' not found in /Users/ricoschulz/www/rbmvc/public/index.php on line 31
+[03-Aug-2013 11:15:22 UTC] ClassLoader::getClassNamespace::> Class not found: QwehController
+[03-Aug-2013 11:15:22 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'Class QwehController not found!' in /Users/ricoschulz/www/rbmvc/public/index.php:47
+Stack trace:
+#0 /Users/ricoschulz/www/rbmvc/public/index.php(61): ClassLoader->getClassNamespace('QwehController')
+#1 /Users/ricoschulz/www/rbmvc/public/index.php(30): ClassLoader->load('QwehController')
+#2 /Users/ricoschulz/www/rbmvc/RBMVC/Core/Dispatcher.php(34): ClassLoader->getClassInstance('QwehController')
+#3 /Users/ricoschulz/www/rbmvc/RBMVC/Bootstrap.php(52): RBMVC\Core\Dispatcher->setupController()
+#4 /Users/ricoschulz/www/rbmvc/public/index.php(73): RBMVC\Bootstrap->run(Array)
+#5 {main}
+  thrown in /Users/ricoschulz/www/rbmvc/public/index.php on line 47
+[03-Aug-2013 11:17:53 UTC] ClassLoader::getClassNamespace::> Class not found: QwehController
+[03-Aug-2013 11:17:53 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'Class QwehController not found!' in /Users/ricoschulz/www/rbmvc/public/index.php:51
+Stack trace:
+#0 /Users/ricoschulz/www/rbmvc/public/index.php(65): ClassLoader->getClassNamespace('QwehController')
+#1 /Users/ricoschulz/www/rbmvc/public/index.php(31): ClassLoader->load('QwehController')
+#2 /Users/ricoschulz/www/rbmvc/RBMVC/Core/Dispatcher.php(34): ClassLoader->getClassInstance('QwehController')
+#3 /Users/ricoschulz/www/rbmvc/RBMVC/Bootstrap.php(52): RBMVC\Core\Dispatcher->setupController()
+#4 /Users/ricoschulz/www/rbmvc/public/index.php(77): RBMVC\Bootstrap->run(Array)
+#5 {main}
+  thrown in /Users/ricoschulz/www/rbmvc/public/index.php on line 51
+[03-Aug-2013 11:18:42 UTC] ClassLoader::getClassNamespace::> Class not found: QwehController
+[03-Aug-2013 11:18:42 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'Class QwehController not found!' in /Users/ricoschulz/www/rbmvc/public/index.php:51
+Stack trace:
+#0 /Users/ricoschulz/www/rbmvc/public/index.php(66): ClassLoader->getClassNamespace('QwehController')
+#1 /Users/ricoschulz/www/rbmvc/public/index.php(31): ClassLoader->load('QwehController')
+#2 /Users/ricoschulz/www/rbmvc/RBMVC/Core/Dispatcher.php(34): ClassLoader->getClassInstance('QwehController')
+#3 /Users/ricoschulz/www/rbmvc/RBMVC/Bootstrap.php(52): RBMVC\Core\Dispatcher->setupController()
+#4 /Users/ricoschulz/www/rbmvc/public/index.php(81): RBMVC\Bootstrap->run(Array)
+#5 {main}
+  thrown in /Users/ricoschulz/www/rbmvc/public/index.php on line 51
+[03-Aug-2013 11:19:17 UTC] ClassLoader::getClassNamespace::> Class not found: QwehController
+[03-Aug-2013 11:19:17 UTC] RBMVC\Core\Dispatcher::setupController::> Class QwehController not found!
+[03-Aug-2013 11:19:17 UTC] ClassLoader::getClassNamespace::> Class not found: RBMVC\Controller\IndexController
+[03-Aug-2013 11:19:17 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'Class RBMVC\Controller\IndexController not found!' in /Users/ricoschulz/www/rbmvc/public/index.php:51
+Stack trace:
+#0 /Users/ricoschulz/www/rbmvc/public/index.php(66): ClassLoader->getClassNamespace('RBMVC\Controlle...')
+#1 [internal function]: ClassLoader->load('RBMVC\Controlle...')
+#2 /Users/ricoschulz/www/rbmvc/RBMVC/Core/Dispatcher.php(37): spl_autoload_call('RBMVC\Controlle...')
+#3 /Users/ricoschulz/www/rbmvc/RBMVC/Bootstrap.php(52): RBMVC\Core\Dispatcher->setupController()
+#4 /Users/ricoschulz/www/rbmvc/public/index.php(81): RBMVC\Bootstrap->run(Array)
+#5 {main}
+  thrown in /Users/ricoschulz/www/rbmvc/public/index.php on line 51
+[03-Aug-2013 13:57:47 UTC] RBMVC\Core\Dispatcher::setupController::> Class QwehController not found!
+[03-Aug-2013 13:57:47 UTC] PHP Fatal error:  Uncaught exception 'RBMVC\Core\Utilities\Exception\ClassLoadingException' with message 'Class RBMVC\Controller\IndexController not found!' in /Users/ricoschulz/www/rbmvc/public/index.php:62
+Stack trace:
+#0 /Users/ricoschulz/www/rbmvc/public/index.php(83): ClassLoader->getClassNamespace('RBMVC\Controlle...')
+#1 [internal function]: ClassLoader->load('RBMVC\Controlle...')
+#2 /Users/ricoschulz/www/rbmvc/RBMVC/Core/Dispatcher.php(37): spl_autoload_call('RBMVC\Controlle...')
+#3 /Users/ricoschulz/www/rbmvc/RBMVC/Bootstrap.php(52): RBMVC\Core\Dispatcher->setupController()
+#4 /Users/ricoschulz/www/rbmvc/public/index.php(97): RBMVC\Bootstrap->run(Array)
+#5 {main}
+  thrown in /Users/ricoschulz/www/rbmvc/public/index.php on line 62
+[03-Aug-2013 13:58:49 UTC] RBMVC\Core\Dispatcher::setupController::> Class QwehController not found!
+[03-Aug-2013 13:58:49 UTC] PHP Fatal error:  Uncaught exception 'RBMVC\Core\Utilities\Exception\ClassLoadingException' with message 'Class RBMVC\Controller\IndexController not found!' in /Users/ricoschulz/www/rbmvc/public/index.php:62
+Stack trace:
+#0 /Users/ricoschulz/www/rbmvc/public/index.php(83): ClassLoader->getClassNamespace('RBMVC\Controlle...')
+#1 [internal function]: ClassLoader->load('RBMVC\Controlle...')
+#2 /Users/ricoschulz/www/rbmvc/RBMVC/Core/Dispatcher.php(37): spl_autoload_call('RBMVC\Controlle...')
+#3 /Users/ricoschulz/www/rbmvc/RBMVC/Bootstrap.php(52): RBMVC\Core\Dispatcher->setupController()
+#4 /Users/ricoschulz/www/rbmvc/public/index.php(97): RBMVC\Bootstrap->run(Array)
+#5 {main}
+  thrown in /Users/ricoschulz/www/rbmvc/public/index.php on line 62
+[03-Aug-2013 13:59:31 UTC] PHP Fatal error:  Uncaught exception 'RBMVC\Core\Utilities\Exception\ClassLoadingException' with message 'Class RBMVC\Controller\IndexController not found!' in /Users/ricoschulz/www/rbmvc/public/index.php:62
+Stack trace:
+#0 /Users/ricoschulz/www/rbmvc/public/index.php(83): ClassLoader->getClassNamespace('RBMVC\Controlle...')
+#1 [internal function]: ClassLoader->load('RBMVC\Controlle...')
+#2 /Users/ricoschulz/www/rbmvc/RBMVC/Core/Dispatcher.php(36): spl_autoload_call('RBMVC\Controlle...')
+#3 /Users/ricoschulz/www/rbmvc/RBMVC/Bootstrap.php(52): RBMVC\Core\Dispatcher->setupController()
+#4 /Users/ricoschulz/www/rbmvc/public/index.php(97): RBMVC\Bootstrap->run(Array)
+#5 {main}
+  thrown in /Users/ricoschulz/www/rbmvc/public/index.php on line 62
+[03-Aug-2013 13:59:53 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::__construct::> Class QwehController not found!
+[03-Aug-2013 13:59:53 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::__construct::> Class RBMVC\Controller\IndexController not found!
+[03-Aug-2013 13:59:53 UTC] PHP Fatal error:  Uncaught exception 'RBMVC\Core\Utilities\Exception\ClassLoadingException' with message 'Class RBMVC\Controller\IndexController not found!' in /Users/ricoschulz/www/rbmvc/public/index.php:62
+Stack trace:
+#0 /Users/ricoschulz/www/rbmvc/public/index.php(83): ClassLoader->getClassNamespace('RBMVC\Controlle...')
+#1 [internal function]: ClassLoader->load('RBMVC\Controlle...')
+#2 /Users/ricoschulz/www/rbmvc/RBMVC/Core/Dispatcher.php(36): spl_autoload_call('RBMVC\Controlle...')
+#3 /Users/ricoschulz/www/rbmvc/RBMVC/Bootstrap.php(52): RBMVC\Core\Dispatcher->setupController()
+#4 /Users/ricoschulz/www/rbmvc/public/index.php(97): RBMVC\Bootstrap->run(Array)
+#5 {main}
+  thrown in /Users/ricoschulz/www/rbmvc/public/index.php on line 62
+[03-Aug-2013 14:08:01 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::__construct::> Class QwehController not found!
+[03-Aug-2013 14:08:01 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::__construct::> Class RBMVC\Controller\IndexController not found!
+[03-Aug-2013 14:08:01 UTC] PHP Fatal error:  Uncaught exception 'RBMVC\Core\Utilities\Exception\ClassLoadingException' with message 'Class RBMVC\Controller\IndexController not found!' in /Users/ricoschulz/www/rbmvc/public/index.php:62
+Stack trace:
+#0 /Users/ricoschulz/www/rbmvc/public/index.php(83): ClassLoader->getClassNamespace('RBMVC\Controlle...')
+#1 [internal function]: ClassLoader->load('RBMVC\Controlle...')
+#2 /Users/ricoschulz/www/rbmvc/RBMVC/Core/Dispatcher.php(36): spl_autoload_call('RBMVC\Controlle...')
+#3 /Users/ricoschulz/www/rbmvc/RBMVC/Bootstrap.php(52): RBMVC\Core\Dispatcher->setupController()
+#4 /Users/ricoschulz/www/rbmvc/public/index.php(97): RBMVC\Bootstrap->run(Array)
+#5 {main}
+  thrown in /Users/ricoschulz/www/rbmvc/public/index.php on line 62
+[03-Aug-2013 14:09:23 UTC] PHP Warning:  Missing argument 6 for RBMVC\Core\Utilities\Exception\ClassLoadingException::__construct(), called in /Users/ricoschulz/www/rbmvc/public/index.php on line 62 and defined in /Users/ricoschulz/www/rbmvc/RBMVC/Core/Utilities/Exception/ClassLoadingException.php on line 15
+[03-Aug-2013 14:09:23 UTC] PHP Notice:  Undefined variable: previous in /Users/ricoschulz/www/rbmvc/RBMVC/Core/Utilities/Exception/ClassLoadingException.php on line 16
+[03-Aug-2013 14:09:23 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::__construct::> 
+[03-Aug-2013 14:09:23 UTC] PHP Warning:  Missing argument 6 for RBMVC\Core\Utilities\Exception\ClassLoadingException::__construct(), called in /Users/ricoschulz/www/rbmvc/public/index.php on line 62 and defined in /Users/ricoschulz/www/rbmvc/RBMVC/Core/Utilities/Exception/ClassLoadingException.php on line 15
+[03-Aug-2013 14:09:23 UTC] PHP Notice:  Undefined variable: previous in /Users/ricoschulz/www/rbmvc/RBMVC/Core/Utilities/Exception/ClassLoadingException.php on line 16
+[03-Aug-2013 14:09:23 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::__construct::> 
+[03-Aug-2013 14:09:23 UTC] PHP Fatal error:  Uncaught exception 'RBMVC\Core\Utilities\Exception\ClassLoadingException' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/Utilities/Exception/ClassLoadingException.php:16
+Stack trace:
+#0 /Users/ricoschulz/www/rbmvc/public/index.php(83): ClassLoader->getClassNamespace('RBMVC\Controlle...')
+#1 [internal function]: ClassLoader->load('RBMVC\Controlle...')
+#2 /Users/ricoschulz/www/rbmvc/RBMVC/Core/Dispatcher.php(36): spl_autoload_call('RBMVC\Controlle...')
+#3 /Users/ricoschulz/www/rbmvc/RBMVC/Bootstrap.php(52): RBMVC\Core\Dispatcher->setupController()
+#4 /Users/ricoschulz/www/rbmvc/public/index.php(97): RBMVC\Bootstrap->run(Array)
+#5 {main}
+  thrown in /Users/ricoschulz/www/rbmvc/RBMVC/Core/Utilities/Exception/ClassLoadingException.php on line 16
+[03-Aug-2013 14:22:37 UTC] PHP Warning:  Missing argument 6 for RBMVC\Core\Utilities\Exception\ClassLoadingException::__construct(), called in /Users/ricoschulz/www/rbmvc/public/index.php on line 62 and defined in /Users/ricoschulz/www/rbmvc/RBMVC/Core/Utilities/Exception/ClassLoadingException.php on line 15
+[03-Aug-2013 14:22:37 UTC] PHP Notice:  Undefined variable: previous in /Users/ricoschulz/www/rbmvc/RBMVC/Core/Utilities/Exception/ClassLoadingException.php on line 16
+[03-Aug-2013 14:22:37 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::__construct::> Class QwehController not found!
+[03-Aug-2013 14:22:37 UTC] PHP Warning:  Missing argument 6 for RBMVC\Core\Utilities\Exception\ClassLoadingException::__construct(), called in /Users/ricoschulz/www/rbmvc/public/index.php on line 62 and defined in /Users/ricoschulz/www/rbmvc/RBMVC/Core/Utilities/Exception/ClassLoadingException.php on line 15
+[03-Aug-2013 14:22:37 UTC] PHP Notice:  Undefined variable: previous in /Users/ricoschulz/www/rbmvc/RBMVC/Core/Utilities/Exception/ClassLoadingException.php on line 16
+[03-Aug-2013 14:22:37 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::__construct::> Class RBMVC\Controller\IndexController not found!
+[03-Aug-2013 14:22:37 UTC] PHP Fatal error:  Uncaught exception 'RBMVC\Core\Utilities\Exception\ClassLoadingException' with message 'Class RBMVC\Controller\IndexController not found!' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/Utilities/Exception/ClassLoadingException.php:15
+Stack trace:
+#0 /Users/ricoschulz/www/rbmvc/public/index.php(83): ClassLoader->getClassNamespace('RBMVC\Controlle...')
+#1 [internal function]: ClassLoader->load('RBMVC\Controlle...')
+#2 /Users/ricoschulz/www/rbmvc/RBMVC/Core/Dispatcher.php(36): spl_autoload_call('RBMVC\Controlle...')
+#3 /Users/ricoschulz/www/rbmvc/RBMVC/Bootstrap.php(52): RBMVC\Core\Dispatcher->setupController()
+#4 /Users/ricoschulz/www/rbmvc/public/index.php(97): RBMVC\Bootstrap->run(Array)
+#5 {main}
+  thrown in /Users/ricoschulz/www/rbmvc/RBMVC/Core/Utilities/Exception/ClassLoadingException.php on line 15
+[03-Aug-2013 14:23:19 UTC] PHP Warning:  Missing argument 6 for RBMVC\Core\Utilities\Exception\ClassLoadingException::__construct(), called in /Users/ricoschulz/www/rbmvc/public/index.php on line 62 and defined in /Users/ricoschulz/www/rbmvc/RBMVC/Core/Utilities/Exception/ClassLoadingException.php on line 15
+[03-Aug-2013 14:23:19 UTC] PHP Notice:  Undefined variable: previous in /Users/ricoschulz/www/rbmvc/RBMVC/Core/Utilities/Exception/ClassLoadingException.php on line 16
+[03-Aug-2013 14:23:19 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::__construct::> Class QwehController not found!
+[03-Aug-2013 14:23:19 UTC] PHP Warning:  Missing argument 6 for RBMVC\Core\Utilities\Exception\ClassLoadingException::__construct(), called in /Users/ricoschulz/www/rbmvc/public/index.php on line 62 and defined in /Users/ricoschulz/www/rbmvc/RBMVC/Core/Utilities/Exception/ClassLoadingException.php on line 15
+[03-Aug-2013 14:23:19 UTC] PHP Notice:  Undefined variable: previous in /Users/ricoschulz/www/rbmvc/RBMVC/Core/Utilities/Exception/ClassLoadingException.php on line 16
+[03-Aug-2013 14:23:19 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::__construct::> Class RBMVC\Controller\IndexController not found!
+[03-Aug-2013 14:23:19 UTC] PHP Fatal error:  Uncaught exception 'RBMVC\Core\Utilities\Exception\ClassLoadingException' with message 'Class RBMVC\Controller\IndexController not found!' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/Utilities/Exception/ClassLoadingException.php:15
+Stack trace:
+#0 /Users/ricoschulz/www/rbmvc/public/index.php(83): ClassLoader->getClassNamespace('RBMVC\Controlle...')
+#1 [internal function]: ClassLoader->load('RBMVC\Controlle...')
+#2 /Users/ricoschulz/www/rbmvc/RBMVC/Core/Dispatcher.php(36): spl_autoload_call('RBMVC\Controlle...')
+#3 /Users/ricoschulz/www/rbmvc/RBMVC/Bootstrap.php(52): RBMVC\Core\Dispatcher->setupController()
+#4 /Users/ricoschulz/www/rbmvc/public/index.php(97): RBMVC\Bootstrap->run(Array)
+#5 {main}
+  thrown in /Users/ricoschulz/www/rbmvc/RBMVC/Core/Utilities/Exception/ClassLoadingException.php on line 15
+[03-Aug-2013 14:24:09 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::__construct::> Class QwehController not found!
+[03-Aug-2013 14:24:09 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::__construct::> Class RBMVC\Controller\IndexController not found!
+[03-Aug-2013 14:24:09 UTC] PHP Fatal error:  Uncaught exception 'RBMVC\Core\Utilities\Exception\ClassLoadingException' with message 'Class RBMVC\Controller\IndexController not found!' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/Utilities/Exception/ClassLoadingException.php:15
+Stack trace:
+#0 /Users/ricoschulz/www/rbmvc/public/index.php(83): ClassLoader->getClassNamespace('RBMVC\Controlle...')
+#1 [internal function]: ClassLoader->load('RBMVC\Controlle...')
+#2 /Users/ricoschulz/www/rbmvc/RBMVC/Core/Dispatcher.php(36): spl_autoload_call('RBMVC\Controlle...')
+#3 /Users/ricoschulz/www/rbmvc/RBMVC/Bootstrap.php(52): RBMVC\Core\Dispatcher->setupController()
+#4 /Users/ricoschulz/www/rbmvc/public/index.php(97): RBMVC\Bootstrap->run(Array)
+#5 {main}
+  thrown in /Users/ricoschulz/www/rbmvc/RBMVC/Core/Utilities/Exception/ClassLoadingException.php on line 15
+[03-Aug-2013 14:24:16 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::__construct::> Class QwehController not found!
+[03-Aug-2013 14:24:16 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::__construct::> Class RBMVC\Controller\IndexController not found!
+[03-Aug-2013 14:24:16 UTC] PHP Fatal error:  Uncaught exception 'RBMVC\Core\Utilities\Exception\ClassLoadingException' with message 'Class RBMVC\Controller\IndexController not found!' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/Utilities/Exception/ClassLoadingException.php:15
+Stack trace:
+#0 /Users/ricoschulz/www/rbmvc/public/index.php(83): ClassLoader->getClassNamespace('RBMVC\Controlle...')
+#1 [internal function]: ClassLoader->load('RBMVC\Controlle...')
+#2 /Users/ricoschulz/www/rbmvc/RBMVC/Core/Dispatcher.php(36): spl_autoload_call('RBMVC\Controlle...')
+#3 /Users/ricoschulz/www/rbmvc/RBMVC/Bootstrap.php(52): RBMVC\Core\Dispatcher->setupController()
+#4 /Users/ricoschulz/www/rbmvc/public/index.php(97): RBMVC\Bootstrap->run(Array)
+#5 {main}
+  thrown in /Users/ricoschulz/www/rbmvc/RBMVC/Core/Utilities/Exception/ClassLoadingException.php on line 15
+[03-Aug-2013 14:25:45 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::__construct::> Class QwehController not found!
+[03-Aug-2013 14:27:18 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::__construct::> Class AsfdsgdController not found!
+[03-Aug-2013 14:28:56 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class AsdfController not found!
+[03-Aug-2013 14:49:58 UTC] PHP Catchable fatal error:  Argument 1 passed to RBMVC\Core\Utilities\AbstractHelperFactory::setClassLoader() must be an instance of ClassLoader, instance of RBMVC\Core\ClassLoader given, called in /Users/ricoschulz/www/rbmvc/RBMVC/Bootstrap.php on line 112 and defined in /Users/ricoschulz/www/rbmvc/RBMVC/Core/Utilities/AbstractHelperFactory.php on line 65

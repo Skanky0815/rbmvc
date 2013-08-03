@@ -1,6 +1,8 @@
 <?php 
 namespace RBMVC\Core\DB;
 
+use \PDO;
+
 class DB {
     
     /**
@@ -41,7 +43,7 @@ class DB {
         $pdoOptions = array_key_exists('options', $options) ? $options['options'] : array();
         
         $dsn = $driver . ':host=' . $host . ';dbname=' . $name;
-        $this->db = new \PDO($dsn, $user, $pass, $pdoOptions);
+        $this->db = new PDO($dsn, $user, $pass, $pdoOptions);
         
         $this->query = new Query();
     }
@@ -65,7 +67,7 @@ class DB {
     
     /**
      * @param \RBMVC\Core\DB\Query $query
-     * @return boolean|PDOStatement
+     * @return boolean|\PDOStatement
      */
     public function execute(Query $query) {
         try {

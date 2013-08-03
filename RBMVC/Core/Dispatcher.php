@@ -2,7 +2,7 @@
 namespace RBMVC\Core;
 
 use RBMVC\Core\View\View;
-use RBMVC\Controller\IndexController;
+use RBMVC\Core\ClassLoader;
 use RBMVC\Core\Controller\AbstractController;
 use RBMVC\Core\Controller\ActionHelperFactory;
 
@@ -17,25 +17,24 @@ class Dispatcher {
      * @var \RBMVC\Core\View\View
      */
     private $view;
-    
+
+    /**
+     * @var \RBMVC\Core\ClassLoader
+     */
+    private $classLoader;
+
     /**
      * @var void
      */
     public function setupController() {
-        $controllerName = ucfirst($this->request->getParam('controller'));
-        $controllerStr = sprintf('\Application\Controller\%sController', $controllerName);
-        
+        $controllerName = ucfirst($this->request->getParam('controller')) . 'Controller';
         $controller = null;
         $isClassError = false;
         try {
-            if (class_exists($controllerStr)) {
-                $controller = new $controllerStr();
-            }
-        } catch(\LogicException $e) {
-            error_log(__METHOD__.'::> '.print_r($e->getMessage(), 1));
-            $controller = new IndexController();
+            $controller = $this->classLoader->getClassInstance($controllerName);
+        } catch(Utilities\Exception\ClassLoadingException $e) {
+            $controller = $this->classLoader->getClassInstance('IndexController');
             $isClassError = true;
-            
         }
         
         $actionHelperFactory = new ActionHelperFactory();
@@ -87,6 +86,22 @@ class Dispatcher {
      */
     public function setRequest(Request $request) {
         $this->request = $request;
+        return $this;
+    }
+
+    /**
+     * @return \RBMVC\Core\ClassLoader
+     */
+    public function getClassLoader() {
+        return $this->classLoader;
+    }
+
+    /**
+     * @param \RBMVC\Core\ClassLoader $classLoader
+     * @return \RBMVC\Core\Dispatcher
+     */
+    public function setClassLoader(ClassLoader $classLoader) {
+        $this->classLoader = $classLoader;
         return $this;
     }
 
