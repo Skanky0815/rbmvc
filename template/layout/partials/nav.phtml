@@ -1,9 +1,22 @@
-<ul class="nav">
+<ul class="nav navbar-nav">
     <?php foreach ($this->navigation as $navPoint): ?>
-    <li <?php echo $navPoint['is_active'] ? 'class="active"' : '' ?>>
-        <a href="<?php echo $this->url($navPoint); ?>">
+    <li class="<?php echo ($navPoint['is_active'] ? 'active' : '') . (isset($navPoint['pages']) ? ' dropdown' : ''); ?>">
+        <a href="<?php echo $this->url($navPoint); ?>"
+            <?php echo (isset($navPoint['pages']) ? 'class="dropdown-toggle" data-toggle="dropdown"': ''); ?>
+            >
             <?php echo $this->translate($navPoint['label']); ?>
         </a>
+        <?php if (isset($navPoint['pages'])): ?>
+            <ul class="dropdown-menu" role="menu">
+                <?php foreach ($navPoint['pages'] as $subNavPoint): ?>
+                    <li <?php echo $subNavPoint['is_active'] ? 'class="active"' : '' ?>>
+                        <a href="<?php echo $this->url($subNavPoint); ?>">
+                            <?php echo $this->translate($subNavPoint['label']); ?>
+                        </a>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        <?php endif; ?>
     </li>
     <?php endforeach; ?>
 </ul>

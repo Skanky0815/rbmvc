@@ -5,22 +5,32 @@ return array(
             'label' => 'home',
             'controller' => 'index',
             'action' => 'index',
-            'params' => array(
-                
-            ),
-            'pages' => array(
-                
-            ),
         ),
         'entry' => array(
             'label' => 'entries',
             'controller' => 'entry',
             'action' => 'index',
-            'params' => array(
-                
-            ),
+        ),
+        'administration' => array(
+            'label' => 'administration',
+            'controller' => 'user',
+            'action' => 'index',
             'pages' => array(
-                
+                'user' => array(
+                    'label' => 'user',
+                    'controller' => 'user',
+                    'action' => 'index',
+                ),
+                'user_groups' => array(
+                    'label' => 'user_groups',
+                    'controller' => 'user-groups',
+                    'action' => 'index',
+                ),
+                'grants' => array(
+                    'label' => 'grant',
+                    'controller' => 'grant',
+                    'action' => 'index',
+                ),
             ),
         ),
     ),

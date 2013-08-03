@@ -455,3 +455,187 @@ Stack trace:
 [03-Aug-2013 14:27:18 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::__construct::> Class AsfdsgdController not found!
 [03-Aug-2013 14:28:56 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class AsdfController not found!
 [03-Aug-2013 14:49:58 UTC] PHP Catchable fatal error:  Argument 1 passed to RBMVC\Core\Utilities\AbstractHelperFactory::setClassLoader() must be an instance of ClassLoader, instance of RBMVC\Core\ClassLoader given, called in /Users/ricoschulz/www/rbmvc/RBMVC/Bootstrap.php on line 112 and defined in /Users/ricoschulz/www/rbmvc/RBMVC/Core/Utilities/AbstractHelperFactory.php on line 65
+[03-Aug-2013 15:23:33 UTC] PHP Fatal error:  Call to a member function getParam() on a non-object in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 17
+[03-Aug-2013 15:24:43 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:24:43 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:24:43 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:24:43 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:24:43 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:24:43 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:24:43 UTC] PHP Notice:  Undefined index: controller in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:24:43 UTC] PHP Warning:  Cannot use a scalar value as an array in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:24:43 UTC] PHP Warning:  Invalid argument supplied for foreach() in /Users/ricoschulz/www/rbmvc/template/layout/partials/nav.phtml on line 2
+[03-Aug-2013 15:25:23 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:25:23 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:25:23 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:25:23 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:25:23 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:25:23 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:25:23 UTC] PHP Notice:  Undefined index: controller in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:25:23 UTC] PHP Warning:  Cannot use a scalar value as an array in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:25:58 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:25:58 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:25:58 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:25:58 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:25:58 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:25:58 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:25:58 UTC] PHP Notice:  Undefined index: controller in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:25:58 UTC] PHP Warning:  Cannot use a scalar value as an array in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:25:59 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:25:59 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:25:59 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:25:59 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:25:59 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:25:59 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:25:59 UTC] PHP Notice:  Undefined index: controller in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:25:59 UTC] PHP Notice:  Undefined index: controller in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:26:00 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:26:00 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:26:00 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:26:00 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:26:00 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:26:00 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:26:00 UTC] PHP Notice:  Undefined index: controller in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:26:00 UTC] PHP Notice:  Undefined index: controller in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:26:00 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:26:00 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:26:00 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:26:00 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:26:00 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:26:00 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:26:00 UTC] PHP Notice:  Undefined index: controller in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:26:00 UTC] PHP Notice:  Undefined index: controller in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:26:02 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class �serController not found!
+[03-Aug-2013 15:26:02 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:26:02 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:26:02 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:26:02 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:26:02 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:26:02 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:26:02 UTC] PHP Notice:  Undefined index: controller in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:26:02 UTC] PHP Notice:  Undefined index: controller in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:26:04 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class �serController not found!
+[03-Aug-2013 15:26:04 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:26:04 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:26:04 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:26:04 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:26:04 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:26:04 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:26:04 UTC] PHP Notice:  Undefined index: controller in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:26:04 UTC] PHP Notice:  Undefined index: controller in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:26:04 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:26:04 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:26:04 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:26:04 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:26:04 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:26:04 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:26:04 UTC] PHP Notice:  Undefined index: controller in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:26:04 UTC] PHP Notice:  Undefined index: controller in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:26:17 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:26:17 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:26:17 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:26:17 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:26:17 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:26:17 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:26:17 UTC] PHP Notice:  Undefined index: controller in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:26:17 UTC] PHP Notice:  Undefined index: controller in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:26:19 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class �serController not found!
+[03-Aug-2013 15:26:19 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:26:19 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:26:19 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:26:19 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:26:19 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:26:19 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:26:19 UTC] PHP Notice:  Undefined index: controller in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:26:19 UTC] PHP Notice:  Undefined index: controller in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:26:58 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:26:58 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:26:58 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:26:58 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:26:58 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:26:58 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:26:58 UTC] PHP Notice:  Undefined index: controller in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:26:58 UTC] PHP Notice:  Undefined index: controller in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:26:58 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:26:58 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:26:58 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:26:58 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:26:58 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:26:58 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:26:58 UTC] PHP Notice:  Undefined index: controller in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:26:58 UTC] PHP Notice:  Undefined index: controller in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:26:59 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:26:59 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:26:59 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:26:59 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:26:59 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:26:59 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:26:59 UTC] PHP Notice:  Undefined index: controller in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:26:59 UTC] PHP Notice:  Undefined index: controller in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:26:59 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:26:59 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:26:59 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:26:59 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:26:59 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:26:59 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:26:59 UTC] PHP Notice:  Undefined index: controller in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:26:59 UTC] PHP Notice:  Undefined index: controller in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:27:00 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class �serController not found!
+[03-Aug-2013 15:27:00 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:27:00 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:27:00 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:27:00 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:27:00 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:27:00 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:27:00 UTC] PHP Notice:  Undefined index: controller in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:27:00 UTC] PHP Notice:  Undefined index: controller in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:27:01 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:27:01 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:27:01 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:27:01 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:27:01 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:27:01 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:27:01 UTC] PHP Notice:  Undefined index: controller in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:27:01 UTC] PHP Notice:  Undefined index: controller in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:27:03 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:27:03 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:27:03 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:27:03 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:27:03 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:27:03 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:27:03 UTC] PHP Notice:  Undefined index: controller in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:27:03 UTC] PHP Notice:  Undefined index: controller in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:27:04 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:27:04 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:27:04 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:27:04 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:27:04 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:27:04 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:27:04 UTC] PHP Notice:  Undefined index: controller in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:27:04 UTC] PHP Notice:  Undefined index: controller in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:27:06 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:27:06 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:27:06 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:27:06 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:27:06 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:27:06 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:27:06 UTC] PHP Notice:  Undefined index: controller in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:27:06 UTC] PHP Notice:  Undefined index: controller in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:28:15 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:28:15 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:28:15 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:28:15 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:28:15 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:28:15 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:28:15 UTC] PHP Notice:  Undefined index: controller in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:28:15 UTC] PHP Notice:  Undefined index: controller in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:30:07 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:30:07 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:30:07 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:30:07 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:30:07 UTC] PHP Warning:  Illegal string offset 'is_active' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 31
+[03-Aug-2013 15:30:07 UTC] PHP Warning:  Illegal string offset 'controller' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:30:07 UTC] PHP Notice:  Undefined index: controller in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:30:07 UTC] PHP Notice:  Undefined index: controller in /Users/ricoschulz/www/rbmvc/RBMVC/Core/View/Helper/Navigation.php on line 32
+[03-Aug-2013 15:40:35 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class User-groupsController not found!
+[03-Aug-2013 15:40:37 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class GrantController not found!
