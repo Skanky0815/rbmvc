@@ -1,21 +1,25 @@
-<div class="row">
-    <div class="span12">
-        <a class="btn btn-primary" href="<?php echo $this->url(array('action' => 'edit')); ?>">
-            <i class="icon-plus"></i>
-            <?php echo $this->translate('add'); ?>  
-        </a>
-    </div>
+<div class="btn-group">
+    <a class="btn btn-primary" href="<?php echo $this->url(array('action' => 'edit')); ?>">
+        <i class="icon-plus"></i>
+        <?php echo $this->translate('add'); ?>
+    </a>
 </div>
 
 <div class="row">
-    <div class="span12">
-    <?php foreach ($this->entries as $entry): ?>
-        <h4><?php echo $entry->getTitle(); ?></h4>
-        <blockquote>
-            <p><?php echo $entry->getText(); ?></p>
-            <small><?php echo $entry->getUser()->getUsername(); ?> / <?php echo $this->dateFormater($entry->getDate()); ?></small>
-        </blockquote>
-        <div class="entry-footer">
+    <div class="col-12">
+    <?php foreach ($this->entries as $key => $entry): ?>
+        <?php if ($key % 2 == 0): ?>
+            <?php if ($key > 0): ?>
+                </div>
+            <?php endif; ?>
+            <div class="row">
+        <?php endif; ?>
+        <div class="col-6">
+            <h2><?php echo $entry->getTitle(); ?></h2>
+            <blockquote>
+                <p><?php echo $entry->getText(); ?></p>
+                <small><?php echo $entry->getUser()->getUsername(); ?> / <?php echo $this->dateFormater($entry->getDate()); ?></small>
+            </blockquote>
             <div class="btn-group">
                 <a class="btn-danger btn delete" data-toggle="modal" href="<?php echo $this->url(
                         array('action' => 'delete'
@@ -33,7 +37,9 @@
                     <?php echo $this->translate('edit'); ?>
                 </a>
             </div>
+            <hr>
         </div>
     <?php endforeach; ?>
+        </div>
     </div>
 </div>
