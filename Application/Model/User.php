@@ -3,100 +3,152 @@ namespace Application\Model;
 
 use RBMVC\Core\Model\AbstractModel;
 
+/**
+ * Class User
+ * @package Application\Model
+ */
 class User extends AbstractModel {
         
     /**
-     * @var string 
+     * @var string
+     * @column username
      */
     private $username;
         
     /**
-     * @var string 
+     * @var string
+     * @column password
      */
     private $password;
         
     /**
-     * @var string 
+     * @var string
+     * @column password
      */
     private $email;
         
     /**
-     * @var string 
+     * @var array
      */
     private $useGroups;
         
     /**
-     * @var boolean 
+     * @var boolean
+     * @column is_active
      */
     private $isActive = false;
-    
+
+    /**
+     * @return string
+     */
     public function getUsername() {
         return $this->username;
     }
 
+    /**
+     * @param string $username
+     *
+     * @return \Application\Model\User
+     */
     public function setUsername($username) {
         $this->username = $username;
         return $this;
-    }
+}
 
+    /**
+     * @return string
+     */
     public function getPassword() {
         return $this->password;
-    }
+}
 
+    /**
+     * @param string $password
+     * @return \Application\Model\User
+     */
     public function setPassword($password) {
         $this->password = $password;
         return $this;
-    }
+}
 
+    /**
+     * @return string
+     */
     public function getEmail() {
         return $this->email;
-    }
+}
 
+    /**
+     * @param string $email
+     * @return \Application\Model\User
+     */
     public function setEmail($email) {
         $this->email = $email;
         return $this;
-    }
+}
 
+    /**
+     * @return bool
+     */
     public function isActive() {
         return $this->isActive;
-    }
+}
 
+    /**
+     * @return bool
+     */
     public function getIsActive() {
         return $this->isActive;
-    }
+}
 
+    /**
+     * @param bool $isActive
+     * @return \Application\Model\User
+     */
     public function setIsActive($isActive) {
         $this->isActive = (bool) $isActive;
         return $this;
     }
 
     /**
-     * @return void
+     * @return \Application\Model\User
      */
     public function save() {
-        $sql = '';
-        if ($this->id == 0) {
+        $query = $this->db->getQuery($this->dbTable);
+        if (empty($this->id)) {
             $sql = '
-                INSERT INTO ' . $this->dbTable . ' 
-                    (author, title, text, date) 
-                VALUES 
-                    (\'' . $this->author . '\',
-                     \'' . $this->title . '\',
-                     \'' . $this->text . '\',
-                      NOW())';
+                INSERT INTO ' . $this->dbTable . '
+                    (username, email, is_active, password)
+                VALUES
+                    (:username, :email, :is_active, :password)';
+
+            $param = array(
+                ':username'  => $this->username,
+                ':email'     => $this->email,
+                ':is_active' => $this->isActive,
+            );
+
+            $query->setSql($sql);
+            $query->setParams($param);
         } else {
-            $sql = '
-                UPDATE ' . $this->dbTable . '
-                SET
-                    author = \'' . $this->author . '\',
-                    title = \'' . $this->title . '\',
-                    text = \''. $this->text . '\'
-                WHERE 
-                    id = ' . $this->id;
+            $query->update();
+            $query->set($this->toArrayForSave());
+            $query->where(array('id' => $this->id));
         }
-        
+
+        $this->db->execute($query);
+
+        if (empty($this->id)) {
+            $this->id = $this->db->lastInsertId();
+        }
+
+        $this->init();
+        return $this;
     }
-    
+
+    /**
+     * @return bool
+     */
     public function exists() {
         $query = $this->db->getQuery($this->dbTable);
         $query->select();

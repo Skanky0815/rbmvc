@@ -724,3 +724,283 @@ Stack trace:
 [03-Aug-2013 21:25:53 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class FontController not found!
 [03-Aug-2013 21:26:03 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class FontController not found!
 [03-Aug-2013 21:26:03 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class FontController not found!
+[03-Aug-2013 21:38:13 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in /Users/ricoschulz/www/rbmvc/RBMVC/Core/DB/DB.php on line 75
+[03-Aug-2013 21:38:21 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in /Users/ricoschulz/www/rbmvc/RBMVC/Core/DB/DB.php on line 75
+[03-Aug-2013 21:38:52 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in /Users/ricoschulz/www/rbmvc/RBMVC/Core/DB/DB.php on line 75
+[03-Aug-2013 21:40:10 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in /Users/ricoschulz/www/rbmvc/RBMVC/Core/DB/DB.php on line 75
+[03-Aug-2013 21:41:29 UTC] RBMVC\Core\DB\DB::execute::> SELECT * FROM user WHERE 1=1  AND id = :id 
+[03-Aug-2013 21:41:29 UTC] RBMVC\Core\DB\DB::execute::> Array
+(
+    [:id] => 1
+)
+
+[03-Aug-2013 21:41:29 UTC] RBMVC\Core\DB\DB::execute::> UPDATE user SET username = :username, password = :password, email = :email, is_active = :is_active WHERE 1=1  AND id = :id 
+[03-Aug-2013 21:41:29 UTC] RBMVC\Core\DB\DB::execute::> Array
+(
+    [:id] => 1
+    [:username] => skanky
+    [:password] => test
+    [:email] => rico-schulz@web.de
+    [:is_active] => 1
+)
+
+[03-Aug-2013 21:41:29 UTC] RBMVC\Core\DB\DB::execute::> SELECT * FROM user WHERE 1=1  AND id = :id 
+[03-Aug-2013 21:41:29 UTC] RBMVC\Core\DB\DB::execute::> Array
+(
+    [:id] => 1
+    [:username] => skanky
+    [:password] => test
+    [:email] => rico-schulz@web.de
+    [:is_active] => 1
+)
+
+[03-Aug-2013 21:41:29 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in /Users/ricoschulz/www/rbmvc/RBMVC/Core/DB/DB.php on line 79
+[03-Aug-2013 21:41:29 UTC] RBMVC\Core\DB\DB::execute::> SELECT * FROM user WHERE 1=1  AND id = :id 
+[03-Aug-2013 21:41:29 UTC] RBMVC\Core\DB\DB::execute::> Array
+(
+    [:id] => 1
+)
+
+[03-Aug-2013 21:43:05 UTC] RBMVC\Core\DB\DB::execute::> SELECT * FROM user WHERE 1=1  AND id = :id 
+[03-Aug-2013 21:43:05 UTC] RBMVC\Core\DB\DB::execute::> Array
+(
+    [:id] => 1
+)
+
+[03-Aug-2013 21:43:05 UTC] Application\Model\User::setIsActive::> 1
+[03-Aug-2013 21:43:05 UTC] RBMVC\Core\DB\DB::execute::> UPDATE user SET username = :username, password = :password, email = :email, is_active = :is_active WHERE 1=1  AND id = :id 
+[03-Aug-2013 21:43:05 UTC] RBMVC\Core\DB\DB::execute::> Array
+(
+    [:id] => 1
+    [:username] => skanky
+    [:password] => test
+    [:email] => rico-schulz@web.de
+    [:is_active] => 1
+)
+
+[03-Aug-2013 21:43:05 UTC] RBMVC\Core\DB\DB::execute::> SELECT * FROM user WHERE 1=1  AND id = :id 
+[03-Aug-2013 21:43:05 UTC] RBMVC\Core\DB\DB::execute::> Array
+(
+    [:id] => 1
+    [:username] => skanky
+    [:password] => test
+    [:email] => rico-schulz@web.de
+    [:is_active] => 1
+)
+
+[03-Aug-2013 21:43:05 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in /Users/ricoschulz/www/rbmvc/RBMVC/Core/DB/DB.php on line 79
+[03-Aug-2013 21:43:05 UTC] RBMVC\Core\DB\DB::execute::> SELECT * FROM user WHERE 1=1  AND id = :id 
+[03-Aug-2013 21:43:05 UTC] RBMVC\Core\DB\DB::execute::> Array
+(
+    [:id] => 1
+)
+
+[03-Aug-2013 21:43:05 UTC] Application\Model\User::setIsActive::> 1
+[03-Aug-2013 21:43:34 UTC] RBMVC\Core\DB\DB::execute::> SELECT * FROM user WHERE 1=1  AND id = :id 
+[03-Aug-2013 21:43:34 UTC] RBMVC\Core\DB\DB::execute::> Array
+(
+    [:id] => 1
+)
+
+[03-Aug-2013 21:43:34 UTC] Application\Model\User::setIsActive::> 1
+[03-Aug-2013 21:43:34 UTC] RBMVC\Core\DB\DB::execute::> UPDATE user SET username = :username, password = :password, email = :email, is_active = :is_active WHERE 1=1  AND id = :id 
+[03-Aug-2013 21:43:34 UTC] RBMVC\Core\DB\DB::execute::> Array
+(
+    [:id] => 1
+    [:username] => skanky
+    [:password] => test
+    [:email] => rico-schulz@web.de
+    [:is_active] => 1
+)
+
+[03-Aug-2013 21:43:34 UTC] RBMVC\Core\DB\DB::execute::> SELECT * FROM user WHERE 1=1  AND id = :id 
+[03-Aug-2013 21:43:34 UTC] RBMVC\Core\DB\DB::execute::> Array
+(
+    [:id] => 1
+    [:username] => skanky
+    [:password] => test
+    [:email] => rico-schulz@web.de
+    [:is_active] => 1
+)
+
+[03-Aug-2013 21:43:34 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in /Users/ricoschulz/www/rbmvc/RBMVC/Core/DB/DB.php on line 79
+[03-Aug-2013 21:43:34 UTC] RBMVC\Core\DB\DB::execute::> SELECT * FROM user WHERE 1=1  AND id = :id 
+[03-Aug-2013 21:43:34 UTC] RBMVC\Core\DB\DB::execute::> Array
+(
+    [:id] => 1
+)
+
+[03-Aug-2013 21:43:34 UTC] Application\Model\User::setIsActive::> 1
+[03-Aug-2013 21:45:21 UTC] RBMVC\Core\DB\DB::execute::> SELECT * FROM user WHERE 1=1  AND id = :id 
+[03-Aug-2013 21:45:21 UTC] RBMVC\Core\DB\DB::execute::> Array
+(
+    [:id] => 1
+)
+
+[03-Aug-2013 21:45:21 UTC] Application\Model\User::setIsActive::> 1
+[03-Aug-2013 21:45:24 UTC] RBMVC\Core\DB\DB::execute::> SELECT * FROM user WHERE 1=1  AND id = :id 
+[03-Aug-2013 21:45:24 UTC] RBMVC\Core\DB\DB::execute::> Array
+(
+    [:id] => 1
+)
+
+[03-Aug-2013 21:45:24 UTC] Application\Model\User::setIsActive::> 1
+[03-Aug-2013 21:45:24 UTC] RBMVC\Core\DB\DB::execute::> UPDATE user SET username = :username, password = :password, email = :email, is_active = :is_active WHERE 1=1  AND id = :id 
+[03-Aug-2013 21:45:24 UTC] RBMVC\Core\DB\DB::execute::> Array
+(
+    [:id] => 1
+    [:username] => skanky
+    [:password] => test
+    [:email] => rico-schulz@web.de
+    [:is_active] => 1
+)
+
+[03-Aug-2013 21:45:24 UTC] RBMVC\Core\DB\DB::execute::> SELECT * FROM user WHERE 1=1  AND id = :id 
+[03-Aug-2013 21:45:24 UTC] RBMVC\Core\DB\DB::execute::> Array
+(
+    [:id] => 1
+    [:username] => skanky
+    [:password] => test
+    [:email] => rico-schulz@web.de
+    [:is_active] => 1
+)
+
+[03-Aug-2013 21:45:24 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in /Users/ricoschulz/www/rbmvc/RBMVC/Core/DB/DB.php on line 79
+[03-Aug-2013 21:45:24 UTC] RBMVC\Core\DB\DB::execute::> SELECT * FROM user WHERE 1=1  AND id = :id 
+[03-Aug-2013 21:45:24 UTC] RBMVC\Core\DB\DB::execute::> Array
+(
+    [:id] => 1
+)
+
+[03-Aug-2013 21:45:24 UTC] Application\Model\User::setIsActive::> 1
+[03-Aug-2013 21:48:36 UTC] RBMVC\Core\DB\DB::execute::> SELECT * FROM user WHERE 1=1  AND id = :id 
+[03-Aug-2013 21:48:36 UTC] RBMVC\Core\DB\DB::execute::> Array
+(
+    [:id] => 1
+)
+
+[03-Aug-2013 21:48:36 UTC] Application\Model\User::setIsActive::> 1
+[03-Aug-2013 21:48:41 UTC] RBMVC\Core\DB\DB::execute::> SELECT * FROM user WHERE 1=1  AND id = :id 
+[03-Aug-2013 21:48:41 UTC] RBMVC\Core\DB\DB::execute::> Array
+(
+    [:id] => 1
+)
+
+[03-Aug-2013 21:48:41 UTC] Application\Model\User::setIsActive::> 1
+[03-Aug-2013 21:48:41 UTC] Application\Model\User::setIsActive::> 0
+[03-Aug-2013 21:48:41 UTC] RBMVC\Core\DB\DB::execute::> UPDATE user SET username = :username, password = :password, email = :email, is_active = :is_active WHERE 1=1  AND id = :id 
+[03-Aug-2013 21:48:41 UTC] RBMVC\Core\DB\DB::execute::> Array
+(
+    [:id] => 1
+    [:username] => skanky
+    [:password] => test
+    [:email] => rico-schulz@web.de
+    [:is_active] => 
+)
+
+[03-Aug-2013 21:48:41 UTC] RBMVC\Core\DB\DB::execute::> SELECT * FROM user WHERE 1=1  AND id = :id 
+[03-Aug-2013 21:48:41 UTC] RBMVC\Core\DB\DB::execute::> Array
+(
+    [:id] => 1
+    [:username] => skanky
+    [:password] => test
+    [:email] => rico-schulz@web.de
+    [:is_active] => 
+)
+
+[03-Aug-2013 21:48:41 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in /Users/ricoschulz/www/rbmvc/RBMVC/Core/DB/DB.php on line 79
+[03-Aug-2013 21:48:41 UTC] RBMVC\Core\DB\DB::execute::> SELECT * FROM user WHERE 1=1  AND id = :id 
+[03-Aug-2013 21:48:41 UTC] RBMVC\Core\DB\DB::execute::> Array
+(
+    [:id] => 1
+)
+
+[03-Aug-2013 21:48:41 UTC] Application\Model\User::setIsActive::> 0
+[03-Aug-2013 21:48:52 UTC] RBMVC\Core\DB\DB::execute::> SELECT id FROM user ORDER BY id DESC
+[03-Aug-2013 21:48:52 UTC] RBMVC\Core\DB\DB::execute::> Array
+(
+)
+
+[03-Aug-2013 21:48:52 UTC] RBMVC\Core\DB\DB::execute::> SELECT * FROM user WHERE 1=1  AND id = :id 
+[03-Aug-2013 21:48:52 UTC] RBMVC\Core\DB\DB::execute::> Array
+(
+    [:id] => 1
+)
+
+[03-Aug-2013 21:48:52 UTC] Application\Model\User::setIsActive::> 0
+[03-Aug-2013 21:48:55 UTC] RBMVC\Core\DB\DB::execute::> SELECT * FROM user WHERE 1=1  AND id = :id 
+[03-Aug-2013 21:48:55 UTC] RBMVC\Core\DB\DB::execute::> Array
+(
+    [:id] => 1
+)
+
+[03-Aug-2013 21:48:55 UTC] Application\Model\User::setIsActive::> 0
+[03-Aug-2013 21:48:57 UTC] RBMVC\Core\DB\DB::execute::> SELECT * FROM user WHERE 1=1  AND id = :id 
+[03-Aug-2013 21:48:57 UTC] RBMVC\Core\DB\DB::execute::> Array
+(
+    [:id] => 1
+)
+
+[03-Aug-2013 21:48:57 UTC] Application\Model\User::setIsActive::> 0
+[03-Aug-2013 21:48:57 UTC] Application\Model\User::setIsActive::> 1
+[03-Aug-2013 21:48:57 UTC] RBMVC\Core\DB\DB::execute::> UPDATE user SET username = :username, password = :password, email = :email, is_active = :is_active WHERE 1=1  AND id = :id 
+[03-Aug-2013 21:48:57 UTC] RBMVC\Core\DB\DB::execute::> Array
+(
+    [:id] => 1
+    [:username] => skanky
+    [:password] => test
+    [:email] => rico-schulz@web.de
+    [:is_active] => 1
+)
+
+[03-Aug-2013 21:48:57 UTC] RBMVC\Core\DB\DB::execute::> SELECT * FROM user WHERE 1=1  AND id = :id 
+[03-Aug-2013 21:48:57 UTC] RBMVC\Core\DB\DB::execute::> Array
+(
+    [:id] => 1
+    [:username] => skanky
+    [:password] => test
+    [:email] => rico-schulz@web.de
+    [:is_active] => 1
+)
+
+[03-Aug-2013 21:48:57 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in /Users/ricoschulz/www/rbmvc/RBMVC/Core/DB/DB.php on line 79
+[03-Aug-2013 21:48:57 UTC] RBMVC\Core\DB\DB::execute::> SELECT * FROM user WHERE 1=1  AND id = :id 
+[03-Aug-2013 21:48:57 UTC] RBMVC\Core\DB\DB::execute::> Array
+(
+    [:id] => 1
+)
+
+[03-Aug-2013 21:48:57 UTC] Application\Model\User::setIsActive::> 1
+[03-Aug-2013 21:48:58 UTC] RBMVC\Core\DB\DB::execute::> SELECT id FROM user ORDER BY id DESC
+[03-Aug-2013 21:48:58 UTC] RBMVC\Core\DB\DB::execute::> Array
+(
+)
+
+[03-Aug-2013 21:48:58 UTC] RBMVC\Core\DB\DB::execute::> SELECT * FROM user WHERE 1=1  AND id = :id 
+[03-Aug-2013 21:48:58 UTC] RBMVC\Core\DB\DB::execute::> Array
+(
+    [:id] => 1
+)
+
+[03-Aug-2013 21:48:58 UTC] Application\Model\User::setIsActive::> 1
+[03-Aug-2013 21:49:00 UTC] RBMVC\Core\DB\DB::execute::> SELECT * FROM user WHERE 1=1  AND id = :id 
+[03-Aug-2013 21:49:00 UTC] RBMVC\Core\DB\DB::execute::> Array
+(
+    [:id] => 1
+)
+
+[03-Aug-2013 21:49:00 UTC] Application\Model\User::setIsActive::> 1
+[03-Aug-2013 21:49:14 UTC] RBMVC\Core\DB\DB::execute::> SELECT id FROM user ORDER BY id DESC
+[03-Aug-2013 21:49:14 UTC] RBMVC\Core\DB\DB::execute::> Array
+(
+)
+
+[03-Aug-2013 21:49:14 UTC] RBMVC\Core\DB\DB::execute::> SELECT * FROM user WHERE 1=1  AND id = :id 
+[03-Aug-2013 21:49:14 UTC] RBMVC\Core\DB\DB::execute::> Array
+(
+    [:id] => 1
+)
+
+[03-Aug-2013 21:49:14 UTC] Application\Model\User::setIsActive::> 1
+[03-Aug-2013 21:50:10 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in /Users/ricoschulz/www/rbmvc/RBMVC/Core/DB/DB.php on line 75
+[03-Aug-2013 21:50:23 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in /Users/ricoschulz/www/rbmvc/RBMVC/Core/DB/DB.php on line 75

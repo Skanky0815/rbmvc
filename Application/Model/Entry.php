@@ -3,6 +3,10 @@ namespace Application\Model;
 
 use RBMVC\Core\Model\AbstractModel;
 
+/**
+ * Class Entry
+ * @package Application\Model
+ */
 class Entry extends AbstractModel {
     
     /**
@@ -43,7 +47,7 @@ class Entry extends AbstractModel {
     
     /**
      * @param string $author
-     * @return \RBMVC\Core\Model\Entry
+     * @return \Application\Model\Entry
      */
     public function setUserId($author) {
         $this->userId = $author;
@@ -59,7 +63,7 @@ class Entry extends AbstractModel {
     
     /**
      * @param string $date
-     * @return \RBMVC\Core\Model\Entry
+     * @return \Application\Model\Entry
      */
     public function setDate($date) {
         $this->date = $date;
@@ -75,7 +79,7 @@ class Entry extends AbstractModel {
 
     /**
      * @param string $title
-     * @return \RBMVC\Core\Model\Entry
+     * @return \Application\Model\Entry
      */
     public function setTitle($title) {
         $this->title = $title;
@@ -91,7 +95,7 @@ class Entry extends AbstractModel {
     
     /**
      * @param string $text
-     * @return \RBMVC\Core\Model\Entry
+     * @return \Application\Model\Entry
      */
     public function setText($text) {
         $this->text = $text;
@@ -99,23 +103,25 @@ class Entry extends AbstractModel {
     }
 
     /**
-     * @return User
+     * @return \Application\Model\User
      */
     public function getUser() {
         return $this->user;
     }
 
     /**
-     * @param User $user
+     * @param \Application\Model\User $user
      *
-     * @return Entry
+     * @return \Application\Model\Entry
      */
     public function setUser(User $user) {
         $this->user = $user;
         return $this;
     }
 
-
+    /**
+     * @return bool
+     */
     public function init() {
         $isInit = parent::init();
 
@@ -131,7 +137,7 @@ class Entry extends AbstractModel {
     }
 
     /**
-     * @return boolean|\RBMVC\Core\Model\Entry
+     * @return boolean|\Application\Model\Entry
      */
     public function save() {
         $query = $this->db->getQuery($this->dbTable);

@@ -15,7 +15,7 @@ class UserController extends AbstractController {
     }
 
     public function editAction() {
-        $user = $this->saveModel(new User, 'Application\Forms\UserForm');
+        $user = $this->saveModel(new User(), 'Application\Forms\UserForm');
         $this->view->assign('user', $user);
     }
     
