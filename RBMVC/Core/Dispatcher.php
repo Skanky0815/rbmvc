@@ -24,6 +24,11 @@ class Dispatcher {
     private $classLoader;
 
     /**
+     * @var array
+     */
+    private $config;
+
+    /**
      * @var void
      */
     public function setupController() {
@@ -40,6 +45,7 @@ class Dispatcher {
         $actionHelperFactory = new ActionHelperFactory();
         $actionHelperFactory->setView($this->view);
         $actionHelperFactory->setRequest($this->request);
+        $actionHelperFactory->setConfig($this->config);
         $actionHelperFactory->setClassLoader($this->classLoader);
         
         if ($controller instanceof AbstractController) {
@@ -106,4 +112,20 @@ class Dispatcher {
         return $this;
     }
 
+
+    /**
+     * @param array $config
+     * @return \RBMVC\Core\Dispatcher
+     */
+    public function setConfig(array $config) {
+        $this->config = $config;
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getConfig() {
+        return $this->config;
+    }
 }

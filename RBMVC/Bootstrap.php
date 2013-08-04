@@ -47,6 +47,7 @@ class Bootstrap {
         $this->request = new Request();
         $dispatcher = new Dispatcher();
         $dispatcher->setRequest($this->request);
+        $dispatcher->setConfig($this->config);
         $dispatcher->setClassLoader($this->classLoader);
         $view = $this->setupView();
         $dispatcher->setView($view);
@@ -112,6 +113,7 @@ class Bootstrap {
         $viewHelperFactory->setClassLoader($this->classLoader);
         $viewHelperFactory->setView($view);
         $viewHelperFactory->setRequest($this->request);
+        $viewHelperFactory->setConfig($this->config);
         $view->setViewHelperFactory($viewHelperFactory);
         
         return $view;

@@ -26,6 +26,11 @@ abstract class AbstractHelperFactory {
      * @var \RBMVC\Core\ClassLoader
      */
     protected $classLoader;
+
+    /**
+     * @var array
+     */
+    protected $config;
     
     /**
      * @param \RBMVC\Core\View\View $view
@@ -73,6 +78,22 @@ abstract class AbstractHelperFactory {
      */
     public function getClassLoader() {
         return $this->classLoader;
+    }
+
+    /**
+     * @param array $config
+     * @return \RBMVC\Core\Utilities\AbstractHelperFactory
+     */
+    public function setConfig(array $config) {
+        $this->config = $config;
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getConfig() {
+        return $this->config;
     }
 
     /**

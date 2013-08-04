@@ -1028,3 +1028,60 @@ Stack trace:
 [04-Aug-2013 06:51:18 UTC] PHP Notice:  Undefined variable: key in /Users/ricoschulz/www/rbmvc/template/views/index/index.phtml on line 14
 [04-Aug-2013 06:51:18 UTC] PHP Notice:  Undefined variable: key in /Users/ricoschulz/www/rbmvc/template/views/index/index.phtml on line 14
 [04-Aug-2013 06:56:15 UTC] PHP Strict Standards:  Only variables should be passed by reference in /Users/ricoschulz/www/rbmvc/Application/Controller/IndexController.php on line 14
+[04-Aug-2013 07:05:47 UTC] PHP Parse error:  syntax error, unexpected ';', expecting function (T_FUNCTION) in /Users/ricoschulz/www/rbmvc/RBMVC/Core/Model/AbstractModel.php on line 84
+[04-Aug-2013 07:06:13 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in /Users/ricoschulz/www/rbmvc/RBMVC/Core/DB/DB.php on line 75
+[04-Aug-2013 07:07:19 UTC] RBMVC\Core\Model\AbstractModel::save::> Array
+(
+    [user_id] => 1
+    [date] => 
+    [title] => Title
+    [text] => asfjksfa hlskdlksdflksd fsd<b>asdasdasd asd asagfh s</b> adasdfhgh sdifhosdgh j&nbsp;<i>s&lt;dif iofsdhj &nbsp;∫fhifdofifhdsfoi<b> aihasidohas o</b></i> adasdsa&nbsp;<i></i>
+)
+
+[04-Aug-2013 07:07:19 UTC] PHP Fatal error:  Call to a member function getId() on a non-object in /Users/ricoschulz/www/rbmvc/template/views/entry/edit.phtml on line 3
+[04-Aug-2013 07:18:29 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in /Users/ricoschulz/www/rbmvc/RBMVC/Core/DB/DB.php on line 75
+[04-Aug-2013 07:20:07 UTC] RBMVC\Core\Model\AbstractModel::save::> INSERT INTO entry(user_id, date, title, text) VALUES (:1, :, :Impressum, :dsafghjdafd dafads)
+[04-Aug-2013 07:20:07 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in /Users/ricoschulz/www/rbmvc/RBMVC/Core/DB/DB.php on line 75
+[04-Aug-2013 07:22:12 UTC] PHP Notice:  Array to string conversion in /Users/ricoschulz/www/rbmvc/RBMVC/Core/DB/Query.php on line 142
+[04-Aug-2013 07:22:12 UTC] PHP Notice:  Array to string conversion in /Users/ricoschulz/www/rbmvc/RBMVC/Core/DB/Query.php on line 142
+[04-Aug-2013 07:22:12 UTC] PHP Notice:  Array to string conversion in /Users/ricoschulz/www/rbmvc/RBMVC/Core/DB/Query.php on line 142
+[04-Aug-2013 07:22:12 UTC] PHP Notice:  Array to string conversion in /Users/ricoschulz/www/rbmvc/RBMVC/Core/DB/Query.php on line 142
+[04-Aug-2013 07:22:12 UTC] RBMVC\Core\Model\AbstractModel::save::> INSERT INTO entry(user_id, date, title, text) VALUES (:Array, :Array, :Array, :Array)
+[04-Aug-2013 07:22:12 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: parameter was not defined in /Users/ricoschulz/www/rbmvc/RBMVC/Core/DB/DB.php on line 75
+[04-Aug-2013 07:22:34 UTC] RBMVC\Core\Model\AbstractModel::save::> INSERT INTO entry(user_id, date, title, text) VALUES (:user_id, :date, :title, :text)
+[04-Aug-2013 07:23:05 UTC] RBMVC\Core\Model\AbstractModel::save::> INSERT INTO entry (user_id, date, title, text) VALUES (:user_id, :date, :title, :text)
+[04-Aug-2013 07:24:52 UTC] PHP Fatal error:  Call to a member function getQuery() on a non-object in /Users/ricoschulz/www/rbmvc/RBMVC/Core/Model/AbstractModel.php on line 52
+[04-Aug-2013 07:25:37 UTC] RBMVC\Core\Model\AbstractModel::save::> INSERT INTO entry (user_id, date, title, text) VALUES (:user_id, :date, :title, :text)
+[04-Aug-2013 07:25:37 UTC] PHP Catchable fatal error:  Object of class DateTime could not be converted to string in /Users/ricoschulz/www/rbmvc/RBMVC/Core/DB/DB.php on line 75
+[04-Aug-2013 07:26:35 UTC] RBMVC\Core\Model\AbstractModel::save::> INSERT INTO entry (user_id, date, title, text) VALUES (:user_id, :date, :title, :text)
+[04-Aug-2013 07:32:48 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in /Users/ricoschulz/www/rbmvc/RBMVC/Core/DB/DB.php on line 75
+[04-Aug-2013 07:51:14 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class RBMVC\Core\Controller\Helper\Grantscanner not found!
+[04-Aug-2013 07:51:14 UTC] PHP Fatal error:  Uncaught exception 'RBMVC\Core\Utilities\Exception\ClassLoadingException' with message 'Class RBMVC\Core\Controller\Helper\Grantscanner not found!' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/ClassLoader.php:88
+Stack trace:
+#0 /Users/ricoschulz/www/rbmvc/RBMVC/Core/ClassLoader.php(114): RBMVC\Core\ClassLoader->getClassNamespace('RBMVC\Core\Cont...')
+#1 [internal function]: RBMVC\Core\ClassLoader->load('RBMVC\Core\Cont...')
+#2 /Users/ricoschulz/www/rbmvc/RBMVC/Core/Controller/ActionHelperFactory.php(11): spl_autoload_call('RBMVC\Core\Cont...')
+#3 /Users/ricoschulz/www/rbmvc/RBMVC/Core/Utilities/AbstractHelperFactory.php(104): RBMVC\Core\Controller\ActionHelperFactory->loadHelper('grantscanner')
+#4 /Users/ricoschulz/www/rbmvc/RBMVC/Core/Utilities/AbstractHelperFactory.php(85): RBMVC\Core\Utilities\AbstractHelperFactory->getHelper('grantscanner')
+#5 /Users/ricoschulz/www/rbmvc/RBMVC/Core/Controller/AbstractController.php(147): RBMVC\Core\Utilities\AbstractHelperFactory->callFunction('grantScanner', Array)
+#6 /User in /Users/ricoschulz/www/rbmvc/RBMVC/Core/ClassLoader.php on line 88
+[04-Aug-2013 07:54:06 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class RBMVC\Core\Controller\Helper\Grantscanner not found!
+[04-Aug-2013 07:54:06 UTC] PHP Fatal error:  Uncaught exception 'RBMVC\Core\Utilities\Exception\ClassLoadingException' with message 'Class RBMVC\Core\Controller\Helper\Grantscanner not found!' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/ClassLoader.php:88
+Stack trace:
+#0 /Users/ricoschulz/www/rbmvc/RBMVC/Core/ClassLoader.php(114): RBMVC\Core\ClassLoader->getClassNamespace('RBMVC\Core\Cont...')
+#1 [internal function]: RBMVC\Core\ClassLoader->load('RBMVC\Core\Cont...')
+#2 /Users/ricoschulz/www/rbmvc/RBMVC/Core/Controller/ActionHelperFactory.php(11): spl_autoload_call('RBMVC\Core\Cont...')
+#3 /Users/ricoschulz/www/rbmvc/RBMVC/Core/Utilities/AbstractHelperFactory.php(104): RBMVC\Core\Controller\ActionHelperFactory->loadHelper('grantscanner')
+#4 /Users/ricoschulz/www/rbmvc/RBMVC/Core/Utilities/AbstractHelperFactory.php(85): RBMVC\Core\Utilities\AbstractHelperFactory->getHelper('grantscanner')
+#5 /Users/ricoschulz/www/rbmvc/RBMVC/Core/Controller/AbstractController.php(147): RBMVC\Core\Utilities\AbstractHelperFactory->callFunction('grantScanner', Array)
+#6 /User in /Users/ricoschulz/www/rbmvc/RBMVC/Core/ClassLoader.php on line 88
+[04-Aug-2013 07:56:40 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class Grantscanner not found!
+[04-Aug-2013 07:56:40 UTC] PHP Fatal error:  Uncaught exception 'RBMVC\Core\Utilities\Exception\ClassLoadingException' with message 'Class Grantscanner not found!' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/ClassLoader.php:88
+Stack trace:
+#0 /Users/ricoschulz/www/rbmvc/RBMVC/Core/ClassLoader.php(114): RBMVC\Core\ClassLoader->getClassNamespace('Grantscanner')
+#1 /Users/ricoschulz/www/rbmvc/RBMVC/Core/ClassLoader.php(63): RBMVC\Core\ClassLoader->load('Grantscanner')
+#2 /Users/ricoschulz/www/rbmvc/RBMVC/Core/Controller/ActionHelperFactory.php(11): RBMVC\Core\ClassLoader->getClassInstance('Grantscanner')
+#3 /Users/ricoschulz/www/rbmvc/RBMVC/Core/Utilities/AbstractHelperFactory.php(104): RBMVC\Core\Controller\ActionHelperFactory->loadHelper('grantscanner')
+#4 /Users/ricoschulz/www/rbmvc/RBMVC/Core/Utilities/AbstractHelperFactory.php(85): RBMVC\Core\Utilities\AbstractHelperFactory->getHelper('grantscanner')
+#5 /Users/ricoschulz/www/rbmvc/RBMVC/Core/Controller/AbstractController.php(147): RBMVC\Core\Utilities\AbstractHelperFactory->callFunction('grantScanner',  in /Users/ricoschulz/www/rbmvc/RBMVC/Core/ClassLoader.php on line 88
+[04-Aug-2013 07:58:16 UTC] PHP Warning:  Invalid argument supplied for foreach() in /Users/ricoschulz/www/rbmvc/Application/Controller/GrantController.php on line 33

@@ -16,7 +16,11 @@ abstract class AbstractHelper {
      */
     protected $view;
 
-    
+    /**
+     * @var array
+     */
+    protected $config;
+
     /**
      * @param \RBMVC\Core\Request $request
      * @return \RBMVC\Core\View\Helper\AbstractHelper
@@ -32,6 +36,15 @@ abstract class AbstractHelper {
      */
     public function setView(View &$view) {
         $this->view = $view;
+        return $this;
+    }
+
+    /**
+     * @param array $config
+     * @return \RBMVC\Core\View\Helper\AbstractHelper
+     */
+    public function setConfig(array $config) {
+        $this->config = $config;
         return $this;
     }
     
