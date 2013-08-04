@@ -15,29 +15,20 @@ use RBMVC\Core\Model\Collection\AbstractCollection;
 class UserGroupCollection extends AbstractCollection {
 
     /**
+     * @param array $result
+     *
      * @return void
      */
-    public function findAll() {
-        $query = $this->db->getQuery($this->dbTable);
-        $query->select(array('id'));
-        $query->orderBy(array('id' => 'DESC'));
-
-        $stmt          = $this->db->execute($query);
-        $userGroupData = $stmt->fetchAll();
-
-        if (empty($userGroupData)) {
-            return;
-        }
-
-        if (array_key_exists('id', $userGroupData)) {
+    protected function fill(array $result) {
+        if (array_key_exists('id', $result)) {
             $userGroup = new UserGroup();
-            $userGroup->setId($userGroupData['id'])->init();
+            $userGroup->setId($result['id'])->init();
             $this->models[] = $userGroup;
 
             return;
         }
 
-        foreach ($userGroupData as $data) {
+        foreach ($result as $data) {
             if (!is_array($data)) {
                 continue;
             }

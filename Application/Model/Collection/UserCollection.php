@@ -9,31 +9,26 @@
 
 namespace Application\Model\Collection;
 
-use RBMVC\Core\Model\Collection\AbstractCollection;
 use Application\Model\User;
+use RBMVC\Core\Model\Collection\AbstractCollection;
 
 class UserCollection extends AbstractCollection {
 
-    public function findAll() {
-        $query = $this->db->getQuery($this->dbTable);
-        $query->select(array('id'));
-        $query->orderBy(array('id' => 'DESC'));
-
-        $stmt = $this->db->execute($query);
-        $userData = $stmt->fetchAll();
-
-        if (empty($userData)) {
-            return;
-        }
-
-        if (array_key_exists('id', $userData)) {
+    /**
+     * @param array $result
+     *
+     * @return void
+     */
+    protected function fill(array $result) {
+        if (array_key_exists('id', $result)) {
             $user = new User();
-            $user->setId($userData['id'])->init();
+            $user->setId($result['id'])->init();
             $this->models[] = $user;
+
             return;
         }
 
-        foreach ($userData as $data) {
+        foreach ($result as $data) {
             if (!is_array($data)) {
                 continue;
             }

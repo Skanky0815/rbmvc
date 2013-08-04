@@ -9,33 +9,43 @@
 
 namespace Application\Model\Collection;
 
-use RBMVC\Core\Model\Collection\AbstractCollection;
 use Application\Model\Grant;
+use RBMVC\Core\Model\Collection\AbstractCollection;
 
 class GrantCollection extends AbstractCollection {
 
     /**
-     * @return void
+     * @param array|int $types
      */
-    public function findAll() {
+    public function findByType($types) {
+        if (!is_array($types)) {
+            $types = array($types);
+        }
+
         $query = $this->db->getQuery($this->dbTable);
         $query->select(array('id'));
+        foreach ($types as $type) {
+            $query->where(array('type' => $type));
+        }
         $query->orderBy(array('id' => 'DESC'));
+        $this->fetch($query);
+    }
 
-        $stmt = $this->db->execute($query);
-        $grantData = $stmt->fetchAll();
-        if (empty($grantData)) {
-            return;
-        }
-
-        if (array_key_exists('id', $grantData)) {
+    /**
+     * @param array $result
+     *
+     * @return void
+     */
+    protected function fill(array $result) {
+        if (array_key_exists('id', $result)) {
             $grant = new Grant();
-            $grant->setId($grantData['id'])->init();
+            $grant->setId($result['id'])->init();
             $this->models[] = $grant;
+
             return;
         }
 
-        foreach ($grantData as $data) {
+        foreach ($result as $data) {
             if (!is_array($data)) {
                 continue;
             }
