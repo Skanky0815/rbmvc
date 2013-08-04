@@ -71,8 +71,15 @@ class DB {
      */
     public function execute(Query &$query) {
         try {
+            /** @var \PDOStatement $stmt */
             $stmt = $this->db->prepare($query->getSQL());
-            $stmt->execute($query->getParams());
+            if (!$stmt->execute($query->getParams())) {
+                error_log(__METHOD__.'::> ###########################################################################');
+                error_log(__METHOD__.'::> '.print_r($stmt->errorInfo(), 1));
+                error_log(__METHOD__.'::> '.print_r($query, 1));
+                error_log(__METHOD__.'::> ###########################################################################');
+            }
+
             $query->reset();
             return $stmt;
         } catch (\PDOException $e) {

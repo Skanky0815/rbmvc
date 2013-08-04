@@ -68,7 +68,7 @@ class Query {
      * @return void
      */
     public function select(array $columns = array()) {
-        $sql = 'SELECT %sFROM ' . $this->dbTable . ' ';
+        $sql = 'SELECT %sFROM `' . $this->dbTable . '` ';
         
         $select = '* ';
         if (!empty($columns)) {
@@ -85,14 +85,14 @@ class Query {
      * @return void
      */
     public function delete() {
-        $this->sql = 'DELETE FROM ' . $this->dbTable . ' ';
+        $this->sql = 'DELETE FROM `' . $this->dbTable . '` ';
     }
     
     /**
      * @return void
      */
     public function update() {
-        $this->sql = 'UPDATE ' . $this->dbTable . ' ';
+        $this->sql = 'UPDATE `' . $this->dbTable . '` ';
     }
     
     /**
@@ -134,7 +134,7 @@ class Query {
     }
 
     public function insert(array $params) {
-        $insert = 'INSERT INTO ' . $this->dbTable . ' (';
+        $insert = 'INSERT INTO `' . $this->dbTable . '` (';
         $values = ' VALUES (';
         $columns = array_keys($params);
         foreach ($columns as $column) {
