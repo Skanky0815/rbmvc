@@ -40,6 +40,7 @@ class Dispatcher {
         $actionHelperFactory = new ActionHelperFactory();
         $actionHelperFactory->setView($this->view);
         $actionHelperFactory->setRequest($this->request);
+        $actionHelperFactory->setClassLoader($this->classLoader);
         
         if ($controller instanceof AbstractController) {
             $controller->setView($this->view);
