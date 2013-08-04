@@ -1,64 +1,67 @@
 <!DOCTYPE html>
 <html lang="de">
-    <head>
-        <meta charset="utf-8">
-        
-        <?php echo $this->js; ?>
+<head>
+    <meta charset="utf-8">
 
-        <?php echo $this->addStyle('bootstrap-wysihtml5-0.0.2.css'); ?>
-        <?php echo $this->addStyle('bootstrap.min.css'); ?>
-        <?php echo $this->addStyle('font-awesome.min.css'); ?>
+    <?php echo $this->js; ?>
 
-    </head>
-    <body>
-        <div class="navbar navbar-inverse navbar-static-top">
-            <div class="container">
-                <?php echo $this->navigation('main'); ?>
+    <?php echo $this->addStyle('bootstrap-wysihtml5-0.0.2.css'); ?>
+    <?php echo $this->addStyle('bootstrap.min.css'); ?>
+    <?php echo $this->addStyle('font-awesome.min.css'); ?>
 
-                <?php if (!$this->user): ?>
-                    <form action="<?php echo $this->url(array('controller' => 'auth', 'action' => 'login')); ?>" class="navbar-form pull-right" method="post">
-                       <input type="text" name="username" class="form-control" style="width: 200px;" placeholder="Benutzername">
-                       <input type="password" name="password" class="form-control" style="width: 200px;" placeholder="Passwort">
-                       <button type="submit" class="btn btn-primary"><?php echo $this->translate('login'); ?></button>
-                    </form>
-                <?php else: ?>
-                    <div class="btn-group pull-right">
-                        <a href="#" class="dropdown-toggle btn btn-primary navbar-btn" data-toggle="dropdown">
-                            <i class="icon-user"></i> <?php echo $this->user->getUsername(); ?> <b class="caret"></b>
+</head>
+<body>
+<div class="navbar navbar-inverse navbar-static-top">
+    <div class="container">
+        <?php echo $this->navigation('main'); ?>
+
+        <?php if (!$this->loggedUser->getId()): ?>
+            <form action="<?php echo $this->url(array('controller' => 'auth', 'action' => 'login')); ?>"
+                  class="navbar-form pull-right" method="post">
+                <input type="text" name="username" class="form-control" style="width: 200px;"
+                       placeholder="Benutzername">
+                <input type="password" name="password" class="form-control" style="width: 200px;"
+                       placeholder="Passwort">
+                <button type="submit" class="btn btn-primary"><?php echo $this->translate('login'); ?></button>
+            </form>
+        <?php else: ?>
+            <div class="btn-group pull-right">
+                <a href="#" class="dropdown-toggle btn btn-primary navbar-btn" data-toggle="dropdown">
+                    <i class="icon-user"></i> <?php echo $this->loggedUser->getUsername(); ?> <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="#"><?php echo $this->translate('edit_account'); ?></a></li>
+                    <li><a href="#">... todo</a></li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="<?php echo $this->url(
+                            array('action'       => 'logout'
+                                  , 'controller' => 'auth'
+                            )
+                        ); ?>">
+                            <?php echo $this->translate('logout'); ?>
                         </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#"><?php echo $this->translate('edit_account'); ?></a></li>
-                            <li><a href="#">... todo</a></li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="<?php echo $this->url(
-                                    array('action' => 'logout'
-                                        , 'controller' => 'auth'
-                                    )
-                                ); ?>">
-                                    <?php echo $this->translate('logout'); ?>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                <?php endif; ?>
+                    </li>
+                </ul>
             </div>
+        <?php endif; ?>
+    </div>
+</div>
+
+<div class="container">
+    <?php echo $this->renderSystemMessages(); ?>
+
+    <div class="row">
+        <div class="col-12">
+            <?php echo $this->content; ?>
         </div>
-        
-        <div class="container">
-            <?php echo $this->renderSystemMessages(); ?>
-            
-            <div class="row">
-                <div class="col-12">
-                   <?php echo $this->content; ?>
-               </div>
-            </div>
-        </div>
-        
-        <footer class="footer">
-            <p class="text-center">POWERT BY Rico</p>
-        </footer>
-        
-        <?php echo $this->partial('layout/partials/deleteModal.phtml'); ?>
-    </body>
+    </div>
+</div>
+
+<footer class="footer">
+    <p class="text-center">POWERT BY Rico</p>
+</footer>
+
+<?php echo $this->partial('layout/partials/deleteModal.phtml'); ?>
+</body>
 </html>
