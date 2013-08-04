@@ -22,6 +22,7 @@ return array(
     ),
     'class_paths' => array(
         'controller'    => __NAMESPACE__ . '\\Controller\\',
+        'action_helper' => __NAMESPACE__ . '\\Controller\\Helper\\',
         'view_helper'   => __NAMESPACE__ . '\\ViewHelper\\',
     ),
 );
