@@ -56,6 +56,7 @@ class Dispatcher {
             $controller->setView($this->view);
             $controller->setRequest($this->request);
             $controller->setActionHelperFactory($actionHelperFactory);
+            $controller->setClassLoader($this->classLoader);
             $controller->init();
             $actionStr = $this->request->getParam('action') . 'Action';
             if (!method_exists($controller, $actionStr) || $isClassError) {

@@ -9,31 +9,16 @@
 
 namespace Application\Controller;
 
-use Application\Model\Grant;
-use Application\Model\Collection\GrantCollection;
+class GrantController extends AbstractCurdController {
 
-class GrantController extends AbstractController {
-
-    public function indexAction() {
-        $grantCollection = new GrantCollection();
-        $grantCollection->findAll();
-
-        $this->view->assign('grants', $grantCollection->getModels());
-    }
-
-    public function editAction() {
-        $grant = $this->saveModel(new Grant(), 'Application\Forms\GrantForm');
-        $this->view->assign('grant', $grant);
+    public function __construct() {
+        parent::__construct('Grant');
     }
 
     public function scanAction() {
         $grants = $this->grantScanner();
         $this->view->assign('new', $grants['new']);
         $this->view->assign('deleted', $grants['deleted']);
-        // @TODO add message with the number of saved grants
     }
 
-    public function deleteAction() {
-        // @TODO implement this method
-    }
 }
