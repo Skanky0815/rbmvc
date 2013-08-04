@@ -75,6 +75,7 @@ class GrantScanner extends AbstractActionHelper {
         }
 
         $dirIterator = new \DirectoryIterator($dirPath);
+        /** @var \DirectoryIterator $item */
         foreach ($dirIterator as $item) {
             if (!$item->isFile() || !strstr($item->getFilename(), 'Controller.php')) {
                 continue;
