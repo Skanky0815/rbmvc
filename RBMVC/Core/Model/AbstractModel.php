@@ -64,7 +64,10 @@ abstract class AbstractModel {
             $this->id = $this->db->lastInsertId();
         }
 
-        $this->init();
+        if (!$this->init()) {
+            return false;
+        }
+
         return $this;
     }
         
@@ -92,7 +95,7 @@ abstract class AbstractModel {
 
         $stmt = $this->db->execute($query);
         $result = $stmt->fetch();
-        
+
         if (empty($result)) {
             return false;
         }
