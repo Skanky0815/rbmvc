@@ -53,14 +53,14 @@ class User extends AbstractModel {
     public function setUsername($username) {
         $this->username = $username;
         return $this;
-}
+    }
 
     /**
      * @return string
      */
     public function getPassword() {
         return $this->password;
-}
+    }
 
     /**
      * @param string $password
@@ -69,14 +69,14 @@ class User extends AbstractModel {
     public function setPassword($password) {
         $this->password = $password;
         return $this;
-}
+    }
 
     /**
      * @return string
      */
     public function getEmail() {
         return $this->email;
-}
+    }
 
     /**
      * @param string $email
@@ -85,21 +85,21 @@ class User extends AbstractModel {
     public function setEmail($email) {
         $this->email = $email;
         return $this;
-}
+    }
 
     /**
      * @return bool
      */
     public function isActive() {
         return $this->isActive;
-}
+    }
 
     /**
      * @return bool
      */
     public function getIsActive() {
         return $this->isActive;
-}
+    }
 
     /**
      * @param bool $isActive
