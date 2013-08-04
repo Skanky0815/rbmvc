@@ -34,9 +34,9 @@ class GrantForm extends Form {
         $type = new SelectElement('type');
         $type->setLabel('type');
         $type->setOptions(array(
-            'public'    => Grant::TYPE_PUBLIC,
-            'protected' => Grant::TYPE_PROTECTED,
-            'private'   => Grant::TYPE_PRIVATE
+            'grant_type_' . Grant::TYPE_PUBLIC    => Grant::TYPE_PUBLIC,
+            'grant_type_' . Grant::TYPE_PROTECTED => Grant::TYPE_PROTECTED,
+            'grant_type_' . Grant::TYPE_PRIVATE   => Grant::TYPE_PRIVATE,
         ));
         $this->addElement($type);
 
