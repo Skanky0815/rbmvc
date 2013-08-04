@@ -46,9 +46,27 @@ abstract class AbstractModel {
     }
     
     /**
-     * @return void
+     * @return \RBMVC\Core\Model\AbstractModel
      */
-    abstract public function save(); 
+    public function save() {
+        $query = $this->db->getQuery($this->dbTable);
+        if (empty($this->id)) {
+            $query->insert($this->toArrayForSave());
+        } else {
+            $query->update();
+            $query->set($this->toArrayForSave());
+            $query->where(array('id' => $this->id));
+        }
+
+        $this->db->execute($query);
+
+        if (empty($this->id)) {
+            $this->id = $this->db->lastInsertId();
+        }
+
+        $this->init();
+        return $this;
+    }
         
     /**
      * @return void

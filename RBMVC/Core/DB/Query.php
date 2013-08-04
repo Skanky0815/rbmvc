@@ -132,7 +132,27 @@ class Query {
         }
         $this->sql .= $sql;
     }
-    
+
+    public function insert(array $params) {
+        $insert = 'INSERT INTO ' . $this->dbTable . ' (';
+        $values = ' VALUES (';
+        $columns = array_keys($params);
+        foreach ($columns as $column) {
+            $insert.= $column;
+            $values.= ':' . $column;
+            if ($column != end($columns)) {
+                $insert .= ', ';
+                $values .= ', ';
+            } else {
+                $insert .= ')';
+                $values .= ')';
+            }
+        }
+
+        $this->setPdoParams($params);
+        $this->sql .= $insert . $values;
+    }
+
     /**
      * @param array $params
      * @return void
@@ -150,10 +170,16 @@ class Query {
             if ($column != end($orderColumns)) {
                 $sql .= ', ';
             }
-            $this->params[':' . $column] = $value;
         }
         $sql .= ' ';
-        
+
+        $this->setPdoParams($params);
         $this->sql .= $sql;
+    }
+
+    private function setPdoParams(array $params) {
+        foreach ($params as $column => $value) {
+            $this->params[':' . $column] = $value;
+        }
     }
 }

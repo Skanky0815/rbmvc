@@ -111,42 +111,6 @@ class User extends AbstractModel {
     }
 
     /**
-     * @return \Application\Model\User
-     */
-    public function save() {
-        $query = $this->db->getQuery($this->dbTable);
-        if (empty($this->id)) {
-            $sql = '
-                INSERT INTO ' . $this->dbTable . '
-                    (username, email, is_active, password)
-                VALUES
-                    (:username, :email, :is_active, :password)';
-
-            $param = array(
-                ':username'  => $this->username,
-                ':email'     => $this->email,
-                ':is_active' => $this->isActive,
-            );
-
-            $query->setSql($sql);
-            $query->setParams($param);
-        } else {
-            $query->update();
-            $query->set($this->toArrayForSave());
-            $query->where(array('id' => $this->id));
-        }
-
-        $this->db->execute($query);
-
-        if (empty($this->id)) {
-            $this->id = $this->db->lastInsertId();
-        }
-
-        $this->init();
-        return $this;
-    }
-
-    /**
      * @return bool
      */
     public function exists() {

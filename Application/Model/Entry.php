@@ -37,7 +37,13 @@ class Entry extends AbstractModel {
      * @column text
      */
     private $text;
-    
+
+    public function __construct() {
+        parent::__construct();
+        $date =new \DateTime('now');
+        $this->date = $date->format('Y-m-d');
+    }
+
     /**
      * @return string
      */
@@ -134,42 +140,6 @@ class Entry extends AbstractModel {
         }
 
         return false;
-    }
-
-    /**
-     * @return boolean|\Application\Model\Entry
-     */
-    public function save() {
-        $query = $this->db->getQuery($this->dbTable);
-        if (empty($this->id)) {
-            $sql = '
-                INSERT INTO ' . $this->dbTable . ' 
-                    (user_id, title, text, date)
-                VALUES 
-                    (:user_id, :title, :text, NOW())';
-            
-            $param = array(
-                ':user_id'   => $this->userId,
-                ':title'    => $this->title,
-                ':text'     => $this->text,
-            );
-            
-            $query->setSql($sql);
-            $query->setParams($param);
-        } else {
-            $query->update();
-            $query->set($this->toArrayForSave());
-            $query->where(array('id' => $this->id));
-        }
-
-        $this->db->execute($query);
-        
-        if (empty($this->id)) {
-            $this->id = $this->db->lastInsertId();
-        }
-        
-        $this->init();
-        return $this;
     }
 
 }
