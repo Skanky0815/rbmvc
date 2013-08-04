@@ -24,9 +24,7 @@ class GrantCollection extends AbstractCollection {
 
         $query = $this->db->getQuery($this->dbTable);
         $query->select(array('id'));
-        foreach ($types as $type) {
-            $query->where(array('type' => $type));
-        }
+        $query->where(array('type' => $types));
         $query->orderBy(array('id' => 'DESC'));
         $this->fetch($query);
     }
