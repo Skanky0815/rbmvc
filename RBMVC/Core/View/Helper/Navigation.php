@@ -1,7 +1,7 @@
 <?php
 namespace RBMVC\Core\View\Helper;
 
-class Navigation extends AbstractViewHelper {
+class Navigation extends HasAccess {
 
     /**
      * @var array
@@ -14,7 +14,7 @@ class Navigation extends AbstractViewHelper {
 
     public function init() {
         $this->navigation = include_once(APPLICATION_DIR . 'data/config/navigation.php');
-        $this->action = $this->request->getParam('action');
+        $this->action     = $this->request->getParam('action');
         $this->controller = $this->request->getParam('controller');
     }
 
@@ -27,7 +27,7 @@ class Navigation extends AbstractViewHelper {
     }
 
     private function modifyNavigation(&$navigation) {
-        foreach ($navigation as &$navigationPoint) {
+        foreach ($navigation as $key => &$navigationPoint) {
             $navigationPoint['is_active'] = false;
             if ($navigationPoint['controller'] == $this->controller) {
                 $navigationPoint['is_active'] = true;
@@ -36,7 +36,12 @@ class Navigation extends AbstractViewHelper {
             if (isset($navigationPoint['pages']) && !empty($navigationPoint['pages'])) {
                 $navigationPoint['pages'] = $this->modifyNavigation($navigationPoint['pages']);
             }
+
+            if (!$this->hasAccess($this->view->url($navigationPoint))) {
+                unset($navigation[$key]);
+            }
         }
+
         return $navigation;
     }
 }

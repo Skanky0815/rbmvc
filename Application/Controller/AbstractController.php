@@ -30,12 +30,14 @@ abstract class AbstractController extends \RBMVC\Core\Controller\AbstractControl
      * @return void
      */
     public function setUser() {
-        $session  = new Session('user');
-        $userData = $session->user;
+        $session = new Session('user');
+        $data    = $session->user;
 
         $user = new User();
-        if (is_array($userData)) {
-            $user->fillModelByArray($userData);
+        if (is_array($data) && isset($data['id'])) {
+            $user->fillModelByArray($data);
+        } else {
+            $session->user = $user->toArray();
         }
 
         $this->user = $user;

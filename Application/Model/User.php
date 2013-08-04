@@ -176,4 +176,22 @@ class User extends AbstractModel {
         return true;
     }
 
+    /**
+     * @return bool
+     */
+    public function init() {
+        if (parent::init()) {
+            $grantCollection = new GrantCollection();
+            $grantCollection->findByType(array(Grant::TYPE_PROTECTED, Grant::TYPE_PUBLIC));
+            /** @var \Application\Model\Grant $grant */
+            foreach ($grantCollection->getModels() as $grant) {
+                $this->grants[] = $grant->getDefinition();
+            }
+
+            return true;
+        }
+
+        return false;
+    }
+
 }

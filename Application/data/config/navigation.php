@@ -13,7 +13,7 @@ return array(
         ),
         'administration' => array(
             'label'      => 'administration',
-            'controller' => 'user',
+            'controller' => 'admin',
             'action'     => 'index',
             'pages'      => array(
                 'user'        => array(
