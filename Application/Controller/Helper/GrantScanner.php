@@ -33,12 +33,13 @@ class GrantScanner extends AbstractActionHelper {
 
     public function init() {
         if (!isset($this->config['class_paths'])
-            || (isset($this->config['class_paths']) && !isset($this->config['class_paths']['controller']))) {
+            || (isset($this->config['class_paths']) && !isset($this->config['class_paths']['controller']))
+        ) {
             return false;
         }
 
         $this->controllerNamespace = $this->config['class_paths']['controller'];
-        $this->camelCaseToDash = new CamelCaseToDash();
+        $this->camelCaseToDash     = new CamelCaseToDash();
 
         $allGrants = new GrantCollection();
         $allGrants->findAll();
@@ -59,7 +60,7 @@ class GrantScanner extends AbstractActionHelper {
 
         $this->saveGrants();
 
-        $this->grants['new'] = $this->new;
+        $this->grants['new']     = $this->new;
         $this->grants['deleted'] = $this->deleted;
 
         return $this->grants;
@@ -79,9 +80,16 @@ class GrantScanner extends AbstractActionHelper {
                 continue;
             }
 
-            $className = $this->controllerNamespace . str_replace('.php', '', $item->getFilename());
-            $controller = strtolower(str_replace('Controller.php', '', $item->getFilename()));
-            $controllers[$controller] = $this->scanActions($className);
+            $className       = $this->controllerNamespace . str_replace('.php', '', $item->getFilename());
+            $reflectionClass = new \ReflectionClass($className);
+            if ($reflectionClass->isAbstract()) {
+                continue;
+            }
+
+            $camelCaseToDash          = new CamelCaseToDash();
+            $controller               =
+                $camelCaseToDash->convert(str_replace('Controller.php', '', $item->getFilename()));
+            $controllers[$controller] = $this->scanActions($reflectionClass);
         }
 
         return $controllers;
@@ -90,17 +98,17 @@ class GrantScanner extends AbstractActionHelper {
     /**
      * Search all actions from the controller class an return there names as array.
      *
-     * @param string $className controller class
+     * @param \ReflectionClass $reflectionClass controller class
+     *
      * @return array with action names
      */
-    private function scanActions($className) {
+    private function scanActions(\ReflectionClass $reflectionClass) {
         $actions = array();
-        $reflectionClass = new \ReflectionClass($className);
         /** @var \ReflectionMethod $method */
         foreach ($reflectionClass->getMethods(\ReflectionMethod::IS_PUBLIC) as $method) {
             if (substr($method->name, -6) == 'Action') {
                 $methodName = str_replace('Action', '', $method->name);
-                $actions[] = $this->camelCaseToDash->convert($methodName);
+                $actions[]  = $this->camelCaseToDash->convert($methodName);
             }
         }
 
