@@ -7,8 +7,8 @@ use RBMVC\Core\Controller\Helper\AbstractActionHelper;
 class ActionHelperFactory extends AbstractHelperFactory {
 
     protected function loadHelper($name) {
-        $className = '\RBMVC\Core\Controller\Helper\\' . ucfirst($name);
-        $helper = new $className;
+        $className = ucfirst($name);
+        $helper = $this->classLoader->getClassInstance($className);
         if ($helper instanceof AbstractActionHelper) {
             $helper->setView($this->view);
             $helper->setRequest($this->request);
