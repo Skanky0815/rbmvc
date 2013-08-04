@@ -1,0 +1,6 @@
+<h2>
+    <?php echo $this->translate('grant_title'); ?>
+    <?php echo $this->translate($this->grant->getId() ? 'grant_edit' : 'grant_create'); ?>
+</h2>
+
+<?php echo $this->renderForm($this->form); ?>
