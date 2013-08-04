@@ -149,7 +149,7 @@ class GrantScanner extends AbstractActionHelper {
     }
 
     private function createDefinition($controller, $action) {
-        return $controller . '/' . $action;
+        return '/' . $controller . '/' . $action;
     }
 
 }
