@@ -2,6 +2,7 @@
 namespace RBMVC\Core\Controller\Helper;
 
 use RBMVC\Core\Model\AbstractModel;
+use RBMVC\Core\Utilities\Form\Form;
 use RBMVC\Core\Utilities\SystemMessage;
 
 class SaveModel extends AbstractActionHelper {
@@ -21,6 +22,11 @@ class SaveModel extends AbstractActionHelper {
         
         $model->fillModelByArray($params);
         $form = new $form($model);
+
+        if (!$form instanceof Form) {
+            return $model;
+        }
+
         if ($this->request->isPost()) {
             if ($form->isValid($params)) {
                 $this->save($model);
@@ -38,13 +44,14 @@ class SaveModel extends AbstractActionHelper {
      * @return void
      */
     private function save(AbstractModel &$model) {
-        $model = $model->save();
-        if ($model instanceof AbstractModel) {
+        $temp = $model;
+        if ($model->save() instanceof AbstractModel) {
             $systemMessage = new SystemMessage(SystemMessage::SUCCESS);
             $systemMessage->setTitle('save_success');
             $this->addFlashSystemMessage($systemMessage);
             $this->redirect(array('id' => $model->getId()));
         } else {
+            $model = $temp;
             $this->addSaveErrorMessage();
         }
     }
