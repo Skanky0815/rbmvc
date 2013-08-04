@@ -9,14 +9,14 @@
 
 namespace RBMVC\Core\Utilities\Modifiers\String;
 
-
 class CamelCaseToDash {
 
     /**
      * @param string $str
+     *
      * @return string
      */
     public function convert($str) {
-        return strtolower(preg_replace('/([a-z])([A-Z])/', '$1-$2',  $str));
+        return strtolower(preg_replace('/([a-zA-Z])(?=[A-Z])/', '$1-', $str));
     }
 }
