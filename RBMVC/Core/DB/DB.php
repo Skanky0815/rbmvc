@@ -73,7 +73,7 @@ class DB {
         try {
             $stmt = $this->db->prepare($query->getSQL());
             $stmt->execute($query->getParams());
-            $query->setSql('');
+            $query->reset();
             return $stmt;
         } catch (\PDOException $e) {
             error_log(__METHOD__.'::> '.$e->getMessage());

@@ -100,7 +100,7 @@ class Query {
      * @return void
      */
     public function where(array $where) {
-        $sql = 'WHERE 1=1 ';
+        $sql = 'WHERE 1=1';
         foreach ($where as $key => $value) {
             $sql .= ' AND ' . $key . ' = :' . $key;
             $this->params[':' . $key] = $value;
@@ -181,5 +181,10 @@ class Query {
         foreach ($params as $column => $value) {
             $this->params[':' . $column] = $value;
         }
+    }
+
+    public function reset() {
+        $this->sql = '';
+        $this->params = array();
     }
 }
