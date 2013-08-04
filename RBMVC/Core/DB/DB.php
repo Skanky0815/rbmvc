@@ -85,6 +85,6 @@ class DB {
      * @return string
      */
     public function lastInsertId() {
-        return $this->db->lastInsertId();
+        return (int) $this->db->lastInsertId();
     }
 }
