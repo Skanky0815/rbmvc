@@ -1004,3 +1004,27 @@ Stack trace:
 [03-Aug-2013 21:49:14 UTC] Application\Model\User::setIsActive::> 1
 [03-Aug-2013 21:50:10 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in /Users/ricoschulz/www/rbmvc/RBMVC/Core/DB/DB.php on line 75
 [03-Aug-2013 21:50:23 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in /Users/ricoschulz/www/rbmvc/RBMVC/Core/DB/DB.php on line 75
+[04-Aug-2013 06:35:15 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class Application\Controller\GrantCollection not found!
+[04-Aug-2013 06:35:15 UTC] PHP Fatal error:  Uncaught exception 'RBMVC\Core\Utilities\Exception\ClassLoadingException' with message 'Class Application\Controller\GrantCollection not found!' in /Users/ricoschulz/www/rbmvc/RBMVC/Core/ClassLoader.php:88
+Stack trace:
+#0 /Users/ricoschulz/www/rbmvc/RBMVC/Core/ClassLoader.php(114): RBMVC\Core\ClassLoader->getClassNamespace('Application\Con...')
+#1 [internal function]: RBMVC\Core\ClassLoader->load('Application\Con...')
+#2 /Users/ricoschulz/www/rbmvc/Application/Controller/GrantController.php(17): spl_autoload_call('Application\Con...')
+#3 /Users/ricoschulz/www/rbmvc/RBMVC/Core/Dispatcher.php(53): Application\Controller\GrantController->indexAction()
+#4 /Users/ricoschulz/www/rbmvc/RBMVC/Bootstrap.php(53): RBMVC\Core\Dispatcher->setupController()
+#5 /Users/ricoschulz/www/rbmvc/public/index.php(11): RBMVC\Bootstrap->run(Array)
+#6 {main}
+  thrown in /Users/ricoschulz/www/rbmvc/RBMVC/Core/ClassLoader.php on line 88
+[04-Aug-2013 06:40:01 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class User-groupsController not found!
+[04-Aug-2013 06:40:07 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class User-groupsController not found!
+[04-Aug-2013 06:40:17 UTC] RBMVC\Core\Utilities\Exception\ClassLoadingException::> Class User-groupsController not found!
+[04-Aug-2013 06:49:36 UTC] PHP Warning:  Invalid argument supplied for foreach() in /Users/ricoschulz/www/rbmvc/template/views/index/index.phtml on line 13
+[04-Aug-2013 06:51:18 UTC] PHP Notice:  Undefined variable: key in /Users/ricoschulz/www/rbmvc/template/views/index/index.phtml on line 14
+[04-Aug-2013 06:51:18 UTC] PHP Notice:  Undefined variable: key in /Users/ricoschulz/www/rbmvc/template/views/index/index.phtml on line 14
+[04-Aug-2013 06:51:18 UTC] PHP Notice:  Undefined variable: key in /Users/ricoschulz/www/rbmvc/template/views/index/index.phtml on line 14
+[04-Aug-2013 06:51:18 UTC] PHP Notice:  Undefined variable: key in /Users/ricoschulz/www/rbmvc/template/views/index/index.phtml on line 14
+[04-Aug-2013 06:51:18 UTC] PHP Notice:  Undefined variable: key in /Users/ricoschulz/www/rbmvc/template/views/index/index.phtml on line 14
+[04-Aug-2013 06:51:18 UTC] PHP Notice:  Undefined variable: key in /Users/ricoschulz/www/rbmvc/template/views/index/index.phtml on line 14
+[04-Aug-2013 06:51:18 UTC] PHP Notice:  Undefined variable: key in /Users/ricoschulz/www/rbmvc/template/views/index/index.phtml on line 14
+[04-Aug-2013 06:51:18 UTC] PHP Notice:  Undefined variable: key in /Users/ricoschulz/www/rbmvc/template/views/index/index.phtml on line 14
+[04-Aug-2013 06:56:15 UTC] PHP Strict Standards:  Only variables should be passed by reference in /Users/ricoschulz/www/rbmvc/Application/Controller/IndexController.php on line 14
