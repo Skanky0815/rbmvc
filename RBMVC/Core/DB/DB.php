@@ -69,10 +69,11 @@ class DB {
      * @param \RBMVC\Core\DB\Query $query
      * @return boolean|\PDOStatement
      */
-    public function execute(Query $query) {
+    public function execute(Query &$query) {
         try {
             $stmt = $this->db->prepare($query->getSQL());
             $stmt->execute($query->getParams());
+            $query->setSql('');
             return $stmt;
         } catch (\PDOException $e) {
             error_log(__METHOD__.'::> '.$e->getMessage());
