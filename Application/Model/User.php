@@ -1,6 +1,7 @@
 <?php
 namespace Application\Model;
 
+use Application\Model\Collection\GrantCollection;
 use RBMVC\Core\Model\AbstractModel;
 
 /**
@@ -8,35 +9,51 @@ use RBMVC\Core\Model\AbstractModel;
  * @package Application\Model
  */
 class User extends AbstractModel {
-        
+
     /**
      * @var string
      * @column username
      */
     private $username;
-        
+
     /**
      * @var string
      * @column password
      */
     private $password;
-        
+
     /**
      * @var string
      * @column password
      */
     private $email;
-        
+
     /**
      * @var array
      */
     private $useGroups;
-        
+
     /**
      * @var boolean
      * @column is_active
      */
     private $isActive = false;
+
+    /**
+     * @var array
+     */
+    private $grants = array();
+
+    public function __construct() {
+        parent::__construct();
+
+        $grantCollection = new GrantCollection();
+        $grantCollection->findByType(Grant::TYPE_PUBLIC);
+        /** @var \Application\Model\Grant $grant */
+        foreach ($grantCollection->getModels() as $grant) {
+            $this->grants[] = $grant->getDefinition();
+        }
+    }
 
     /**
      * @return string
@@ -52,6 +69,7 @@ class User extends AbstractModel {
      */
     public function setUsername($username) {
         $this->username = $username;
+
         return $this;
     }
 
@@ -64,10 +82,12 @@ class User extends AbstractModel {
 
     /**
      * @param string $password
+     *
      * @return \Application\Model\User
      */
     public function setPassword($password) {
         $this->password = $password;
+
         return $this;
     }
 
@@ -80,10 +100,12 @@ class User extends AbstractModel {
 
     /**
      * @param string $email
+     *
      * @return \Application\Model\User
      */
     public function setEmail($email) {
         $this->email = $email;
+
         return $this;
     }
 
@@ -103,10 +125,30 @@ class User extends AbstractModel {
 
     /**
      * @param bool $isActive
+     *
      * @return \Application\Model\User
      */
     public function setIsActive($isActive) {
         $this->isActive = (bool) $isActive;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getGrants() {
+        return $this->grants;
+    }
+
+    /**
+     * @param array $grants
+     *
+     * @return \Application\Model\User
+     */
+    public function setGrants(array $grants) {
+        $this->grants = $grants;
+
         return $this;
     }
 
@@ -122,14 +164,15 @@ class User extends AbstractModel {
         if (is_null($stmt)) {
             return false;
         }
-        
+
         $result = $stmt->fetch();
-        
+
         if (empty($result)) {
             return false;
         }
-        
+
         $this->fillModelByArray($result);
+
         return true;
     }
 
