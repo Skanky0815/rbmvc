@@ -50,6 +50,13 @@ abstract class AbstractCurdController extends AbstractController {
     /**
      * @return void
      */
+    public function addAction() {
+        $this->redirect(array('action' => 'edit'));
+    }
+
+    /**
+     * @return void
+     */
     public function editAction() {
         $model = $this->classLoader->getClassInstance($this->modelClassName);
         $user  = $this->saveModel($model, $this->formClassName);
