@@ -38,6 +38,7 @@ class ClassLoader {
 
     /**
      * @param string $namespace
+     *
      * @return void
      */
     public function addNamespace($namespace) {
@@ -46,6 +47,7 @@ class ClassLoader {
 
     /**
      * @param array $namespaces
+     *
      * @return void
      */
     public function addNamespaces(array $namespaces) {
@@ -60,9 +62,12 @@ class ClassLoader {
      */
     public function getClassInstance($class) {
         try {
-            $class = $this->load($class);
+            if (!class_exists($class)) {
+                $class = $this->load($class);
+            }
+
             return new $class();
-        } catch(ClassLoadingException $e) {
+        } catch (ClassLoadingException $e) {
             throw $e;
         }
     }
@@ -97,6 +102,7 @@ class ClassLoader {
         $path = ROOT_DIR . str_replace('\\', '/', $class) . '.php';
         if (file_exists($path)) {
             include_once($path);
+
             return true;
         }
 
@@ -111,10 +117,11 @@ class ClassLoader {
      */
     private function load($class) {
         try {
-            $path = $this->getClassNamespace($class);
+            $path            = $this->getClassNamespace($class);
             $this->classes[] = $path;
+
             return $path;
-        } catch(ClassLoadingException $e) {
+        } catch (ClassLoadingException $e) {
             throw $e;
         }
     }

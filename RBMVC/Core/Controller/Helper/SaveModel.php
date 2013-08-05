@@ -3,6 +3,7 @@ namespace RBMVC\Core\Controller\Helper;
 
 use RBMVC\Core\Model\AbstractModel;
 use RBMVC\Core\Utilities\Form\Form;
+use RBMVC\Core\Utilities\Session;
 use RBMVC\Core\Utilities\SystemMessage;
 
 class SaveModel extends AbstractActionHelper {
@@ -10,16 +11,17 @@ class SaveModel extends AbstractActionHelper {
     /**
      * @param \RBMVC\Core\Model\AbstractModel $model
      * @param string $form
+     *
      * @return \RBMVC\Core\Model\AbstractModel|void
      */
     public function saveModel(AbstractModel $model, $form) {
         $modelId = (int) $this->request->getParam('id', 0);
-        $params = $this->request->getPostParams();
-        
+        $params  = $this->request->getPostParams();
+
         if (!empty($modelId)) {
             $model->setId($modelId)->init();
-        } 
-        
+        }
+
         $model->fillModelByArray($params);
         $form = new $form($model);
 
@@ -34,13 +36,20 @@ class SaveModel extends AbstractActionHelper {
                 $this->addInvalidFormMessage();
             }
         }
-        
+
+        $session = new Session('saved');
+
+        $this->view->assign('isSaved', $session->saved);
         $this->view->assign('form', $form);
+
+        $session->resetNamespace();
+
         return $model;
     }
 
     /**
      * @param \RBMVC\Core\Model\AbstractModel $model
+     *
      * @return void
      */
     private function save(AbstractModel &$model) {
@@ -49,6 +58,10 @@ class SaveModel extends AbstractActionHelper {
             $systemMessage = new SystemMessage(SystemMessage::SUCCESS);
             $systemMessage->setTitle('save_success');
             $this->addFlashSystemMessage($systemMessage);
+
+            $session        = new Session('saved');
+            $session->saved = true;
+
             $this->redirect(array('id' => $model->getId()));
         } else {
             $model = $temp;
@@ -73,5 +86,5 @@ class SaveModel extends AbstractActionHelper {
         $systemMessage->setTitle('invalid_form');
         $this->addSystemMessage($systemMessage);
     }
-    
+
 }

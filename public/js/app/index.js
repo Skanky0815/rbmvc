@@ -1,8 +1,10 @@
 define(['../lib/bootstrap.min'
-], function() {
+], function () {
     var _ = {};
 
-    $(function() {
+    $(function () {
         console.log('Index JS');
+
+        $('[data-toggle="tooltip"]').tooltip();
     });
 });

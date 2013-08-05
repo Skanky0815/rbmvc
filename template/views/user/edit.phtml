@@ -1,4 +1,12 @@
 <h2>
+    <span class="<?php echo($this->isSaved ? ' ' : 'text-danger'); ?>"
+          data-toggle="tooltip"
+          data-container="body"
+          data-trigger="hover"
+          data-placement="top"
+          title="<?php echo $this->translate(($this->isSaved ? 'seved' : 'not_saved')); ?>">
+        <i class="icon-save"></i>
+    </span>
     <?php echo $this->translate('user_title'); ?>
     <?php echo $this->translate($this->user->getId() ? 'user_edit' : 'user_create'); ?>
 </h2>
