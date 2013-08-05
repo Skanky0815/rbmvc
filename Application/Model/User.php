@@ -45,6 +45,7 @@ class User extends AbstractModel {
     private $grants = array();
 
     public function __construct() {
+        error_log(__METHOD__ . '::> ' . print_r('', 1));
         parent::__construct();
 
         $grantCollection = new GrantCollection();

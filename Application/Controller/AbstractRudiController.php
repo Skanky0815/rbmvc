@@ -9,7 +9,7 @@
 
 namespace Application\Controller;
 
-abstract class AbstractCurdController extends AbstractController {
+abstract class AbstractRudiController extends AbstractController {
 
     /**
      * @var string

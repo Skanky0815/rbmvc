@@ -9,7 +9,7 @@
 
 namespace Application\Controller;
 
-class UserGroupController extends AbstractCurdController {
+class UserGroupController extends AbstractRudiController {
 
     public function __construct() {
         parent::__construct('UserGroup');

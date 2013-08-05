@@ -4,7 +4,7 @@ namespace Application\Controller;
 use Application\Model\Entry;
 use RBMVC\Core\Utilities\Session;
 
-class EntryController extends AbstractCurdController {
+class EntryController extends AbstractRudiController {
 
     public function __construct() {
         parent::__construct('Entry');

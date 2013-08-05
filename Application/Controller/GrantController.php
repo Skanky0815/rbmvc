@@ -9,7 +9,7 @@
 
 namespace Application\Controller;
 
-class GrantController extends AbstractCurdController {
+class GrantController extends AbstractRudiController {
 
     public function __construct() {
         parent::__construct('Grant');

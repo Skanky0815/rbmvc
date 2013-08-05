@@ -1,7 +1,7 @@
 <?php
 namespace Application\Controller;
 
-class UserController extends AbstractCurdController {
+class UserController extends AbstractRudiController {
 
     public function __construct() {
         parent::__construct('user');
