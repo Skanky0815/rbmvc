@@ -107674,3 +107674,232 @@ Stack trace:
     [0] => 36
 )
 
+[05-Aug-2013 06:06:31 UTC] RBMVC\Core\View\Helper\HasAccess::__construct::> Array
+(
+    [0] => /admin/index
+    [1] => /entry/add
+    [2] => /user-group/add
+    [3] => /user/add
+    [4] => /grant/add
+    [5] => /user-group/delete
+    [6] => /user-group/edit
+    [7] => /user-group/index
+    [8] => /user/delete
+    [9] => /user/edit
+    [10] => /user/index
+    [11] => /user/registration
+    [12] => /index/index
+    [13] => /grant/delete
+    [14] => /grant/edit
+    [15] => /grant/index
+    [16] => /grant/scan
+    [17] => /error/index
+    [18] => /entry/delete
+    [19] => /entry/edit
+    [20] => /entry/index
+    [21] => /auth/logout
+    [22] => /auth/login
+    [23] => /auth/index
+)
+
+[05-Aug-2013 06:07:00 UTC] RBMVC\Core\View\Helper\HasAccess::__construct::> Array
+(
+    [0] => /admin/index
+    [1] => /entry/add
+    [2] => /user-group/add
+    [3] => /user/add
+    [4] => /grant/add
+    [5] => /user-group/delete
+    [6] => /user-group/edit
+    [7] => /user-group/index
+    [8] => /user/delete
+    [9] => /user/edit
+    [10] => /user/index
+    [11] => /user/registration
+    [12] => /index/index
+    [13] => /grant/delete
+    [14] => /grant/edit
+    [15] => /grant/index
+    [16] => /grant/scan
+    [17] => /error/index
+    [18] => /entry/delete
+    [19] => /entry/edit
+    [20] => /entry/index
+    [21] => /auth/logout
+    [22] => /auth/login
+    [23] => /auth/index
+)
+
+[05-Aug-2013 06:07:00 UTC] RBMVC\Core\View\Helper\HasAccess::__construct::> Array
+(
+    [0] => /admin/index
+    [1] => /entry/add
+    [2] => /user-group/add
+    [3] => /user/add
+    [4] => /grant/add
+    [5] => /user-group/delete
+    [6] => /user-group/edit
+    [7] => /user-group/index
+    [8] => /user/delete
+    [9] => /user/edit
+    [10] => /user/index
+    [11] => /user/registration
+    [12] => /index/index
+    [13] => /grant/delete
+    [14] => /grant/edit
+    [15] => /grant/index
+    [16] => /grant/scan
+    [17] => /error/index
+    [18] => /entry/delete
+    [19] => /entry/edit
+    [20] => /entry/index
+    [21] => /auth/logout
+    [22] => /auth/login
+    [23] => /auth/index
+)
+
+[05-Aug-2013 06:07:00 UTC] RBMVC\Core\View\Helper\HasAccess::__construct::> Array
+(
+    [0] => /admin/index
+    [1] => /entry/add
+    [2] => /user-group/add
+    [3] => /user/add
+    [4] => /grant/add
+    [5] => /user-group/delete
+    [6] => /user-group/edit
+    [7] => /user-group/index
+    [8] => /user/delete
+    [9] => /user/edit
+    [10] => /user/index
+    [11] => /user/registration
+    [12] => /index/index
+    [13] => /grant/delete
+    [14] => /grant/edit
+    [15] => /grant/index
+    [16] => /grant/scan
+    [17] => /error/index
+    [18] => /entry/delete
+    [19] => /entry/edit
+    [20] => /entry/index
+    [21] => /auth/logout
+    [22] => /auth/login
+    [23] => /auth/index
+)
+
+[05-Aug-2013 06:07:03 UTC] RBMVC\Core\View\Helper\HasAccess::__construct::> Array
+(
+    [0] => /admin/index
+    [1] => /entry/add
+    [2] => /user-group/add
+    [3] => /user/add
+    [4] => /grant/add
+    [5] => /user-group/delete
+    [6] => /user-group/edit
+    [7] => /user-group/index
+    [8] => /user/delete
+    [9] => /user/edit
+    [10] => /user/index
+    [11] => /user/registration
+    [12] => /index/index
+    [13] => /grant/delete
+    [14] => /grant/edit
+    [15] => /grant/index
+    [16] => /grant/scan
+    [17] => /error/index
+    [18] => /entry/delete
+    [19] => /entry/edit
+    [20] => /entry/index
+    [21] => /auth/logout
+    [22] => /auth/login
+    [23] => /auth/index
+)
+
+[05-Aug-2013 06:07:05 UTC] RBMVC\Core\View\Helper\HasAccess::__construct::> Array
+(
+    [0] => /admin/index
+    [1] => /entry/add
+    [2] => /user-group/add
+    [3] => /user/add
+    [4] => /grant/add
+    [5] => /user-group/delete
+    [6] => /user-group/edit
+    [7] => /user-group/index
+    [8] => /user/delete
+    [9] => /user/edit
+    [10] => /user/index
+    [11] => /user/registration
+    [12] => /index/index
+    [13] => /grant/delete
+    [14] => /grant/edit
+    [15] => /grant/index
+    [16] => /grant/scan
+    [17] => /error/index
+    [18] => /entry/delete
+    [19] => /entry/edit
+    [20] => /entry/index
+    [21] => /auth/logout
+    [22] => /auth/login
+    [23] => /auth/index
+)
+
+[05-Aug-2013 06:11:19 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:11:19 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:11:19 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:11:19 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:11:19 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:11:19 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:11:19 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:11:19 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:11:19 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:11:19 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:11:26 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:11:26 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:11:26 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:11:26 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:11:26 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:11:26 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:11:26 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:11:26 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:11:26 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:11:26 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:11:35 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:11:42 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:11:42 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:11:42 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:11:42 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:11:42 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:11:42 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:11:42 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:11:42 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:11:42 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:11:42 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:11:51 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:11:51 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:11:51 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:11:51 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:11:52 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:11:52 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:11:52 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:11:52 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:11:52 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:11:52 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:11:58 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:11:58 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:11:58 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:11:58 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:11:58 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:11:58 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:11:58 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:11:58 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:11:58 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:11:58 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:12:01 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:12:01 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:12:01 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:12:01 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:12:01 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:12:02 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:12:02 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:12:02 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:12:02 UTC] Application\Model\User::init::> 1
+[05-Aug-2013 06:12:02 UTC] Application\Model\User::init::> 1
