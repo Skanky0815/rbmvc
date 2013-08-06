@@ -8,10 +8,9 @@ use RBMVC\Core\Model\AbstractModel;
  * @package Application\Model
  */
 class Entry extends AbstractModel {
-    
+
     /**
      * @var int
-     * @column user_id
      */
     private $userId;
 
@@ -22,25 +21,22 @@ class Entry extends AbstractModel {
 
     /**
      * @var string
-     * @column date
      */
     private $date;
-        
+
     /**
      * @var string
-     * @column title
      */
     private $title;
-        
+
     /**
      * @var string
-     * @column text
      */
     private $text;
 
     public function __construct() {
         parent::__construct();
-        $date =new \DateTime('now');
+        $date       = new \DateTime('now');
         $this->date = $date->format('Y-m-d');
     }
 
@@ -50,32 +46,36 @@ class Entry extends AbstractModel {
     public function getUserId() {
         return $this->userId;
     }
-    
+
     /**
      * @param string $author
+     *
      * @return \Application\Model\Entry
      */
     public function setUserId($author) {
         $this->userId = $author;
+
         return $this;
     }
-    
+
     /**
      * @return string
      */
     public function getDate() {
         return $this->date;
     }
-    
+
     /**
      * @param string $date
+     *
      * @return \Application\Model\Entry
      */
     public function setDate($date) {
         $this->date = $date;
+
         return $this;
     }
-    
+
     /**
      * @return string
      */
@@ -85,10 +85,12 @@ class Entry extends AbstractModel {
 
     /**
      * @param string $title
+     *
      * @return \Application\Model\Entry
      */
     public function setTitle($title) {
         $this->title = $title;
+
         return $this;
     }
 
@@ -98,13 +100,15 @@ class Entry extends AbstractModel {
     public function getText() {
         return $this->text;
     }
-    
+
     /**
      * @param string $text
+     *
      * @return \Application\Model\Entry
      */
     public function setText($text) {
         $this->text = $text;
+
         return $this;
     }
 
@@ -122,6 +126,7 @@ class Entry extends AbstractModel {
      */
     public function setUser(User $user) {
         $this->user = $user;
+
         return $this;
     }
 
@@ -136,6 +141,7 @@ class Entry extends AbstractModel {
             $user->setId($this->userId)->init();
 
             $this->user = $user;
+
             return true;
         }
 

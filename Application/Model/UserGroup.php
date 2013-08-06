@@ -19,13 +19,11 @@ class UserGroup extends AbstractModel {
 
     /**
      * @var string
-     * @column name
      */
     private $name;
 
     /**
      * @var string
-     * @column description
      */
     private $description;
 

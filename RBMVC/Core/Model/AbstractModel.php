@@ -6,29 +6,29 @@ use RBMVC\Core\Utilities\Modifiers\String\CamelCaseToUnderscore;
 use RBMVC\Core\Utilities\Modifiers\String\GetClassNameWithUnderscore;
 
 abstract class AbstractModel {
-    
+
     /**
      * @var integer
      */
     protected $id;
-    
+
     /**
      * @var DB
      */
     protected $db;
-    
+
     /**
-     * @var string 
+     * @var string
      */
     protected $dbTable;
-    
+
     public function __construct() {
         $this->db = DB::getInstance();
-        
-        $converter = new GetClassNameWithUnderscore();
+
+        $converter     = new GetClassNameWithUnderscore();
         $this->dbTable = $converter->getClassName($this);
     }
-    
+
     /**
      * @return integer
      */
@@ -38,13 +38,15 @@ abstract class AbstractModel {
 
     /**
      * @param integer $id
+     *
      * @return \RBMVC\Core\Model\AbstractModel
      */
     public function setId($id) {
         $this->id = (int) $id;
+
         return $this;
     }
-    
+
     /**
      * @return \RBMVC\Core\Model\AbstractModel
      */
@@ -70,7 +72,7 @@ abstract class AbstractModel {
 
         return $this;
     }
-        
+
     /**
      * @return void
      */
@@ -80,7 +82,7 @@ abstract class AbstractModel {
         $query->where(array('id' => $this->id));
         $this->db->execute($query);
     }
-    
+
     /**
      * @return boolean
      */
@@ -88,83 +90,102 @@ abstract class AbstractModel {
         if (!is_int($this->id) || $this->id <= 0) {
             return false;
         }
-        
+
         $query = $this->db->getQuery($this->dbTable);
         $query->select();
         $query->where(array('id' => $this->id));
 
-        $stmt = $this->db->execute($query);
+        $stmt   = $this->db->execute($query);
         $result = $stmt->fetch();
 
         if (empty($result)) {
             return false;
         }
-        
+
         $this->fillModelByArray($result);
+
         return true;
     }
-    
+
     /**
      * @return array
      */
     public final function toArray() {
         $reflectionClass = new \ReflectionClass($this);
-        $properties = $reflectionClass->getProperties();
-        $array = array();
+        $properties      = $reflectionClass->getProperties();
+        $array           = array();
         /* @var $property \ReflectionProperty */
         foreach ($properties as $property) {
             $methodName = 'get' . ucfirst($property->getName());
             if ($reflectionClass->hasMethod($methodName)) {
                 $camelCaseToUnderscore = new CamelCaseToUnderscore();
-                $key = $camelCaseToUnderscore->convert($property->getName());
-                $array[$key] = $this->{$methodName}();
+                $key                   = $camelCaseToUnderscore->convert($property->getName());
+                $array[$key]           = $this->{$methodName}();
             }
         }
+
         return $array;
     }
 
     public final function toArrayForSave() {
         $reflectionClass = new \ReflectionClass($this);
-        $properties = $reflectionClass->getProperties();
-        $array = array();
+        $properties      = $reflectionClass->getProperties();
+
+        $columns = $this->getTableDefinitions();
+        $array   = array();
         /* @var $property \ReflectionProperty */
         foreach ($properties as $property) {
-            $isColumn = preg_match("/@column(.*)(\\r\\n|\\r|\\n)/U", $property->getDocComment());
-            if ((bool) !$isColumn) {
+            if (!isset($columns[$property->getName()])) {
                 continue;
             }
 
             $methodName = 'get' . ucfirst($property->getName());
             if ($reflectionClass->hasMethod($methodName)) {
                 $camelCaseToUnderscore = new CamelCaseToUnderscore();
-                $key = $camelCaseToUnderscore->convert($property->getName());
-                $array[$key] = $this->{$methodName}();
+                $key                   = $camelCaseToUnderscore->convert($property->getName());
+                $array[$key]           = $this->{$methodName}();
             }
         }
+        error_log(__METHOD__ . '::> ' . print_r($array, 1));
+
         return $array;
     }
-    
+
     /**
      * @param array $modelData
+     *
      * @return void
      */
     public final function fillModelByArray(array $modelData) {
         $reflectionClass = new \ReflectionClass($this);
-        $properties = $reflectionClass->getProperties();
-        
+        $properties      = $reflectionClass->getProperties();
+
         /* @var $property \ReflectionProperty */
         foreach ($properties as $property) {
             $camelCaseToUnderscore = new CamelCaseToUnderscore();
-            $key = $camelCaseToUnderscore->convert($property->getName());
+            $key                   = $camelCaseToUnderscore->convert($property->getName());
             if (!array_key_exists($key, $modelData)) {
                 continue;
             }
-            
+
             $methodName = 'set' . ucfirst($property->getName());
             if ($reflectionClass->hasMethod($methodName)) {
                 $this->{$methodName}($modelData[$key]);
             }
         }
     }
-    
+
+    private function getTableDefinitions() {
+        $query = $this->db->getQuery($this->dbTable);
+        $query->getTableDefinition();
+        $stmt = $this->db->execute($query);
+
+        $tableColumns = array();
+        foreach ($stmt->fetchAll(\PDO::FETCH_ASSOC) as $column) {
+            $tableColumns[$column['Field']] = $column;
+        }
+
+        return $tableColumns;
+    }
+
 }

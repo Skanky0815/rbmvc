@@ -75,8 +75,6 @@ class DB {
         $this->pdoOptions = array_key_exists('options', $options) ? $options['options'] : array();
 
         $this->connect();
-
-        $this->query = new Query();
     }
 
     private function connect() {
@@ -99,9 +97,10 @@ class DB {
      * @return \RBMVC\Core\DB\Query
      */
     public function getQuery($dbTable) {
-        $this->query->setDBTable($dbTable);
+        $query = new Query();
+        $query->setDBTable($dbTable);
 
-        return $this->query;
+        return $query;
     }
 
     /**
@@ -119,8 +118,6 @@ class DB {
                 error_log(__METHOD__ . '::> ' . print_r($query, 1));
                 error_log(__METHOD__ . '::> ###########################################################################');
             }
-
-            $query->reset();
 
             return $stmt;
         } catch (\PDOException $e) {

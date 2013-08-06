@@ -66,6 +66,10 @@ class Query {
         return $this->params;
     }
 
+    public function getTableDefinition() {
+        $this->sql = 'SHOW COLUMNS FROM `' . $this->dbTable . '`';;
+    }
+
     /**
      * @param array $columns
      *
@@ -205,8 +209,4 @@ class Query {
         }
     }
 
-    public function reset() {
-        $this->sql    = '';
-        $this->params = array();
-    }
 }

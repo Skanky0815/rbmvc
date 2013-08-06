@@ -11,19 +11,16 @@ class User extends AbstractModel {
 
     /**
      * @var string
-     * @column username
      */
     protected $username;
 
     /**
      * @var string
-     * @column password
      */
     protected $password;
 
     /**
      * @var string
-     * @column password
      */
     protected $email;
 
@@ -34,7 +31,6 @@ class User extends AbstractModel {
 
     /**
      * @var boolean
-     * @column is_active
      */
     protected $isActive = false;
 
