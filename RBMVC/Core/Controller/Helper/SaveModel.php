@@ -39,7 +39,7 @@ class SaveModel extends AbstractActionHelper {
 
         $session = new Session('saved');
 
-        $this->view->assign('isSaved', $session->saved);
+        $this->view->assign('isSavedIcon', $this->view->partial('layout/partials/isSavedIcon.phtml', array('isSaved' => $session->saved)));
         $this->view->assign('form', $form);
 
         $session->resetNamespace();
