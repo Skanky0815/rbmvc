@@ -3,7 +3,7 @@ namespace Application\Controller;
 
 use Application\Controller\AbstractController;
 use Application\Forms\LoginForm;
-use Application\Model\User;
+use Application\Model\LoggedInUser;
 use RBMVC\Core\Utilities\Session;
 use RBMVC\Core\Utilities\SystemMessage;
 
@@ -14,7 +14,7 @@ class AuthController extends AbstractController {
     }
 
     public function loginAction() {
-        $user = new User();
+        $user = new LoggedInUser();
         $user->fillModelByArray($this->request->getPostParams());
 
         $form = new LoginForm($user);
@@ -23,7 +23,7 @@ class AuthController extends AbstractController {
             if ($form->isValid($this->request->getPostParams())) {
                 if ($user->exists() && $user->isActive()) {
                     $session       = new Session('user');
-                    $session->user = $user->toArray();
+                    $session->user = $user;
 
                     $systemMessage = new SystemMessage(SystemMessage::SUCCESS);
                     $this->addFlashSystemMessage($systemMessage);

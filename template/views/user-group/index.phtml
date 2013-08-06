@@ -1,7 +1,5 @@
 <div class="btn-group">
-    <a class="btn btn-primary" href="<?php echo $this->url(array('action' => 'edit')); ?>">
-        <i class="icon-plus"></i> <?php echo $this->translate('add'); ?>
-    </a>
+    <?php echo $this->button('add'); ?>
 </div>
 
 <hr>
@@ -30,13 +28,7 @@
                     ); ?>">
                         <i class="icon-trash"></i>
                     </a>
-                    <a class="btn btn-default" href="<?php echo $this->url(
-                        array('action' => 'edit'
-                              , 'id'   => $group->getId()
-                        ), true
-                    ); ?>">
-                        <i class="icon-edit"></i> <?php echo $this->translate('edit'); ?>
-                    </a>
+                    <?php echo $this->button('edit'); ?>
                 </div>
             </td>
         </tr>

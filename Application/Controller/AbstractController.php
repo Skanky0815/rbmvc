@@ -9,6 +9,7 @@
 
 namespace Application\Controller;
 
+use Application\Model\LoggedInUser;
 use Application\Model\User;
 use RBMVC\Core\Utilities\Session;
 
@@ -31,13 +32,11 @@ abstract class AbstractController extends \RBMVC\Core\Controller\AbstractControl
      */
     public function setUser() {
         $session = new Session('user');
-        $data    = $session->user;
+        $user    = $session->user;
 
-        $user = new User();
-        if (is_array($data) && isset($data['id'])) {
-            $user->fillModelByArray($data);
-        } else {
-            $session->user = $user->toArray();
+        if (is_null($user)) {
+            $user          = new LoggedInUser();
+            $session->user = $user;
         }
 
         $this->user = $user;

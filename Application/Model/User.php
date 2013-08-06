@@ -14,47 +14,30 @@ class User extends AbstractModel {
      * @var string
      * @column username
      */
-    private $username;
+    protected $username;
 
     /**
      * @var string
      * @column password
      */
-    private $password;
+    protected $password;
 
     /**
      * @var string
      * @column password
      */
-    private $email;
+    protected $email;
 
     /**
      * @var array
      */
-    private $useGroups;
+    protected $useGroups;
 
     /**
      * @var boolean
      * @column is_active
      */
-    private $isActive = false;
-
-    /**
-     * @var array
-     */
-    private $grants = array();
-
-    public function __construct() {
-        error_log(__METHOD__ . '::> ' . print_r('', 1));
-        parent::__construct();
-
-        $grantCollection = new GrantCollection();
-        $grantCollection->findByType(Grant::TYPE_PUBLIC);
-        /** @var \Application\Model\Grant $grant */
-        foreach ($grantCollection->getModels() as $grant) {
-            $this->grants[] = $grant->getDefinition();
-        }
-    }
+    protected $isActive = false;
 
     /**
      * @return string
@@ -133,48 +116,6 @@ class User extends AbstractModel {
         $this->isActive = (bool) $isActive;
 
         return $this;
-    }
-
-    /**
-     * @return array
-     */
-    public function getGrants() {
-        return $this->grants;
-    }
-
-    /**
-     * @param array $grants
-     *
-     * @return \Application\Model\User
-     */
-    public function setGrants(array $grants) {
-        $this->grants = $grants;
-
-        return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function exists() {
-        $query = $this->db->getQuery($this->dbTable);
-        $query->select();
-        $query->where(array('password' => $this->password, 'username' => $this->username));
-
-        $stmt = $this->db->execute($query);
-        if (is_null($stmt)) {
-            return false;
-        }
-
-        $result = $stmt->fetch();
-
-        if (empty($result)) {
-            return false;
-        }
-
-        $this->fillModelByArray($result);
-
-        return true;
     }
 
     /**

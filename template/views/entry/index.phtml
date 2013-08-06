@@ -1,11 +1,6 @@
 <?php if ($this->hasAccess($this->url(array('action' => 'add')))): ?>
     <div class="btn-group">
-        <?php echo $this->button(array(
-                                      'url'   => $this->url(array('action' => 'add')),
-                                      'icon'  => 'icon-plus',
-                                      'class' => 'btn-primary',
-                                      'label' => 'add',
-                                 )); ?>
+        <?php echo $this->button('add'); ?>
     </div>
 
     <hr>
@@ -14,44 +9,30 @@
 <div class="row">
     <div class="col-12">
         <?php foreach ($this->entrys as $key => $entry): ?>
-        <?php if ($key % 2 == 0): ?>
-        <?php if ($key > 0): ?>
-    </div>
-    <?php endif; ?>
-    <div class="row">
-        <?php endif; ?>
-        <div class="col-6">
-            <h2><?php echo $entry->getTitle(); ?></h2>
-            <blockquote>
-                <p><?php echo $entry->getText(); ?></p>
-                <small><?php echo $entry->getUser()->getUsername(); ?>
-                    / <?php echo $this->dateFormater($entry->getDate()); ?></small>
-            </blockquote>
+            <div class="col-6">
+                <h2><?php echo $entry->getTitle(); ?></h2>
+                <blockquote>
+                    <p><?php echo $entry->getText(); ?></p>
+                    <small><?php echo $entry->getUser()->getUsername(); ?>
+                        / <?php echo $this->dateFormater($entry->getDate()); ?></small>
+                </blockquote>
 
-            <?php if ($this->hasAccess($this->url(array('action' => 'delete')))
-                || $this->hasAccess($this->url(array('action' => 'delete')))
-            ): ?>
-                <div class="btn-group">
-                    <a class="btn-danger btn delete" data-toggle="modal" href="<?php echo $this->url(
-                        array('action' => 'delete'
-                              , 'id'   => $entry->getId()
-                        ), true
-                    ); ?>">
-                        <i class="icon-trash"></i>
-                    </a>
-                    <?php echo $this->button(array(
-                                                  'url'   => $this->url(array('action' => 'edit',
-                                                                              'id'     => $entry->getId()
-                                                                        ), true),
-                                                  'icon'  => 'icon-edit',
-                                                  'class' => 'btn-default',
-                                                  'label' => 'edit',
-                                             )); ?>
-                </div>
-            <?php endif; ?>
-            <hr>
-        </div>
+                <?php if ($this->hasAccess($this->url(array('action' => 'edit')))
+                    || $this->hasAccess($this->url(array('action' => 'delete')))
+                ): ?>
+                    <div class="btn-group">
+                        <a class="btn-danger btn delete" data-toggle="modal" href="<?php echo $this->url(
+                            array('action' => 'delete'
+                                  , 'id'   => $entry->getId()
+                            ), true
+                        ); ?>">
+                            <i class="icon-trash"></i>
+                        </a>
+                        <?php echo $this->button('edit', $entry->getId()); ?>
+                    </div>
+                <?php endif; ?>
+                <hr>
+            </div>
         <?php endforeach; ?>
     </div>
-</div>
 </div>

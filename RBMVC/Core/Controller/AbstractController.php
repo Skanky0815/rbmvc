@@ -154,7 +154,7 @@ abstract class AbstractController {
     protected function addFlashSystemMessage(SystemMessage $systemMessage) {
         $session                 = new Session('system_message');
         $tmp                     = $session->systemMessages;
-        $tmp[]                   = serialize($systemMessage);
+        $tmp[]                   = $systemMessage;
         $session->systemMessages = $tmp;
     }
 
