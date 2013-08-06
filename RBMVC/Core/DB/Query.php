@@ -111,8 +111,12 @@ class Query {
         foreach ($where as $key => $value) {
             $i++;
             if (is_array($value)) {
-                foreach ($value as $val) {
-                    $sql .= ' OR `' . $key . '` = :' . $i . $key;
+                foreach ($value as $i => $val) {
+                    if ($i == 0) {
+                        $sql .= ' AND `' . $key . '` = :' . $i . $key;
+                    } else {
+                        $sql .= ' OR `' . $key . '` = :' . $i . $key;
+                    }
                     $this->params[':' . $i . $key] = $val;
                     $i++;
                 }
