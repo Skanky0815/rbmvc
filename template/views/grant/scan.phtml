@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="col-8">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h3 class="panel-title"><?php echo $this->translate('new_grants'); ?></h3>
+            </div>
+            <ul class="list-unstyled">
+                <?php foreach ($this->new as $grant): ?>
+                <li>
+                    <a target="_blank" href="<?php echo $this->url(array('action' => 'edit', 'id' => $grant->getId()), true); ?>">
+                        <?php echo $grant->getDefinition(); ?>
+                    </a>
+                </li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="panel">
+            <div class="panel-heading">
+                <h3 class="panel-title"><?php echo $this->translate('deleted_grants'); ?></h3>
+            </div>
+            <ul class="list-unstyled">
+                <?php foreach ($this->deleted as $grant): ?>
+                    <li>
+                        <?php echo $grant->getDefinition(); ?>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    </div>
+</div>

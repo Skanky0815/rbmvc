@@ -3,7 +3,7 @@ namespace RBMVC\Core\View\Helper;
 
 use RBMVC\Core\Translator;
 
-class Translate extends AbstractHelper {
+class Translate extends AbstractViewHelper {
     
     /**
      * @var Translator 

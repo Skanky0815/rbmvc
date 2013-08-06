@@ -2,6 +2,7 @@
 namespace RBMVC\Core\Utilities\Form\Elements;
 
 use RBMVC\Core\Utilities\Form\Validators\AbstractValidator;
+use RBMVC\Core\Translator;
 
 abstract class AbstractElement {
     
@@ -44,14 +45,13 @@ abstract class AbstractElement {
      * @var array
      */
     protected $validators = array();
-    
+
     /**
      * @param string $name
-     * @return string
      */
     public function __construct($name) {
         $this->name = $name;
-        $this->translator = \RBMVC\Core\Translator::getInstance();
+        $this->translator = Translator::getInstance();
     }
     
     /**
@@ -155,14 +155,14 @@ abstract class AbstractElement {
     }
     
     /**
-     * @param array $parmas
+     * @param array $params
      * @return string
      */
-    public function isValid(array $parmas) {
-        if (array_key_exists($this->name, $parmas) && !empty($parmas[$this->name])) {
+    public function isValid(array $params) {
+        if (array_key_exists($this->name, $params) && !empty($params[$this->name])) {
             /* @var $validator \RBMVC\Core\Utilities\Form\Validators\AbstractValidator */
             foreach ($this->validators as $validator) {
-                if (!$validator->isValid($parmas[$this->name])) {
+                if (!$validator->isValid($params[$this->name])) {
                     $this->hasError = true;
                     return $this->errorText = $validator->getErrorText();
                 }
@@ -171,6 +171,8 @@ abstract class AbstractElement {
             $this->hasError = true;
             return $this->errorText = 'is_required';
         }
+
+        return '';
     }
     
 }

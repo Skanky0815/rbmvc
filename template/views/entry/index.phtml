@@ -1,43 +1,38 @@
-<div class="row">
-    <div class="span12">
-        <a class="btn btn-primary" href="<?php echo $this->url(array('action' => 'edit')); ?>">
-            <i class="icon-plus icon-white"></i>
-            <?php echo $this->translate('add'); ?>  
-        </a>
+<?php if ($this->hasAccess($this->url(array('action' => 'add')))): ?>
+    <div class="btn-group">
+        <?php echo $this->button('add'); ?>
     </div>
-</div>
+
+    <hr>
+<?php endif; ?>
 
 <div class="row">
-    <div class="span12">
-    <?php foreach ($this->entries as $entry): ?>
-        <h4>
-            <?php echo $entry->getTitle(); ?>
-        </h4>
-        <blockquote>
-            <p>
-                <?php echo $entry->getText(); ?>
-            </p>
-            <small><?php echo $entry->getAuthor(); ?> / <?php echo $this->dateFormater($entry->getDate()); ?></small>
-        </blockquote>
-        <div class="entry-footer">
-            <div class="btn-group">
-                <a class="btn-danger btn delete" href="<?php echo $this->url(
-                        array('action' => 'delete'
-                            , 'id' => $entry->getId()
-                        ), true
-                ); ?>">
-                    <i class="icon-trash icon-white"></i>
-                </a>
-                <a class="btn" href="<?php echo $this->url(
-                        array('action' => 'edit'
-                            , 'id' => $entry->getId()
-                        ), true
-                ); ?>">
-                    <i class="icon-edit"></i>
-                    <?php echo $this->translate('edit'); ?>
-                </a>
+    <div class="col-12">
+        <?php foreach ($this->entrys as $key => $entry): ?>
+            <div class="col-6">
+                <h2><?php echo $entry->getTitle(); ?></h2>
+                <blockquote>
+                    <p><?php echo $entry->getText(); ?></p>
+                    <small><?php echo $entry->getUser()->getUsername(); ?>
+                        / <?php echo $this->dateFormater($entry->getDate()); ?></small>
+                </blockquote>
+
+                <?php if ($this->hasAccess($this->url(array('action' => 'edit')))
+                    || $this->hasAccess($this->url(array('action' => 'delete')))
+                ): ?>
+                    <div class="btn-group">
+                        <a class="btn-danger btn delete" data-toggle="modal" href="<?php echo $this->url(
+                            array('action' => 'delete'
+                                  , 'id'   => $entry->getId()
+                            ), true
+                        ); ?>">
+                            <i class="icon-trash"></i>
+                        </a>
+                        <?php echo $this->button('edit', $entry->getId()); ?>
+                    </div>
+                <?php endif; ?>
+                <hr>
             </div>
-        </div>
-    <?php endforeach; ?>
+        <?php endforeach; ?>
     </div>
 </div>

@@ -1,10 +1,12 @@
 <?php
 namespace RBMVC;
 
+use RBMVC\Core\ClassLoader;
 use RBMVC\Core\DB\DB;
 use RBMVC\Core\View\View;
 use RBMVC\Core\View\ViewHelperFactory;
 use RBMVC\Core\Request;
+use RBMVC\Core\Utilities\Session;
 use RBMVC\Core\Translator;
 use RBMVC\Core\Dispatcher;
 
@@ -15,25 +17,40 @@ class Bootstrap {
      */
     private $request;
     
-    /*
+    /**
      * @var array
      */
     private $config;
-    
+
+    /**
+     * @var ClassLoader
+     */
+    private $classLoader;
+
+    public function __construct(ClassLoader $classLoader) {
+        $this->classLoader = $classLoader;
+    }
+
     /**
      * @param array $config
      * @return string
      */
     public function run(array $config) {
+        Session::start();
+
         $this->config = $config;
         
         $this->setupLogging();
+        $this->setupClassLoader();
         $this->setupTranslation();
         $this->setupDB();
         $this->request = new Request();
         $dispatcher = new Dispatcher();
         $dispatcher->setRequest($this->request);
-        $dispatcher->setView($this->setupView());
+        $dispatcher->setConfig($this->config);
+        $dispatcher->setClassLoader($this->classLoader);
+        $view = $this->setupView();
+        $dispatcher->setView($view);
         $dispatcher->setupController();
         
         return $dispatcher->getView()->render();
@@ -45,12 +62,25 @@ class Bootstrap {
     private function setupLogging() {
         ini_set('error_log', APPLICATION_DIR . 'data/log/php_error.log');
     }
+
+    private function setupClassLoader() {
+        if (isset($this->config['class_paths']) && is_array($this->config['class_paths'])) {
+            $this->classLoader->addNamespaces($this->config['class_paths']);
+        }
+
+        $defaults = array(
+            __NAMESPACE__ . '\\Core\\View\\Helper\\',
+            __NAMESPACE__ . '\\Core\\Controller\\Helper\\',
+        );
+
+        $this->classLoader->addNamespaces($defaults);
+    }
     
     /**
      * @return void
      */
     private function setupTranslation() {
-        if (!key_exists('language', $this->config)) {
+        if (!array_key_exists('language', $this->config)) {
             die('<h1>Error</h1><p>Missing language configuration.</p>');
         }
         Translator::getInstance()->init($this->config['language']);
@@ -60,7 +90,7 @@ class Bootstrap {
      * @return void
      */
     private function setupDB() {
-        if (!key_exists('database', $this->config)) {
+        if (!array_key_exists('database', $this->config)) {
             die('<h1>Error</h1><p>Missing database configuration.</p>');
         }
         
@@ -72,7 +102,7 @@ class Bootstrap {
      * @return \RBMVC\Core\View\View
      */
     private function setupView() {
-//        if (!key_exists('view', $this->config)) {
+//        if (!array_key_exists('view', $this->config)) {
 //            die('<h1>Error</h1><p>Missing view configuration.</p>');
 //        }
         
@@ -80,8 +110,10 @@ class Bootstrap {
         $view->setParams($this->request->getParams());
         
         $viewHelperFactory = new ViewHelperFactory();
+        $viewHelperFactory->setClassLoader($this->classLoader);
         $viewHelperFactory->setView($view);
         $viewHelperFactory->setRequest($this->request);
+        $viewHelperFactory->setConfig($this->config);
         $view->setViewHelperFactory($viewHelperFactory);
         
         return $view;

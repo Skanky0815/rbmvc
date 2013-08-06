@@ -22,10 +22,6 @@ abstract class AbstractModel {
      */
     protected $dbTable;
     
-    /**
-     * @param string $dbTable
-     * @return void
-     */
     public function __construct() {
         $this->db = DB::getInstance();
         
@@ -42,7 +38,7 @@ abstract class AbstractModel {
 
     /**
      * @param integer $id
-     * @return \RBMVC\Model\AbstractModel
+     * @return \RBMVC\Core\Model\AbstractModel
      */
     public function setId($id) {
         $this->id = (int) $id;
@@ -50,9 +46,30 @@ abstract class AbstractModel {
     }
     
     /**
-     * @return void
+     * @return \RBMVC\Core\Model\AbstractModel
      */
-    abstract public function save(); 
+    public function save() {
+        $query = $this->db->getQuery($this->dbTable);
+        if (empty($this->id)) {
+            $query->insert($this->toArrayForSave());
+        } else {
+            $query->update();
+            $query->set($this->toArrayForSave());
+            $query->where(array('id' => $this->id));
+        }
+
+        $this->db->execute($query);
+
+        if (empty($this->id)) {
+            $this->id = $this->db->lastInsertId();
+        }
+
+        if (!$this->init()) {
+            return false;
+        }
+
+        return $this;
+    }
         
     /**
      * @return void
@@ -67,7 +84,7 @@ abstract class AbstractModel {
     /**
      * @return boolean
      */
-    public final function init() {
+    public function init() {
         if (!is_int($this->id) || $this->id <= 0) {
             return false;
         }
@@ -78,7 +95,7 @@ abstract class AbstractModel {
 
         $stmt = $this->db->execute($query);
         $result = $stmt->fetch();
-        
+
         if (empty($result)) {
             return false;
         }
@@ -96,6 +113,27 @@ abstract class AbstractModel {
         $array = array();
         /* @var $property \ReflectionProperty */
         foreach ($properties as $property) {
+            $methodName = 'get' . ucfirst($property->getName());
+            if ($reflectionClass->hasMethod($methodName)) {
+                $camelCaseToUnderscore = new CamelCaseToUnderscore();
+                $key = $camelCaseToUnderscore->convert($property->getName());
+                $array[$key] = $this->{$methodName}();
+            }
+        }
+        return $array;
+    }
+
+    public final function toArrayForSave() {
+        $reflectionClass = new \ReflectionClass($this);
+        $properties = $reflectionClass->getProperties();
+        $array = array();
+        /* @var $property \ReflectionProperty */
+        foreach ($properties as $property) {
+            $isColumn = preg_match("/@column(.*)(\\r\\n|\\r|\\n)/U", $property->getDocComment());
+            if ((bool) !$isColumn) {
+                continue;
+            }
+
             $methodName = 'get' . ucfirst($property->getName());
             if ($reflectionClass->hasMethod($methodName)) {
                 $camelCaseToUnderscore = new CamelCaseToUnderscore();
