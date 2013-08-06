@@ -39,6 +39,8 @@ abstract class AbstractController extends \RBMVC\Core\Controller\AbstractControl
             $session->user = $user;
         }
 
+        error_log(__METHOD__ . '::> ' . print_r($user, 1));
+
         $this->user = $user;
         $this->view->assign('loggedUser', $this->user);
     }

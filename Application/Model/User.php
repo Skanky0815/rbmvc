@@ -1,7 +1,6 @@
 <?php
 namespace Application\Model;
 
-use Application\Model\Collection\GrantCollection;
 use RBMVC\Core\Model\AbstractModel;
 
 /**
@@ -116,24 +115,6 @@ class User extends AbstractModel {
         $this->isActive = (bool) $isActive;
 
         return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function init() {
-        if (parent::init()) {
-            $grantCollection = new GrantCollection();
-            $grantCollection->findByType(array(Grant::TYPE_PROTECTED, Grant::TYPE_PUBLIC));
-            /** @var \Application\Model\Grant $grant */
-            foreach ($grantCollection->getModels() as $grant) {
-                $this->grants[] = $grant->getDefinition();
-            }
-
-            return true;
-        }
-
-        return false;
     }
 
 }

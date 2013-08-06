@@ -72,6 +72,13 @@ class LoggedInUser extends User {
 
         $this->fillModelByArray($result);
 
+        $grantCollection = new GrantCollection();
+        $grantCollection->findByType(array(Grant::TYPE_PROTECTED, Grant::TYPE_PUBLIC));
+        /** @var \Application\Model\Grant $grant */
+        foreach ($grantCollection->getModels() as $grant) {
+            $this->grants[] = $grant->getDefinition();
+        }
+
         return true;
     }
 

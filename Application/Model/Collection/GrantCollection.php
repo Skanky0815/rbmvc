@@ -18,10 +18,6 @@ class GrantCollection extends AbstractCollection {
      * @param array|int $types
      */
     public function findByType($types) {
-        if (!is_array($types)) {
-            $types = array($types);
-        }
-
         $query = $this->db->getQuery($this->dbTable);
         $query->select(array('id'));
         $query->where(array('type' => $types));
