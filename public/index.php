@@ -1,11 +1,11 @@
-<?php 
-define('APPLICATION_DIR', '../');
+<?php
+namespace RBMVC;
 
-set_include_path(APPLICATION_DIR);
-spl_autoload_extensions('.php');
-spl_autoload_register();
+define('ROOT_DIR', '../');
+define('APPLICATION_DIR', ROOT_DIR . 'Application/');
 
-use RBMVC\Bootstrap;
+require_once(ROOT_DIR . 'RBMVC/Core/ClassLoader.php');
 
-$bootstrap = new Bootstrap();
+$classLoader = new Core\ClassLoader();
+$bootstrap = new Bootstrap($classLoader);
 echo $bootstrap->run(include APPLICATION_DIR . 'data/config.php');

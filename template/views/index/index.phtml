@@ -1,8 +1,25 @@
-<h1>Willkommen</h1>
-<p>Das ist eine Test und &Uuml;bungsseite von Basti und Rico.</p>
-<p>Um Sicherheitsprobleme, wie das sog. Cross-Site-Scripting zu verhindern, wird jede Website oder Webanwendung innerhalb des Browsers isoliert ausgeführt und ein Datenaustausch unterbunden. Ohne diesen Schutz wäre es möglich, über eine Seite Schadcode auszuführen, der beispielsweise Bank- oder Logindaten in anderen parallel geöffnenten Browserfenstern ausliest oder manipuliert.
-
-Auch bestimmte sicherheitsrelevante Browserfunktionen, wie das Schließen des Browserfensters, das Aus- und Einblenden von Symbolleisten, das Ändern der Browserstartseite, der Zugriff auf die Zwischenablage oder das Auslesen der zuletzt besuchten Webseiten des Anwenders, werden durch obligatorische Nutzereingaben geschützt.
-</br>
-</br>
-Nice, das funzt schonmal.</p>
+<div class="row">
+    <div class="col-8">
+        <h1>Willkommen</h1>
+        <p>Das ist eine Test und &Uuml;bungsseite von Rico Schulz.</p>
+        <p>Die gesamte Seite wurde mit mit einem eiegenen Freamwork entwickelt. Das Framework ich stehts ein wenig an das
+        Zend Freamwork angelehnt, versucht aber trotzdem sein eigenen weg zu gehen.</p>
+    </div>
+    <div class="col-4">
+        <div class="panel">
+            <div class="panel-heading">
+                <h3 class="panel-title"><?php echo $this->translate('last_entries'); ?></h3>
+            </div>
+            <?php foreach ($this->entries as $key => $entry): ?>
+                <?php if ($key > 0): ?>
+                    <hr>
+                <?php endif; ?>
+                <h4><?php echo $entry->getTitle(); ?></h4>
+                <blockquote>
+                    <p><?php echo $entry->getText(); ?></p>
+                    <small><?php echo $entry->getUser()->getUsername(); ?> / <?php echo $this->dateFormater($entry->getDate()); ?></small>
+                </blockquote>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</div>
