@@ -146,7 +146,6 @@ abstract class AbstractModel {
                 $array[$key]           = $this->{$methodName}();
             }
         }
-        error_log(__METHOD__ . '::> ' . print_r($array, 1));
 
         return $array;
     }
