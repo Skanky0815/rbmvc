@@ -30,15 +30,17 @@
                     <i class="icon-user"></i> <?php echo $this->loggedUser->getUsername(); ?> <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a href="#"><?php echo $this->translate('edit_account'); ?></a></li>
+                    <li>
+                        <a href="<?php echo $this->url(array('action' => 'edit', 'controller' => 'user',
+                                                             'id'     => $this->loggedUser->getId()
+                                                       ), true); ?>">
+                            <?php echo $this->translate('edit_account'); ?>
+                        </a>
+                    </li>
                     <li><a href="#">... todo</a></li>
                     <li class="divider"></li>
                     <li>
-                        <a href="<?php echo $this->url(
-                            array('action'       => 'logout'
-                                  , 'controller' => 'auth'
-                            )
-                        ); ?>">
+                        <a href="<?php echo $this->url(array('action' => 'logout', 'controller' => 'auth')); ?>">
                             <?php echo $this->translate('logout'); ?>
                         </a>
                     </li>
@@ -59,7 +61,7 @@
 </div>
 
 <footer class="footer">
-    <p class="text-center">POWERT BY Rico</p>
+    <p class="text-center"></p>
 </footer>
 
 <?php echo $this->partial('layout/partials/deleteModal.phtml'); ?>
