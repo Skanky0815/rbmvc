@@ -20,10 +20,9 @@ class HasAccess extends AbstractViewHelper {
 
     public function __construct() {
         $session = new Session('user');
-        $user    = $session->user;
-        if (is_array($user)) {
-            $this->grants = $user['grants'];
-        }
+        /** @var \Application\Model\LoggedInUser $user */
+        $user         = $session->user;
+        $this->grants = $user->getGrants();
     }
 
     /**
@@ -32,6 +31,9 @@ class HasAccess extends AbstractViewHelper {
      * @return bool
      */
     public function hasAccess($definition) {
+        $definition = preg_replace('/\?.*/', '', $definition);
+
         return in_array($definition, $this->grants);
     }
+
 }
