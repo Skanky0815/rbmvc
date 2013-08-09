@@ -10,7 +10,6 @@
 namespace Application\Lib\Model;
 
 use RBMVC\Core\Model\AbstractModel;
-use RBMVC\Core\Model\AbstractModel;
 
 /**
  * Class UserGroup

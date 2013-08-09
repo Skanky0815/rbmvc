@@ -10,12 +10,8 @@
 namespace Application\Lib\Forms;
 
 use RBMVC\Core\Utilities\Form\Elements\CheckboxElement;
-use RBMVC\Core\Utilities\Form\Elements\CheckboxElement;
-use RBMVC\Core\Utilities\Form\Elements\InputElement;
 use RBMVC\Core\Utilities\Form\Elements\InputElement;
 use RBMVC\Core\Utilities\Form\Form;
-use RBMVC\Core\Utilities\Form\Form;
-use RBMVC\Core\Utilities\Form\Validators\Word;
 use RBMVC\Core\Utilities\Form\Validators\Word;
 
 /**

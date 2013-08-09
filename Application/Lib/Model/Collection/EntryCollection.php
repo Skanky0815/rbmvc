@@ -2,8 +2,6 @@
 namespace Application\Lib\Model\Collection;
 
 use Application\Lib\Model\Entry;
-use Application\Lib\Model\Entry;
-use RBMVC\Core\Model\Collection\AbstractCollection;
 use RBMVC\Core\Model\Collection\AbstractCollection;
 
 /**

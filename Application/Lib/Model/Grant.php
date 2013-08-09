@@ -10,7 +10,6 @@
 namespace Application\Lib\Model;
 
 use RBMVC\Core\Model\AbstractModel;
-use RBMVC\Core\Model\AbstractModel;
 
 /**
  * Class Grant
@@ -101,7 +100,7 @@ class Grant extends AbstractModel {
     /**
      * @param boolean $isAction
      *
-     * @return \Application\Model\Grant
+     * @return \Application\Lib\Model\Grant
      */
     public function setIsActive($isAction) {
         $this->isActive = $isAction;

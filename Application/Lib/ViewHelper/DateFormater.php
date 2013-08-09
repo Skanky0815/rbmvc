@@ -2,7 +2,6 @@
 namespace Application\Lib\ViewHelper;
 
 use RBMVC\Core\View\Helper\AbstractViewHelper;
-use RBMVC\Core\View\Helper\AbstractViewHelper;
 
 /**
  * Class DateFormater
