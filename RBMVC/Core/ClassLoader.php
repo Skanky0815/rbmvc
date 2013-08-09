@@ -101,7 +101,6 @@ class ClassLoader {
                 if (!$item->isFile() || !strstr($item->getFilename(), '.php')) {
                     continue;
                 }
-
                 $className = str_replace('.php', '', $item->getFilename());
                 $classes[] = $this->getClassInstance($className);
             }

@@ -38,7 +38,6 @@ class Dispatcher {
      * @var void
      */
     public function setupController() {
-        $this->loadPlugins();
 
         $controllerName  = ucfirst($this->request->getParam('controller')) . 'Controller';
         $dashToCamelCase = new DashToCamelCase();
@@ -53,6 +52,7 @@ class Dispatcher {
             $isClassError = true;
         }
 
+        $this->loadPlugins();
         $actionHelperFactory = new ActionHelperFactory();
         $actionHelperFactory->setView($this->view);
         $actionHelperFactory->setRequest($this->request);
@@ -78,10 +78,9 @@ class Dispatcher {
 
     private function loadPlugins() {
         $plugins = $this->classLoader->getAllClassesFromDir(array(APPLICATION_DIR . 'Lib/Controller/Plugins',
-                                                                  APPLICATION_DIR . 'RBMVC/Core/Controller/Plugins'
+                                                                  ROOT_DIR . 'RBMVC/Core/Controller/Plugins'
                                                             ));
         foreach ($plugins as $plugin) {
-
             if (!$plugin instanceof AbstractPlugin) {
                 continue;
             }

@@ -25,7 +25,6 @@ class Access extends AbstractPlugin {
      */
     public function onBootstrap(Request $request) {
         $access = new \RBMVC\Core\Utilities\Access();
-
         if (!$access->hasAccess($request->getParams())) {
             die('you have no permission for this page');
         }
