@@ -3,20 +3,20 @@ namespace RBMVC;
 
 use RBMVC\Core\ClassLoader;
 use RBMVC\Core\DB\DB;
+use RBMVC\Core\Dispatcher;
+use RBMVC\Core\Request;
+use RBMVC\Core\Translator;
+use RBMVC\Core\Utilities\Session;
 use RBMVC\Core\View\View;
 use RBMVC\Core\View\ViewHelperFactory;
-use RBMVC\Core\Request;
-use RBMVC\Core\Utilities\Session;
-use RBMVC\Core\Translator;
-use RBMVC\Core\Dispatcher;
 
 class Bootstrap {
-    
+
     /**
-     * @var Request 
+     * @var Request
      */
     private $request;
-    
+
     /**
      * @var array
      */
@@ -33,29 +33,30 @@ class Bootstrap {
 
     /**
      * @param array $config
+     *
      * @return string
      */
     public function run(array $config) {
         Session::start();
 
         $this->config = $config;
-        
+
         $this->setupLogging();
         $this->setupClassLoader();
         $this->setupTranslation();
         $this->setupDB();
         $this->request = new Request();
-        $dispatcher = new Dispatcher();
+        $dispatcher    = new Dispatcher();
         $dispatcher->setRequest($this->request);
         $dispatcher->setConfig($this->config);
         $dispatcher->setClassLoader($this->classLoader);
         $view = $this->setupView();
         $dispatcher->setView($view);
         $dispatcher->setupController();
-        
+
         return $dispatcher->getView()->render();
     }
-    
+
     /**
      * @return void
      */
@@ -71,11 +72,12 @@ class Bootstrap {
         $defaults = array(
             __NAMESPACE__ . '\\Core\\View\\Helper\\',
             __NAMESPACE__ . '\\Core\\Controller\\Helper\\',
+            __NAMESPACE__ . '\\Core\\Controller\\Plugins\\',
         );
 
         $this->classLoader->addNamespaces($defaults);
     }
-    
+
     /**
      * @return void
      */
@@ -85,7 +87,7 @@ class Bootstrap {
         }
         Translator::getInstance()->init($this->config['language']);
     }
-    
+
     /**
      * @return void
      */
@@ -93,29 +95,25 @@ class Bootstrap {
         if (!array_key_exists('database', $this->config)) {
             die('<h1>Error</h1><p>Missing database configuration.</p>');
         }
-        
+
         $db = DB::getInstance();
         $db->setup($this->config['database']);
     }
-   
+
     /**
      * @return \RBMVC\Core\View\View
      */
     private function setupView() {
-//        if (!array_key_exists('view', $this->config)) {
-//            die('<h1>Error</h1><p>Missing view configuration.</p>');
-//        }
-        
         $view = new View();
         $view->setParams($this->request->getParams());
-        
+
         $viewHelperFactory = new ViewHelperFactory();
         $viewHelperFactory->setClassLoader($this->classLoader);
         $viewHelperFactory->setView($view);
         $viewHelperFactory->setRequest($this->request);
         $viewHelperFactory->setConfig($this->config);
         $view->setViewHelperFactory($viewHelperFactory);
-        
+
         return $view;
     }
 }

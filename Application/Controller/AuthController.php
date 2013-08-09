@@ -1,18 +1,28 @@
 <?php
 namespace Application\Controller;
 
-use Application\Controller\AbstractController;
-use Application\Forms\LoginForm;
-use Application\Model\LoggedInUser;
+use Application\Lib\Controller\AbstractController;
+use Application\Lib\Forms\LoginForm;
+use Application\Lib\Model\LoggedInUser;
 use RBMVC\Core\Utilities\Session;
 use RBMVC\Core\Utilities\SystemMessage;
 
+/**
+ * Class AuthController
+ * @package Application\Controller
+ */
 class AuthController extends AbstractController {
 
+    /**
+     * @return void
+     */
     public function indexAction() {
         $this->redirect(array('action' => 'login'));
     }
 
+    /**
+     * @return void
+     */
     public function loginAction() {
         $user = new LoggedInUser();
         $user->fillModelByArray($this->request->getPostParams());
@@ -42,6 +52,9 @@ class AuthController extends AbstractController {
         $this->view->assign('form', $form);
     }
 
+    /**
+     * @return void
+     */
     public function logoutAction() {
         $session = new Session('user');
         $session->resetNamespace();

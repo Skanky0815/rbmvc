@@ -9,6 +9,12 @@
 
 namespace Application\Controller;
 
+use Application\Lib\Controller\AbstractController;
+
+/**
+ * Class AdminController
+ * @package Application\Controller
+ */
 class AdminController extends AbstractController {
 
 }

@@ -7,23 +7,42 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Application\Controller\Helper;
+namespace Application\Lib\Controller\Helper;
 
-use Application\Model\Collection\GrantCollection;
-use Application\Model\Grant;
+use Application\Lib\Model\Collection\GrantCollection;
+use Application\Lib\Model\Grant;
 use RBMVC\Core\Controller\Helper\AbstractActionHelper;
 use RBMVC\Core\Utilities\Modifiers\String\CamelCaseToDash;
 
+/**
+ * Class GrantScanner
+ * @package Application\Lib\Controller\Helper
+ */
 class GrantScanner extends AbstractActionHelper {
 
+    /**
+     * @var array
+     */
     private $deleted = array();
 
+    /**
+     * @var array
+     */
     private $new = array();
 
+    /**
+     * @var array
+     */
     private $grants = array();
 
+    /**
+     * @var array
+     */
     private $allGrants = array();
 
+    /**
+     * @var string
+     */
     private $controllerNamespace;
 
     /**
@@ -31,6 +50,9 @@ class GrantScanner extends AbstractActionHelper {
      */
     private $camelCaseToDash;
 
+    /**
+     * @return bool
+     */
     public function init() {
         if (!isset($this->config['class_paths'])
             || (isset($this->config['class_paths']) && !isset($this->config['class_paths']['controller']))
@@ -48,6 +70,9 @@ class GrantScanner extends AbstractActionHelper {
         return true;
     }
 
+    /**
+     * @return array
+     */
     public function grantScanner() {
         if (!$this->init()) {
             return $this->grants;
@@ -66,6 +91,9 @@ class GrantScanner extends AbstractActionHelper {
         return $this->grants;
     }
 
+    /**
+     * @return array
+     */
     private function scanControllers() {
         $controllers = array();
 
@@ -116,6 +144,12 @@ class GrantScanner extends AbstractActionHelper {
         return $actions;
     }
 
+    /**
+     * @param string $controller
+     * @param array $actions
+     *
+     * @return void
+     */
     private function createGrants($controller, array $actions) {
         foreach ($actions as $action) {
             $grant = new Grant();
@@ -126,8 +160,11 @@ class GrantScanner extends AbstractActionHelper {
         }
     }
 
+    /**
+     * @return void
+     */
     private function saveGrants() {
-        /** @var \Application\Model\Grant $grant */
+        /** @var \Application\Lib\Model\Grant $grant */
         foreach ($this->allGrants as $grant) {
             if (isset($this->new[$grant->getDefinition()])) {
                 unset($this->new[$grant->getDefinition()]);
@@ -148,6 +185,12 @@ class GrantScanner extends AbstractActionHelper {
         $this->new = $new;
     }
 
+    /**
+     * @param $controller
+     * @param $action
+     *
+     * @return string
+     */
     private function createDefinition($controller, $action) {
         return '/' . $controller . '/' . $action;
     }

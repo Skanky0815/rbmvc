@@ -1,8 +1,17 @@
 <?php
 namespace Application\Controller;
 
+use Application\Lib\Controller\AbstractRudiController;
+
+/**
+ * Class UserController
+ * @package Application\Controller
+ */
 class UserController extends AbstractRudiController {
 
+    /**
+     * @return void
+     */
     public function __construct() {
         parent::__construct('user');
     }

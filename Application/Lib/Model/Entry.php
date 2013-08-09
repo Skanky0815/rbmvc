@@ -1,11 +1,12 @@
 <?php
-namespace Application\Model;
+namespace Application\Lib\Model;
 
+use RBMVC\Core\Model\AbstractModel;
 use RBMVC\Core\Model\AbstractModel;
 
 /**
  * Class Entry
- * @package Application\Model
+ * @package Application\Lib\Model
  */
 class Entry extends AbstractModel {
 
@@ -50,7 +51,7 @@ class Entry extends AbstractModel {
     /**
      * @param string $author
      *
-     * @return \Application\Model\Entry
+     * @return \Application\Lib\Model\Entry
      */
     public function setUserId($author) {
         $this->userId = $author;
@@ -68,7 +69,7 @@ class Entry extends AbstractModel {
     /**
      * @param string $date
      *
-     * @return \Application\Model\Entry
+     * @return \Application\Lib\Model\Entry
      */
     public function setDate($date) {
         $this->date = $date;
@@ -86,7 +87,7 @@ class Entry extends AbstractModel {
     /**
      * @param string $title
      *
-     * @return \Application\Model\Entry
+     * @return \Application\Lib\Model\Entry
      */
     public function setTitle($title) {
         $this->title = $title;
@@ -104,7 +105,7 @@ class Entry extends AbstractModel {
     /**
      * @param string $text
      *
-     * @return \Application\Model\Entry
+     * @return \Application\Lib\Model\Entry
      */
     public function setText($text) {
         $this->text = $text;
@@ -113,16 +114,16 @@ class Entry extends AbstractModel {
     }
 
     /**
-     * @return \Application\Model\User
+     * @return \Application\Lib\Model\User
      */
     public function getUser() {
         return $this->user;
     }
 
     /**
-     * @param \Application\Model\User $user
+     * @param \Application\Lib\Model\User $user
      *
-     * @return \Application\Model\Entry
+     * @return \Application\Lib\Model\Entry
      */
     public function setUser(User $user) {
         $this->user = $user;

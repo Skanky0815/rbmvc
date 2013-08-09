@@ -1,9 +1,14 @@
 <?php
 namespace Application\Controller;
 
-use Application\Model\Entry;
+use Application\Lib\Controller\AbstractRudiController;
+use Application\Lib\Model\Entry;
 use RBMVC\Core\Utilities\Session;
 
+/**
+ * Class EntryController
+ * @package Application\Controller
+ */
 class EntryController extends AbstractRudiController {
 
     public function __construct() {
@@ -19,7 +24,7 @@ class EntryController extends AbstractRudiController {
         $user    = $session->user;
         $entry->setUserId($user->getId());
 
-        $entry = $this->saveModel($entry, 'Application\Forms\EntryForm');
+        $entry = $this->saveModel($entry, 'Application\Lib\Forms\EntryForm');
         $this->view->assign('entry', $entry);
     }
 

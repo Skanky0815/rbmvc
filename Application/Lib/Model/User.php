@@ -1,11 +1,12 @@
 <?php
-namespace Application\Model;
+namespace Application\Lib\Model;
 
+use RBMVC\Core\Model\AbstractModel;
 use RBMVC\Core\Model\AbstractModel;
 
 /**
  * Class User
- * @package Application\Model
+ * @package \Application\Lib\Model
  */
 class User extends AbstractModel {
 
@@ -44,7 +45,7 @@ class User extends AbstractModel {
     /**
      * @param string $username
      *
-     * @return \Application\Model\User
+     * @return \Application\Lib\Model\User
      */
     public function setUsername($username) {
         $this->username = $username;
@@ -62,7 +63,7 @@ class User extends AbstractModel {
     /**
      * @param string $password
      *
-     * @return \Application\Model\User
+     * @return \Application\Lib\Model\User
      */
     public function setPassword($password) {
         $this->password = $password;
@@ -80,7 +81,7 @@ class User extends AbstractModel {
     /**
      * @param string $email
      *
-     * @return \Application\Model\User
+     * @return \Application\Lib\Model\User
      */
     public function setEmail($email) {
         $this->email = $email;
@@ -105,7 +106,7 @@ class User extends AbstractModel {
     /**
      * @param bool $isActive
      *
-     * @return \Application\Model\User
+     * @return \Application\Lib\Model\User
      */
     public function setIsActive($isActive) {
         $this->isActive = (bool) $isActive;

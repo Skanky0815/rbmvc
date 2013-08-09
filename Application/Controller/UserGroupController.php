@@ -9,8 +9,17 @@
 
 namespace Application\Controller;
 
+use Application\Lib\Controller\AbstractRudiController;
+
+/**
+ * Class UserGroupController
+ * @package Application\Controller
+ */
 class UserGroupController extends AbstractRudiController {
 
+    /**
+     * @return void
+     */
     public function __construct() {
         parent::__construct('UserGroup');
     }

@@ -1,10 +1,14 @@
 <?php
 namespace Application\Controller;
 
-use Application\Controller\AbstractController;
+use Application\Lib\Controller\AbstractController;
 
+/**
+ * Class ErrorController
+ * @package Application\Controller
+ */
 class ErrorController extends AbstractController {
-    
+
     /**
      * @return void
      */
@@ -15,9 +19,9 @@ class ErrorController extends AbstractController {
         } else {
             $statusCode = (integer) base64_decode($statusCode);
         }
-        
+
         $this->view->assign('statusCode', $statusCode);
-        $this->view->assign('title', $statusCode.'_title');
+        $this->view->assign('title', $statusCode . '_title');
         $this->view->assign('message', $statusCode . '_message');
         http_response_code($statusCode);
     }

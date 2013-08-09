@@ -7,8 +7,12 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Application\Controller;
+namespace Application\Lib\Controller;
 
+/**
+ * Class AbstractRudiController
+ * @package Application\Lib\Controller
+ */
 abstract class AbstractRudiController extends AbstractController {
 
     /**
@@ -33,9 +37,9 @@ abstract class AbstractRudiController extends AbstractController {
 
     public function __construct($name) {
         $this->name                = lcfirst($name);
-        $this->modelClassName      = 'Application\Model\\' . $name;
-        $this->formClassName       = 'Application\Forms\\' . $name . 'Form';
-        $this->collectionClassName = 'Application\Model\Collection\\' . $name . 'Collection';
+        $this->modelClassName      = 'Application\Lib\Model\\' . $name;
+        $this->formClassName       = 'Application\Lib\Forms\\' . $name . 'Form';
+        $this->collectionClassName = 'Application\Lib\Model\Collection\\' . $name . 'Collection';
     }
 
     /**

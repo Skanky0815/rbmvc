@@ -7,11 +7,15 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Application\Model\Collection;
+namespace Application\Lib\Model\Collection;
 
-use Application\Model\Grant;
+use Application\Lib\Model\Grant;
 use RBMVC\Core\Model\Collection\AbstractCollection;
 
+/**
+ * Class GrantCollection
+ * @package Application\Lib\Model\Collection
+ */
 class GrantCollection extends AbstractCollection {
 
     /**

@@ -7,10 +7,15 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Application\Model;
+namespace Application\Lib\Model;
 
 use RBMVC\Core\Model\AbstractModel;
+use RBMVC\Core\Model\AbstractModel;
 
+/**
+ * Class Grant
+ * @package Application\Lib\Model
+ */
 class Grant extends AbstractModel {
 
     const TYPE_PUBLIC = 1;
@@ -42,7 +47,7 @@ class Grant extends AbstractModel {
     /**
      * @param string $definition
      *
-     * @return \Application\Model\Grant
+     * @return \Application\Lib\Model\Grant
      */
     public function setDefinition($definition) {
         $this->definition = $definition;
@@ -60,7 +65,7 @@ class Grant extends AbstractModel {
     /**
      * @param string $description
      *
-     * @return \Application\Model\Grant
+     * @return \Application\Lib\Model\Grant
      */
     public function setDescription($description) {
         $this->description = $description;
@@ -78,7 +83,7 @@ class Grant extends AbstractModel {
     /**
      * @param int $type
      *
-     * @return \Application\Model\Grant
+     * @return \Application\Lib\Model\Grant
      */
     public function setType($type) {
         $this->type = (int) $type;

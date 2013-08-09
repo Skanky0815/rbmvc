@@ -7,8 +7,9 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Application\Model;
+namespace Application\Lib\Model;
 
+use RBMVC\Core\Model\AbstractModel;
 use RBMVC\Core\Model\AbstractModel;
 
 /**
@@ -35,7 +36,7 @@ class UserGroup extends AbstractModel {
     /**
      * @param $description
      *
-     * @return \Application\Model\UserGroup
+     * @return \Application\Lib\Model\UserGroup
      */
     public function setDescription($description) {
         $this->description = $description;
@@ -53,7 +54,7 @@ class UserGroup extends AbstractModel {
     /**
      * @param array $grantTypes
      *
-     * @return \Application\Model\UserGroup
+     * @return \Application\Lib\Model\UserGroup
      */
     public function setGrantTypes(array $grantTypes) {
         $this->grantTypes = $grantTypes;
@@ -71,7 +72,7 @@ class UserGroup extends AbstractModel {
     /**
      * @param $name
      *
-     * @return \Application\Model\UserGroup
+     * @return \Application\Lib\Model\UserGroup
      */
     public function setName($name) {
         $this->name = $name;

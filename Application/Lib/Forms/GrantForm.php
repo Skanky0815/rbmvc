@@ -7,16 +7,27 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Application\Forms;
+namespace Application\Lib\Forms;
 
 use Application\Model\Grant;
-use RBMVC\Core\Utilities\Form\Form;
-use RBMVC\Core\Utilities\Form\Elements\InputElement;
+use Application\Model\Grant;
 use RBMVC\Core\Utilities\Form\Elements\CheckboxElement;
-use RBMVC\Core\Utilities\Form\Elements\TextareaElement;
+use RBMVC\Core\Utilities\Form\Elements\CheckboxElement;
+use RBMVC\Core\Utilities\Form\Elements\InputElement;
+use RBMVC\Core\Utilities\Form\Elements\InputElement;
 use RBMVC\Core\Utilities\Form\Elements\SelectElement;
+use RBMVC\Core\Utilities\Form\Elements\SelectElement;
+use RBMVC\Core\Utilities\Form\Elements\TextareaElement;
+use RBMVC\Core\Utilities\Form\Elements\TextareaElement;
+use RBMVC\Core\Utilities\Form\Form;
+use RBMVC\Core\Utilities\Form\Form;
+use RBMVC\Core\Utilities\Form\Validators\Word;
 use RBMVC\Core\Utilities\Form\Validators\Word;
 
+/**
+ * Class GrantForm
+ * @package Application\Lib\Forms
+ */
 class GrantForm extends Form {
 
     /**
@@ -34,10 +45,10 @@ class GrantForm extends Form {
         $type = new SelectElement('type');
         $type->setLabel('type');
         $type->setOptions(array(
-            'grant_type_' . Grant::TYPE_PUBLIC    => Grant::TYPE_PUBLIC,
-            'grant_type_' . Grant::TYPE_PROTECTED => Grant::TYPE_PROTECTED,
-            'grant_type_' . Grant::TYPE_PRIVATE   => Grant::TYPE_PRIVATE,
-        ));
+                               'grant_type_' . Grant::TYPE_PUBLIC    => Grant::TYPE_PUBLIC,
+                               'grant_type_' . Grant::TYPE_PROTECTED => Grant::TYPE_PROTECTED,
+                               'grant_type_' . Grant::TYPE_PRIVATE   => Grant::TYPE_PRIVATE,
+                          ));
         $this->addElement($type);
 
         $description = new TextareaElement('description');

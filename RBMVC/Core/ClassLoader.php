@@ -11,6 +11,10 @@ namespace RBMVC\Core;
 
 use RBMVC\Core\Utilities\Exception\ClassLoadingException;
 
+/**
+ * Class ClassLoader
+ * @package RBMVC\Core
+ */
 class ClassLoader {
 
     /**
@@ -23,6 +27,9 @@ class ClassLoader {
      */
     private $namespaces = array();
 
+    /**
+     * @ return void
+     */
     public function __construct() {
         set_include_path(ROOT_DIR);
         spl_autoload_extensions('.php');
@@ -70,6 +77,37 @@ class ClassLoader {
         } catch (ClassLoadingException $e) {
             throw $e;
         }
+    }
+
+    /**
+     * @param string|array $dirs
+     *
+     * @return array
+     */
+    public function getAllClassesFromDir($dirs) {
+        if (is_string($dirs)) {
+            $dirs = array($dirs);
+        }
+
+        $classes = array();
+        foreach ($dirs as $dir) {
+            if (!file_exists($dir)) {
+                continue;
+            }
+
+            $dirIterator = new \DirectoryIterator($dir);
+            /** @var \DirectoryIterator $item */
+            foreach ($dirIterator as $item) {
+                if (!$item->isFile() || !strstr($item->getFilename(), '.php')) {
+                    continue;
+                }
+
+                $className = str_replace('.php', '', $item->getFilename());
+                $classes[] = $this->getClassInstance($className);
+            }
+        }
+
+        return $classes;
     }
 
     /**

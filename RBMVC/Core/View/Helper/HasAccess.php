@@ -9,20 +9,21 @@
 
 namespace RBMVC\Core\View\Helper;
 
-use RBMVC\Core\Utilities\Session;
+use RBMVC\Core\Utilities\Access;
 
+/**
+ * Class HasAccess
+ * @package RBMVC\Core\View\Helper
+ */
 class HasAccess extends AbstractViewHelper {
 
     /**
-     * @var array
+     * @var \RBMVC\Core\Utilities\Access
      */
-    private $grants = array();
+    private $access;
 
     public function __construct() {
-        $session = new Session('user');
-        /** @var \Application\Model\LoggedInUser $user */
-        $user         = $session->user;
-        $this->grants = $user->getGrants();
+        $this->access = new Access();
     }
 
     /**
@@ -31,9 +32,7 @@ class HasAccess extends AbstractViewHelper {
      * @return bool
      */
     public function hasAccess($definition) {
-        $definition = preg_replace('/\?.*/', '', $definition);
-
-        return in_array($definition, $this->grants);
+        return $this->access->hasAccess($definition);
     }
 
 }

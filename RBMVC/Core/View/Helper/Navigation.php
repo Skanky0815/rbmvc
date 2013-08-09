@@ -37,7 +37,7 @@ class Navigation extends HasAccess {
                 $navigationPoint['pages'] = $this->modifyNavigation($navigationPoint['pages']);
             }
 
-            if (!$this->hasAccess($this->view->url($navigationPoint))) {
+            if (!$this->hasAccess($navigationPoint)) {
                 unset($navigation[$key]);
             }
         }

@@ -1,6 +1,10 @@
 <?php
 namespace RBMVC\Core\Utilities;
 
+/**
+ * Class Session
+ * @package RBMVC\Core\Utilities
+ */
 class Session {
 
     /**
@@ -44,6 +48,11 @@ class Session {
         return $this;
     }
 
+    /**
+     * @param mixed $value
+     *
+     * @return array
+     */
     private function serialize($value) {
         if (is_object($value)) {
             $value = array(
@@ -79,6 +88,11 @@ class Session {
         return $var;
     }
 
+    /**
+     * @param mixed $value
+     *
+     * @return mixed
+     */
     private function unserialize($value) {
         if (isset($value['is_object'])) {
             $value = unserialize($value['value']);

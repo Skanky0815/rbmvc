@@ -7,11 +7,16 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Application\Model;
+namespace Application\Lib\Model;
 
-use Application\Model\Collection\GrantCollection;
+use Application\Lib\Model\Collection\GrantCollection;
+use Application\Lib\Model\Grant;
 use RBMVC\Core\DB\DB;
 
+/**
+ * Class LoggedInUser
+ * @package Application\Lib\Model
+ */
 class LoggedInUser extends User {
 
     /**
@@ -26,7 +31,7 @@ class LoggedInUser extends User {
 
         $grantCollection = new GrantCollection();
         $grantCollection->findByType(Grant::TYPE_PUBLIC);
-        /** @var \Application\Model\Grant $grant */
+        /** @var \Application\Lib\Model\Grant $grant */
         foreach ($grantCollection->getModels() as $grant) {
             $this->grants[] = $grant->getDefinition();
         }
@@ -43,7 +48,7 @@ class LoggedInUser extends User {
     /**
      * @param array $grants
      *
-     * @return \Application\Model\User
+     * @return \Application\Lib\Model\User
      */
     public function setGrants(array $grants) {
         $this->grants = $grants;
@@ -74,7 +79,7 @@ class LoggedInUser extends User {
 
         $grantCollection = new GrantCollection();
         $grantCollection->findByType(array(Grant::TYPE_PROTECTED, Grant::TYPE_PUBLIC));
-        /** @var \Application\Model\Grant $grant */
+        /** @var \Application\Lib\Model\Grant $grant */
         foreach ($grantCollection->getModels() as $grant) {
             $this->grants[] = $grant->getDefinition();
         }

@@ -3,10 +3,15 @@ namespace RBMVC\Core;
 
 use RBMVC\Core\ClassLoader;
 use RBMVC\Core\Controller\AbstractController;
+use RBMVC\Core\Controller\AbstractPlugin;
 use RBMVC\Core\Controller\ActionHelperFactory;
 use RBMVC\Core\Utilities\Modifiers\String\DashToCamelCase;
 use RBMVC\Core\View\View;
 
+/**
+ * Class Dispatcher
+ * @package RBMVC\Core
+ */
 class Dispatcher {
 
     /**
@@ -33,6 +38,8 @@ class Dispatcher {
      * @var void
      */
     public function setupController() {
+        $this->loadPlugins();
+
         $controllerName  = ucfirst($this->request->getParam('controller')) . 'Controller';
         $dashToCamelCase = new DashToCamelCase();
         $controllerName  = $dashToCamelCase->convert($controllerName);
@@ -66,6 +73,19 @@ class Dispatcher {
             }
         } else {
             $controller->redirectToErrorPage(404);
+        }
+    }
+
+    private function loadPlugins() {
+        $plugins = $this->classLoader->getAllClassesFromDir(array(APPLICATION_DIR . 'Lib/Controller/Plugins',
+                                                                  APPLICATION_DIR . 'RBMVC/Core/Controller/Plugins'
+                                                            ));
+        foreach ($plugins as $plugin) {
+
+            if (!$plugin instanceof AbstractPlugin) {
+                continue;
+            }
+            $plugin->onBootstrap($this->request);
         }
     }
 

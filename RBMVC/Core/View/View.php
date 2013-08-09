@@ -254,7 +254,7 @@ class View {
         }
 
         if (file_exists(ROOT_DIR . '/public' . $jsPath . '.js')) {
-            $js = '<script data-main="' . $jsPath . '" src="/js/lib/require-jquery.js"></script>';
+            $js = '<script data-main="' . $jsPath . '" src="/js/Lib/require-jquery.js"></script>';
             $this->assign('js', $js);
         }
     }

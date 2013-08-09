@@ -7,13 +7,21 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Application\Forms;
+namespace Application\Lib\Forms;
 
 use RBMVC\Core\Utilities\Form\Elements\InputElement;
+use RBMVC\Core\Utilities\Form\Elements\InputElement;
+use RBMVC\Core\Utilities\Form\Elements\TextareaElement;
 use RBMVC\Core\Utilities\Form\Elements\TextareaElement;
 use RBMVC\Core\Utilities\Form\Form;
+use RBMVC\Core\Utilities\Form\Form;
+use RBMVC\Core\Utilities\Form\Validators\Word;
 use RBMVC\Core\Utilities\Form\Validators\Word;
 
+/**
+ * Class UserGroupForm
+ * @package Application\Lib\Forms
+ */
 class UserGroupForm extends Form {
 
     /**

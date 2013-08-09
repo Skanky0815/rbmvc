@@ -9,12 +9,24 @@
 
 namespace Application\Controller;
 
+use Application\Lib\Controller\AbstractRudiController;
+
+/**
+ * Class GrantController
+ * @package Application\Controller
+ */
 class GrantController extends AbstractRudiController {
 
+    /**
+     * @return void
+     */
     public function __construct() {
         parent::__construct('Grant');
     }
 
+    /**
+     * @return void
+     */
     public function scanAction() {
         $grants = $this->grantScanner();
         $this->view->assign('new', $grants['new']);
