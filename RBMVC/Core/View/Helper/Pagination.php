@@ -25,15 +25,13 @@ class Pagination extends AbstractViewHelper {
      */
     private $urlHelper;
 
-    function __construct() {
-        $this->urlHelper = $this->view->getViewHelper('Url');
-    }
-
     /**
      *
      * @return string
      */
     public function pagination() {
+        $this->urlHelper = $this->view->getViewHelper('Url');
+
         $pages  = array();
         $number = ceil($this->indexParams['total'] / $this->indexParams['limit']);
         if ($number == 1) {
