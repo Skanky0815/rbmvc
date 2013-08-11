@@ -63,6 +63,7 @@ class Dispatcher {
             $controller->setRequest($this->request);
             $controller->setActionHelperFactory($actionHelperFactory);
             $controller->setClassLoader($this->classLoader);
+            $controller->setConfig($this->config);
             $controller->init();
             $actionStr = $this->request->getParam('action') . 'Action';
             if (!method_exists($controller, $actionStr) || $isClassError) {

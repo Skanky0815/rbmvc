@@ -1,0 +1,17 @@
+<div class="row">
+    <div class="col-12 text-center">
+        <ul class="pagination text-center">
+            <?php foreach ($this->pages as $page): ?>
+                <?php if (isset($page['is_disabled']) && $page['is_disabled']): ?>
+                    <li class="disabled"><span><?php echo $page['label']; ?></span></li>
+                <?php elseif ($page['is_active']): ?>
+                    <li class="active"><span><?php echo $page['label']; ?></span></li>
+                <?php else: ?>
+                    <li>
+                        <a href="<?php echo $page['url']; ?>"><?php echo $page['label']; ?></a>
+                    </li>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+</div>

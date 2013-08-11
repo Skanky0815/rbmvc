@@ -34,4 +34,23 @@ abstract class AbstractController extends \RBMVC\Core\Controller\AbstractControl
         $this->view->assign('loggedUser', $this->user);
     }
 
+    protected function indexParams($total) {
+        $params      = $this->request->getParams();
+        $limit       = isset($this->config['settings']['limit']) ? $this->config['settings']['limit'] : 15;
+        $indexParams = array(
+            'page'      => isset($params['page']) ? $params['page'] : 1,
+            'limit'     => isset($params['limit']) ? $params['limit'] : $limit,
+            'order_by'  => isset($params['order_by']) ? $params['order_by'] : 'id',
+            'search'    => isset($params['search']) ? $params['search'] : '',
+            'order_dir' => isset($params['order_dir']) ? $params['order_dir'] : 'DESC',
+            'total'     => $total
+        );
+
+        /** @var $pagination \RBMVC\Core\View\Helper\Pagination */
+        $pagination = $this->view->getViewHelper('Pagination');
+        $pagination->setIndexParams($indexParams);
+
+        return $indexParams;
+    }
+
 }

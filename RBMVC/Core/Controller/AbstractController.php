@@ -33,6 +33,11 @@ abstract class AbstractController {
     protected $classLoader;
 
     /**
+     * @var array
+     */
+    protected $config = array();
+
+    /**
      * @return void
      */
     public function init() {
@@ -114,6 +119,24 @@ abstract class AbstractController {
         $this->classLoader = $classLoader;
 
         return $this;
+    }
+
+    /**
+     * @param array $config
+     *
+     * @return \RBMVC\Core\Controller\AbstractController
+     */
+    public function setConfig(array $config) {
+        $this->config = $config;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getConfig() {
+        return $this->config;
     }
 
     /**

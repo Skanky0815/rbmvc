@@ -96,7 +96,7 @@ abstract class AbstractModel {
         $query->where(array('id' => $this->id));
 
         $stmt   = $this->db->execute($query);
-        $result = $stmt->fetch();
+        $result = $stmt->fetch(\PDO::FETCH_ASSOC);
 
         if (empty($result)) {
             return false;

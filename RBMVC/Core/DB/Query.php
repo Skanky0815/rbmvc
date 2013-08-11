@@ -179,6 +179,20 @@ class Query {
     }
 
     /**
+     * @param int $limit
+     */
+    public function limit($limit) {
+        $this->sql .= ' LIMIT ' . (int) $limit;
+    }
+
+    /**
+     * @param int $offset
+     */
+    public function offset($offset) {
+        $this->sql .= ' OFFSET ' . $offset;
+    }
+
+    /**
      * @param array $params
      *
      * @return void

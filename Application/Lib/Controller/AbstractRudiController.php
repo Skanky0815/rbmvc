@@ -46,8 +46,12 @@ abstract class AbstractRudiController extends AbstractController {
      * @return void
      */
     public function indexAction() {
+        /** @var $collection \RBMVC\Core\Model\Collection\AbstractCollection */
         $collection = $this->classLoader->getClassInstance($this->collectionClassName);
         $collection->findAll();
+        $total = count($collection->getResult());
+        $collection->setIndexParams($this->indexParams($total));
+        $collection->findForIndex();
         $this->view->assign($this->name . 's', $collection->getModels());
     }
 
