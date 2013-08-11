@@ -78,7 +78,7 @@ class Dispatcher {
     }
 
     private function loadPlugins() {
-        $plugins = $this->classLoader->getAllClassesFromDir(array(APPLICATION_DIR . 'Lib/Controller/Plugins',
+        $plugins = $this->classLoader->getAllClassesFromDir(array($this->config['settings']['controller_plugin_dir'],
                                                                   ROOT_DIR . 'RBMVC/Core/Controller/Plugins'
                                                             ));
         foreach ($plugins as $plugin) {

@@ -27,6 +27,7 @@ return array(
         'view_helper'        => __NAMESPACE__ . '\\Lib\\ViewHelper\\',
     ),
     'settings'    => array(
-        'limit' => 10,
+        'limit'                 => 10,
+        'controller_plugin_dir' => APPLICATION_DIR . 'Lib/Controller/Plugins',
     ),
 );
