@@ -38,6 +38,8 @@ class Bootstrap {
      */
     public function run(array $config) {
         Session::start();
+        //$session = new Session('user');
+        //$session->resetNamespace('user');
 
         $this->config = $config;
 

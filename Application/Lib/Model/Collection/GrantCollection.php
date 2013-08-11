@@ -26,9 +26,6 @@ class GrantCollection extends AbstractCollection {
         $query->select(array('id'));
         $query->where(array('type' => $types));
         $query->orderBy(array('id' => 'DESC'));
-
-        error_log(__METHOD__ . '::> ' . print_r($query, 1));
-
         $this->fetch($query);
     }
 

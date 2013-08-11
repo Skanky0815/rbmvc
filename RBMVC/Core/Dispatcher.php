@@ -52,7 +52,6 @@ class Dispatcher {
             $isClassError = true;
         }
 
-        $this->loadPlugins();
         $actionHelperFactory = new ActionHelperFactory();
         $actionHelperFactory->setView($this->view);
         $actionHelperFactory->setRequest($this->request);
@@ -69,6 +68,7 @@ class Dispatcher {
             if (!method_exists($controller, $actionStr) || $isClassError) {
                 $controller->redirectToErrorPage(404);
             } else {
+                $this->loadPlugins();
                 $controller->{$actionStr}();
             }
         } else {
