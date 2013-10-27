@@ -13,7 +13,7 @@ use RBMVC\Core\Utilities\SystemMessage;
 class SaveModel extends AbstractActionHelper {
 
     /**
-     * @param \RBMVC\Core\Model\AbstractModel $model
+     * @param AbstractModel $model
      * @param string $form
      *
      * @return \RBMVC\Core\Model\AbstractModel|void
@@ -27,7 +27,7 @@ class SaveModel extends AbstractActionHelper {
         }
 
         $model->fillModelByArray($params);
-        $form = new $form($model);
+        $form = new $form($this->view, $model);
 
         if (!$form instanceof Form) {
             return $model;
@@ -52,7 +52,7 @@ class SaveModel extends AbstractActionHelper {
     }
 
     /**
-     * @param \RBMVC\Core\Model\AbstractModel $model
+     * @param AbstractModel $model
      *
      * @return void
      */

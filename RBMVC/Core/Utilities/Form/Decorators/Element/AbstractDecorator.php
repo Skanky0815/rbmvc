@@ -18,7 +18,7 @@ use RBMVC\Core\Utilities\Form\Elements\AbstractElement;
 abstract class AbstractDecorator {
 
     /**
-     * @var \RBMVC\Core\Utilities\Form\Elements\AbstractElement
+     * @var AbstractElement
      */
     protected $element = null;
 
@@ -42,7 +42,7 @@ abstract class AbstractDecorator {
     }
 
     /**
-     * @param \RBMVC\Core\Utilities\Form\Elements\AbstractElement $elements
+     * @param AbstractElement $elements
      *
      * @return \RBMVC\Core\Utilities\Form\Decorators\Element\AbstractDecorator
      */

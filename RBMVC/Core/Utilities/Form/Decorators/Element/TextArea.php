@@ -32,7 +32,7 @@ class TextArea extends AbstractDecorator {
     /**
      * @var string
      */
-    private $borderHtml = '<div class="form-group">%s%s%s</div>';
+    private $formGroup = '<div class="form-group">%s%s%s</div>';
 
     /**
      * @param string $template
@@ -61,7 +61,7 @@ class TextArea extends AbstractDecorator {
             $error = sprintf($this->errorHtml, array($this->translator->translate($element->getErrorText())));
         }
 
-        return sprintf($this->borderHtml, ($element->hasError() ? ' has-error' : ''), $label, $input, $error);
+        return sprintf($this->formGroup, ($element->hasError() ? ' has-error' : ''), $label, $input, $error);
     }
 
 }

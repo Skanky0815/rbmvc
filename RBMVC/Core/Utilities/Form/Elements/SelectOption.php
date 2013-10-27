@@ -9,6 +9,10 @@
 
 namespace RBMVC\Core\Utilities\Form\Elements;
 
+/**
+ * Class SelectOption
+ * @package RBMVC\Core\Utilities\Form\Elements
+ */
 class SelectOption {
 
     /**

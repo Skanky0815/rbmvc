@@ -9,6 +9,7 @@
 
 namespace Application\Lib\Forms;
 
+use RBMVC\Core\Utilities\Form\DisplayGroup;
 use RBMVC\Core\Utilities\Form\Elements\CheckboxElement;
 use RBMVC\Core\Utilities\Form\Elements\InputElement;
 use RBMVC\Core\Utilities\Form\Form;
@@ -24,6 +25,7 @@ class UserForm extends Form {
      * @return void
      */
     public function init() {
+        $this->addDefaultActions();
 
         $username = new InputElement('username', 'text');
         $username->setIsRequired(true);
@@ -43,6 +45,9 @@ class UserForm extends Form {
         $isActive->setLabel('is_active');
         $this->addElement($isActive);
 
+        $this->addDisplayGroup(array($username, $email, $isActive), DisplayGroup::DEFAULT_ELEMENTS);
+
+        $this->addDefaultActions();
     }
 
 }

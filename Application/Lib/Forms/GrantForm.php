@@ -10,6 +10,7 @@
 namespace Application\Lib\Forms;
 
 use Application\Lib\Model\Grant;
+use RBMVC\Core\Utilities\Form\DisplayGroup;
 use RBMVC\Core\Utilities\Form\Elements\CheckboxElement;
 use RBMVC\Core\Utilities\Form\Elements\InputElement;
 use RBMVC\Core\Utilities\Form\Elements\SelectElement;
@@ -54,6 +55,10 @@ class GrantForm extends Form {
         $isActive = new CheckboxElement('is_active');
         $isActive->setLabel('is_active');
         $this->addElement($isActive);
+
+        $this->addDisplayGroup(array($definition, $type, $description, $isActive), DisplayGroup::DEFAULT_ELEMENTS);
+
+        $this->addDefaultActions();
     }
 
 }

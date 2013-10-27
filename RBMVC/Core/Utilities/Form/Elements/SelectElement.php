@@ -9,12 +9,32 @@
 
 namespace RBMVC\Core\Utilities\Form\Elements;
 
+use RBMVC\Core\Utilities\Form\Decorators\Element\Select;
+
+/**
+ * Class SelectElement
+ * @package RBMVC\Core\Utilities\Form\Elements
+ */
 class SelectElement extends AbstractElement {
 
     /**
      * @var array
      */
     private $options = array();
+
+    /**
+     * @param $name
+     */
+    public function __construct($name) {
+        parent::__construct($name, new Select());
+    }
+
+    /**
+     * @return array
+     */
+    public function getOptions() {
+        return $this->options;
+    }
 
     /**
      * @param array $options
@@ -37,16 +57,9 @@ class SelectElement extends AbstractElement {
     }
 
     /**
-     * @return array
-     */
-    public function getOptions() {
-        return $this->options;
-    }
-
-    /**
      * @param string $value
      *
-     * @return \RBMVC\Core\Utilities\Form\Elements\SelectElement|\RBMVC\Core\Utilities\Form\Elements\AbstractElement
+     * @return \RBMVC\Core\Utilities\Form\Elements\SelectElement
      */
     public function setValue($value) {
         parent::setValue($value);
@@ -59,13 +72,6 @@ class SelectElement extends AbstractElement {
         }
 
         return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function render() {
-        // TODO: Implement render() method.
     }
 
 }

@@ -9,6 +9,7 @@
 
 namespace Application\Lib\Forms;
 
+use RBMVC\Core\Utilities\Form\DisplayGroup;
 use RBMVC\Core\Utilities\Form\Elements\InputElement;
 use RBMVC\Core\Utilities\Form\Elements\TextareaElement;
 use RBMVC\Core\Utilities\Form\Form;
@@ -24,6 +25,7 @@ class UserGroupForm extends Form {
      * @return void
      */
     protected function init() {
+        $this->addDefaultActions();
 
         $name = new InputElement('name', 'text');
         $name->setLabel('name');
@@ -35,6 +37,10 @@ class UserGroupForm extends Form {
         $description->setLabel('description');
         $description->addValidator(new Word());
         $this->addElement($description);
+
+        $this->addDisplayGroup(array($name, $description), DisplayGroup::DEFAULT_ELEMENTS);
+
+        $this->addDefaultActions();
     }
 
 }

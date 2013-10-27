@@ -186,6 +186,60 @@ abstract class AbstractElement {
     }
 
     /**
+     * @param boolean $hasError
+     *
+     * @return AbstractElement
+     */
+    public function setHasError($hasError) {
+        $this->hasError = $hasError;
+
+        return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getHasError() {
+        return $this->hasError;
+    }
+
+    /**
+     * @param \RBMVC\Core\Translator $translator
+     *
+     * @return AbstractElement
+     */
+    public function setTranslator($translator) {
+        $this->translator = $translator;
+
+        return $this;
+    }
+
+    /**
+     * @return \RBMVC\Core\Translator
+     */
+    public function getTranslator() {
+        return $this->translator;
+    }
+
+    /**
+     * @param array $validators
+     *
+     * @return AbstractElement
+     */
+    public function setValidators($validators) {
+        $this->validators = $validators;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getValidators() {
+        return $this->validators;
+    }
+
+    /**
      * @param array $params
      *
      * @return string

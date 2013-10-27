@@ -9,9 +9,11 @@
     <?php echo $this->form->getDisplayGroup(RBMVC\Core\Utilities\Form\DisplayGroup::DEFAULT_ELEMENTS)->render(); ?>
     <!-- end default inputs -->
 
-    <!-- hidden inputs -->
-    <?php echo $this->form->getDisplayGroup(RBMVC\Core\Utilities\Form\DisplayGroup::HIDDEN_ELEMENTS)->render(); ?>
-    <!-- end hidden inputs -->
+    <?php if ($this->form->hasDisplayGroup(RBMVC\Core\Utilities\Form\DisplayGroup::HIDDEN_ELEMENTS)): ?>
+        <!-- hidden inputs -->
+        <?php echo $this->form->getDisplayGroup(RBMVC\Core\Utilities\Form\DisplayGroup::HIDDEN_ELEMENTS)->render(); ?>
+        <!-- end hidden inputs -->
+    <?php endif; ?>
 
     <hr>
 
@@ -21,17 +23,9 @@
 </form>
 
 <?php /*
-<div class="btn-group">
-    <button type="submit" class="btn btn-success">
-        <?php echo $this->translate('save'); ?>
-    </button>
     <button type="submit" value="saven_return" class="btn btn-success">
         <?php echo $this->translate('save_and_return'); ?>
     </button>
-    <a href="<?php echo $this->url(array('action' => 'index')); ?>" class="btn btn-danger">
-        <?php echo $this->translate('abort'); ?>
-    </a>
-</div>
 
  */
 ?>

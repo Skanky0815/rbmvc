@@ -9,13 +9,19 @@
 
 namespace RBMVC\Core\Utilities\Form\Elements;
 
+use RBMVC\Core\Utilities\Form\Decorators\Element\Checkbox;
+
+/**
+ * Class CheckboxElement
+ * @package RBMVC\Core\Utilities\Form\Elements
+ */
 class CheckboxElement extends AbstractElement {
 
     /**
-     * @return string
+     * @param $name
      */
-    public function render() {
-        // TODO: Implement render() method.
+    public function __construct($name) {
+        parent::__construct($name, new Checkbox());
     }
 
 }
