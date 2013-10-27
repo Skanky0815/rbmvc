@@ -2,13 +2,16 @@
 namespace RBMVC\Core\Controller;
 
 use RBMVC\Core\ClassLoader;
-use RBMVC\Core\Controller\ActionHelperFactory;
 use RBMVC\Core\Request;
 use RBMVC\Core\Utilities\Session;
 use RBMVC\Core\Utilities\SystemMessage;
 use RBMVC\Core\View\Helper\RenderSystemMessages;
 use RBMVC\Core\View\View;
 
+/**
+ * Class AbstractController
+ * @package RBMVC\Core\Controller
+ */
 abstract class AbstractController {
 
     /**
@@ -40,6 +43,13 @@ abstract class AbstractController {
     /**
      * @return void
      */
+    public function indexAction() {
+
+    }
+
+    /**
+     * @return void
+     */
     public function init() {
         $this->view->assign('controller', $this->request->getParam('controller'));
         $this->view->assign('action', $this->request->getParam('action'));
@@ -47,42 +57,13 @@ abstract class AbstractController {
     }
 
     /**
-     * @return void
-     */
-    public function indexAction() {
-
-    }
-
-    /**
-     * @param \RBMVC\Core\Request $request
+     * @param string $name
+     * @param array $args
      *
-     * @return void
+     * @return mixed
      */
-    public function setRequest(Request $request) {
-        $this->request = $request;
-    }
-
-    /**
-     * @return \RBMVC\Core\Request
-     */
-    public function getRequest() {
-        return $this->request;
-    }
-
-    /**
-     * @return \RBMVC\Core\View\View
-     */
-    public function getView() {
-        return $this->view;
-    }
-
-    /**
-     * @param \RBMVC\Core\View\View $view
-     *
-     * @return void
-     */
-    public function setView(View &$view) {
-        $this->view = $view;
+    public function __call($name, $args) {
+        return $this->actionHelperFactory->callFunction($name, $args);
     }
 
     /**
@@ -122,6 +103,13 @@ abstract class AbstractController {
     }
 
     /**
+     * @return array
+     */
+    public function getConfig() {
+        return $this->config;
+    }
+
+    /**
      * @param array $config
      *
      * @return \RBMVC\Core\Controller\AbstractController
@@ -133,10 +121,35 @@ abstract class AbstractController {
     }
 
     /**
-     * @return array
+     * @return \RBMVC\Core\Request
      */
-    public function getConfig() {
-        return $this->config;
+    public function getRequest() {
+        return $this->request;
+    }
+
+    /**
+     * @param \RBMVC\Core\Request $request
+     *
+     * @return void
+     */
+    public function setRequest(Request $request) {
+        $this->request = $request;
+    }
+
+    /**
+     * @return \RBMVC\Core\View\View
+     */
+    public function getView() {
+        return $this->view;
+    }
+
+    /**
+     * @param \RBMVC\Core\View\View $view
+     *
+     * @return void
+     */
+    public function setView(View &$view) {
+        $this->view = $view;
     }
 
     /**
@@ -146,26 +159,6 @@ abstract class AbstractController {
      */
     public function redirectToErrorPage($code) {
         header('Location: /error?c=' . base64_encode($code));
-        exit;
-    }
-
-    /**
-     * @param array $json
-     *
-     * @return string
-     */
-    protected function sendJSON(array $json) {
-        header('Content-type: application/json');
-        echo json_encode($json);
-    }
-
-    /**
-     * @param array $params
-     *
-     * @return void
-     */
-    protected function redirect(array $params) {
-        header('Location: ' . $this->view->url($params, true));
         exit;
     }
 
@@ -192,13 +185,23 @@ abstract class AbstractController {
     }
 
     /**
-     * @param string $name
-     * @param array $args
+     * @param array $params
      *
-     * @return mixed
+     * @return void
      */
-    public function __call($name, $args) {
-        return $this->actionHelperFactory->callFunction($name, $args);
+    protected function redirect(array $params) {
+        header('Location: ' . $this->view->url($params, true));
+        exit;
+    }
+
+    /**
+     * @param array $json
+     *
+     * @return string
+     */
+    protected function sendJSON(array $json) {
+        header('Content-type: application/json');
+        echo json_encode($json);
     }
 
 }

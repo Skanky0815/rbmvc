@@ -1,6 +1,7 @@
 <?php
 namespace Application\Lib\Forms;
 
+use RBMVC\Core\Utilities\Form\DisplayGroup;
 use RBMVC\Core\Utilities\Form\Elements\HiddenElement;
 use RBMVC\Core\Utilities\Form\Elements\InputElement;
 use RBMVC\Core\Utilities\Form\Elements\TextareaElement;
@@ -18,9 +19,13 @@ class EntryForm extends Form {
      * @return void
      */
     public function init() {
+        $this->addDefaultActions();
+
         $author = new HiddenElement('user_id');
         $author->addValidator(new Numeric());
         $this->addElement($author);
+
+        $this->addDisplayGroup(array($author), DisplayGroup::HIDDEN_ELEMENTS);
 
         $title = new InputElement('title', 'text');
         $title->setIsRequired(true);
@@ -34,5 +39,9 @@ class EntryForm extends Form {
         $text->setLabel('text');
         $text->addValidator(new Word());
         $this->addElement($text);
+
+        $this->addDisplayGroup(array($title, $text), DisplayGroup::DEFAULT_ELEMENTS);
+
+        $this->addDefaultActions();
     }
 }

@@ -3,7 +3,16 @@ namespace RBMVC\Core\DB;
 
 use PDO;
 
+/**
+ * Class DB
+ * @package RBMVC\Core\DB
+ */
 class DB {
+
+    /**
+     * @var DB
+     */
+    private static $instance = null;
 
     /**
      * @var \PDO
@@ -14,11 +23,6 @@ class DB {
      * @var Query
      */
     private $query;
-
-    /**
-     * @var DB
-     */
-    private static $instance = null;
 
     /**
      * @var string
@@ -51,56 +55,17 @@ class DB {
     private $pdoOptions;
 
     /**
-     * @return DB
+     * @return array
      */
-    public static function getInstance() {
-        if (is_null(self::$instance)) {
-            self::$instance = new DB();
-        }
-
-        return self::$instance;
+    public function __sleep() {
+        return array('query', 'user', 'host', 'pass', 'driver', 'pdoOptions');
     }
 
     /**
-     * @param array $options
      *
-     * @return void
      */
-    public function setup(array $options) {
-        $this->user       = array_key_exists('user', $options) ? $options['user'] : '';
-        $this->host       = array_key_exists('host', $options) ? $options['host'] : '';
-        $this->name       = array_key_exists('name', $options) ? $options['name'] : '';
-        $this->pass       = array_key_exists('pass', $options) ? $options['pass'] : '';
-        $this->driver     = array_key_exists('driver', $options) ? $options['driver'] : '';
-        $this->pdoOptions = array_key_exists('options', $options) ? $options['options'] : array();
-
+    public function __wakeup() {
         $this->connect();
-    }
-
-    private function connect() {
-        $dsn      = $this->driver . ':host=' . $this->host . ';dbname=' . $this->name;
-        $this->db = new PDO($dsn, $this->user, $this->pass, $this->pdoOptions);
-    }
-
-    /**
-     * @param \RBMVC\Core\DB\Query $query
-     *
-     * @return void
-     */
-    public function setQuery(Query $query) {
-        $this->query = $query;
-    }
-
-    /**
-     * @param string $dbTable
-     *
-     * @return \RBMVC\Core\DB\Query
-     */
-    public function getQuery($dbTable) {
-        $query = new Query();
-        $query->setDBTable($dbTable);
-
-        return $query;
     }
 
     /**
@@ -128,17 +93,65 @@ class DB {
     }
 
     /**
+     * @return DB
+     */
+    public static function getInstance() {
+        if (is_null(self::$instance)) {
+            self::$instance = new DB();
+        }
+
+        return self::$instance;
+    }
+
+    /**
+     * @param string $dbTable
+     *
+     * @return \RBMVC\Core\DB\Query
+     */
+    public function getQuery($dbTable) {
+        $query = new Query();
+        $query->setDBTable($dbTable);
+
+        return $query;
+    }
+
+    /**
+     * @param \RBMVC\Core\DB\Query $query
+     *
+     * @return void
+     */
+    public function setQuery(Query $query) {
+        $this->query = $query;
+    }
+
+    /**
      * @return string
      */
     public function lastInsertId() {
         return (int) $this->db->lastInsertId();
     }
 
-    public function __sleep() {
-        return array('query', 'user', 'host', 'pass', 'driver', 'pdoOptions');
+    /**
+     * @param array $options
+     *
+     * @return void
+     */
+    public function setup(array $options) {
+        $this->user       = array_key_exists('user', $options) ? $options['user'] : '';
+        $this->host       = array_key_exists('host', $options) ? $options['host'] : '';
+        $this->name       = array_key_exists('name', $options) ? $options['name'] : '';
+        $this->pass       = array_key_exists('pass', $options) ? $options['pass'] : '';
+        $this->driver     = array_key_exists('driver', $options) ? $options['driver'] : '';
+        $this->pdoOptions = array_key_exists('options', $options) ? $options['options'] : array();
+
+        $this->connect();
     }
 
-    public function __wakeup() {
-        $this->connect();
+    /**
+     *
+     */
+    private function connect() {
+        $dsn      = $this->driver . ':host=' . $this->host . ';dbname=' . $this->name;
+        $this->db = new PDO($dsn, $this->user, $this->pass, $this->pdoOptions);
     }
 }

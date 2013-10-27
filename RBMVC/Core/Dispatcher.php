@@ -1,7 +1,6 @@
 <?php
 namespace RBMVC\Core;
 
-use RBMVC\Core\ClassLoader;
 use RBMVC\Core\Controller\AbstractController;
 use RBMVC\Core\Controller\AbstractPlugin;
 use RBMVC\Core\Controller\ActionHelperFactory;

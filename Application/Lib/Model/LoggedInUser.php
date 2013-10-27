@@ -10,8 +10,6 @@
 namespace Application\Lib\Model;
 
 use Application\Lib\Model\Collection\GrantCollection;
-use Application\Lib\Model\Grant;
-use RBMVC\Core\DB\DB;
 
 /**
  * Class LoggedInUser

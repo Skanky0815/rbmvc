@@ -2,33 +2,36 @@
 namespace RBMVC\Core\Utilities;
 
 class SystemMessage {
-    
-    const SUCCESS   = 'success';
-    const ERROR     = 'error';
-    const WARNING   = 'block';
-    const INFO      = 'info';
-    
+
+    const SUCCESS = 'success';
+
+    const ERROR = 'error';
+
+    const WARNING = 'block';
+
+    const INFO = 'info';
+
     /**
-     * @var string 
+     * @var string
      */
     private $title = '';
-    
+
     /**
-     * @var string 
+     * @var string
      */
     private $text = '';
-    
+
     /**
-     * @var string 
+     * @var string
      */
     private $type = '';
-    
+
     /**
      * @param string $type
      */
     public function __construct($type = self::INFO) {
         $this->type = $type;
-        
+
         switch ($type) {
             case self::SUCCESS:
                 $this->title = 'message_success';
@@ -44,7 +47,7 @@ class SystemMessage {
                 break;
         }
     }
-    
+
     /**
      * @return string
      */
@@ -54,13 +57,15 @@ class SystemMessage {
 
     /**
      * @param string $title
+     *
      * @return \RBMVC\Core\Utilities\SystemMessage
      */
     public function setTitle($title) {
         $this->title = $title;
+
         return $this;
     }
-    
+
     /**
      * @return string
      */
@@ -70,13 +75,15 @@ class SystemMessage {
 
     /**
      * @param string $text
+     *
      * @return \RBMVC\Core\Utilities\SystemMessage
      */
     public function setText($text) {
         $this->text = $text;
+
         return $this;
     }
-    
+
     /**
      * @return string
      */
@@ -86,10 +93,12 @@ class SystemMessage {
 
     /**
      * @param string $type
+     *
      * @return \RBMVC\Core\Utilities\SystemMessage
      */
     public function setType($type) {
         $this->type = $type;
+
         return $this;
     }
 

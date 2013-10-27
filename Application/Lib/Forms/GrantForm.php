@@ -27,6 +27,7 @@ class GrantForm extends Form {
      * @return void
      */
     protected function init() {
+        $this->addDefaultActions();
 
         $definition = new InputElement('definition', 'text');
         $definition->setIsRequired(true);

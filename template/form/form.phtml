@@ -1,37 +1,37 @@
 <form action="<?php echo $this->form->getAction(); ?>" class="form-horizontal" method="post">
     <?php if ($this->form->hasActionBar()): ?>
-        <div class="btn-group">
-            <button type="submit" class="btn btn-success">
-                <?php echo $this->translate('save'); ?>
-            </button>
-            <button type="submit" value="saven_return" class="btn btn-success">
-                <?php echo $this->translate('save_and_return'); ?>
-            </button>
-            <a href="<?php echo $this->url(array('action' => 'index')); ?>" class="btn btn-danger">
-                <?php echo $this->translate('abort'); ?>
-            </a>
-        </div>
+        <?php echo $this->form->getDisplayGroup('actions_bottom')->render(); ?>
     <?php endif; ?>
 
     <hr>
 
-    <?php foreach ($this->elements as $element): ?>
-        <?php echo $element; ?>
-    <?php endforeach; ?>
+    <!-- default inputs -->
+    <?php echo $this->form->getDisplayGroup(RBMVC\Core\Utilities\Form\DisplayGroup::DEFAULT_ELEMENTS)->render(); ?>
+    <!-- end default inputs -->
+
+    <!-- hidden inputs -->
+    <?php echo $this->form->getDisplayGroup(RBMVC\Core\Utilities\Form\DisplayGroup::HIDDEN_ELEMENTS)->render(); ?>
+    <!-- end hidden inputs -->
 
     <hr>
 
     <?php if ($this->form->hasActionBar()): ?>
-        <div class="btn-group">
-            <button type="submit" class="btn btn-success">
-                <?php echo $this->translate('save'); ?>
-            </button>
-            <button type="submit" value="saven_return" class="btn btn-success">
-                <?php echo $this->translate('save_and_return'); ?>
-            </button>
-            <a href="<?php echo $this->url(array('action' => 'index')); ?>" class="btn btn-danger">
-                <?php echo $this->translate('abort'); ?>
-            </a>
-        </div>
+        <?php echo $this->form->getDisplayGroup('actions_bottom')->render(); ?>
     <?php endif; ?>
 </form>
+
+<?php /*
+<div class="btn-group">
+    <button type="submit" class="btn btn-success">
+        <?php echo $this->translate('save'); ?>
+    </button>
+    <button type="submit" value="saven_return" class="btn btn-success">
+        <?php echo $this->translate('save_and_return'); ?>
+    </button>
+    <a href="<?php echo $this->url(array('action' => 'index')); ?>" class="btn btn-danger">
+        <?php echo $this->translate('abort'); ?>
+    </a>
+</div>
+
+ */
+?>

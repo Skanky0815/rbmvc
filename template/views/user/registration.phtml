@@ -1,53 +1,62 @@
 <h2>
-    <?php echo $this->translate('registration'); ?> 
+    <?php echo $this->translate('registration'); ?>
 </h2>
 
 
 <form class="form-horizontal" method="post">
-    <input type="hidden" name="id" value="<?php // echo $this->entry->getId(); ?>" />
+    <input type="hidden" name="id" value="<?php // echo $this->entry->getId(); ?>"/>
+
     <div class="control-group">
         <label class="control-label" for="username">
             <?php echo $this->translate('username'); ?>:
         </label>
+
         <div class="controls">
-            <input class="required" type="text" id="username" name="username" value="<?php // echo $this->entry->getAuthor(); ?>"/>
+            <input class="required" type="text" id="username" name="username"
+                   value="<?php // echo $this->entry->getAuthor(); ?>"/>
         </div>
     </div>
     <div class="control-group">
         <label class="control-label" for="email">
             <?php echo $this->translate('email'); ?>:
         </label>
+
         <div class="controls">
-            <input class="required" type="text" id="email" name="email" value="<?php // echo $this->entry->getTitle(); ?>"/>
+            <input class="required" type="text" id="email" name="email"
+                   value="<?php // echo $this->entry->getTitle(); ?>"/>
         </div>
     </div>
     <div class="control-group">
         <label class="control-label" for="password">
             <?php echo $this->translate('password'); ?>:
         </label>
+
         <div class="controls">
-            <input class="required" type="password" id="password" name="password" value="<?php // echo $this->entry->getTitle(); ?>"/>
+            <input class="required" type="password" id="password" name="password"
+                   value="<?php // echo $this->entry->getTitle(); ?>"/>
         </div>
     </div>
     <div class="control-group">
         <label class="control-label" for="password2">
             <?php echo $this->translate('password_confirm'); ?>:
         </label>
+
         <div class="controls">
-            <input class="required" type="password" id="password2" name="password2" value="<?php // echo $this->entry->getTitle(); ?>"/>
+            <input class="required" type="password" id="password2" name="password2"
+                   value="<?php // echo $this->entry->getTitle(); ?>"/>
         </div>
     </div>
-    
+
     <div class="form-actions">
-        <button class="btn btn-primary" type="submit"> 
-            <?php echo $this->translate('save'); ?>  
+        <button class="btn btn-primary" type="submit">
+            <?php echo $this->translate('save'); ?>
         </button>
         <a class="btn" href="<?php echo $this->url(
-            array('action' => 'index'
-                , 'controller' => 'index'
-                )
+            array('action'       => 'index'
+                  , 'controller' => 'index'
+            )
         ); ?>">
-            <?php echo $this->translate('abort'); ?>    
+            <?php echo $this->translate('abort'); ?>
         </a>
     </div>
 </form>

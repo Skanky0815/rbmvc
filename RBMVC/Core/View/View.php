@@ -1,8 +1,6 @@
 <?php
 namespace RBMVC\Core\View;
 
-use RBMVC\Core\View\ViewHelperFactory;
-
 class View {
 
     /**

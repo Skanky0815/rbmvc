@@ -4,8 +4,17 @@ namespace RBMVC\Core\Controller;
 use RBMVC\Core\Controller\Helper\AbstractActionHelper;
 use RBMVC\Core\Utilities\AbstractHelperFactory;
 
+/**
+ * Class ActionHelperFactory
+ * @package RBMVC\Core\Controller
+ */
 class ActionHelperFactory extends AbstractHelperFactory {
 
+    /**
+     * @param string $name
+     *
+     * @return mixed|null
+     */
     protected function loadHelper($name) {
         $className = ucfirst($name);
         $helper    = $this->classLoader->getClassInstance($className);

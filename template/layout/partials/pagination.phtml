@@ -6,7 +6,8 @@
                     <li class="disabled"><span><?php echo $page['label']; ?></span></li>
                 <?php elseif ($page['is_active']): ?>
                     <li class="active"><span><?php echo $page['label']; ?></span></li>
-                <?php else: ?>
+                <?php
+                else: ?>
                     <li>
                         <a href="<?php echo $page['url']; ?>"><?php echo $page['label']; ?></a>
                     </li>

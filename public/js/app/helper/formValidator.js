@@ -1,26 +1,26 @@
 define([
 
-], function() {
+], function () {
     var _ = {};
     var pub = {};
-    
+
     _.hasError = false;
     _.$form = null;
 
-    pub.init = function() {
+    pub.init = function () {
         console.log('Forms-Validator loaded!');
 
         _.$form = $('form');
-        
+
         _.$form.on('click', '.btn-primary', _.submitAction);
     };
-    
-    _.submitAction = function(e) {
+
+    _.submitAction = function (e) {
         e.preventDefault();
         _.validate();
     };
-    
-    _.validate = function() {
+
+    _.validate = function () {
         _.$form.find('.required').each(_.validateElement);
         if (!_.hasError) {
             _.$form.submit();
@@ -28,9 +28,9 @@ define([
         _.hasError = false;
     };
 
-    _.validateElement = function(key, element) {
+    _.validateElement = function (key, element) {
         var value = $(element).val();
-        
+
         if (value.length <= 0) {
             $(element).parent().parent().addClass('error');
             _.hasError = true;
@@ -38,6 +38,6 @@ define([
             $(element).parent().parent().removeClass('error');
         }
     };
-    
+
     return pub;
 });

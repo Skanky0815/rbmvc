@@ -6,6 +6,10 @@ use RBMVC\Core\Utilities\Form\Form;
 use RBMVC\Core\Utilities\Session;
 use RBMVC\Core\Utilities\SystemMessage;
 
+/**
+ * Class SaveModel
+ * @package RBMVC\Core\Controller\Helper
+ */
 class SaveModel extends AbstractActionHelper {
 
     /**

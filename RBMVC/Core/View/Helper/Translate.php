@@ -4,25 +4,26 @@ namespace RBMVC\Core\View\Helper;
 use RBMVC\Core\Translator;
 
 class Translate extends AbstractViewHelper {
-    
+
     /**
-     * @var Translator 
+     * @var Translator
      */
     private $translator;
-    
+
     /**
      * @return void
      */
     public function __construct() {
         $this->translator = Translator::getInstance();
     }
-    
+
     /**
      * @param string $key
      * @param string $lang
+     *
      * @return string
      */
     public function translate($key, $lang = null) {
-       return $this->translator->translate($key, $lang); 
+        return $this->translator->translate($key, $lang);
     }
 }

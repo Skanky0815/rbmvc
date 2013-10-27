@@ -18,12 +18,13 @@ class SelectElement extends AbstractElement {
 
     /**
      * @param array $options
+     *
      * @return \RBMVC\Core\Utilities\Form\Elements\SelectElement
      */
     public function setOptions(array $options) {
         foreach ($options as $label => $option) {
             if (!$option instanceof SelectOption) {
-                $data = $option;
+                $data   = $option;
                 $option = new SelectOption();
                 $option->setLabel($label);
                 $option->setValue($data);
@@ -44,7 +45,8 @@ class SelectElement extends AbstractElement {
 
     /**
      * @param string $value
-     * @return \RBMVC\Core\Utilities\Form\Elements\SelectElement|\RBMVC\Core\Utilities\Form\ElementsAbstractElement
+     *
+     * @return \RBMVC\Core\Utilities\Form\Elements\SelectElement|\RBMVC\Core\Utilities\Form\Elements\AbstractElement
      */
     public function setValue($value) {
         parent::setValue($value);
@@ -57,6 +59,13 @@ class SelectElement extends AbstractElement {
         }
 
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function render() {
+        // TODO: Implement render() method.
     }
 
 }

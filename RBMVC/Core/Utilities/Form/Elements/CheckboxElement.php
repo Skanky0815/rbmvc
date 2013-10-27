@@ -9,8 +9,13 @@
 
 namespace RBMVC\Core\Utilities\Form\Elements;
 
-
 class CheckboxElement extends AbstractElement {
 
+    /**
+     * @return string
+     */
+    public function render() {
+        // TODO: Implement render() method.
+    }
 
 }

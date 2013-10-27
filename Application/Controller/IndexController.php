@@ -3,7 +3,6 @@ namespace Application\Controller;
 
 use Application\Lib\Controller\AbstractController;
 use Application\Lib\Model\Collection\EntryCollection;
-use RBMVC\Core\Utilities\SystemMessage;
 
 /**
  * Class IndexController

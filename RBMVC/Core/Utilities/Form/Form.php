@@ -2,8 +2,16 @@
 namespace RBMVC\Core\Utilities\Form;
 
 use RBMVC\Core\Model\AbstractModel;
+use RBMVC\Core\Utilities\Form\Decorators\AbstractDecorator;
+use RBMVC\Core\Utilities\Form\Decorators\ButtonGroup;
+use RBMVC\Core\Utilities\Form\Decorators\DefaultDecorator;
 use RBMVC\Core\Utilities\Form\Elements\AbstractElement;
+use RBMVC\Core\Utilities\Form\Elements\ButtonElement;
 
+/**
+ * Class Form
+ * @package RBMVC\Core\Utilities\Form
+ */
 abstract class Form {
 
     /**
@@ -25,6 +33,11 @@ abstract class Form {
      * @var string
      */
     private $action = '';
+
+    /**
+     * @var array
+     */
+    private $displayGroups;
 
     /**
      * @var boolean
@@ -157,6 +170,60 @@ abstract class Form {
         }
 
         return $isValid;
+    }
+
+    /**
+     * @return void
+     */
+    protected function addDefaultActions() {
+        $position = isset($this->displayGroups['actions_top']) ? '_bottom' : '_top';
+
+        $save = new ButtonElement('save');
+        $save->setType(ButtonElement::BTN_SUCCESS);
+        $abort = new ButtonElement('abort');
+
+        $this->addDisplayGroup(array($save, $abort), 'actions' . $position, new ButtonGroup());
+    }
+
+    /**
+     * @param string $name
+     *
+     * @return \RBMVC\Core\Utilities\Form\DisplayGroup|null
+     */
+    public function getDisplayGroup($name) {
+        return isset($this->displayGroups[$name]) ? $this->displayGroups[$name] : null;
+    }
+
+    /**
+     * @return array
+     */
+    public function getDisplayGroups() {
+        return $this->displayGroups;
+    }
+
+    /**
+     * @param array $elements
+     * @param string $name
+     * @param AbstractDecorator $decorator
+     *
+     * @return void
+     */
+    public function addDisplayGroup(array $elements, $name, AbstractDecorator $decorator = null) {
+        $elementsNames = array();
+        foreach ($elements as $element) {
+            if ($element instanceof AbstractElement) {
+                $elementsNames[] = $element;
+            } else if (is_string($element)) {
+                $elementsNames = $this->getElement($element);
+            }
+        }
+
+        $displayGroup = new DisplayGroup();
+        $displayGroup->setName($name);
+        $displayGroup->setElements($elementsNames);
+        $displayGroup->setDecorator(is_null($decorator) ? new DefaultDecorator() : $decorator);
+
+        $this->displayGroups[$name] = $displayGroup;
     }
 
 }

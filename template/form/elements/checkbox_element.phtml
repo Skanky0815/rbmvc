@@ -4,7 +4,7 @@
             <label>
                 <input type="hidden" name="<?php echo $this->element->getName(); ?>" value="0">
                 <input type="checkbox" name="<?php echo $this->element->getName(); ?>" value="1"
-                    <?php echo ((bool) $this->element->getValue() ? ' checked="checked"' : ''); ?> />
+                    <?php echo((bool) $this->element->getValue() ? ' checked="checked"' : ''); ?> />
                 <?php echo $this->translate($this->element->getLabel()); ?>
             </label>
         </div>

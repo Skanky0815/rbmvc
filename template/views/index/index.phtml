@@ -1,9 +1,12 @@
 <div class="row">
     <div class="col-8">
         <h1>Willkommen</h1>
+
         <p>Das ist eine Test und &Uuml;bungsseite von Rico Schulz.</p>
-        <p>Die gesamte Seite wurde mit mit einem eiegenen Freamwork entwickelt. Das Framework ich stehts ein wenig an das
-        Zend Freamwork angelehnt, versucht aber trotzdem sein eigenen weg zu gehen.</p>
+
+        <p>Die gesamte Seite wurde mit mit einem eiegenen Freamwork entwickelt. Das Framework ich stehts ein wenig an
+            das
+            Zend Freamwork angelehnt, versucht aber trotzdem sein eigenen weg zu gehen.</p>
     </div>
     <div class="col-4">
         <div class="panel">
@@ -17,7 +20,8 @@
                 <h4><?php echo $entry->getTitle(); ?></h4>
                 <blockquote>
                     <p><?php echo $entry->getText(); ?></p>
-                    <small><?php echo $entry->getUser()->getUsername(); ?> / <?php echo $this->dateFormater($entry->getDate()); ?></small>
+                    <small><?php echo $entry->getUser()->getUsername(); ?>
+                        / <?php echo $this->dateFormater($entry->getDate()); ?></small>
                 </blockquote>
             <?php endforeach; ?>
         </div>

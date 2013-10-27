@@ -6,11 +6,12 @@
             </div>
             <ul class="list-unstyled">
                 <?php foreach ($this->new as $grant): ?>
-                <li>
-                    <a target="_blank" href="<?php echo $this->url(array('action' => 'edit', 'id' => $grant->getId()), true); ?>">
-                        <?php echo $grant->getDefinition(); ?>
-                    </a>
-                </li>
+                    <li>
+                        <a target="_blank"
+                           href="<?php echo $this->url(array('action' => 'edit', 'id' => $grant->getId()), true); ?>">
+                            <?php echo $grant->getDefinition(); ?>
+                        </a>
+                    </li>
                 <?php endforeach; ?>
             </ul>
         </div>

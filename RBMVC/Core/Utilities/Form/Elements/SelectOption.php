@@ -9,7 +9,6 @@
 
 namespace RBMVC\Core\Utilities\Form\Elements;
 
-
 class SelectOption {
 
     /**
@@ -29,10 +28,12 @@ class SelectOption {
 
     /**
      * @param bool $isSelected
+     *
      * @return \RBMVC\Core\Utilities\Form\Elements\SelectOption
      */
     public function setIsSelected($isSelected) {
         $this->isSelected = $isSelected;
+
         return $this;
     }
 
@@ -45,10 +46,12 @@ class SelectOption {
 
     /**
      * @param string $label
+     *
      * @return \RBMVC\Core\Utilities\Form\Elements\SelectOption
      */
     public function setLabel($label) {
         $this->label = $label;
+
         return $this;
     }
 
@@ -61,10 +64,12 @@ class SelectOption {
 
     /**
      * @param string $value
+     *
      * @return \RBMVC\Core\Utilities\Form\Elements\SelectOption
      */
     public function setValue($value) {
         $this->value = $value;
+
         return $this;
     }
 

@@ -36,7 +36,7 @@ body {
 
 .content h1 {
     font-size: 28px;
-    text-shadow: 0 -1px 1px darkgray, 0 1px 1px white;   
+    text-shadow: 0 -1px 1px darkgray, 0 1px 1px white;
 }
 
 .content h2 {
@@ -133,7 +133,7 @@ button.btn {
 a.btn:hover, button.btn:hover, .btn:hover {
     color: white;
     cursor: pointer;
-    background: yellowgreen;  
+    background: yellowgreen;
     text-decoration: none;
 }
 
@@ -162,9 +162,8 @@ input {
 }
 
 input:active, input:focus {
-    outline:0;
+    outline: 0;
 }
-
 
 textarea {
     width: 300px;
@@ -176,5 +175,5 @@ textarea {
 }
 
 textarea:active, textarea:focus {
-    outline:0;
+    outline: 0;
 }

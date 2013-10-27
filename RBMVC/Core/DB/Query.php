@@ -1,6 +1,10 @@
 <?php
 namespace RBMVC\Core\DB;
 
+/**
+ * Class Query
+ * @package RBMVC\Core\DB
+ */
 class Query {
 
     /**
@@ -19,12 +23,10 @@ class Query {
     private $params = array();
 
     /**
-     * @param string $dbTable
-     *
      * @return void
      */
-    public function setDBTable($dbTable) {
-        $this->dbTable = $dbTable;
+    public function delete() {
+        $this->sql = 'DELETE FROM `' . $this->dbTable . '` ';
     }
 
     /**
@@ -35,19 +37,10 @@ class Query {
     }
 
     /**
-     * @param string $sql
-     *
-     * @return void
+     * @return array
      */
-    public function setSql($sql) {
-        $this->sql = $sql;
-    }
-
-    /**
-     * @return string
-     */
-    public function getSQL() {
-        return $this->sql;
+    public function getParams() {
+        return $this->params;
     }
 
     /**
@@ -60,14 +53,79 @@ class Query {
     }
 
     /**
-     * @return array
+     * @return string
      */
-    public function getParams() {
-        return $this->params;
+    public function getSQL() {
+        return $this->sql;
     }
 
+    /**
+     *
+     */
     public function getTableDefinition() {
         $this->sql = 'SHOW COLUMNS FROM `' . $this->dbTable . '`';;
+    }
+
+    /**
+     * @param array $params
+     */
+    public function insert(array $params) {
+        $insert  = 'INSERT INTO `' . $this->dbTable . '` (';
+        $values  = ' VALUES (';
+        $columns = array_keys($params);
+        foreach ($columns as $column) {
+            $insert .= $column;
+            $values .= ':' . $column;
+            if ($column != end($columns)) {
+                $insert .= ', ';
+                $values .= ', ';
+            } else {
+                $insert .= ')';
+                $values .= ')';
+            }
+        }
+
+        $this->setPdoParams($params);
+        $this->sql .= $insert . $values;
+    }
+
+    /**
+     * @param int $limit
+     */
+    public function limit($limit) {
+        $this->sql .= ' LIMIT ' . (int) $limit;
+    }
+
+    /**
+     * @param int $offset
+     */
+    public function offset($offset) {
+        $this->sql .= ' OFFSET ' . $offset;
+    }
+
+    /**
+     * @param array $orderBy
+     *
+     * @return void
+     */
+    public function orderBy(array $orderBy) {
+        $sql = 'ORDER BY ';
+
+        $orderColumns = array_keys($orderBy);
+        foreach ($orderBy as $column => $order) {
+            $sql .= $column;
+
+            if (strtolower($order) === 'desc') {
+                $sql .= ' DESC';
+            } else {
+                $sql .= ' ASC';
+            }
+
+            if ($column != end($orderColumns)) {
+                $sql .= ', ';
+            }
+        }
+        $this->sql .= $sql;
     }
 
     /**
@@ -90,10 +148,46 @@ class Query {
     }
 
     /**
+     * @param array $params
+     *
      * @return void
      */
-    public function delete() {
-        $this->sql = 'DELETE FROM `' . $this->dbTable . '` ';
+    public function set(array $params) {
+        $sql = 'SET ';
+
+        if (array_key_exists('id', $params)) {
+            unset($params['id']);
+        }
+
+        $orderColumns = array_keys($params);
+        foreach ($params as $column => $value) {
+            $sql .= $column . ' = :' . $column;
+            if ($column != end($orderColumns)) {
+                $sql .= ', ';
+            }
+        }
+        $sql .= ' ';
+
+        $this->setPdoParams($params);
+        $this->sql .= $sql;
+    }
+
+    /**
+     * @param string $dbTable
+     *
+     * @return void
+     */
+    public function setDBTable($dbTable) {
+        $this->dbTable = $dbTable;
+    }
+
+    /**
+     * @param string $sql
+     *
+     * @return void
+     */
+    public function setSql($sql) {
+        $this->sql = $sql;
     }
 
     /**
@@ -134,89 +228,8 @@ class Query {
     }
 
     /**
-     * @param array $orderBy
-     *
-     * @return void
-     */
-    public function orderBy(array $orderBy) {
-        $sql = 'ORDER BY ';
-
-        $orderColumns = array_keys($orderBy);
-        foreach ($orderBy as $column => $order) {
-            $sql .= $column;
-
-            if (strtolower($order) === 'desc') {
-                $sql .= ' DESC';
-            } else {
-                $sql .= ' ASC';
-            }
-
-            if ($column != end($orderColumns)) {
-                $sql .= ', ';
-            }
-        }
-        $this->sql .= $sql;
-    }
-
-    public function insert(array $params) {
-        $insert  = 'INSERT INTO `' . $this->dbTable . '` (';
-        $values  = ' VALUES (';
-        $columns = array_keys($params);
-        foreach ($columns as $column) {
-            $insert .= $column;
-            $values .= ':' . $column;
-            if ($column != end($columns)) {
-                $insert .= ', ';
-                $values .= ', ';
-            } else {
-                $insert .= ')';
-                $values .= ')';
-            }
-        }
-
-        $this->setPdoParams($params);
-        $this->sql .= $insert . $values;
-    }
-
-    /**
-     * @param int $limit
-     */
-    public function limit($limit) {
-        $this->sql .= ' LIMIT ' . (int) $limit;
-    }
-
-    /**
-     * @param int $offset
-     */
-    public function offset($offset) {
-        $this->sql .= ' OFFSET ' . $offset;
-    }
-
-    /**
      * @param array $params
-     *
-     * @return void
      */
-    public function set(array $params) {
-        $sql = 'SET ';
-
-        if (array_key_exists('id', $params)) {
-            unset($params['id']);
-        }
-
-        $orderColumns = array_keys($params);
-        foreach ($params as $column => $value) {
-            $sql .= $column . ' = :' . $column;
-            if ($column != end($orderColumns)) {
-                $sql .= ', ';
-            }
-        }
-        $sql .= ' ';
-
-        $this->setPdoParams($params);
-        $this->sql .= $sql;
-    }
-
     private function setPdoParams(array $params) {
         foreach ($params as $column => $value) {
             $this->params[':' . $column] = $value;

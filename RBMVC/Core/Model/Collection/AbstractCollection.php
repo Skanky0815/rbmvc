@@ -5,6 +5,10 @@ use RBMVC\Core\DB\DB;
 use RBMVC\Core\DB\Query;
 use RBMVC\Core\Utilities\Modifiers\String\GetClassNameWithUnderscore;
 
+/**
+ * Class AbstractCollection
+ * @package RBMVC\Core\Model\Collection
+ */
 abstract class AbstractCollection {
 
     /**
@@ -32,6 +36,9 @@ abstract class AbstractCollection {
      */
     protected $indexParams = array();
 
+    /**
+     *
+     */
     public function __construct() {
         $this->db = DB::getInstance();
 
@@ -39,6 +46,39 @@ abstract class AbstractCollection {
         $className     = $converter->getClassName($this);
         $this->dbTable = str_replace('_collection', '', $className);
         $this->models  = array();
+    }
+
+    /**
+     * @return void
+     */
+    public function findAll() {
+        $query = $this->db->getQuery($this->dbTable);
+        $query->select(array('id'));
+        $query->orderBy(array('id' => 'DESC'));
+
+        $this->fetch($query);
+    }
+
+    /**
+     *
+     */
+    public function findForIndex() {
+        $query = $this->db->getQuery($this->dbTable);
+        $query->select(array('id'));
+        $query->orderBy(array($this->indexParams['order_by'] => $this->indexParams['order_dir']));
+        $query->limit($this->indexParams['limit']);
+
+        $offset = $this->indexParams['page'] * $this->indexParams['limit'] - $this->indexParams['limit'];
+        $query->offset($offset);
+
+        $this->fetch($query);
+    }
+
+    /**
+     * @return array
+     */
+    public function getIndexParams() {
+        return $this->indexParams;
     }
 
     /**
@@ -55,8 +95,19 @@ abstract class AbstractCollection {
     /**
      * @return array
      */
-    public function getIndexParams() {
-        return $this->indexParams;
+    public function getModels() {
+        if (empty($this->models) && !empty($this->result)) {
+            $this->fill($this->result);
+        }
+
+        return $this->models;
+    }
+
+    /**
+     * @return array
+     */
+    public function getResult() {
+        return $this->result;
     }
 
     /**
@@ -71,49 +122,11 @@ abstract class AbstractCollection {
     }
 
     /**
-     * @return array
+     * @param Query $query
      */
-    public function getResult() {
-        return $this->result;
-    }
-
     protected function fetch(Query $query) {
         $stmt         = $this->db->execute($query);
         $this->result = $stmt->fetchAll(\PDO::FETCH_ASSOC);
-    }
-
-    /**
-     * @return void
-     */
-    public function findAll() {
-        $query = $this->db->getQuery($this->dbTable);
-        $query->select(array('id'));
-        $query->orderBy(array('id' => 'DESC'));
-
-        $this->fetch($query);
-    }
-
-    public function findForIndex() {
-        $query = $this->db->getQuery($this->dbTable);
-        $query->select(array('id'));
-        $query->orderBy(array($this->indexParams['order_by'] => $this->indexParams['order_dir']));
-        $query->limit($this->indexParams['limit']);
-
-        $offset = $this->indexParams['page'] * $this->indexParams['limit'] - $this->indexParams['limit'];
-        $query->offset($offset);
-
-        $this->fetch($query);
-    }
-
-    /**
-     * @return array
-     */
-    public function getModels() {
-        if (empty($this->models) && !empty($this->result)) {
-            $this->fill($this->result);
-        }
-
-        return $this->models;
     }
 
     /**

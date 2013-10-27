@@ -9,7 +9,6 @@
 
 namespace Application\Lib\Controller;
 
-use Application\Lib\Model\User;
 use RBMVC\Core\Utilities\Session;
 
 /**
