@@ -9,7 +9,16 @@
 
 namespace RBMVC\Core\View\Helper;
 
+/**
+ * Class Button
+ * @package RBMVC\Core\View\Helper
+ */
 class Button extends HasAccess {
+
+    /**
+     * @var Url
+     */
+    public $urlHelper = null;
 
     /**
      * @param string|array $options
@@ -19,7 +28,8 @@ class Button extends HasAccess {
      */
     public function button($options, $id = null) {
         if (is_string($options)) {
-            $button = null;
+            $button          = null;
+            $this->urlHelper = $this->view->getViewHelper('Url');
             switch ($options) {
                 case 'add':
                     $button = $this->add();
@@ -47,7 +57,7 @@ class Button extends HasAccess {
      */
     private function  add() {
         return $this->button(array(
-                                  'url'   => $this->view->url(array('action' => 'add')),
+                                  'url'   => $this->urlHelper->url(array('action' => 'add')),
                                   'icon'  => 'icon-plus',
                                   'class' => 'btn-primary',
                                   'label' => 'add',
@@ -59,12 +69,12 @@ class Button extends HasAccess {
      *
      * @return null|string
      */
-    private function edit($id) {
+    private function delete($id) {
         return $this->button(array(
-                                  'url'   => $this->view->url(array('action' => 'edit', 'id' => $id), true),
-                                  'icon'  => 'icon-edit',
-                                  'class' => 'btn-default',
-                                  'label' => 'edit',
+                                  'url'   => $this->urlHelper->url(array('action' => 'delete', 'id' => $id), true),
+                                  'icon'  => 'icon-trash',
+                                  'class' => 'btn-danger delete',
+                                  'label' => 'delete',
                              ));
     }
 
@@ -73,12 +83,12 @@ class Button extends HasAccess {
      *
      * @return null|string
      */
-    private function delete($id) {
+    private function edit($id) {
         return $this->button(array(
-                                  'url'   => $this->view->url(array('action' => 'delete', 'id' => $id), true),
-                                  'icon'  => 'icon-trash',
-                                  'class' => 'btn-danger delete',
-                                  'label' => 'delete',
+                                  'url'   => $this->urlHelper->url(array('action' => 'edit', 'id' => $id), true),
+                                  'icon'  => 'icon-edit',
+                                  'class' => 'btn-default',
+                                  'label' => 'edit',
                              ));
     }
 }
