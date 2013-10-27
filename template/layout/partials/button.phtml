@@ -1,6 +1,14 @@
-<a class="btn <?php echo $this->class; ?>" href="<?php echo $this->url; ?>">
+<a class="btn <?php echo $this->class; ?>" href="<?php echo $this->url; ?>"
+    <?php if ($this->data): ?>
+        <?php foreach ($this->data as $key => $value): ?>
+            data-<?php echo $key; ?>="<?php echo $value; ?>"
+        <?php endforeach; ?>
+    <?php endif; ?>
+    >
     <?php if ($this->icon): ?>
         <i class="<?php echo $this->icon; ?>"></i>
     <?php endif; ?>
-    <?php echo $this->translate($this->label); ?>
+    <?php if ($this->label): ?>
+        <?php echo $this->translate($this->label); ?>
+    <?php endif; ?>
 </a>

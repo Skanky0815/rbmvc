@@ -76,24 +76,17 @@ abstract class AbstractRudiController extends AbstractController {
      */
     public function deleteAction() {
         $this->view->disableRender();
-        $id = $this->request->getParam('id', 0);
+        $id = (int) $this->request->getParam('id', 0);
 
         if (empty($id)) {
             return $this->sendJSON(
-                array('status' => 'error'
-                      , 'text' => 'keine gültige id'
-                )
+                array('status' => 'ok', 'content' => $this->view->partial('layout/partials/deleteModal.phtml'))
             );
         }
 
         $model = $this->classLoader->getClassInstance($this->modelClassName);
         $model->setId($id)->delete();
 
-        return $this->sendJSON(
-            array('status' => 'ok'
-                  , 'data' => array('id' => $id)
-            )
-        );
+        return $this->sendJSON(array('status' => 'ok', 'content' => array('id' => $id)));
     }
-
 }

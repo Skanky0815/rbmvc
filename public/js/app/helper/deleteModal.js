@@ -1,48 +1,57 @@
 define(['../../lib/bootstrap.min'
 ], function () {
     var _ = {};
-    var pub = {};
 
     _.$delelteButton = null;
     _.$deleteModal = null;
 
     _.url = '';
 
-    pub.init = function () {
+    _.init = function () {
         console.log('Delete-Modal loaded!');
 
         _.$delelteButton = $('.delete');
-        _.$deleteModal = $('#deleteModal');
-
-
-        _.$delelteButton.on('click', _.deleteAction);
-        _.$deleteModal.on('click', '.btn-danger', _.doAjaxAction);
+        _.$delelteButton.on('click', _.showModalAction);
     };
 
-    _.deleteAction = function (e) {
+    _.showModalAction = function (e) {
         e.preventDefault();
 
         var $this = $(this);
-        _.url = $this.attr('href');
+        var url = $this.attr('href');
+        var id = $this.attr('data-id');
+        if (_.$deleteModal === null) {
+            $.getJSON(url, _.showModal);
+        } else {
+            _.$deleteModal.modal();
+        }
+        _.url = url + '?id=' + id;
+    };
+
+    _.showModal = function (json) {
+        if (json.content === undefined) {
+            return;
+        }
+
+        _.$deleteModal = $(json.content);
+        _.$deleteModal.on('click', '.btn-danger', _.deleteAction);
         _.$deleteModal.modal();
     };
 
-    _.doAjaxAction = function () {
-        $.ajax({
-            url: _.url,
-            dataType: 'JSON',
-            success: _.response
-        });
+    _.deleteAction = function () {
+        $.getJSON(_.url, _.response);
     };
 
-    _.response = function (data) {
-        if (data.status === 'ok') {
+    _.response = function (json) {
+        if (json.status === 'ok') {
             var url = location.href;
             location.href = url;
         } else {
-            _.$deleteModal.find('.modal-body').html(data.data);
+            _.$deleteModal.find('.modal-body').html(json.data);
         }
     };
 
-    return pub;
+    $(function () {
+        _.init()
+    });
 });

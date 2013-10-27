@@ -71,10 +71,11 @@ class Button extends HasAccess {
      */
     private function delete($id) {
         return $this->button(array(
-                                  'url'   => $this->urlHelper->url(array('action' => 'delete', 'id' => $id), true),
+                                  'url'  => $this->urlHelper->url(array('action' => 'delete'), true),
                                   'icon'  => 'icon-trash',
                                   'class' => 'btn-danger delete',
-                                  'label' => 'delete',
+                                  //                                  'label' => 'delete',
+                                  'data' => array('id' => $id)
                              ));
     }
 

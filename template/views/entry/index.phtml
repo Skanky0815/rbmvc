@@ -17,20 +17,10 @@
                             / <?php echo $this->dateFormater($entry->getDate()); ?></small>
                     </blockquote>
 
-                    <?php if ($this->hasAccess($this->url(array('action' => 'edit')))
-                        || $this->hasAccess($this->url(array('action' => 'delete')))
-                    ): ?>
-                        <div class="btn-group">
-                            <a class="btn-danger btn delete" data-toggle="modal" href="<?php echo $this->url(
-                                array('action' => 'delete'
-                                      , 'id'   => $entry->getId()
-                                ), true
-                            ); ?>">
-                                <i class="icon-trash"></i>
-                            </a>
-                            <?php echo $this->button('edit', $entry->getId()); ?>
-                        </div>
-                    <?php endif; ?>
+                    <div class="btn-group">
+                        <?php echo $this->button('edit', $entry->getId()); ?>
+                        <?php echo $this->button('delete', $entry->getId()); ?>
+                    </div>
                     <hr>
                 </div>
             <?php endforeach; ?>

@@ -1,6 +1,10 @@
 <?php
 namespace RBMVC\Core\View;
 
+/**
+ * Class View
+ * @package RBMVC\Core\View
+ */
 class View {
 
     /**
@@ -91,6 +95,13 @@ class View {
     /**
      * @return void
      */
+    public function enableRender() {
+        $this->doRender = true;
+    }
+
+    /**
+     * @return void
+     */
     public function disableLayout() {
         $this->doLayout = false;
     }
@@ -174,6 +185,7 @@ class View {
      */
     public function partial($fileName, array $variables = array()) {
         $view            = clone $this;
+        $view->enableRender();
         $view->variables = $variables;
 
         return $view->render('template/' . $fileName);
