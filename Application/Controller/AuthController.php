@@ -27,7 +27,7 @@ class AuthController extends AbstractController {
         $user = new LoggedInUser();
         $user->fillModelByArray($this->request->getPostParams());
 
-        $form = new LoginForm($user);
+        $form = new LoginForm($this->view, $user);
         if ($this->request->isPost()) {
 
             if ($form->isValid($this->request->getPostParams())) {

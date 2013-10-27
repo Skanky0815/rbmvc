@@ -1,6 +1,7 @@
 <?php
 namespace Application\Lib\Forms;
 
+use RBMVC\Core\Utilities\Form\DisplayGroup;
 use RBMVC\Core\Utilities\Form\Elements\ButtonElement;
 use RBMVC\Core\Utilities\Form\Elements\InputElement;
 use RBMVC\Core\Utilities\Form\Form;
@@ -34,6 +35,8 @@ class LoginForm extends Form {
         $submit = new ButtonElement('login');
         $submit->setType(ButtonElement::BTN_PRIMARY);
         $this->addElement($submit);
+
+        $this->addDisplayGroup(array($username, $password, $submit), DisplayGroup::DEFAULT_ELEMENTS);
 
         $this->setHasActionBar(false);
     }
