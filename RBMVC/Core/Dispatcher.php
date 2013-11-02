@@ -64,7 +64,8 @@ class Dispatcher {
             $controller->setClassLoader($this->classLoader);
             $controller->setConfig($this->config);
             $controller->init();
-            $actionStr = $this->request->getParam('action') . 'Action';
+
+            $actionStr = $dashToCamelCase->convert($this->request->getParam('action')) . 'Action';
             if (!method_exists($controller, $actionStr) || $isClassError) {
                 $controller->redirectToErrorPage(404);
             } else {
