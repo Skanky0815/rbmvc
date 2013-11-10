@@ -9,10 +9,19 @@ use RBMVC\Core\Utilities\Form\Decorators\Element\Button;
  */
 class ButtonElement extends AbstractElement {
 
+    /**
+     * primary
+     */
     const BTN_PRIMARY = 'btn-primary';
 
+    /**
+     * default
+     */
     const BTN_DEFAULT = 'btn-default';
 
+    /**
+     * success
+     */
     const BTN_SUCCESS = 'btn-success';
 
     /**
@@ -37,7 +46,7 @@ class ButtonElement extends AbstractElement {
     /**
      * @param string $type
      *
-     * @return \RBMVC\Core\Utilities\Form\Elements\ButtonElement
+     * @return ButtonElement
      */
     public function setType($type) {
         $this->type = $type;

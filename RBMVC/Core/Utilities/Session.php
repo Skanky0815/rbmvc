@@ -20,51 +20,6 @@ class Session {
     }
 
     /**
-     * @return void
-     */
-    public static function start() {
-        session_start();
-    }
-
-    /**
-     * @param string $name
-     * @param string|array|object $values
-     *
-     * @return \RBMVC\Core\Utilities\Session
-     */
-    public function __set($name, $values) {
-        $var = null;
-        if (is_array($values)) {
-            $var = array();
-            foreach ($values as $value) {
-                $var[] = $this->serialize($value);
-            }
-        } else {
-            $var = $this->serialize($values);
-        }
-
-        $_SESSION[$this->namespace][$name] = $var;
-
-        return $this;
-    }
-
-    /**
-     * @param mixed $value
-     *
-     * @return array
-     */
-    private function serialize($value) {
-        if (is_object($value)) {
-            $value = array(
-                'value'     => serialize($value),
-                'is_object' => true
-            );
-        }
-
-        return $value;
-    }
-
-    /**
      * @param string $name
      *
      * @return mixed|null
@@ -89,16 +44,25 @@ class Session {
     }
 
     /**
-     * @param mixed $value
+     * @param string $name
+     * @param string|array|object $values
      *
-     * @return mixed
+     * @return Session
      */
-    private function unserialize($value) {
-        if (isset($value['is_object'])) {
-            $value = unserialize($value['value']);
+    public function __set($name, $values) {
+        $var = null;
+        if (is_array($values)) {
+            $var = array();
+            foreach ($values as $value) {
+                $var[] = $this->serialize($value);
+            }
+        } else {
+            $var = $this->serialize($values);
         }
 
-        return $value;
+        $_SESSION[$this->namespace][$name] = $var;
+
+        return $this;
     }
 
     /**
@@ -116,6 +80,42 @@ class Session {
     public function resetNamespace($namespace = '') {
         $namespace = empty($namespace) ? $this->namespace : $namespace;
         unset($_SESSION[$namespace]);
+    }
+
+    /**
+     * @return void
+     */
+    public static function start() {
+        session_start();
+    }
+
+    /**
+     * @param mixed $value
+     *
+     * @return array
+     */
+    private function serialize($value) {
+        if (is_object($value)) {
+            $value = array(
+                'value'     => serialize($value),
+                'is_object' => true
+            );
+        }
+
+        return $value;
+    }
+
+    /**
+     * @param mixed $value
+     *
+     * @return mixed
+     */
+    private function unserialize($value) {
+        if (isset($value['is_object'])) {
+            $value = unserialize($value['value']);
+        }
+
+        return $value;
     }
 
 }

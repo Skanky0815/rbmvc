@@ -26,17 +26,17 @@ class GrantScanner extends AbstractActionHelper {
     private $deleted = array();
 
     /**
-     * @var array
+     * @var Grant[]
      */
     private $new = array();
 
     /**
-     * @var array
+     * @var Grant[]
      */
     private $grants = array();
 
     /**
-     * @var array
+     * @var Grant[]
      */
     private $allGrants = array();
 
@@ -46,7 +46,7 @@ class GrantScanner extends AbstractActionHelper {
     private $controllerNamespace;
 
     /**
-     * @var \RBMVC\Core\Utilities\Modifiers\String\CamelCaseToDash
+     * @var CamelCaseToDash
      */
     private $camelCaseToDash;
 
@@ -92,6 +92,75 @@ class GrantScanner extends AbstractActionHelper {
     }
 
     /**
+     * @param $controller
+     * @param $action
+     *
+     * @return string
+     */
+    private function createDefinition($controller, $action) {
+        return '/' . $controller . '/' . $action;
+    }
+
+    /**
+     * @param string $controller
+     * @param array $actions
+     *
+     * @return void
+     */
+    private function createGrants($controller, array $actions) {
+        foreach ($actions as $action) {
+            $grant = new Grant();
+            $grant->setDefinition($this->createDefinition($controller, $action));
+            $grant->setType(Grant::TYPE_PROTECTED);
+            $grant->setIsActive(true);
+            $this->new[$grant->getDefinition()] = $grant;
+        }
+    }
+
+    /**
+     * @return void
+     */
+    private function saveGrants() {
+        foreach ($this->allGrants as $grant) {
+            if (isset($this->new[$grant->getDefinition()])) {
+                unset($this->new[$grant->getDefinition()]);
+            } else {
+                $this->deleted[] = $grant;
+                $grant->delete();
+            }
+        }
+
+        $new = array();
+        foreach ($this->new as $grant) {
+            if (!$grant->save()) {
+                // @TODO add error message for not saved grants
+                continue;
+            };
+            $new[] = $grant;
+        }
+        $this->new = $new;
+    }
+
+    /**
+     * Search all actions from the controller class an return there names as array.
+     *
+     * @param \ReflectionClass $reflectionClass controller class
+     *
+     * @return array with action names
+     */
+    private function scanActions(\ReflectionClass $reflectionClass) {
+        $actions = array();
+        foreach ($reflectionClass->getMethods(\ReflectionMethod::IS_PUBLIC) as $method) {
+            if (substr($method->name, -6) == 'Action') {
+                $methodName = str_replace('Action', '', $method->name);
+                $actions[]  = $this->camelCaseToDash->convert($methodName);
+            }
+        }
+
+        return $actions;
+    }
+
+    /**
      * @return array
      */
     private function scanControllers() {
@@ -122,77 +191,6 @@ class GrantScanner extends AbstractActionHelper {
         }
 
         return $controllers;
-    }
-
-    /**
-     * Search all actions from the controller class an return there names as array.
-     *
-     * @param \ReflectionClass $reflectionClass controller class
-     *
-     * @return array with action names
-     */
-    private function scanActions(\ReflectionClass $reflectionClass) {
-        $actions = array();
-        /** @var \ReflectionMethod $method */
-        foreach ($reflectionClass->getMethods(\ReflectionMethod::IS_PUBLIC) as $method) {
-            if (substr($method->name, -6) == 'Action') {
-                $methodName = str_replace('Action', '', $method->name);
-                $actions[]  = $this->camelCaseToDash->convert($methodName);
-            }
-        }
-
-        return $actions;
-    }
-
-    /**
-     * @param string $controller
-     * @param array $actions
-     *
-     * @return void
-     */
-    private function createGrants($controller, array $actions) {
-        foreach ($actions as $action) {
-            $grant = new Grant();
-            $grant->setDefinition($this->createDefinition($controller, $action));
-            $grant->setType(Grant::TYPE_PROTECTED);
-            $grant->setIsActive(true);
-            $this->new[$grant->getDefinition()] = $grant;
-        }
-    }
-
-    /**
-     * @return void
-     */
-    private function saveGrants() {
-        /** @var \Application\Lib\Model\Grant $grant */
-        foreach ($this->allGrants as $grant) {
-            if (isset($this->new[$grant->getDefinition()])) {
-                unset($this->new[$grant->getDefinition()]);
-            } else {
-                $this->deleted[] = $grant;
-                $grant->delete();
-            }
-        }
-
-        $new = array();
-        foreach ($this->new as $grant) {
-            if (!$grant->save()) {
-                // @TODO add error message for not saved grants
-                continue;
-            };
-            $new[] = $grant;
-        }
-        $this->new = $new;
-    }
-
-    /**
-     * @param $controller
-     * @param $action
-     *
-     * @return string
-     */
-    private function createDefinition($controller, $action) {
-        return '/' . $controller . '/' . $action;
     }
 
 }

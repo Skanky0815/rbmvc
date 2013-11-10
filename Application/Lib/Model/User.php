@@ -12,22 +12,22 @@ class User extends AbstractModel {
     /**
      * @var string
      */
-    protected $username;
+    protected $username = '';
 
     /**
      * @var string
      */
-    protected $password;
+    protected $password = '';
 
     /**
      * @var string
      */
-    protected $email;
+    protected $email = '';
 
     /**
      * @var array
      */
-    protected $useGroups;
+    protected $useGroups = array();
 
     /**
      * @var boolean
@@ -37,17 +37,35 @@ class User extends AbstractModel {
     /**
      * @return string
      */
-    public function getUsername() {
-        return $this->username;
+    public function getEmail() {
+        return $this->email;
     }
 
     /**
-     * @param string $username
+     * @param string $email
      *
-     * @return \Application\Lib\Model\User
+     * @return User
      */
-    public function setUsername($username) {
-        $this->username = $username;
+    public function setEmail($email) {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getIsActive() {
+        return $this->isActive;
+    }
+
+    /**
+     * @param bool $isActive
+     *
+     * @return User
+     */
+    public function setIsActive($isActive) {
+        $this->isActive = (bool) $isActive;
 
         return $this;
     }
@@ -62,7 +80,7 @@ class User extends AbstractModel {
     /**
      * @param string $password
      *
-     * @return \Application\Lib\Model\User
+     * @return User
      */
     public function setPassword($password) {
         $this->password = $password;
@@ -73,17 +91,17 @@ class User extends AbstractModel {
     /**
      * @return string
      */
-    public function getEmail() {
-        return $this->email;
+    public function getUsername() {
+        return $this->username;
     }
 
     /**
-     * @param string $email
+     * @param string $username
      *
-     * @return \Application\Lib\Model\User
+     * @return User
      */
-    public function setEmail($email) {
-        $this->email = $email;
+    public function setUsername($username) {
+        $this->username = $username;
 
         return $this;
     }
@@ -93,24 +111,6 @@ class User extends AbstractModel {
      */
     public function isActive() {
         return $this->isActive;
-    }
-
-    /**
-     * @return bool
-     */
-    public function getIsActive() {
-        return $this->isActive;
-    }
-
-    /**
-     * @param bool $isActive
-     *
-     * @return \Application\Lib\Model\User
-     */
-    public function setIsActive($isActive) {
-        $this->isActive = (bool) $isActive;
-
-        return $this;
     }
 
 }

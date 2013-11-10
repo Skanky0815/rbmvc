@@ -14,17 +14,17 @@ use RBMVC\Core\View\View;
 class Dispatcher {
 
     /**
-     * @var \RBMVC\Core\Request
+     * @var Request
      */
     private $request;
 
     /**
-     * @var \RBMVC\Core\View\View
+     * @var View
      */
     private $view;
 
     /**
-     * @var \RBMVC\Core\ClassLoader
+     * @var ClassLoader
      */
     private $classLoader;
 
@@ -77,6 +77,9 @@ class Dispatcher {
         }
     }
 
+    /**
+     * @return void
+     */
     private function loadPlugins() {
         $plugins = $this->classLoader->getAllClassesFromDir(array($this->config['settings']['controller_plugin_dir'],
                                                                   ROOT_DIR . 'RBMVC/Core/Controller/Plugins'
@@ -90,16 +93,16 @@ class Dispatcher {
     }
 
     /**
-     * @return \RBMVC\Core\View\View
+     * @return View
      */
     public function getView() {
         return $this->view;
     }
 
     /**
-     * @param \RBMVC\Core\View\View $view
+     * @param View $view
      *
-     * @return \RBMVC\Core\Dispatcher
+     * @return Dispatcher
      */
     public function setView(View &$view) {
         $this->view = $view;
@@ -108,16 +111,16 @@ class Dispatcher {
     }
 
     /**
-     * @return \RBMVC\Core\Request
+     * @return Request
      */
     public function getRequest() {
         return $this->request;
     }
 
     /**
-     * @param \RBMVC\Core\Request $request
+     * @param Request $request
      *
-     * @return \RBMVC\Core\Dispatcher
+     * @return Dispatcher
      */
     public function setRequest(Request $request) {
         $this->request = $request;
@@ -126,16 +129,16 @@ class Dispatcher {
     }
 
     /**
-     * @return \RBMVC\Core\ClassLoader
+     * @return ClassLoader
      */
     public function getClassLoader() {
         return $this->classLoader;
     }
 
     /**
-     * @param \RBMVC\Core\ClassLoader $classLoader
+     * @param ClassLoader $classLoader
      *
-     * @return \RBMVC\Core\Dispatcher
+     * @return Dispatcher
      */
     public function setClassLoader(ClassLoader $classLoader) {
         $this->classLoader = $classLoader;
@@ -146,7 +149,7 @@ class Dispatcher {
     /**
      * @param array $config
      *
-     * @return \RBMVC\Core\Dispatcher
+     * @return Dispatcher
      */
     public function setConfig(array $config) {
         $this->config = $config;

@@ -31,17 +31,6 @@ class SelectOption {
     private $isSelected;
 
     /**
-     * @param bool $isSelected
-     *
-     * @return \RBMVC\Core\Utilities\Form\Elements\SelectOption
-     */
-    public function setIsSelected($isSelected) {
-        $this->isSelected = $isSelected;
-
-        return $this;
-    }
-
-    /**
      * @return bool
      */
     public function getIsSelected() {
@@ -49,12 +38,12 @@ class SelectOption {
     }
 
     /**
-     * @param string $label
+     * @param bool $isSelected
      *
-     * @return \RBMVC\Core\Utilities\Form\Elements\SelectOption
+     * @return SelectOption
      */
-    public function setLabel($label) {
-        $this->label = $label;
+    public function setIsSelected($isSelected) {
+        $this->isSelected = $isSelected;
 
         return $this;
     }
@@ -67,12 +56,12 @@ class SelectOption {
     }
 
     /**
-     * @param string $value
+     * @param string $label
      *
-     * @return \RBMVC\Core\Utilities\Form\Elements\SelectOption
+     * @return SelectOption
      */
-    public function setValue($value) {
-        $this->value = $value;
+    public function setLabel($label) {
+        $this->label = $label;
 
         return $this;
     }
@@ -82,6 +71,17 @@ class SelectOption {
      */
     public function getValue() {
         return $this->value;
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return SelectOption
+     */
+    public function setValue($value) {
+        $this->value = $value;
+
+        return $this;
     }
 
     /**

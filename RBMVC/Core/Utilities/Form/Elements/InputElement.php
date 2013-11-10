@@ -3,16 +3,35 @@ namespace RBMVC\Core\Utilities\Form\Elements;
 
 use RBMVC\Core\Utilities\Form\Decorators\Element\TextInput;
 
+/**
+ * Class InputElement
+ * @package RBMVC\Core\Utilities\Form\Elements
+ */
 class InputElement extends AbstractElement {
 
+    /**
+     * mini
+     */
     const MINI = 'col-lg-2';
 
+    /**
+     * small
+     */
     const SMALL = 'col-lg-4';
 
+    /**
+     * medium
+     */
     const MEDIUM = 'col-lg-6';
 
+    /**
+     * large
+     */
     const LARGE = 'col-lg-8';
 
+    /**
+     * c large
+     */
     const X_LARGE = 'col-lg-10';
 
     /**
@@ -42,24 +61,6 @@ class InputElement extends AbstractElement {
     /**
      * @return string
      */
-    public function getSize() {
-        return $this->size;
-    }
-
-    /**
-     * @param string $size
-     *
-     * @return \RBMVC\Core\Utilities\Form\Elements\InputElement
-     */
-    public function setSize($size) {
-        $this->size = $size;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
     public function getPlaceholder() {
         return $this->placeholder;
     }
@@ -67,10 +68,28 @@ class InputElement extends AbstractElement {
     /**
      * @param string $placeholder
      *
-     * @return \RBMVC\Core\Utilities\Form\Elements\InputElement
+     * @return InputElement
      */
     public function setPlaceholder($placeholder) {
         $this->placeholder = $placeholder;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSize() {
+        return $this->size;
+    }
+
+    /**
+     * @param string $size
+     *
+     * @return InputElement
+     */
+    public function setSize($size) {
+        $this->size = $size;
 
         return $this;
     }
@@ -85,7 +104,7 @@ class InputElement extends AbstractElement {
     /**
      * @param string $type
      *
-     * @return \RBMVC\Core\Utilities\Form\Elements\InputElement
+     * @return InputElement
      */
     public function setType($type) {
         $this->type = $type;

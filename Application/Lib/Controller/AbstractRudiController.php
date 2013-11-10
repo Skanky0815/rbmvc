@@ -18,7 +18,7 @@ abstract class AbstractRudiController extends AbstractController {
     /**
      * @var string
      */
-    private $name;
+    private $name = '';
 
     /**
      * @var string
@@ -56,22 +56,6 @@ abstract class AbstractRudiController extends AbstractController {
     }
 
     /**
-     * @return void
-     */
-    public function addAction() {
-        $this->redirect(array('action' => 'edit'));
-    }
-
-    /**
-     * @return void
-     */
-    public function editAction() {
-        $model = $this->classLoader->getClassInstance($this->modelClassName);
-        $user  = $this->saveModel($model, $this->formClassName);
-        $this->view->assign($this->name, $user);
-    }
-
-    /**
      * @return string
      */
     public function deleteAction() {
@@ -88,5 +72,21 @@ abstract class AbstractRudiController extends AbstractController {
         $model->setId($id)->delete();
 
         return $this->sendJSON(array('status' => 'ok', 'content' => array('id' => $id)));
+    }
+
+    /**
+     * @return void
+     */
+    public function addAction() {
+        $this->redirect(array('action' => 'edit'));
+    }
+
+    /**
+     * @return void
+     */
+    public function editAction() {
+        $model = $this->classLoader->getClassInstance($this->modelClassName);
+        $user  = $this->saveModel($model, $this->formClassName);
+        $this->view->assign($this->name, $user);
     }
 }

@@ -11,8 +11,15 @@ namespace RBMVC\Core\Utilities\Form\Elements;
 
 use RBMVC\Core\Utilities\Form\Decorators\Element\HiddenInput;
 
+/**
+ * Class HiddenElement
+ * @package RBMVC\Core\Utilities\Form\Elements
+ */
 class HiddenElement extends AbstractElement {
 
+    /**
+     * @param $name
+     */
     public function __construct($name) {
         parent::__construct($name, new HiddenInput());
     }

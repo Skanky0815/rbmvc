@@ -9,6 +9,7 @@
 
 namespace Application\Lib\Controller;
 
+use Application\Lib\Model\User;
 use RBMVC\Core\Utilities\Session;
 
 /**
@@ -18,7 +19,7 @@ use RBMVC\Core\Utilities\Session;
 abstract class AbstractController extends \RBMVC\Core\Controller\AbstractController {
 
     /**
-     * @var \Application\Lib\Model\User
+     * @var User
      */
     protected $user;
 

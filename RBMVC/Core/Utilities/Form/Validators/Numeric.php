@@ -1,6 +1,10 @@
 <?php
 namespace RBMVC\Core\Utilities\Form\Validators;
 
+/**
+ * Class Numeric
+ * @package RBMVC\Core\Utilities\Form\Validators
+ */
 class Numeric extends AbstractValidator {
 
     public function __construct() {

@@ -22,6 +22,9 @@ class LoggedInUser extends User {
      */
     private $grants = array();
 
+    /**
+     *
+     */
     public function __construct() {
         parent::__construct();
 
@@ -34,24 +37,10 @@ class LoggedInUser extends User {
             $this->grants[] = $grant->getDefinition();
         }
 
-    }
+        //        if (empty($this->grants)) {
+        //            $this->grants = include_once APPLICATION_DIR . 'data/config/default_admin_grants.php';
+        //        }
 
-    /**
-     * @return array
-     */
-    public function getGrants() {
-        return $this->grants;
-    }
-
-    /**
-     * @param array $grants
-     *
-     * @return \Application\Lib\Model\User
-     */
-    public function setGrants(array $grants) {
-        $this->grants = $grants;
-
-        return $this;
     }
 
     /**
@@ -83,6 +72,24 @@ class LoggedInUser extends User {
         }
 
         return true;
+    }
+
+    /**
+     * @return array
+     */
+    public function getGrants() {
+        return $this->grants;
+    }
+
+    /**
+     * @param array $grants
+     *
+     * @return User
+     */
+    public function setGrants(array $grants) {
+        $this->grants = $grants;
+
+        return $this;
     }
 
 }

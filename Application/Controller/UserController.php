@@ -9,9 +9,6 @@ use Application\Lib\Controller\AbstractRudiController;
  */
 class UserController extends AbstractRudiController {
 
-    /**
-     * @return void
-     */
     public function __construct() {
         parent::__construct('user');
     }

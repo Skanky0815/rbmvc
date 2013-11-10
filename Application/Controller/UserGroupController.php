@@ -17,9 +17,6 @@ use Application\Lib\Controller\AbstractRudiController;
  */
 class UserGroupController extends AbstractRudiController {
 
-    /**
-     * @return void
-     */
     public function __construct() {
         parent::__construct('UserGroup');
     }

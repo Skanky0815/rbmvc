@@ -30,4 +30,7 @@ return array(
         'limit'                 => 10,
         'controller_plugin_dir' => APPLICATION_DIR . 'Lib/Controller/Plugins',
     ),
+    'cache'       => array(
+        'javascript' => false,
+    ),
 );

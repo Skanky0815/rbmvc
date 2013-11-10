@@ -17,42 +17,40 @@ use RBMVC\Core\Model\AbstractModel;
  */
 class Grant extends AbstractModel {
 
+    /**
+     * public
+     */
     const TYPE_PUBLIC = 1;
 
+    /**
+     * protected
+     */
     const TYPE_PROTECTED = 2;
 
+    /**
+     * private
+     */
     const TYPE_PRIVATE = 3;
 
     /**
      * @var string
      */
-    private $definition;
+    private $definition = '';
 
     /**
      * @var int
      */
-    private $type;
+    private $type = 0;
 
     /**
      * @var string
      */
-    private $description;
+    private $description = '';
 
     /**
      * @var bool
      */
-    private $isActive;
-
-    /**
-     * @param string $definition
-     *
-     * @return \Application\Lib\Model\Grant
-     */
-    public function setDefinition($definition) {
-        $this->definition = $definition;
-
-        return $this;
-    }
+    private $isActive = false;
 
     /**
      * @return string
@@ -62,12 +60,12 @@ class Grant extends AbstractModel {
     }
 
     /**
-     * @param string $description
+     * @param string $definition
      *
-     * @return \Application\Lib\Model\Grant
+     * @return Grant
      */
-    public function setDescription($description) {
-        $this->description = $description;
+    public function setDefinition($definition) {
+        $this->definition = $definition;
 
         return $this;
     }
@@ -80,12 +78,30 @@ class Grant extends AbstractModel {
     }
 
     /**
-     * @param int $type
+     * @param string $description
      *
-     * @return \Application\Lib\Model\Grant
+     * @return Grant
      */
-    public function setType($type) {
-        $this->type = (int) $type;
+    public function setDescription($description) {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getIsActive() {
+        return (bool) $this->isActive;
+    }
+
+    /**
+     * @param boolean $isAction
+     *
+     * @return Grant
+     */
+    public function setIsActive($isAction) {
+        $this->isActive = $isAction;
 
         return $this;
     }
@@ -98,21 +114,14 @@ class Grant extends AbstractModel {
     }
 
     /**
-     * @param boolean $isAction
+     * @param int $type
      *
-     * @return \Application\Lib\Model\Grant
+     * @return Grant
      */
-    public function setIsActive($isAction) {
-        $this->isActive = $isAction;
+    public function setType($type) {
+        $this->type = (int) $type;
 
         return $this;
-    }
-
-    /**
-     * @return boolean
-     */
-    public function getIsActive() {
-        return (bool) $this->isActive;
     }
 
     /**

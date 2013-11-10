@@ -9,6 +9,8 @@
 
 namespace RBMVC\Core\View\Helper;
 
+use RBMVC\Core\Utilities\JavaScriptList;
+
 /**
  * Class Button
  * @package RBMVC\Core\View\Helper
@@ -70,12 +72,14 @@ class Button extends HasAccess {
      * @return null|string
      */
     private function delete($id) {
+        JavaScriptList::getInstance()->addToList(ROOT_DIR . 'public/js/app/helpers/deleteModal.js');
+
         return $this->button(array(
-                                  'url'  => $this->urlHelper->url(array('action' => 'delete'), true),
+                                  'url'   => $this->urlHelper->url(array('action' => 'delete'), true),
                                   'icon'  => 'icon-trash',
                                   'class' => 'btn-danger delete',
                                   //                                  'label' => 'delete',
-                                  'data' => array('id' => $id)
+                                  'data'  => array('id' => $id)
                              ));
     }
 

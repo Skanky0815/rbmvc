@@ -13,7 +13,7 @@ use RBMVC\Core\View\Helper\RenderSystemMessages;
 class AbstractActionHelper extends AbstractHelper {
 
     /**
-     * @param \RBMVC\Core\Utilities\SystemMessage $systemMessage
+     * @param SystemMessage $systemMessage
      *
      * @return void
      */
@@ -25,7 +25,7 @@ class AbstractActionHelper extends AbstractHelper {
     }
 
     /**
-     * @param \RBMVC\Core\Utilities\SystemMessage $systemMessage
+     * @param SystemMessage $systemMessage
      */
     protected function addSystemMessage(SystemMessage $systemMessage) {
         $renderSystemMessages = $this->view->getViewHelper('RenderSystemMessages');

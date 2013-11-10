@@ -9,6 +9,10 @@
 
 namespace RBMVC\Core\Utilities\Form\Decorators;
 
+/**
+ * Class DefaultDecorator
+ * @package RBMVC\Core\Utilities\Form\Decorators
+ */
 class DefaultDecorator extends AbstractDecorator {
 
     /**
@@ -20,7 +24,6 @@ class DefaultDecorator extends AbstractDecorator {
         $out = '';
 
         foreach ($this->getElements() as $element) {
-            /** @var \RBMVC\Core\Utilities\Form\Elements\AbstractElement $element */
             $out .= $element->render() . "\n";
         }
 

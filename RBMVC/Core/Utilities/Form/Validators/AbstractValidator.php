@@ -1,6 +1,10 @@
 <?php
 namespace RBMVC\Core\Utilities\Form\Validators;
 
+/**
+ * Class AbstractValidator
+ * @package RBMVC\Core\Utilities\Form\Validators
+ */
 abstract class AbstractValidator {
 
     /**
@@ -31,7 +35,7 @@ abstract class AbstractValidator {
     /**
      * @param string $errorText
      *
-     * @return \RBMVC\Core\Utilities\Form\Validators\AbstractValidator
+     * @return AbstractValidator
      */
     public function setErrorText($errorText) {
         $this->errorText = $errorText;

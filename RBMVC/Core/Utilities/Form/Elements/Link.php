@@ -59,21 +59,17 @@ class Link extends AbstractElement {
     }
 
     /**
-     * @param boolean $hasError
-     *
-     * @return AbstractElement
-     */
-    public function setHasError($hasError) {
-        $this->hasError = $hasError;
-
-        return $this;
-    }
-
-    /**
      * @return boolean
      */
     public function getHasError() {
         return $this->hasError;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTarget() {
+        return $this->target;
     }
 
     /**
@@ -90,26 +86,8 @@ class Link extends AbstractElement {
     /**
      * @return string
      */
-    public function getTarget() {
-        return $this->target;
-    }
-
-    /**
-     * @param array $url
-     *
-     * @return Link
-     */
-    public function setUrl($url) {
-        $this->url = $url;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getUrl() {
-        return $this->url;
+    public function getType() {
+        return $this->type;
     }
 
     /**
@@ -126,8 +104,30 @@ class Link extends AbstractElement {
     /**
      * @return string
      */
-    public function getType() {
-        return $this->type;
+    public function getUrl() {
+        return $this->url;
+    }
+
+    /**
+     * @param array $url
+     *
+     * @return Link
+     */
+    public function setUrl($url) {
+        $this->url = $url;
+
+        return $this;
+    }
+
+    /**
+     * @param boolean $hasError
+     *
+     * @return AbstractElement
+     */
+    public function setHasError($hasError) {
+        $this->hasError = $hasError;
+
+        return $this;
     }
 
 }

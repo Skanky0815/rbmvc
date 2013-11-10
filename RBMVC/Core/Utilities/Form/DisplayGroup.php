@@ -10,6 +10,7 @@
 namespace RBMVC\Core\Utilities\Form;
 
 use RBMVC\Core\Utilities\Form\Decorators\AbstractDecorator;
+use RBMVC\Core\Utilities\Form\Elements\AbstractElement;
 
 /**
  * Class DisplayGroup
@@ -17,8 +18,14 @@ use RBMVC\Core\Utilities\Form\Decorators\AbstractDecorator;
  */
 class DisplayGroup {
 
+    /**
+     * hidden
+     */
     const HIDDEN_ELEMENTS = 'hidden';
 
+    /**
+     * default
+     */
     const DEFAULT_ELEMENTS = 'default';
 
     /**
@@ -27,19 +34,26 @@ class DisplayGroup {
     private $name;
 
     /**
-     * @var array
+     * @var AbstractElement[]
      */
     private $elements = array();
 
     /**
-     * @var \RBMVC\Core\Utilities\Form\Decorators\AbstractDecorator
+     * @var AbstractDecorator
      */
     private $decorator;
 
     /**
-     * @param \RBMVC\Core\Utilities\Form\Decorators\AbstractDecorator $decorator
+     * @return AbstractDecorator
+     */
+    public function getDecorator() {
+        return $this->decorator;
+    }
+
+    /**
+     * @param AbstractDecorator $decorator
      *
-     * @return \RBMVC\Core\Utilities\Form\Decorators\AbstractDecorator
+     * @return AbstractDecorator
      */
     public function setDecorator(AbstractDecorator $decorator) {
         $this->decorator = $decorator;
@@ -48,37 +62,19 @@ class DisplayGroup {
     }
 
     /**
-     * @return \RBMVC\Core\Utilities\Form\Decorators\AbstractDecorator
-     */
-    public function getDecorator() {
-        return $this->decorator;
-    }
-
-    /**
-     * @param array $elements
-     *
-     * @return \RBMVC\Core\Utilities\Form\DisplayGroup
-     */
-    public function setElements($elements) {
-        $this->elements = $elements;
-
-        return $this;
-    }
-
-    /**
-     * @return array
+     * @return AbstractElement[]
      */
     public function getElements() {
         return $this->elements;
     }
 
     /**
-     * @param string $name
+     * @param array $elements
      *
-     * @return \RBMVC\Core\Utilities\Form\DisplayGroup
+     * @return DisplayGroup
      */
-    public function setName($name) {
-        $this->name = $name;
+    public function setElements($elements) {
+        $this->elements = $elements;
 
         return $this;
     }
@@ -88,6 +84,17 @@ class DisplayGroup {
      */
     public function getName() {
         return $this->name;
+    }
+
+    /**
+     * @param string $name
+     *
+     * @return DisplayGroup
+     */
+    public function setName($name) {
+        $this->name = $name;
+
+        return $this;
     }
 
     /**

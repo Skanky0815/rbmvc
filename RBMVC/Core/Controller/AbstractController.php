@@ -6,6 +6,7 @@ use RBMVC\Core\Request;
 use RBMVC\Core\Utilities\Session;
 use RBMVC\Core\Utilities\SystemMessage;
 use RBMVC\Core\View\Helper\RenderSystemMessages;
+use RBMVC\Core\View\Helper\Url;
 use RBMVC\Core\View\View;
 
 /**
@@ -31,7 +32,7 @@ abstract class AbstractController {
     protected $actionHelperFactory;
 
     /**
-     * @var \RBMVC\Core\ClassLoader
+     * @var ClassLoader
      */
     protected $classLoader;
 
@@ -53,7 +54,6 @@ abstract class AbstractController {
     public function init() {
         $this->view->assign('controller', $this->request->getParam('controller'));
         $this->view->assign('action', $this->request->getParam('action'));
-
     }
 
     /**
@@ -67,16 +67,16 @@ abstract class AbstractController {
     }
 
     /**
-     * @return \RBMVC\Core\Controller\ActionHelperFactory
+     * @return ActionHelperFactory
      */
     public function getActionHelperFactory() {
         return $this->actionHelperFactory;
     }
 
     /**
-     * @param \RBMVC\Core\Controller\ActionHelperFactory $actionHelperFactory
+     * @param ActionHelperFactory $actionHelperFactory
      *
-     * @return \RBMVC\Core\Controller\AbstractController
+     * @return AbstractController
      */
     public function setActionHelperFactory(ActionHelperFactory $actionHelperFactory) {
         $this->actionHelperFactory = $actionHelperFactory;
@@ -85,7 +85,7 @@ abstract class AbstractController {
     }
 
     /**
-     * @return \RBMVC\Core\ClassLoader
+     * @return ClassLoader
      */
     public function getClassLoader() {
         return $this->classLoader;
@@ -94,7 +94,7 @@ abstract class AbstractController {
     /**
      * @param ClassLoader $classLoader
      *
-     * @return \RBMVC\Core\Controller\AbstractController
+     * @return AbstractController
      */
     public function setClassLoader(ClassLoader $classLoader) {
         $this->classLoader = $classLoader;
@@ -112,7 +112,7 @@ abstract class AbstractController {
     /**
      * @param array $config
      *
-     * @return \RBMVC\Core\Controller\AbstractController
+     * @return AbstractController
      */
     public function setConfig(array $config) {
         $this->config = $config;
@@ -121,14 +121,14 @@ abstract class AbstractController {
     }
 
     /**
-     * @return \RBMVC\Core\Request
+     * @return Request
      */
     public function getRequest() {
         return $this->request;
     }
 
     /**
-     * @param \RBMVC\Core\Request $request
+     * @param Request $request
      *
      * @return void
      */
@@ -137,14 +137,14 @@ abstract class AbstractController {
     }
 
     /**
-     * @return \RBMVC\Core\View\View
+     * @return View
      */
     public function getView() {
         return $this->view;
     }
 
     /**
-     * @param \RBMVC\Core\View\View $view
+     * @param View $view
      *
      * @return void
      */
@@ -163,7 +163,7 @@ abstract class AbstractController {
     }
 
     /**
-     * @param \RBMVC\Core\Utilities\SystemMessage $systemMessage
+     * @param SystemMessage $systemMessage
      *
      * @return void
      */
@@ -175,7 +175,7 @@ abstract class AbstractController {
     }
 
     /**
-     * @param \RBMVC\Core\Utilities\SystemMessage $systemMessage
+     * @param SystemMessage $systemMessage
      */
     protected function addSystemMessage(SystemMessage $systemMessage) {
         $renderSystemMessages = $this->view->getViewHelper('RenderSystemMessages');
@@ -190,7 +190,9 @@ abstract class AbstractController {
      * @return void
      */
     protected function redirect(array $params) {
-        header('Location: ' . $this->view->url($params, true));
+        /** @var Url $urlHelper */
+        $urlHelper = $this->view->getViewHelper('Url');
+        header('Location: ' . $urlHelper->url($params, true));
         exit;
     }
 

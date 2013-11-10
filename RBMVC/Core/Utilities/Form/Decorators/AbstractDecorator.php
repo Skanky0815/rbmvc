@@ -9,6 +9,8 @@
 
 namespace RBMVC\Core\Utilities\Form\Decorators;
 
+use RBMVC\Core\Utilities\Form\Elements\AbstractElement;
+
 /**
  * Class AbstractDecorators
  * @package RBMVC\Core\Utilities\Form\Decorators
@@ -16,21 +18,21 @@ namespace RBMVC\Core\Utilities\Form\Decorators;
 abstract class AbstractDecorator {
 
     /**
-     * @var array
+     * @var AbstractElement[]
      */
     private $elements = array();
 
     /**
-     * @param string $template
-     *
-     * @return string
+     * @return AbstractElement[]
      */
-    abstract public function render($template = '');
+    public function getElements() {
+        return $this->elements;
+    }
 
     /**
-     * @param array $elements
+     * @param AbstractElement[] $elements
      *
-     * @return \RBMVC\Core\Utilities\Form\Decorators\AbstractDecorator
+     * @return AbstractDecorator
      */
     public function setElements(array $elements) {
         $this->elements = $elements;
@@ -39,10 +41,10 @@ abstract class AbstractDecorator {
     }
 
     /**
-     * @return array
+     * @param string $template
+     *
+     * @return string
      */
-    public function getElements() {
-        return $this->elements;
-    }
+    abstract public function render($template = '');
 
 }

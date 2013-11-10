@@ -4,6 +4,10 @@ namespace RBMVC\Core\View\Helper;
 use RBMVC\Core\Utilities\Session;
 use RBMVC\Core\Utilities\SystemMessage;
 
+/**
+ * Class RenderSystemMessages
+ * @package RBMVC\Core\View\Helper
+ */
 class RenderSystemMessages extends AbstractViewHelper {
 
     /**
@@ -11,6 +15,9 @@ class RenderSystemMessages extends AbstractViewHelper {
      */
     private $systemMessages = array();
 
+    /**
+     *
+     */
     public function __construct() {
         $session = new Session('system_message');
         if (is_null($session->systemMessages)
@@ -31,9 +38,9 @@ class RenderSystemMessages extends AbstractViewHelper {
     }
 
     /**
-     * @param \RBMVC\Core\Utilities\SystemMessage $systemMessage
+     * @param SystemMessage $systemMessage
      *
-     * @return \RBMVC\Core\View\Helper\RenderSystemMessages
+     * @return RenderSystemMessages
      */
     public function addSystemMessage(SystemMessage $systemMessage) {
         $this->systemMessages[] = $systemMessage;

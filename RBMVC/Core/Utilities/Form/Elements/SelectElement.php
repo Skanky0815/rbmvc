@@ -18,7 +18,7 @@ use RBMVC\Core\Utilities\Form\Decorators\Element\Select;
 class SelectElement extends AbstractElement {
 
     /**
-     * @var array
+     * @var SelectOption[]
      */
     private $options = array();
 
@@ -30,16 +30,16 @@ class SelectElement extends AbstractElement {
     }
 
     /**
-     * @return array
+     * @return SelectOption[]
      */
     public function getOptions() {
         return $this->options;
     }
 
     /**
-     * @param array $options
+     * @param SelectOption[]|array $options
      *
-     * @return \RBMVC\Core\Utilities\Form\Elements\SelectElement
+     * @return SelectElement
      */
     public function setOptions(array $options) {
         foreach ($options as $label => $option) {
@@ -59,12 +59,11 @@ class SelectElement extends AbstractElement {
     /**
      * @param string $value
      *
-     * @return \RBMVC\Core\Utilities\Form\Elements\SelectElement
+     * @return SelectElement
      */
     public function setValue($value) {
         parent::setValue($value);
 
-        /** @var \RBMVC\Core\Utilities\Form\Elements\SelectOption $option */
         foreach ($this->options as $option) {
             if ($this->value == $option->getValue()) {
                 $option->setIsSelected(true);

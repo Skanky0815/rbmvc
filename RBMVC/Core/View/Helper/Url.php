@@ -1,6 +1,10 @@
 <?php
 namespace RBMVC\Core\View\Helper;
 
+/**
+ * Class Url
+ * @package RBMVC\Core\View\Helper
+ */
 class Url extends AbstractViewHelper {
 
     /**

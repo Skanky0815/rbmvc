@@ -1,14 +1,30 @@
 <?php
 namespace RBMVC\Core\Utilities;
 
+/**
+ * Class SystemMessage
+ * @package RBMVC\Core\Utilities
+ */
 class SystemMessage {
 
+    /**
+     * success
+     */
     const SUCCESS = 'success';
 
+    /**
+     * error
+     */
     const ERROR = 'error';
 
+    /**
+     * block
+     */
     const WARNING = 'block';
 
+    /**
+     * info
+     */
     const INFO = 'info';
 
     /**
@@ -51,24 +67,6 @@ class SystemMessage {
     /**
      * @return string
      */
-    public function getTitle() {
-        return $this->title;
-    }
-
-    /**
-     * @param string $title
-     *
-     * @return \RBMVC\Core\Utilities\SystemMessage
-     */
-    public function setTitle($title) {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
     public function getText() {
         return $this->text;
     }
@@ -76,10 +74,28 @@ class SystemMessage {
     /**
      * @param string $text
      *
-     * @return \RBMVC\Core\Utilities\SystemMessage
+     * @return SystemMessage
      */
     public function setText($text) {
         $this->text = $text;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitle() {
+        return $this->title;
+    }
+
+    /**
+     * @param string $title
+     *
+     * @return SystemMessage
+     */
+    public function setTitle($title) {
+        $this->title = $title;
 
         return $this;
     }
@@ -94,7 +110,7 @@ class SystemMessage {
     /**
      * @param string $type
      *
-     * @return \RBMVC\Core\Utilities\SystemMessage
+     * @return SystemMessage
      */
     public function setType($type) {
         $this->type = $type;

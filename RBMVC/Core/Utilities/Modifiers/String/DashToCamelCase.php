@@ -9,6 +9,10 @@
 
 namespace RBMVC\Core\Utilities\Modifiers\String;
 
+/**
+ * Class DashToCamelCase
+ * @package RBMVC\Core\Utilities\Modifiers\String
+ */
 class DashToCamelCase {
 
     /**

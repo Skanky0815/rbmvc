@@ -18,7 +18,7 @@ use RBMVC\Core\View\View;
 abstract class Form {
 
     /**
-     * @var array
+     * @var AbstractElement[]
      */
     private $elements = array();
 
@@ -77,7 +77,7 @@ abstract class Form {
     /**
      * @param string $action
      *
-     * @return \RBMVC\Core\Utilities\Form\Form
+     * @return Form
      */
     public function setAction($action) {
         $this->action = $action;
@@ -113,7 +113,7 @@ abstract class Form {
     /**
      * @param AbstractElement $element
      *
-     * @return \RBMVC\Core\Utilities\Form\Form
+     * @return Form
      */
     public function addElement(AbstractElement $element) {
         $this->elements[] = $element;
@@ -124,7 +124,7 @@ abstract class Form {
     /**
      * @param string $name
      *
-     * @return \RBMVC\Core\Utilities\Form\DisplayGroup|null
+     * @return DisplayGroup|null
      */
     public function getDisplayGroup($name) {
         return isset($this->displayGroups[$name]) ? $this->displayGroups[$name] : null;
@@ -140,7 +140,7 @@ abstract class Form {
     /**
      * @param string $name
      *
-     * @return null|\RBMVC\Core\Utilities\Form\Elements\AbstractElement
+     * @return null|AbstractElement
      */
     public function getElement($name) {
         if (array_key_exists($name, $this->elements)) {
@@ -151,7 +151,7 @@ abstract class Form {
     }
 
     /**
-     * @return array
+     * @return AbstractElement[]
      */
     public function getElements() {
         return $this->elements;
@@ -208,7 +208,7 @@ abstract class Form {
     }
 
     /**
-     * @return \RBMVC\Core\View\View
+     * @return View
      */
     public function getView() {
         return $this->view;
@@ -263,7 +263,7 @@ abstract class Form {
     /**
      * @param boolean $hasActionBar
      *
-     * @return \RBMVC\Core\Utilities\Form\Form
+     * @return Form
      */
     public function setHasActionBar($hasActionBar) {
         $this->hasActionBar = (boolean) $hasActionBar;
@@ -299,7 +299,6 @@ abstract class Form {
      * @return void
      */
     private function setElementsValue() {
-        /* @var $element \RBMVC\Core\Utilities\Form\Elements\AbstractElement */
         foreach ($this->elements as $element) {
             $element->setValue($this->getObjectValue($element->getName()));
         }

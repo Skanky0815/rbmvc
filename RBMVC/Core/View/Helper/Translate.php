@@ -3,6 +3,10 @@ namespace RBMVC\Core\View\Helper;
 
 use RBMVC\Core\Translator;
 
+/**
+ * Class Translate
+ * @package RBMVC\Core\View\Helper
+ */
 class Translate extends AbstractViewHelper {
 
     /**
@@ -10,9 +14,6 @@ class Translate extends AbstractViewHelper {
      */
     private $translator;
 
-    /**
-     * @return void
-     */
     public function __construct() {
         $this->translator = Translator::getInstance();
     }

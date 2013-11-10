@@ -13,7 +13,7 @@ class ActionHelperFactory extends AbstractHelperFactory {
     /**
      * @param string $name
      *
-     * @return mixed|null
+     * @return AbstractActionHelper|null
      */
     protected function loadHelper($name) {
         $className = ucfirst($name);
@@ -22,7 +22,7 @@ class ActionHelperFactory extends AbstractHelperFactory {
             $helper->setView($this->view);
             $helper->setRequest($this->request);
             $helper->setConfig($this->config);
-            $this->helper[$name] = $helper;
+            $this->helpers[$name] = $helper;
 
             return $helper;
         }

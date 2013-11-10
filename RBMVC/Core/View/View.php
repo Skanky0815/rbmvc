@@ -1,6 +1,8 @@
 <?php
 namespace RBMVC\Core\View;
 
+use RBMVC\Core\View\Helper\AbstractViewHelper;
+
 /**
  * Class View
  * @package RBMVC\Core\View
@@ -16,6 +18,11 @@ class View {
      * @var array
      */
     public $params;
+
+    /**
+     * @var string
+     */
+    protected $jsAppPath = '/js/app/';
 
     /**
      * @var string
@@ -43,14 +50,111 @@ class View {
     private $variables = array();
 
     /**
-     * @var string
+     * @param string $name
+     * @param array $args
+     *
+     * @return mixed
      */
-    protected $jsAppPath = '/js/app/';
+    public function __call($name, $args) {
+        return $this->viewHelperFactory->callFunction($name, $args);
+    }
 
     /**
-     * @param \RBMVC\Core\View\ViewHelperFactory $viewHelperFactory
+     * @param string $name
      *
-     * @return \RBMVC\Core\View\View
+     * @return null|mixed
+     */
+    public function __get($name) {
+        if (array_key_exists($name, $this->variables)) {
+            return $this->variables[$name];
+        }
+
+        return null;
+    }
+
+    /**
+     * @param string $name
+     * @param mixed $value
+     *
+     * @return View;
+     */
+    public function __set($name, $value) {
+        $this->variables[$name] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param string $fileName
+     *
+     * @return string
+     */
+    public function addStyle($fileName) {
+        $url = '/css/' . $fileName;
+
+        return '<link href="' . $url . '" rel="stylesheet"/>';
+    }
+
+    /**
+     * @param string $name
+     * @param mixed $value
+     *
+     * @return void
+     */
+    public function assign($name, $value) {
+        $this->__set($name, $value);
+    }
+
+    /**
+     * @return void
+     */
+    public function clearVars() {
+        $this->variables = array();
+    }
+
+    /**
+     * @return void
+     */
+    public function disableLayout() {
+        $this->doLayout = false;
+    }
+
+    /**
+     * @return void
+     */
+    public function disableRender() {
+        $this->doRender = false;
+    }
+
+    /**
+     * @return void
+     */
+    public function enableRender() {
+        $this->doRender = true;
+    }
+
+    /**
+     * @param string $name
+     *
+     * @return AbstractViewHelper
+     */
+    public function getViewHelper($name) {
+        $name = strtolower($name);
+
+        return $this->viewHelperFactory->getHelpers($name);
+    }
+
+    /**
+     * @return ViewHelperFactory
+     */
+    public function getViewHelperFactory() {
+        return $this->viewHelperFactory;
+    }
+
+    /**
+     * @param ViewHelperFactory $viewHelperFactory
+     *
+     * @return View
      */
     public function setViewHelperFactory(ViewHelperFactory $viewHelperFactory) {
         $this->viewHelperFactory = $viewHelperFactory;
@@ -59,10 +163,17 @@ class View {
     }
 
     /**
-     * @return \RBMVC\Core\View\ViewHelperFactory
+     * @param string $fileName
+     * @param array $variables
+     *
+     * @return mixed
      */
-    public function getViewHelperFactory() {
-        return $this->viewHelperFactory;
+    public function partial($fileName, array $variables = array()) {
+        $view = clone $this;
+        $view->enableRender();
+        $view->variables = $variables;
+
+        return $view->render('template/' . $fileName);
     }
 
     /**
@@ -86,59 +197,23 @@ class View {
     }
 
     /**
-     * @return void
-     */
-    public function disableRender() {
-        $this->doRender = false;
-    }
-
-    /**
-     * @return void
-     */
-    public function enableRender() {
-        $this->doRender = true;
-    }
-
-    /**
-     * @return void
-     */
-    public function disableLayout() {
-        $this->doLayout = false;
-    }
-
-    /**
-     * @param string $name
+     * @param array $params
      *
-     * @return null|mixed
+     * @return View
      */
-    public function __get($name) {
-        if (array_key_exists($name, $this->variables)) {
-            return $this->variables[$name];
-        }
-
-        return null;
-    }
-
-    /**
-     * @param string $name
-     * @param mixed $value
-     *
-     * @return \RBMVC\Core\View\View;
-     */
-    public function __set($name, $value) {
-        $this->variables[$name] = $value;
+    public function setParams(array $params) {
+        $this->params = $params;
 
         return $this;
     }
 
     /**
-     * @param string $name
-     * @param mixed $value
-     *
-     * @return void
+     * @return string
      */
-    public function assign($name, $value) {
-        $this->__set($name, $value);
+    private function loadLayoutTemplate() {
+        $this->requireJs();
+
+        return include_once ROOT_DIR . 'template/layout/layout.phtml';
     }
 
     /**
@@ -169,79 +244,6 @@ class View {
     }
 
     /**
-     * @return string
-     */
-    private function loadLayoutTemplate() {
-        $this->requireJs();
-
-        return include_once ROOT_DIR . 'template/layout/layout.phtml';
-    }
-
-    /**
-     * @param string $fileName
-     * @param array $variables
-     *
-     * @return mixed
-     */
-    public function partial($fileName, array $variables = array()) {
-        $view            = clone $this;
-        $view->enableRender();
-        $view->variables = $variables;
-
-        return $view->render('template/' . $fileName);
-    }
-
-    /**
-     * @return void
-     */
-    public function clearVars() {
-        $this->variables = array();
-    }
-
-    /**
-     * @param array $params
-     *
-     * @return \RBMVC\Core\View\View
-     */
-    public function setParams(array $params) {
-        $this->params = $params;
-
-        return $this;
-    }
-
-    /**
-     * @param string $fileName
-     *
-     * @return string
-     */
-    public function addStyle($fileName) {
-        $url = '/css/' . $fileName;
-
-        return '<link href="' . $url . '" rel="stylesheet"/>';
-    }
-
-    /**
-     * @param string $name
-     *
-     * @return \RBMVC\Core\View\Helper\AbstractViewHelper
-     */
-    public function getViewHelper($name) {
-        $name = strtolower($name);
-
-        return $this->viewHelperFactory->getHelper($name);
-    }
-
-    /**
-     * @param string $name
-     * @param array $args
-     *
-     * @return mixed
-     */
-    public function __call($name, $args) {
-        return $this->viewHelperFactory->callFunction($name, $args);
-    }
-
-    /**
      * Add an action or controller specific js file when file not found then
      * it use the default js.
      *
@@ -265,7 +267,7 @@ class View {
 
         if (file_exists(ROOT_DIR . '/public' . $jsPath . '.js')) {
             $js = '<script data-main="' . $jsPath . '" src="/js/Lib/require-jquery.js"></script>';
-            $this->assign('js', $js);
+            #$this->assign('js', $js);
         }
     }
 }

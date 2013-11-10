@@ -10,6 +10,10 @@ use RBMVC\Core\Utilities\Session;
 use RBMVC\Core\View\View;
 use RBMVC\Core\View\ViewHelperFactory;
 
+/**
+ * Class Bootstrap
+ * @package RBMVC
+ */
 class Bootstrap {
 
     /**
@@ -27,6 +31,9 @@ class Bootstrap {
      */
     private $classLoader;
 
+    /**
+     * @param ClassLoader $classLoader
+     */
     public function __construct(ClassLoader $classLoader) {
         $this->classLoader = $classLoader;
     }
@@ -62,10 +69,6 @@ class Bootstrap {
     /**
      * @return void
      */
-    private function setupLogging() {
-        ini_set('error_log', APPLICATION_DIR . 'data/log/php_error.log');
-    }
-
     private function setupClassLoader() {
         if (isset($this->config['class_paths']) && is_array($this->config['class_paths'])) {
             $this->classLoader->addNamespaces($this->config['class_paths']);
@@ -83,16 +86,6 @@ class Bootstrap {
     /**
      * @return void
      */
-    private function setupTranslation() {
-        if (!array_key_exists('language', $this->config)) {
-            die('<h1>Error</h1><p>Missing language configuration.</p>');
-        }
-        Translator::getInstance()->init($this->config['language']);
-    }
-
-    /**
-     * @return void
-     */
     private function setupDB() {
         if (!array_key_exists('database', $this->config)) {
             die('<h1>Error</h1><p>Missing database configuration.</p>');
@@ -100,6 +93,23 @@ class Bootstrap {
 
         $db = DB::getInstance();
         $db->setup($this->config['database']);
+    }
+
+    /**
+     * @return void
+     */
+    private function setupLogging() {
+        ini_set('error_log', APPLICATION_DIR . 'data/log/php_error.log');
+    }
+
+    /**
+     * @return void
+     */
+    private function setupTranslation() {
+        if (!array_key_exists('language', $this->config)) {
+            die('<h1>Error</h1><p>Missing language configuration.</p>');
+        }
+        Translator::getInstance()->init($this->config['language']);
     }
 
     /**

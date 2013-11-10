@@ -27,14 +27,8 @@
                 </td>
                 <td>
                     <div class="btn-group pull-right">
-                        <a class="btn-danger btn delete" data-toggle="modal" href="<?php echo $this->url(
-                            array('action' => 'delete'
-                                  , 'id'   => $user->getId()
-                            ), true
-                        ); ?>">
-                            <i class="icon-trash"></i>
-                        </a>
                         <?php echo $this->button('edit', $user->getId()); ?>
+                        <?php echo $this->button('delete', $user->getId()); ?>
                     </div>
                 </td>
             </tr>

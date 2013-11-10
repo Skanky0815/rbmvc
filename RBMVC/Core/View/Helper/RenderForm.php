@@ -4,10 +4,14 @@ namespace RBMVC\Core\View\Helper;
 use RBMVC\Core\Utilities\Form\Form;
 use RBMVC\Core\Utilities\Modifiers\String\GetClassNameWithUnderscore;
 
+/**
+ * Class RenderForm
+ * @package RBMVC\Core\View\Helper
+ */
 class RenderForm extends AbstractViewHelper {
 
     /**
-     * @param \RBMVC\Core\Utilities\Form\Form $form
+     * @param Form $form
      *
      * @return string
      */

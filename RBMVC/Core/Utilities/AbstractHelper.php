@@ -4,15 +4,19 @@ namespace RBMVC\Core\Utilities;
 use RBMVC\Core\Request;
 use RBMVC\Core\View\View;
 
+/**
+ * Class AbstractHelper
+ * @package RBMVC\Core\Utilities
+ */
 abstract class AbstractHelper {
 
     /**
-     * @var \RBMVC\Core\Request
+     * @var Request
      */
     protected $request;
 
     /**
-     * @var \RBMVC\Core\View\View
+     * @var View
      */
     protected $view;
 
@@ -22,9 +26,20 @@ abstract class AbstractHelper {
     protected $config;
 
     /**
-     * @param \RBMVC\Core\Request $request
+     * @param array $config
      *
-     * @return \RBMVC\Core\View\Helper\AbstractHelper
+     * @return AbstractHelper
+     */
+    public function setConfig(array $config) {
+        $this->config = $config;
+
+        return $this;
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return AbstractHelper
      */
     public function setRequest(Request $request) {
         $this->request = $request;
@@ -33,23 +48,12 @@ abstract class AbstractHelper {
     }
 
     /**
-     * @param \RBMVC\Core\View\View $view
+     * @param View $view
      *
-     * @return \RBMVC\Core\View\Helper\AbstractHelper
+     * @return AbstractHelper
      */
     public function setView(View &$view) {
         $this->view = $view;
-
-        return $this;
-    }
-
-    /**
-     * @param array $config
-     *
-     * @return \RBMVC\Core\View\Helper\AbstractHelper
-     */
-    public function setConfig(array $config) {
-        $this->config = $config;
 
         return $this;
     }

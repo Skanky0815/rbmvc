@@ -69,7 +69,7 @@ class DB {
     }
 
     /**
-     * @param \RBMVC\Core\DB\Query $query
+     * @param Query $query
      *
      * @return boolean|\PDOStatement
      */
@@ -116,7 +116,7 @@ class DB {
     }
 
     /**
-     * @param \RBMVC\Core\DB\Query $query
+     * @param Query $query
      *
      * @return void
      */

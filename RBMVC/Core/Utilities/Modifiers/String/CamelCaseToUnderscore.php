@@ -1,6 +1,10 @@
 <?php
 namespace RBMVC\Core\Utilities\Modifiers\String;
 
+/**
+ * Class CamelCaseToUnderscore
+ * @package RBMVC\Core\Utilities\Modifiers\String
+ */
 class CamelCaseToUnderscore {
 
     /**

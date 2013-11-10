@@ -36,7 +36,7 @@ class TextareaElement extends AbstractElement {
     /**
      * @param string $placeholder
      *
-     * @return \RBMVC\Core\Utilities\Form\Elements\InputElement
+     * @return InputElement
      */
     public function setPlaceholder($placeholder) {
         $this->placeholder = $placeholder;

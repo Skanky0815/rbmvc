@@ -20,28 +20,17 @@ class UserGroup extends AbstractModel {
     /**
      * @var string
      */
-    private $name;
+    private $name = '';
 
     /**
      * @var string
      */
-    private $description;
+    private $description = '';
 
     /**
      * @var array
      */
-    private $grantTypes;
-
-    /**
-     * @param $description
-     *
-     * @return \Application\Lib\Model\UserGroup
-     */
-    public function setDescription($description) {
-        $this->description = $description;
-
-        return $this;
-    }
+    private $grantTypes = array();
 
     /**
      * @return string
@@ -51,12 +40,12 @@ class UserGroup extends AbstractModel {
     }
 
     /**
-     * @param array $grantTypes
+     * @param $description
      *
-     * @return \Application\Lib\Model\UserGroup
+     * @return UserGroup
      */
-    public function setGrantTypes(array $grantTypes) {
-        $this->grantTypes = $grantTypes;
+    public function setDescription($description) {
+        $this->description = $description;
 
         return $this;
     }
@@ -69,12 +58,12 @@ class UserGroup extends AbstractModel {
     }
 
     /**
-     * @param $name
+     * @param array $grantTypes
      *
-     * @return \Application\Lib\Model\UserGroup
+     * @return UserGroup
      */
-    public function setName($name) {
-        $this->name = $name;
+    public function setGrantTypes(array $grantTypes) {
+        $this->grantTypes = $grantTypes;
 
         return $this;
     }
@@ -84,6 +73,17 @@ class UserGroup extends AbstractModel {
      */
     public function getName() {
         return $this->name;
+    }
+
+    /**
+     * @param $name
+     *
+     * @return UserGroup
+     */
+    public function setName($name) {
+        $this->name = $name;
+
+        return $this;
     }
 
 }

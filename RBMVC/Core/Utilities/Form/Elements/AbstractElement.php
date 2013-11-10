@@ -42,17 +42,17 @@ abstract class AbstractElement {
     protected $hasError = false;
 
     /**
-     * @var \RBMVC\Core\Translator
+     * @var Translator
      */
     protected $translator;
 
     /**
-     * @var array
+     * @var AbstractValidator[]
      */
     protected $validators = array();
 
     /**
-     * @var \RBMVC\Core\Utilities\Form\Decorators\Element\AbstractDecorator
+     * @var AbstractDecorator
      */
     protected $decorator = null;
 
@@ -67,9 +67,9 @@ abstract class AbstractElement {
     }
 
     /**
-     * @param \RBMVC\Core\Utilities\Form\Validators\AbstractValidator $validator
+     * @param AbstractValidator $validator
      *
-     * @return \RBMVC\Core\Utilities\Form\Elements\AbstractElement
+     * @return AbstractElement
      */
     public function addValidator(AbstractValidator $validator) {
         $this->validators[] = $validator;
@@ -78,9 +78,9 @@ abstract class AbstractElement {
     }
 
     /**
-     * @param array $validators
+     * @param AbstractValidator[] $validators
      *
-     * @return \RBMVC\Core\Utilities\Form\Elements\AbstractElement
+     * @return AbstractElement
      */
     public function addValidators(array $validators) {
         foreach ($validators as $validator) {
@@ -93,14 +93,14 @@ abstract class AbstractElement {
     }
 
     /**
-     * @return \RBMVC\Core\Utilities\Form\Decorators\Element\AbstractDecorator
+     * @return AbstractDecorator
      */
     public function getDecorator() {
         return $this->decorator;
     }
 
     /**
-     * @param \RBMVC\Core\Utilities\Form\Decorators\Element\AbstractDecorator $decorator
+     * @param AbstractDecorator $decorator
      *
      * @return AbstractElement
      */
@@ -118,6 +118,24 @@ abstract class AbstractElement {
     }
 
     /**
+     * @return boolean
+     */
+    public function getHasError() {
+        return $this->hasError;
+    }
+
+    /**
+     * @param boolean $hasError
+     *
+     * @return AbstractElement
+     */
+    public function setHasError($hasError) {
+        $this->hasError = $hasError;
+
+        return $this;
+    }
+
+    /**
      * @return string
      */
     public function getLabel() {
@@ -127,7 +145,7 @@ abstract class AbstractElement {
     /**
      * @param string $label
      *
-     * @return \RBMVC\Core\Utilities\Form\Elements\AbstractElement
+     * @return AbstractElement
      */
     public function setLabel($label) {
         $this->label = $label;
@@ -145,10 +163,46 @@ abstract class AbstractElement {
     /**
      * @param string $name
      *
-     * @return \RBMVC\Core\Utilities\Form\Elements\AbstractElement
+     * @return AbstractElement
      */
     public function setName($name) {
         $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return Translator
+     */
+    public function getTranslator() {
+        return $this->translator;
+    }
+
+    /**
+     * @param Translator $translator
+     *
+     * @return AbstractElement
+     */
+    public function setTranslator($translator) {
+        $this->translator = $translator;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getValidators() {
+        return $this->validators;
+    }
+
+    /**
+     * @param AbstractValidator[] $validators
+     *
+     * @return AbstractElement
+     */
+    public function setValidators($validators) {
+        $this->validators = $validators;
 
         return $this;
     }
@@ -163,7 +217,7 @@ abstract class AbstractElement {
     /**
      * @param string $value
      *
-     * @return \RBMVC\Core\Utilities\Form\Elements\AbstractElement
+     * @return AbstractElement
      */
     public function setValue($value) {
         $this->value = $value;
@@ -186,67 +240,12 @@ abstract class AbstractElement {
     }
 
     /**
-     * @param boolean $hasError
-     *
-     * @return AbstractElement
-     */
-    public function setHasError($hasError) {
-        $this->hasError = $hasError;
-
-        return $this;
-    }
-
-    /**
-     * @return boolean
-     */
-    public function getHasError() {
-        return $this->hasError;
-    }
-
-    /**
-     * @param \RBMVC\Core\Translator $translator
-     *
-     * @return AbstractElement
-     */
-    public function setTranslator($translator) {
-        $this->translator = $translator;
-
-        return $this;
-    }
-
-    /**
-     * @return \RBMVC\Core\Translator
-     */
-    public function getTranslator() {
-        return $this->translator;
-    }
-
-    /**
-     * @param array $validators
-     *
-     * @return AbstractElement
-     */
-    public function setValidators($validators) {
-        $this->validators = $validators;
-
-        return $this;
-    }
-
-    /**
-     * @return array
-     */
-    public function getValidators() {
-        return $this->validators;
-    }
-
-    /**
      * @param array $params
      *
      * @return string
      */
     public function isValid(array $params) {
         if (array_key_exists($this->name, $params) && !empty($params[$this->name])) {
-            /* @var $validator \RBMVC\Core\Utilities\Form\Validators\AbstractValidator */
             foreach ($this->validators as $validator) {
                 if (!$validator->isValid($params[$this->name])) {
                     $this->hasError = true;
@@ -277,7 +276,7 @@ abstract class AbstractElement {
     /**
      * @param boolean $isRequired
      *
-     * @return \RBMVC\Core\Utilities\Form\Elements\AbstractElement
+     * @return AbstractElement
      */
     public function setIsRequired($isRequired) {
         $this->isRequired = (bool) $isRequired;

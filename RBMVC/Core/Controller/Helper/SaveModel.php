@@ -16,7 +16,7 @@ class SaveModel extends AbstractActionHelper {
      * @param AbstractModel $model
      * @param string $form
      *
-     * @return \RBMVC\Core\Model\AbstractModel|void
+     * @return AbstractModel|void
      */
     public function saveModel(AbstractModel $model, $form) {
         $modelId = (int) $this->request->getParam('id', 0);
@@ -52,6 +52,24 @@ class SaveModel extends AbstractActionHelper {
     }
 
     /**
+     * @return void
+     */
+    private function addInvalidFormMessage() {
+        $systemMessage = new SystemMessage(SystemMessage::ERROR);
+        $systemMessage->setTitle('invalid_form');
+        $this->addSystemMessage($systemMessage);
+    }
+
+    /**
+     * @return void
+     */
+    private function addSaveErrorMessage() {
+        $systemMessage = new SystemMessage(SystemMessage::ERROR);
+        $systemMessage->setTitle('save_error');
+        $this->addSystemMessage($systemMessage);
+    }
+
+    /**
      * @param AbstractModel $model
      *
      * @return void
@@ -71,24 +89,6 @@ class SaveModel extends AbstractActionHelper {
             $model = $temp;
             $this->addSaveErrorMessage();
         }
-    }
-
-    /**
-     * @return void
-     */
-    private function addSaveErrorMessage() {
-        $systemMessage = new SystemMessage(SystemMessage::ERROR);
-        $systemMessage->setTitle('save_error');
-        $this->addSystemMessage($systemMessage);
-    }
-
-    /**
-     * @return void
-     */
-    private function addInvalidFormMessage() {
-        $systemMessage = new SystemMessage(SystemMessage::ERROR);
-        $systemMessage->setTitle('invalid_form');
-        $this->addSystemMessage($systemMessage);
     }
 
 }

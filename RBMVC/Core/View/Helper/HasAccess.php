@@ -18,7 +18,7 @@ use RBMVC\Core\Utilities\Access;
 class HasAccess extends AbstractViewHelper {
 
     /**
-     * @var \RBMVC\Core\Utilities\Access
+     * @var Access
      */
     private $access;
 

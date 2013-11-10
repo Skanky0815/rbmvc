@@ -1,6 +1,10 @@
 <?php
 namespace RBMVC\Core;
 
+/**
+ * Class Request
+ * @package RBMVC\Core
+ */
 class Request {
 
     /**
@@ -18,9 +22,6 @@ class Request {
      */
     private $postParams;
 
-    /**
-     * @return void
-     */
     public function __construct() {
         $this->getParams  = $_GET;
         $this->postParams = $_POST;
@@ -49,15 +50,15 @@ class Request {
     /**
      * @return array
      */
-    public function getPostParams() {
-        return $this->postParams;
+    public function getParams() {
+        return $this->params;
     }
 
     /**
      * @return array
      */
-    public function getParams() {
-        return $this->params;
+    public function getPostParams() {
+        return $this->postParams;
     }
 
     /**

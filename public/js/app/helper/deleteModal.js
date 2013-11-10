@@ -1,13 +1,12 @@
-define(['../../lib/bootstrap.min'
-], function () {
-    var _ = {};
+var DeleteModal = (function () {
+    var _ = {}, pub = {};
 
     _.$delelteButton = null;
     _.$deleteModal = null;
 
     _.url = '';
 
-    _.init = function () {
+    pub.init = function () {
         console.log('Delete-Modal loaded!');
 
         _.$delelteButton = $('.delete');
@@ -51,7 +50,8 @@ define(['../../lib/bootstrap.min'
         }
     };
 
-    $(function () {
-        _.init()
-    });
-});
+    return pub;
+})();
+
+
+DeleteModal.init();

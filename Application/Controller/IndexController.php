@@ -21,4 +21,10 @@ class IndexController extends AbstractController {
         $this->view->assign('entries', $entries);
     }
 
+    public function javaScriptAction() {
+        $this->view->disableRender();
+        header('content-type: application/javascript');
+        echo $this->javaScript();
+    }
+
 }

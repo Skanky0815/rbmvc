@@ -21,9 +21,27 @@ class Pagination extends AbstractViewHelper {
     private $indexParams = array();
 
     /**
-     * @var \RBMVC\Core\View\Helper\Url
+     * @var Url
      */
     private $urlHelper;
+
+    /**
+     * @return array
+     */
+    public function getIndexParams() {
+        return $this->indexParams;
+    }
+
+    /**
+     * @param array $indexParams
+     *
+     * @return Pagination
+     */
+    public function setIndexParams(array $indexParams) {
+        $this->indexParams = $indexParams;
+
+        return $this;
+    }
 
     /**
      *
@@ -48,35 +66,15 @@ class Pagination extends AbstractViewHelper {
     }
 
     /**
-     * @param array $indexParams
+     * @param int $page
      *
-     * @return \RBMVC\Core\View\Helper\Pagination
-     */
-    public function setIndexParams(array $indexParams) {
-        $this->indexParams = $indexParams;
-
-        return $this;
-    }
-
-    /**
      * @return array
      */
-    public function getIndexParams() {
-        return $this->indexParams;
-    }
-
-    /**
-     * @return array
-     */
-    private function createPrev() {
-        $prev       = $this->indexParams['page'] - 1;
-        $isDisabled = $prev <= 0;
-
+    private function createLink($page) {
         return array(
-            'label'       => '&laquo;',
-            'url'         => $this->urlHelper->url(array('page' => $prev), true),
-            'is_disabled' => $isDisabled,
-            'is_active'   => false,
+            'label'     => $page,
+            'url'       => $this->urlHelper->url(array('page' => $page), true),
+            'is_active' => $page == $this->indexParams['page']
         );
     }
 
@@ -98,15 +96,17 @@ class Pagination extends AbstractViewHelper {
     }
 
     /**
-     * @param int $page
-     *
      * @return array
      */
-    private function createLink($page) {
+    private function createPrev() {
+        $prev       = $this->indexParams['page'] - 1;
+        $isDisabled = $prev <= 0;
+
         return array(
-            'label'     => $page,
-            'url'       => $this->urlHelper->url(array('page' => $page), true),
-            'is_active' => $page == $this->indexParams['page']
+            'label'       => '&laquo;',
+            'url'         => $this->urlHelper->url(array('page' => $prev), true),
+            'is_disabled' => $isDisabled,
+            'is_active'   => false,
         );
     }
 

@@ -23,7 +23,6 @@ class ButtonGroup extends AbstractDecorator {
     public function render($template = '') {
         $out = '<div class="btn-group">';
 
-        /** @var $element \RBMVC\Core\Utilities\Form\Elements\AbstractElement */
         foreach ($this->getElements() as $element) {
             $out .= $element->render();
         }

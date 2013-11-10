@@ -3,6 +3,7 @@ namespace RBMVC\Core\Model\Collection;
 
 use RBMVC\Core\DB\DB;
 use RBMVC\Core\DB\Query;
+use RBMVC\Core\Model\AbstractModel;
 use RBMVC\Core\Utilities\Modifiers\String\GetClassNameWithUnderscore;
 
 /**
@@ -22,7 +23,7 @@ abstract class AbstractCollection {
     protected $dbTable;
 
     /**
-     * @var array
+     * @var AbstractModel[]
      */
     protected $models = array();
 
@@ -60,7 +61,7 @@ abstract class AbstractCollection {
     }
 
     /**
-     *
+     * @return void
      */
     public function findForIndex() {
         $query = $this->db->getQuery($this->dbTable);
@@ -84,7 +85,7 @@ abstract class AbstractCollection {
     /**
      * @param array $indexParams
      *
-     * @return \RBMVC\Core\Model\Collection\AbstractCollection
+     * @return AbstractCollection
      */
     public function setIndexParams(array $indexParams) {
         $this->indexParams = $indexParams;
@@ -93,7 +94,7 @@ abstract class AbstractCollection {
     }
 
     /**
-     * @return array
+     * @return AbstractModel[]
      */
     public function getModels() {
         if (empty($this->models) && !empty($this->result)) {
@@ -113,7 +114,7 @@ abstract class AbstractCollection {
     /**
      * @param $result
      *
-     * @return \RBMVC\Core\Model\Collection\AbstractCollection
+     * @return AbstractCollection
      */
     public function setResult(array $result) {
         $this->result = $result;

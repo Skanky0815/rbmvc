@@ -60,7 +60,7 @@ class Query {
     }
 
     /**
-     *
+     * @return void
      */
     public function getTableDefinition() {
         $this->sql = 'SHOW COLUMNS FROM `' . $this->dbTable . '`';;

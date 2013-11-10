@@ -37,13 +37,6 @@ class ClassLoader {
     }
 
     /**
-     * @return array
-     */
-    public function getClasses() {
-        return $this->classes;
-    }
-
-    /**
      * @param string $namespace
      *
      * @return void
@@ -59,24 +52,6 @@ class ClassLoader {
      */
     public function addNamespaces(array $namespaces) {
         $this->namespaces = array_merge($this->namespaces, $namespaces);
-    }
-
-    /**
-     * @param string $class
-     *
-     * @return mixed
-     * @throws \Exception|ClassLoadingException
-     */
-    public function getClassInstance($class) {
-        try {
-            if (!class_exists($class)) {
-                $class = $this->load($class);
-            }
-
-            return new $class();
-        } catch (ClassLoadingException $e) {
-            throw $e;
-        }
     }
 
     /**
@@ -107,6 +82,31 @@ class ClassLoader {
         }
 
         return $classes;
+    }
+
+    /**
+     * @param string $class
+     *
+     * @return Object
+     * @throws \Exception|ClassLoadingException
+     */
+    public function getClassInstance($class) {
+        try {
+            if (!class_exists($class)) {
+                $class = $this->load($class);
+            }
+
+            return new $class();
+        } catch (ClassLoadingException $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @return array
+     */
+    public function getClasses() {
+        return $this->classes;
     }
 
     /**

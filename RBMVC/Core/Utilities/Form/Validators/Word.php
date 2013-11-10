@@ -1,6 +1,10 @@
 <?php
 namespace RBMVC\Core\Utilities\Form\Validators;
 
+/**
+ * Class Word
+ * @package RBMVC\Core\Utilities\Form\Validators
+ */
 class Word extends AbstractValidator {
 
     public function __construct() {

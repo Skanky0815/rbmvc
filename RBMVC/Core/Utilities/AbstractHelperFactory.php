@@ -5,25 +5,29 @@ use RBMVC\Core\ClassLoader;
 use RBMVC\Core\Request;
 use RBMVC\Core\View\View;
 
+/**
+ * Class AbstractHelperFactory
+ * @package RBMVC\Core\Utilities
+ */
 abstract class AbstractHelperFactory {
 
     /**
-     * @var \RBMVC\Core\View\View
+     * @var View
      */
     protected $view;
 
     /**
-     * @var \RBMVC\Core\Request
+     * @var Request
      */
     protected $request;
 
     /**
-     * @var array
+     * @var AbstractHelper[]
      */
-    protected $helper = array();
+    protected $helpers = array();
 
     /**
-     * @var \RBMVC\Core\ClassLoader
+     * @var ClassLoader
      */
     protected $classLoader;
 
@@ -33,66 +37,32 @@ abstract class AbstractHelperFactory {
     protected $config;
 
     /**
-     * @param \RBMVC\Core\View\View $view
+     * @param string $name
+     * @param array $args
      *
-     * @return \RBMVC\Core\Utilities\AbstractHelperFactory
+     * @return mixed
      */
-    public function setView(View &$view) {
-        $this->view = $view;
+    public function callFunction($name, $args) {
+        $name   = strtolower($name);
+        $helper = $this->getHelpers($name);
 
-        return $this;
+        return call_user_func_array(array($helper, $name), $args);
     }
 
     /**
-     * @return \RBMVC\Core\View\View
-     */
-    public function getView() {
-        return $this->view;
-    }
-
-    /**
-     * @param \RBMVC\Core\Request $request
-     *
-     * @return \RBMVC\Core\Utilities\AbstractHelperFactory
-     */
-    public function setRequest(Request $request) {
-        $this->request = $request;
-
-        return $this;
-    }
-
-    /**
-     * @return \RBMVC\Core\Request
-     */
-    public function getRequest() {
-        return $this->request;
-    }
-
-    /**
-     * @param \RBMVC\Core\ClassLoader $classLoader
-     *
-     * @return \RBMVC\Core\Utilities\AbstractHelperFactory
-     */
-    public function setClassLoader(ClassLoader $classLoader) {
-        $this->classLoader = $classLoader;
-
-        return $this;
-    }
-
-    /**
-     * @return \RBMVC\Core\ClassLoader
+     * @return ClassLoader
      */
     public function getClassLoader() {
         return $this->classLoader;
     }
 
     /**
-     * @param array $config
+     * @param ClassLoader $classLoader
      *
-     * @return \RBMVC\Core\Utilities\AbstractHelperFactory
+     * @return AbstractHelperFactory
      */
-    public function setConfig(array $config) {
-        $this->config = $config;
+    public function setClassLoader(ClassLoader $classLoader) {
+        $this->classLoader = $classLoader;
 
         return $this;
     }
@@ -105,36 +75,70 @@ abstract class AbstractHelperFactory {
     }
 
     /**
-     * @param string $name
-     * @param array $args
+     * @param array $config
      *
-     * @return mixed
+     * @return AbstractHelperFactory
      */
-    public function callFunction($name, $args) {
-        $name   = strtolower($name);
-        $helper = $this->getHelper($name);
+    public function setConfig(array $config) {
+        $this->config = $config;
 
-        return call_user_func_array(array($helper, $name), $args);
+        return $this;
     }
 
     /**
      * @param string $name
      *
-     * @return \RBMVC\Core\Utilities\AbstractHelper
+     * @return AbstractHelper
      */
-    protected abstract function loadHelper($name);
-
-    /**
-     * @param string $name
-     *
-     * @return \RBMVC\Core\Utilities\AbstractHelper
-     */
-    public function getHelper($name) {
-        if (array_key_exists($name, $this->helper)) {
-            return $this->helper[$name];
+    public function getHelpers($name) {
+        if (array_key_exists($name, $this->helpers)) {
+            return $this->helpers[$name];
         }
 
         return $this->loadHelper($name);
     }
+
+    /**
+     * @return Request
+     */
+    public function getRequest() {
+        return $this->request;
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return AbstractHelperFactory
+     */
+    public function setRequest(Request $request) {
+        $this->request = $request;
+
+        return $this;
+    }
+
+    /**
+     * @return View
+     */
+    public function getView() {
+        return $this->view;
+    }
+
+    /**
+     * @param View $view
+     *
+     * @return AbstractHelperFactory
+     */
+    public function setView(View &$view) {
+        $this->view = $view;
+
+        return $this;
+    }
+
+    /**
+     * @param string $name
+     *
+     * @return AbstractHelper
+     */
+    protected abstract function loadHelper($name);
 
 }

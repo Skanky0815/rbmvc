@@ -1,6 +1,10 @@
 <?php
 namespace RBMVC\Core;
 
+/**
+ * Class Translator
+ * @package RBMVC\Core
+ */
 class Translator {
 
     /**
@@ -14,7 +18,7 @@ class Translator {
     private $lang;
 
     /**
-     * @var array
+     * @var string[]
      */
     private $texts;
 

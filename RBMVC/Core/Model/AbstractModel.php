@@ -79,7 +79,6 @@ abstract class AbstractModel {
         $reflectionClass = new \ReflectionClass($this);
         $properties      = $reflectionClass->getProperties();
 
-        /* @var $property \ReflectionProperty */
         foreach ($properties as $property) {
             $camelCaseToUnderscore = new CamelCaseToUnderscore();
             $key                   = $camelCaseToUnderscore->convert($property->getName());
@@ -104,7 +103,7 @@ abstract class AbstractModel {
     /**
      * @param integer $id
      *
-     * @return \RBMVC\Core\Model\AbstractModel
+     * @return AbstractModel
      */
     public function setId($id) {
         $this->id = (int) $id;
@@ -113,7 +112,7 @@ abstract class AbstractModel {
     }
 
     /**
-     * @return \RBMVC\Core\Model\AbstractModel
+     * @return AbstractModel
      */
     public function save() {
         $query = $this->db->getQuery($this->dbTable);
@@ -145,7 +144,6 @@ abstract class AbstractModel {
         $reflectionClass = new \ReflectionClass($this);
         $properties      = $reflectionClass->getProperties();
         $array           = array();
-        /* @var $property \ReflectionProperty */
         foreach ($properties as $property) {
             $methodName = 'get' . ucfirst($property->getName());
             if ($reflectionClass->hasMethod($methodName)) {
@@ -167,7 +165,6 @@ abstract class AbstractModel {
 
         $columns = $this->getTableDefinitions();
         $array   = array();
-        /* @var $property \ReflectionProperty */
         foreach ($properties as $property) {
             if (!isset($columns[$property->getName()])) {
                 continue;
