@@ -88,7 +88,7 @@ class ClassLoader {
      * @param string $class
      *
      * @return Object
-     * @throws \Exception|ClassLoadingException
+     * @throws ClassLoadingException
      */
     public function getClassInstance($class) {
         try {
@@ -150,7 +150,7 @@ class ClassLoader {
      * @param $class
      *
      * @return string
-     * @throws \Exception|ClassLoadingException
+     * @throws ClassLoadingException
      */
     private function load($class) {
         try {

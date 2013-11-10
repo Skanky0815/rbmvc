@@ -4,6 +4,7 @@ namespace RBMVC\Core;
 use RBMVC\Core\Controller\AbstractController;
 use RBMVC\Core\Controller\AbstractPlugin;
 use RBMVC\Core\Controller\ActionHelperFactory;
+use RBMVC\Core\Utilities\Exception\ClassLoadingException;
 use RBMVC\Core\Utilities\Modifiers\String\DashToCamelCase;
 use RBMVC\Core\View\View;
 
@@ -34,6 +35,78 @@ class Dispatcher {
     private $config;
 
     /**
+     * @return ClassLoader
+     */
+    public function getClassLoader() {
+        return $this->classLoader;
+    }
+
+    /**
+     * @param ClassLoader $classLoader
+     *
+     * @return Dispatcher
+     */
+    public function setClassLoader(ClassLoader $classLoader) {
+        $this->classLoader = $classLoader;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getConfig() {
+        return $this->config;
+    }
+
+    /**
+     * @param array $config
+     *
+     * @return Dispatcher
+     */
+    public function setConfig(array $config) {
+        $this->config = $config;
+
+        return $this;
+    }
+
+    /**
+     * @return Request
+     */
+    public function getRequest() {
+        return $this->request;
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return Dispatcher
+     */
+    public function setRequest(Request $request) {
+        $this->request = $request;
+
+        return $this;
+    }
+
+    /**
+     * @return View
+     */
+    public function getView() {
+        return $this->view;
+    }
+
+    /**
+     * @param View $view
+     *
+     * @return Dispatcher
+     */
+    public function setView(View &$view) {
+        $this->view = $view;
+
+        return $this;
+    }
+
+    /**
      * @var void
      */
     public function setupController() {
@@ -46,7 +119,7 @@ class Dispatcher {
         $isClassError = false;
         try {
             $controller = $this->classLoader->getClassInstance($controllerName);
-        } catch (Utilities\Exception\ClassLoadingException $e) {
+        } catch (ClassLoadingException $e) {
             $controller   = $this->classLoader->getClassInstance('IndexController');
             $isClassError = true;
         }
@@ -90,77 +163,5 @@ class Dispatcher {
             }
             $plugin->onBootstrap($this->request);
         }
-    }
-
-    /**
-     * @return View
-     */
-    public function getView() {
-        return $this->view;
-    }
-
-    /**
-     * @param View $view
-     *
-     * @return Dispatcher
-     */
-    public function setView(View &$view) {
-        $this->view = $view;
-
-        return $this;
-    }
-
-    /**
-     * @return Request
-     */
-    public function getRequest() {
-        return $this->request;
-    }
-
-    /**
-     * @param Request $request
-     *
-     * @return Dispatcher
-     */
-    public function setRequest(Request $request) {
-        $this->request = $request;
-
-        return $this;
-    }
-
-    /**
-     * @return ClassLoader
-     */
-    public function getClassLoader() {
-        return $this->classLoader;
-    }
-
-    /**
-     * @param ClassLoader $classLoader
-     *
-     * @return Dispatcher
-     */
-    public function setClassLoader(ClassLoader $classLoader) {
-        $this->classLoader = $classLoader;
-
-        return $this;
-    }
-
-    /**
-     * @param array $config
-     *
-     * @return Dispatcher
-     */
-    public function setConfig(array $config) {
-        $this->config = $config;
-
-        return $this;
-    }
-
-    /**
-     * @return array
-     */
-    public function getConfig() {
-        return $this->config;
     }
 }
