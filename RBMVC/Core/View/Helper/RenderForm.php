@@ -25,8 +25,8 @@ class RenderForm extends AbstractViewHelper {
         }
 
         return $this->view->partial('form/form.phtml',
-            array('form'      => $form
-                  , 'element' => $elementTemplates
+            array('form'    => $form,
+                  'element' => $elementTemplates
             )
         );
     }

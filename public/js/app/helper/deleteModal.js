@@ -1,16 +1,15 @@
-var DeleteModal = (function () {
+define([
+    'jquery',
+    'bootstrap'
+], function ($) {
     var _ = {}, pub = {};
 
-    _.$delelteButton = null;
     _.$deleteModal = null;
 
     _.url = '';
 
     pub.init = function () {
-        console.log('Delete-Modal loaded!');
-
-        _.$delelteButton = $('.delete');
-        _.$delelteButton.on('click', _.showModalAction);
+        $('body').on('click', '.deleteTrigger', _.showModalAction);
     };
 
     _.showModalAction = function (e) {
@@ -51,7 +50,4 @@ var DeleteModal = (function () {
     };
 
     return pub;
-})();
-
-
-DeleteModal.init();
+});

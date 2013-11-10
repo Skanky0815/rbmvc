@@ -58,12 +58,12 @@ class Button extends HasAccess {
      * @return null|string
      */
     private function  add() {
-        return $this->button(array(
-                                  'url'   => $this->urlHelper->url(array('action' => 'add')),
-                                  'icon'  => 'icon-plus',
-                                  'class' => 'btn-primary',
-                                  'label' => 'add',
-                             ));
+        return $this->button(
+            array('url'   => $this->urlHelper->url(array('action' => 'add')),
+                  'icon'  => 'icon-plus',
+                  'class' => 'btn-primary',
+                  'label' => 'add',
+            ));
     }
 
     /**
@@ -72,15 +72,13 @@ class Button extends HasAccess {
      * @return null|string
      */
     private function delete($id) {
-        JavaScriptList::getInstance()->addToList(ROOT_DIR . 'public/js/app/helpers/deleteModal.js');
-
-        return $this->button(array(
-                                  'url'   => $this->urlHelper->url(array('action' => 'delete'), true),
-                                  'icon'  => 'icon-trash',
-                                  'class' => 'btn-danger delete',
-                                  //                                  'label' => 'delete',
-                                  'data'  => array('id' => $id)
-                             ));
+        return $this->button(
+            array('url'   => $this->urlHelper->url(array('action' => 'delete'), true),
+                  'icon'  => 'icon-trash',
+                  'class' => 'btn-danger deleteTrigger',
+                  //                                  'label' => 'delete',
+                  'data'  => array('id' => $id)
+            ));
     }
 
     /**
@@ -89,11 +87,11 @@ class Button extends HasAccess {
      * @return null|string
      */
     private function edit($id) {
-        return $this->button(array(
-                                  'url'   => $this->urlHelper->url(array('action' => 'edit', 'id' => $id), true),
-                                  'icon'  => 'icon-edit',
-                                  'class' => 'btn-default',
-                                  'label' => 'edit',
-                             ));
+        return $this->button(
+            array('url'   => $this->urlHelper->url(array('action' => 'edit', 'id' => $id), true),
+                  'icon'  => 'icon-edit',
+                  'class' => 'btn-default',
+                  'label' => 'edit',
+            ));
     }
 }

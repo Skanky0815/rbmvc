@@ -211,8 +211,6 @@ class View {
      * @return string
      */
     private function loadLayoutTemplate() {
-        $this->requireJs();
-
         return include_once ROOT_DIR . 'template/layout/layout.phtml';
     }
 
@@ -243,31 +241,4 @@ class View {
         return $template;
     }
 
-    /**
-     * Add an action or controller specific js file when file not found then
-     * it use the default js.
-     *
-     * @TODO outsource into a action setup plugin.
-     * @return void
-     */
-    private function requireJs() {
-        $path = $this->jsAppPath;
-
-        $controllerName = $this->params['controller'];
-        $actionName     = $this->params['action'];
-
-        $jsPath = $path . $controllerName . '/' . $actionName;
-        if (!file_exists(ROOT_DIR . '/public' . $jsPath . '.js')) {
-            $jsPath = $path . $controllerName . '/' . 'index';
-        }
-
-        if (!file_exists(ROOT_DIR . '/public' . $jsPath . '.js')) {
-            $jsPath = $this->jsAppPath . 'index';
-        }
-
-        if (file_exists(ROOT_DIR . '/public' . $jsPath . '.js')) {
-            $js = '<script data-main="' . $jsPath . '" src="/js/Lib/require-jquery.js"></script>';
-            #$this->assign('js', $js);
-        }
-    }
 }

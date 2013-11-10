@@ -111,7 +111,7 @@ class Bootstrap {
     }
 
     /**
-     * @return \RBMVC\Core\View\View
+     * @return View
      */
     private function setupView() {
         $view = new View();
