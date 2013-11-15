@@ -21,7 +21,6 @@ class SaveModel extends AbstractActionHelper {
     public function saveModel(AbstractModel $model, $form) {
         $modelId = (int) $this->request->getParam('id', 0);
         $params  = $this->request->getPostParams();
-
         if (!empty($modelId)) {
             $model->setId($modelId)->init();
         }

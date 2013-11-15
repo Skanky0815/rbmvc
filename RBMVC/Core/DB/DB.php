@@ -106,7 +106,7 @@ class DB {
     /**
      * @param string $dbTable
      *
-     * @return \RBMVC\Core\DB\Query
+     * @return Query
      */
     public function getQuery($dbTable) {
         $query = new Query();

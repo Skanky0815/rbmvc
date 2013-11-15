@@ -19,6 +19,18 @@ use RBMVC\Core\Model\Collection\AbstractCollection;
 class UserGroupCollection extends AbstractCollection {
 
     /**
+     * @param $userId
+     *
+     * @return void
+     */
+    public function findByUserId($userId) {
+        $query = $this->db->getQuery($this->dbTable);
+        //TODO query erweiter für inner joins und da sql entsprechend abändern.
+        $query->setSql('SELECT user_group_id AS id FROM `user_group_assign` WHERE user_id = ' . $userId);
+        $this->fetch($query);
+    }
+
+    /**
      * @param array $result
      *
      * @return void

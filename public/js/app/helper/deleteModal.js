@@ -42,8 +42,7 @@ define([
 
     _.response = function (json) {
         if (json.status === 'ok') {
-            var url = location.href;
-            location.href = url;
+            location.reload();
         } else {
             _.$deleteModal.find('.modal-body').html(json.data);
         }

@@ -5,6 +5,7 @@ use RBMVC\Core\Model\AbstractModel;
 use RBMVC\Core\Utilities\Form\Decorators\AbstractDecorator;
 use RBMVC\Core\Utilities\Form\Decorators\ButtonGroup;
 use RBMVC\Core\Utilities\Form\Decorators\DefaultDecorator;
+use RBMVC\Core\Utilities\Form\Decorators\Element\AssignItem;
 use RBMVC\Core\Utilities\Form\Elements\AbstractElement;
 use RBMVC\Core\Utilities\Form\Elements\ButtonElement;
 use RBMVC\Core\Utilities\Form\Elements\Link;
@@ -28,9 +29,9 @@ abstract class Form {
     private $errors = array();
 
     /**
-     * @var array
+     * @var AbstractModel
      */
-    private $object;
+    private $object = null;
 
     /**
      * @var string
@@ -38,9 +39,9 @@ abstract class Form {
     private $action = '';
 
     /**
-     * @var array
+     * @var DisplayGroup[]
      */
-    private $displayGroups;
+    private $displayGroups = array();
 
     /**
      * @var boolean
@@ -54,13 +55,9 @@ abstract class Form {
 
     /**
      * @param View $view
-     * @param array|AbstractModel $object
+     * @param AbstractModel $object
      */
-    public function __construct(View $view, $object = array()) {
-        if (is_object($object) && $object instanceof AbstractModel) {
-            $object = $object->toArray();
-        }
-
+    public function __construct(View $view, $object) {
         $this->view   = $view;
         $this->object = $object;
         $this->init();
@@ -86,7 +83,7 @@ abstract class Form {
     }
 
     /**
-     * @param array $elements
+     * @param AbstractElement[] $elements
      * @param string $name
      * @param AbstractDecorator $decorator
      *
@@ -197,11 +194,16 @@ abstract class Form {
      * @param string $index
      * @param mixed $default
      *
-     * @return mixed
+     * @return string|int|AbstractModel|AbstractModel[]
      */
     public function getObjectValue($index, $default = '') {
-        if (array_key_exists($index, $this->object) && !empty($this->object[$index])) {
-            return $this->object[$index];
+        $reflectionClass = new \ReflectionClass($this->object);
+        $methodName      = 'get' . ucfirst($index);
+        if ($reflectionClass->hasMethod($methodName)) {
+            $value = $this->object->{$methodName}();
+            if (!empty($value)) {
+                return $this->object->{$methodName}();
+            }
         }
 
         return $default;
@@ -291,6 +293,28 @@ abstract class Form {
     }
 
     /**
+     * @param AbstractModel[] $models
+     *
+     * @return AssignItem[]
+     */
+    protected function createAssignItems(array $models) {
+        $items = [];
+        foreach ($models as $model) {
+            $item                     = $this->fillAssignItem($model);
+            $items[$item->getValue()] = $item;
+        }
+
+        return $items;
+    }
+
+    /**
+     * @param AbstractModel $model
+     *
+     * @return AssignItem
+     */
+    abstract protected function fillAssignItem(AbstractModel $model);
+
+    /**
      * @return void
      */
     abstract protected function init();
@@ -300,7 +324,11 @@ abstract class Form {
      */
     private function setElementsValue() {
         foreach ($this->elements as $element) {
-            $element->setValue($this->getObjectValue($element->getName()));
+            $value = $this->getObjectValue($element->getName());
+            if (is_array($value) && $value[0] instanceof AbstractModel) {
+                $value = $this->createAssignItems($value);
+            }
+            $element->setValue($value);
         }
     }
 

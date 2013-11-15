@@ -9,7 +9,12 @@
 
 namespace Application\Lib\Forms;
 
+use Application\Lib\Model\Collection\GrantCollection;
+use Application\Lib\Model\Grant;
+use RBMVC\Core\Model\AbstractModel;
+use RBMVC\Core\Utilities\Form\Decorators\Element\AssignItem;
 use RBMVC\Core\Utilities\Form\DisplayGroup;
+use RBMVC\Core\Utilities\Form\Elements\Assign;
 use RBMVC\Core\Utilities\Form\Elements\InputElement;
 use RBMVC\Core\Utilities\Form\Elements\TextareaElement;
 use RBMVC\Core\Utilities\Form\Form;
@@ -38,9 +43,32 @@ class UserGroupForm extends Form {
         $description->addValidator(new Word());
         $this->addElement($description);
 
-        $this->addDisplayGroup(array($name, $description), DisplayGroup::DEFAULT_ELEMENTS);
+        $grantsCollection = new GrantCollection();
+        $grantsCollection->findByType(Grant::TYPE_PRIVATE);
+        $grantAssign = new Assign('grants');
+        $grantAssign->setLabel('grant_assign');
+        $grantAssign->setUnAssigned($this->createAssignItems($grantsCollection->getModels()));
+        $this->addElement($grantAssign);
+
+        $this->addDisplayGroup([$name, $description, $grantAssign], DisplayGroup::DEFAULT_ELEMENTS);
 
         $this->addDefaultActions();
     }
 
+    /**
+     * @param AbstractModel $model
+     *
+     * @return AssignItem|null
+     */
+    protected function fillAssignItem(AbstractModel $model) {
+        if (!$model instanceof Grant) {
+            return null;
+        }
+
+        $assignItem = new AssignItem();
+        $assignItem->setTitle($model->getDefinition());
+        $assignItem->setValue($model->getId());
+
+        return $assignItem;
+    }
 }

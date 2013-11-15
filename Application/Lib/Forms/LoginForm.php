@@ -1,6 +1,8 @@
 <?php
 namespace Application\Lib\Forms;
 
+use RBMVC\Core\Model\AbstractModel;
+use RBMVC\Core\Utilities\Form\Decorators\Element\AssignItem;
 use RBMVC\Core\Utilities\Form\DisplayGroup;
 use RBMVC\Core\Utilities\Form\Elements\ButtonElement;
 use RBMVC\Core\Utilities\Form\Elements\InputElement;
@@ -40,4 +42,14 @@ class LoginForm extends Form {
 
         $this->setHasActionBar(false);
     }
+
+    /**
+     * @param AbstractModel $model
+     *
+     * @return AssignItem
+     */
+    protected function fillAssignItem(AbstractModel $model) {
+        // TODO: Implement fillAssignItem() method.
+    }
+
 }

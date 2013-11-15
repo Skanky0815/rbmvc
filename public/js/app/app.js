@@ -1,34 +1,69 @@
-require.config({
+requirejs.config({
     baseUrl: '/js/lib',
     paths: {
         jquery: 'jquery-2.0.3.min',
+        jquery_ui: 'jquery-ui-1.10.3.custom.min',
         bootstrap: 'bootstrap.min',
         app: '../app',
         helper: '../app/helper'
     },
     shim: {
-        'bootstrap': {
+        bootstrap: {
             deps: ['jquery']
         }
     }
 });
 
-require([
+requirejs([
     'jquery',
     'bootstrap'
 ], function ($) {
+    var _ = {};
+
+    _.loadedModules = [];
 
     $(function () {
-        console.log('Index JS');
+        var $body = $('body');
 
-        $('[data-toggle="tooltip"]').tooltip();
+        $body.popover({
+            selector: '[data-toggle="popover"]',
+            placement: 'bottom',
+            trigger: 'hover'
+        });
 
-        if ($('body').find('.deleteTrigger').length !== 0) {
+        $body.tooltip({
+            selector: 'a[rel="tooltip"], [data-toggle="tooltip"], a[title]',
+            container: 'body'
+        });
+
+        if ($body.find('.deleteTrigger').length !== 0) {
             require(['helper/deleteModal'], function (deleteModal) {
                 deleteModal.init();
             });
+            _.loadedModules.push('helper/deleteModal');
         }
 
+        if ($body.find('.searchTrigger').length !== 0) {
+            require(['helper/search'], function (search) {
+                search.init();
+            });
+            _.loadedModules.push('helper/search');
+        }
+
+        /**
+         * Load all js modules by there given paths in data-js attributes
+         */
+        $body.find('[data-js]').each(function (k, element) {
+            var data = $(element).data();
+            if (_.loadedModules.indexOf(data.js) < 0) {
+                requirejs([data.js], function (js) {
+                    js.init(data);
+                });
+                _.loadedModules.push(data.js);
+            }
+        });
+
+        console.log(_.loadedModules);
 
 //        var connection = new WebSocket('ws://127.0.0.1:5000');
 //        // When the connection is open, send some data to the server

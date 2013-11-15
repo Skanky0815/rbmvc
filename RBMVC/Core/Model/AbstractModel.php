@@ -149,7 +149,14 @@ abstract class AbstractModel {
             if ($reflectionClass->hasMethod($methodName)) {
                 $camelCaseToUnderscore = new CamelCaseToUnderscore();
                 $key                   = $camelCaseToUnderscore->convert($property->getName());
-                $array[$key]           = $this->{$methodName}();
+                $value                 = $this->{$methodName}();
+                if (is_array($value) && !empty($value) && reset($value) instanceof AbstractModel) {
+                    foreach ($value as $i => $val) {
+                        /** @var AbstractModel $val */
+                        $value[$i] = $val->toArray();
+                    }
+                }
+                $array[$key] = $value;
             }
         }
 

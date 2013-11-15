@@ -9,6 +9,7 @@
 
 namespace Application\Lib\Model;
 
+use Application\Lib\Model\UserGroup\GrantAssign;
 use RBMVC\Core\Model\AbstractModel;
 
 /**
@@ -31,6 +32,42 @@ class UserGroup extends AbstractModel {
      * @var array
      */
     private $grantTypes = array();
+
+    /**
+     * @var Grant[]
+     */
+    private $grants = array();
+
+    /**
+     * @return bool
+     */
+    public function init() {
+        if (!parent::init()) {
+            return false;
+        }
+
+        $grantCollection = new GrantAssign();
+        $grantCollection->findByUserGroupId($this->id);
+        $this->grants = $grantCollection->getModels();
+
+        return true;
+    }
+
+    /**
+     * @return bool|AbstractModel
+     */
+    public function save() {
+        $grants = $this->grants;
+        if (!parent::save()) {
+            return false;
+        }
+        $grantCollection = new GrantAssign();
+        $grantCollection->deleteAllByUserGroupId($this->id);
+        $grantCollection->save($this->id, $grants);
+        $this->grants = $grantCollection->getModels();
+
+        return $this;
+    }
 
     /**
      * @return string
@@ -64,6 +101,24 @@ class UserGroup extends AbstractModel {
      */
     public function setGrantTypes(array $grantTypes) {
         $this->grantTypes = $grantTypes;
+
+        return $this;
+    }
+
+    /**
+     * @return Grant[]
+     */
+    public function getGrants() {
+        return $this->grants;
+    }
+
+    /**
+     * @param Grant[] $grants
+     *
+     * @return UserGroup
+     */
+    public function setGrants($grants) {
+        $this->grants = $grants;
 
         return $this;
     }

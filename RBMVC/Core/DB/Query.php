@@ -227,6 +227,10 @@ class Query {
         $this->sql .= $sql;
     }
 
+    public function join(array $table, $on) {
+
+    }
+
     /**
      * @param array $params
      */

@@ -25,9 +25,27 @@ class User extends AbstractModel {
     protected $email = '';
 
     /**
-     * @var array
+     * @var UserGroup[]
      */
     protected $useGroups = array();
+
+    /**
+     * @param UserGroup[] $useGroups
+     *
+     * @return User
+     */
+    public function setUseGroups($useGroups) {
+        $this->useGroups = $useGroups;
+
+        return $this;
+    }
+
+    /**
+     * @return UserGroup[]
+     */
+    public function getUseGroups() {
+        return $this->useGroups;
+    }
 
     /**
      * @var boolean

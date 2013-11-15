@@ -18,20 +18,6 @@ require([
     $(function () {
         console.log('Entry/Index JS');
 
-        var $body = $('body');
-
-        $body.popover({
-            selector: '[data-toggle="popover"]',
-            placement: 'bottom',
-            trigger: 'hover'
-        });
-
-        $body.tooltip({
-            selector: 'a[rel="tooltip"], [data-toggle="tooltip"], a[title]',
-            container: 'body'
-        });
-
-
         $('#text').wysihtml5({
             'font-styles': true, //Font styling, e.g. h1, h2, etc. Default true
             emphasis: true, //Italics, bold, etc. Default true

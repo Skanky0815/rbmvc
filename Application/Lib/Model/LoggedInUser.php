@@ -10,6 +10,7 @@
 namespace Application\Lib\Model;
 
 use Application\Lib\Model\Collection\GrantCollection;
+use Application\Lib\Model\Collection\UserGroupCollection;
 
 /**
  * Class LoggedInUser
@@ -63,12 +64,21 @@ class LoggedInUser extends User {
         }
 
         $this->fillModelByArray($result);
+        $userGroupCollection = new UserGroupCollection();
+        $userGroupCollection->findByUserId($this->id);
+        $this->useGroups = $userGroupCollection->getModels();
 
         $grantCollection = new GrantCollection();
         $grantCollection->findByType(array(Grant::TYPE_PROTECTED, Grant::TYPE_PUBLIC));
-        /** @var \Application\Lib\Model\Grant $grant */
+        /** @var Grant $grant */
         foreach ($grantCollection->getModels() as $grant) {
             $this->grants[] = $grant->getDefinition();
+        }
+
+        foreach ($this->useGroups as $userGroup) {
+            foreach ($userGroup->getGrants() as $grant) {
+                $this->grants[] = $grant->getDefinition();
+            }
         }
 
         return true;
