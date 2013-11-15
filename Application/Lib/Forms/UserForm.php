@@ -9,6 +9,8 @@
 
 namespace Application\Lib\Forms;
 
+use RBMVC\Core\Model\AbstractModel;
+use RBMVC\Core\Utilities\Form\Decorators\Element\AssignItem;
 use RBMVC\Core\Utilities\Form\DisplayGroup;
 use RBMVC\Core\Utilities\Form\Elements\CheckboxElement;
 use RBMVC\Core\Utilities\Form\Elements\InputElement;
@@ -48,6 +50,15 @@ class UserForm extends Form {
         $this->addDisplayGroup(array($username, $email, $isActive), DisplayGroup::DEFAULT_ELEMENTS);
 
         $this->addDefaultActions();
+    }
+
+    /**
+     * @param AbstractModel $model
+     *
+     * @return AssignItem
+     */
+    protected function fillAssignItem(AbstractModel $model) {
+        // TODO: Implement fillAssignItem() method.
     }
 
 }

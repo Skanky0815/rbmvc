@@ -10,6 +10,8 @@
 namespace Application\Lib\Forms;
 
 use Application\Lib\Model\Grant;
+use RBMVC\Core\Model\AbstractModel;
+use RBMVC\Core\Utilities\Form\Decorators\Element\AssignItem;
 use RBMVC\Core\Utilities\Form\DisplayGroup;
 use RBMVC\Core\Utilities\Form\Elements\CheckboxElement;
 use RBMVC\Core\Utilities\Form\Elements\InputElement;
@@ -59,6 +61,15 @@ class GrantForm extends Form {
         $this->addDisplayGroup(array($definition, $type, $description, $isActive), DisplayGroup::DEFAULT_ELEMENTS);
 
         $this->addDefaultActions();
+    }
+
+    /**
+     * @param AbstractModel $model
+     *
+     * @return AssignItem
+     */
+    protected function fillAssignItem(AbstractModel $model) {
+        // TODO: Implement fillAssignItem() method.
     }
 
 }

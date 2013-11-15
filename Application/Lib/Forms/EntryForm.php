@@ -1,6 +1,8 @@
 <?php
 namespace Application\Lib\Forms;
 
+use RBMVC\Core\Model\AbstractModel;
+use RBMVC\Core\Utilities\Form\Decorators\Element\AssignItem;
 use RBMVC\Core\Utilities\Form\DisplayGroup;
 use RBMVC\Core\Utilities\Form\Elements\HiddenElement;
 use RBMVC\Core\Utilities\Form\Elements\InputElement;
@@ -43,5 +45,14 @@ class EntryForm extends Form {
         $this->addDisplayGroup(array($title, $text), DisplayGroup::DEFAULT_ELEMENTS);
 
         $this->addDefaultActions();
+    }
+
+    /**
+     * @param AbstractModel $model
+     *
+     * @return AssignItem
+     */
+    protected function fillAssignItem(AbstractModel $model) {
+        // TODO: Implement fillAssignItem() method.
     }
 }
