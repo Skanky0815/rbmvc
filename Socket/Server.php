@@ -545,7 +545,7 @@ class PHPWebSocket {
                     $payloadLengthExtended = substr($this->wsClients[$clientID][9], 2, 8);
 
                     // check if the frame's payload data length exceeds 2,147,483,647 (31 bits)
-                    // the maximum integer in PHP is "usually" this number. More info: http://php.net/manual/en/language.types.integer.php
+                    // the maximum integer in PHP is "usually" this number. More info: http://php.net/manual/en/languageId.types.integer.php
                     $payloadLengthExtended32_1 = substr($payloadLengthExtended, 0, 4);
                     $array                     = unpack('Na', $payloadLengthExtended32_1);
                     if ($array['a'] != 0 || ord(substr($payloadLengthExtended, 4, 1)) & 128) {
@@ -983,7 +983,7 @@ function wsOnClose($clientID, $status) {
 
     $Server->log("$ip ($clientID) has disconnected.");
 
-    //Send a user left notice to everyone in the room
+    //Send a language left notice to everyone in the room
     foreach ($Server->wsClients as $id => $client)
         $Server->wsSend($id, "Visitor $clientID ($ip) has left the room.");
 }
@@ -1027,7 +1027,7 @@ $Server->bind('close', function ($clientID, $status) {
 
     $Server->log("$ip ($clientID) has disconnected.");
 
-    //Send a user left notice to everyone in the room
+    //Send a language left notice to everyone in the room
     foreach ($Server->wsClients as $id => $client)
         $Server->wsSend($id, "Visitor $clientID ($ip) has left the room.");
 });

@@ -31,6 +31,11 @@ return array(
                     'controller' => 'grant',
                     'action'     => 'index',
                 ),
+                'language'    => array(
+                    'label'      => 'language',
+                    'controller' => 'language',
+                    'action'     => 'index',
+                ),
             ),
         ),
     ),

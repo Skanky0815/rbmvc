@@ -1,0 +1,7 @@
+<h2>
+    <?php echo $this->isSavedIcon; ?>
+    <?php echo $this->translate('language_title'); ?>
+    <?php echo $this->translate($this->language->getId() ? 'language_edit' : 'language_create'); ?>
+</h2>
+
+<?php echo $this->renderForm($this->form); ?>

@@ -9,6 +9,7 @@
     <div class="row">
         <div class="col-12">
             <?php foreach ($this->entrys as $key => $entry): ?>
+                <?php /** @var \Application\Lib\Model\Entry $entry */ ?>
                 <div class="col-6">
                     <h2><?php echo $entry->getTitle(); ?></h2>
                     <blockquote>

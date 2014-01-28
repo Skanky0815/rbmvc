@@ -57,7 +57,9 @@ requirejs([
             var data = $(element).data();
             if (_.loadedModules.indexOf(data.js) < 0) {
                 requirejs([data.js], function (js) {
-                    js.init(data);
+                    if (js !== undefined) {
+                        js.init(data);
+                    }
                 });
                 _.loadedModules.push(data.js);
             }

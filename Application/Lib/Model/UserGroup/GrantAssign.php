@@ -10,6 +10,10 @@ namespace Application\Lib\Model\UserGroup;
 
 use Application\Lib\Model\Collection\GrantCollection;
 
+/**
+ * Class GrantAssign
+ * @package Application\Lib\Model\UserGroup
+ */
 class GrantAssign extends GrantCollection {
 
     /**

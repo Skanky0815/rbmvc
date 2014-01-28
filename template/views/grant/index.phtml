@@ -4,11 +4,11 @@
     <div class="btn-group">
         <?php echo $this->button('add'); ?>
         <?php echo $this->button(array(
-                                      'url'   => $this->url(array('action' => 'scan')),
-                                      'icon'  => 'icon-cogs',
-                                      'class' => 'btn-default',
-                                      'label' => 'scan_grants',
-                                 )); ?>
+            'url'   => $this->url(array('action' => 'scan')),
+            'icon'  => 'icon-cogs',
+            'class' => 'btn-default',
+            'label' => 'scan_grants',
+        )); ?>
     </div>
 
     <hr>
@@ -26,6 +26,7 @@
         </thead>
         <tbody>
         <?php foreach ($this->grants as $grant): ?>
+            <?php /** @var \Application\Lib\Model\Grant $grant */ ?>
             <tr>
                 <td><?php echo $grant->getId(); ?></td>
                 <td><?php echo $grant->getDefinition(); ?></td>

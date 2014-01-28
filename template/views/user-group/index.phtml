@@ -15,6 +15,7 @@
     </thead>
     <tbody>
     <?php foreach ($this->userGroups as $group): ?>
+        <?php /** @var \Application\Lib\Model\UserGroup $group */ ?>
         <tr>
             <td><?php echo $group->getId(); ?></td>
             <td><?php echo $group->getName(); ?></td>

@@ -18,6 +18,7 @@
         </thead>
         <tbody>
         <?php foreach ($this->users as $user): ?>
+            <?php /** @var \Application\Lib\Model\User $user */ ?>
             <tr>
                 <td><?php echo $user->getId(); ?></td>
                 <td><?php echo $user->getUsername(); ?></td>
