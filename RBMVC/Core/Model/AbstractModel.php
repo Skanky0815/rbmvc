@@ -63,11 +63,14 @@ abstract class AbstractModel {
     /**
      * @return void
      */
-    public final function delete() {
+    public function delete() {
         $query = $this->db->getQuery($this->dbTable);
         $query->delete();
         $query->where(array('id' => $this->id));
         $this->db->execute($query);
+
+        $i81n = new I18n();
+        $i81n->setClassname($this->dbTable)->setObjectId($this->id)->delete();
     }
 
     /**
@@ -170,21 +173,21 @@ abstract class AbstractModel {
         $reflectionClass = new \ReflectionClass($this);
         $properties      = $reflectionClass->getProperties();
 
+        $camelCaseToUnderscore = new CamelCaseToUnderscore();
+
         $columns = $this->getTableDefinitions();
         $array   = array();
         foreach ($properties as $property) {
-            if (!isset($columns[$property->getName()])) {
+            $propertyName = $camelCaseToUnderscore->convert($property->getName());
+            if (!isset($columns[$propertyName])) {
                 continue;
             }
 
             $methodName = 'get' . ucfirst($property->getName());
             if ($reflectionClass->hasMethod($methodName)) {
-                $camelCaseToUnderscore = new CamelCaseToUnderscore();
-                $key                   = $camelCaseToUnderscore->convert($property->getName());
-                $array[$key]           = $this->{$methodName}();
+                $array[$propertyName] = $this->{$methodName}();
             }
         }
-
         return $array;
     }
 
@@ -202,6 +205,25 @@ abstract class AbstractModel {
         }
 
         return $tableColumns;
+    }
+
+    /**
+     * @param string $fieldName
+     *
+     * @return string
+     */
+    protected function loadTexts($fieldName) {
+        $getClassNameWithUnderscore = new GetClassNameWithUnderscore();
+        $className = $getClassNameWithUnderscore->getClassName($this);
+
+        $i18n = new I18n();
+        $i18n->setClassname($className)
+            ->setField($fieldName)
+            ->setLanguageId(1) // TODO use there the current language!!!
+            ->setObjectId($this->id)
+            ->init();
+
+        return $i18n->getValue();
     }
 
 }

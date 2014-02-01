@@ -2,7 +2,9 @@
 namespace RBMVC\Core\Controller\Helper;
 
 use RBMVC\Core\Model\AbstractModel;
+use RBMVC\Core\Model\I18n;
 use RBMVC\Core\Utilities\Form\Form;
+use RBMVC\Core\Utilities\Modifiers\String\GetClassNameWithUnderscore;
 use RBMVC\Core\Utilities\Session;
 use RBMVC\Core\Utilities\SystemMessage;
 
@@ -27,7 +29,6 @@ class SaveModel extends AbstractActionHelper {
 
         $model->fillModelByArray($params);
         $form = new $form($this->view, $model);
-
         if (!$form instanceof Form) {
             return $model;
         }
@@ -76,6 +77,8 @@ class SaveModel extends AbstractActionHelper {
     private function save(AbstractModel &$model) {
         $temp = $model;
         if ($model->save() instanceof AbstractModel) {
+            $this->saveTexts($model);
+
             $systemMessage = new SystemMessage(SystemMessage::SUCCESS);
             $systemMessage->setTitle('save_success');
             $this->addFlashSystemMessage($systemMessage);
@@ -88,6 +91,33 @@ class SaveModel extends AbstractActionHelper {
             $model = $temp;
             $this->addSaveErrorMessage();
         }
+    }
+
+    /**
+     * @param AbstractModel $model
+     *
+     * @return void
+     */
+    private function saveTexts(AbstractModel $model) {
+        $getClassNameWithUnderscore = new GetClassNameWithUnderscore();
+        $className = $getClassNameWithUnderscore->getClassName($model);
+
+        $texts = (array) $this->request->getParam('i81n', array());
+
+        $i18n = new I18n();
+        $i18n->setClassname($className)->setObjectId($model->getId())->delete();
+        foreach ($texts as $languageId => $text) {
+            foreach ($text as $field => $value) {
+                $i18n = new I18n();
+                $i18n->setObjectId($model->getId())
+                    ->setLanguageId($languageId)
+                    ->setClassname($className)
+                    ->setField($field)
+                    ->setValue($value)
+                    ->save();
+            }
+        }
+
     }
 
 }

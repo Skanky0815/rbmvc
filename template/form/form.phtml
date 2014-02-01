@@ -5,9 +5,17 @@
 
     <hr>
 
-    <!-- default inputs -->
-    <?php echo $this->form->getDisplayGroup(RBMVC\Core\Utilities\Form\DisplayGroup::DEFAULT_ELEMENTS)->render(); ?>
-    <!-- end default inputs -->
+    <?php if ($this->form->hasDisplayGroup(RBMVC\Core\Utilities\Form\DisplayGroup::I81N)): ?>
+        <!-- i81n inputs -->
+        <?php echo $this->form->getDisplayGroup(RBMVC\Core\Utilities\Form\DisplayGroup::I81N)->render(); ?>
+        <!-- end i81n inputs -->
+    <?php endif; ?>
+
+    <?php if ($this->form->hasDisplayGroup(RBMVC\Core\Utilities\Form\DisplayGroup::DEFAULT_ELEMENTS)): ?>
+        <!-- default inputs -->
+        <?php echo $this->form->getDisplayGroup(RBMVC\Core\Utilities\Form\DisplayGroup::DEFAULT_ELEMENTS)->render(); ?>
+        <!-- end default inputs -->
+    <?php endif; ?>
 
     <?php if ($this->form->hasDisplayGroup(RBMVC\Core\Utilities\Form\DisplayGroup::HIDDEN_ELEMENTS)): ?>
         <!-- hidden inputs -->
@@ -22,7 +30,9 @@
     <?php endif; ?>
 </form>
 
-<?php /*
+<?php
+ // TODO add save and return button
+ /*
     <button type="submit" value="saven_return" class="btn btn-success">
         <?php echo $this->translate('save_and_return'); ?>
     </button>

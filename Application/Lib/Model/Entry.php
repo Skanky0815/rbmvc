@@ -41,24 +41,6 @@ class Entry extends AbstractModel {
     }
 
     /**
-     * @return bool
-     */
-    public function init() {
-        $isInit = parent::init();
-
-        if ($isInit) {
-            $user = new User();
-            $user->setId($this->userId)->init();
-
-            $this->user = $user;
-
-            return true;
-        }
-
-        return false;
-    }
-
-    /**
      * @return string
      */
     public function getDate() {
@@ -80,6 +62,10 @@ class Entry extends AbstractModel {
      * @return string
      */
     public function getText() {
+        if (empty($this->text)) {
+            $this->text = $this->loadTexts('text');
+        }
+
         return $this->text;
     }
 
@@ -98,6 +84,10 @@ class Entry extends AbstractModel {
      * @return string
      */
     public function getTitle() {
+        if (empty($this->title)) {
+            $this->title = $this->loadTexts('title');
+        }
+
         return $this->title;
     }
 
@@ -116,6 +106,12 @@ class Entry extends AbstractModel {
      * @return User
      */
     public function getUser() {
+        if (is_null($this->user)) {
+            $user = new User();
+            $user->setId($this->userId)->init();
+            $this->user = $user;
+        }
+
         return $this->user;
     }
 
@@ -126,7 +122,7 @@ class Entry extends AbstractModel {
      */
     public function setUser(User $user) {
         $this->user = $user;
-
+        $this->userId = $user->getId();
         return $this;
     }
 

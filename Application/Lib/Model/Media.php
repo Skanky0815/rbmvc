@@ -31,8 +31,10 @@ class Media extends AbstractModel {
      */
     private $path = '';
 
-    /** @var BaseText */
-    private $text = null;
+    /**
+     * @var string
+     */
+    private $description = '';
 
     /**
      * @param string $name
@@ -49,6 +51,10 @@ class Media extends AbstractModel {
      * @return string
      */
     public function getName() {
+        if (empty($this->name)) {
+            $this->name = $this->loadTexts('name');
+        }
+
         return $this->name;
     }
 
@@ -71,21 +77,25 @@ class Media extends AbstractModel {
     }
 
     /**
-     * @param \Application\Lib\Model\BaseText $text
+     * @param string $description
      *
      * @return Media
      */
-    public function setText($text) {
-        $this->text = $text;
+    public function setDescription($description) {
+        $this->description = $description;
 
         return $this;
     }
 
     /**
-     * @return \Application\Lib\Model\BaseText
+     * @return string
      */
-    public function getText() {
-        return $this->text;
+    public function getDescription() {
+        if (empty($this->description)) {
+            $this->description = $this->loadTexts('description');
+        }
+
+        return $this->description;
     }
 
     /**

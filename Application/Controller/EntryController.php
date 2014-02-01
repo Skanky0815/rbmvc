@@ -21,8 +21,7 @@ class EntryController extends AbstractRudiController {
     public function editAction() {
         $entry   = new Entry();
         $session = new Session('user');
-        $user    = $session->user;
-        $entry->setUserId($user->getId());
+        $entry->setUser($session->user);
 
         $entry = $this->saveModel($entry, 'Application\Lib\Forms\EntryForm');
         $this->view->assign('entry', $entry);

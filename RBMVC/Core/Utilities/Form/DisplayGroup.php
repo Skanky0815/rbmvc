@@ -29,6 +29,11 @@ class DisplayGroup {
     const DEFAULT_ELEMENTS = 'default';
 
     /**
+     * i81n
+     */
+    const I81N = 'i81n';
+
+    /**
      * @var string
      */
     private $name;

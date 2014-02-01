@@ -1,14 +1,19 @@
 <?php
 namespace RBMVC\Core\Utilities\Form;
 
+use Application\Lib\Model\Collection\LanguageCollection;
+use Application\Lib\Model\Language;
 use RBMVC\Core\Model\AbstractModel;
+use RBMVC\Core\Model\I18n;
 use RBMVC\Core\Utilities\Form\Decorators\AbstractDecorator;
 use RBMVC\Core\Utilities\Form\Decorators\ButtonGroup;
 use RBMVC\Core\Utilities\Form\Decorators\DefaultDecorator;
 use RBMVC\Core\Utilities\Form\Decorators\Element\AssignItem;
+use RBMVC\Core\Utilities\Form\Decorators\I81N;
 use RBMVC\Core\Utilities\Form\Elements\AbstractElement;
 use RBMVC\Core\Utilities\Form\Elements\ButtonElement;
 use RBMVC\Core\Utilities\Form\Elements\Link;
+use RBMVC\Core\Utilities\Modifiers\String\GetClassNameWithUnderscore;
 use RBMVC\Core\View\Helper\Url;
 use RBMVC\Core\View\View;
 
@@ -318,6 +323,50 @@ abstract class Form {
      * @return void
      */
     abstract protected function init();
+
+    /**
+     * @param AbstractElement[] $elements
+     */
+    protected function addI81nFields(array $elements) {
+        $languageCollection = new LanguageCollection();
+        $languageCollection->findAll();
+
+        /** @var Language[] $languages */
+        $languages = $languageCollection->getModels();
+
+        $getClassNameWithUnderscore = new GetClassNameWithUnderscore();
+        $className = $getClassNameWithUnderscore->getClassName($this->object);
+
+        $i81nElements = array();
+        foreach ($elements as $key => $element) {
+            foreach ($languages as $language) {
+                $cElement = clone $element;
+                $name = 'i81n[' . $language->getId() . '][' . $cElement->getName() . ']';
+
+                $i81n = new I18n();
+                $i81n->setObjectId($this->object->getId())
+                    ->setClassname($className)
+                    ->setLanguageId($language->getId())
+                    ->setField($cElement->getName())
+                    ->init();
+
+                $cElement->setValue($i81n->getValue());
+                $i81nElements[$language->getId()][] = $cElement->setName($name);
+            }
+
+            unset($this->elements[$key]);
+        }
+
+        $i81nDecorator = new I81N();
+        $i81nDecorator->setLanguages($languages);
+
+        $displayGroup = new DisplayGroup();
+        $displayGroup->setName(DisplayGroup::I81N);
+        $displayGroup->setElements($i81nElements);
+        $displayGroup->setDecorator($i81nDecorator);
+
+        $this->displayGroups[DisplayGroup::I81N] = $displayGroup;
+    }
 
     /**
      * @return void
